@@ -22,18 +22,18 @@ def getURL():
         respData = resp.read();
         
         
-        titleTags = re.findall(r'<title>(.*?)</title>',str(respData))
-        links = re.findall(r'<link.*?href="(.*?)"',str(respData))
-                
+        #titleTags = re.findall(r'<title>(.*?)</title>',str(respData))            
         #for title in titleTags:
          #   print(title);
-        
+        links = re.findall(r'<link.*?href="(.*?)"',str(respData))
         for link in links:
+            
             print('visiting ' + link);
             resp = urllib.request.urlopen(link)
-            respData = resp.read();     
+            content = re.findall(r'<p>(.*?)</p>',str(resp))
+            #respData = content.read();     
             print(respData)
-            time.sleep(555)
+            #time.sleep(555)
             
             
     except Exception as e:
