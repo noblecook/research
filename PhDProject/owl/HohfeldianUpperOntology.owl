@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#"
+     xml:base="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasAction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasAction">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasConstraint">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasModality -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasModality">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasObject">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPurpose -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPurpose">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSource -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSource">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSubject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSubject">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasTarget -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasTarget">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Business-Associate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Business-Associate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Clergy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Clergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Correctional-Institutional -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Correctional-Institutional">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Disability -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Disability">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Foreign-Government-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Foreign-Government-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Government-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Foreign-Military-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Foreign-Military-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Foreign-Government-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Funderal-Director -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Funderal-Director">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Government-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Government-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Group-Health-Plan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Group-Health-Plan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Plan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Insurance-Issuer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Insurance-Issuer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Plan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Maintenance-Organization -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Maintenance-Organization">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Plan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Oversight-Agency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Oversight-Agency">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-State-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Plan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Plan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Healthcare-Clearing-House -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Healthcare-Clearing-House">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Healthcare-Provider -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Healthcare-Provider">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Immunity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Immunity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Individual -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Individual">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Inmate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Inmate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-State-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement-Official -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement-Official">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Liability -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Liability">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Licensed-Healthcare-Professional -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Licensed-Healthcare-Professional">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Covered-Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Medical-Examiner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Medical-Examiner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#No-Right -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#No-Right">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Obligation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Obligation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Personal-Representative -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Personal-Representative">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Plan-Sponsor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Plan-Sponsor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Power -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Power">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Privilege -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Privilege">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Public-Health-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Public-Health-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-State-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Right -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Right">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Hohfeldian-Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Agriculture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Agriculture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Commerce -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Commerce">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Defense -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Defense">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Education -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Education">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Energy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Energy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Health-and-Human-Services -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Health-and-Human-Services">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Homeland-Security -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Homeland-Security">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Housing-and-Urban-Development -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Housing-and-Urban-Development">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Interior -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Interior">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Justice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Justice">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Labor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Labor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-State -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-State">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Transportation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Transportation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Treasury -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Treasury">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Veteran-Affairs -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Veteran-Affairs">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Federal-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Government-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-State-Authority -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-State-Authority">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Government-Authority"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Disability"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Immunity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Liability"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#No-Right"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Obligation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Power"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Privilege"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Right"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Funderal-Director"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Individual"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Inmate"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement-Official"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Medical-Examiner"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Personal-Representative"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Health-Oversight-Agency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Law-Enforcement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Public-Health-Authority"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Agriculture"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Commerce"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Defense"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Education"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Energy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Health-and-Human-Services"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Homeland-Security"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Housing-and-Urban-Development"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Interior"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Justice"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Labor"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-State"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Transportation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Treasury"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#US-Dept-of-Veteran-Affairs"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
