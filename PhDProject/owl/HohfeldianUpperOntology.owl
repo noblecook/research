@@ -25,8 +25,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasAction">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Action"/>
     </owl:ObjectProperty>
     
 
@@ -36,8 +34,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasClaims">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasDuty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Claim"/>
     </owl:ObjectProperty>
     
 
@@ -46,8 +42,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasConstraint">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Constraint"/>
     </owl:ObjectProperty>
     
 
@@ -57,8 +51,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasDisability">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasImmunity"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Disability"/>
     </owl:ObjectProperty>
     
 
@@ -67,8 +59,14 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasDuty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Duty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasException -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasException">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
     
 
@@ -77,8 +75,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasExplicitHohfeldianConcept">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#ExplictHohfeldianConcept"/>
     </owl:ObjectProperty>
     
 
@@ -87,8 +83,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasImmunity">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Immunity"/>
     </owl:ObjectProperty>
     
 
@@ -97,8 +91,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasImplicitHohfeldianConcept">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#ImplicitHohfeldianConcept"/>
     </owl:ObjectProperty>
     
 
@@ -108,8 +100,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasLiability">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPower"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Liability"/>
     </owl:ObjectProperty>
     
 
@@ -119,8 +109,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasLiberty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasNo-Claim"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Liberty"/>
     </owl:ObjectProperty>
     
 
@@ -129,13 +117,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasModality">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#modalVerbs"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -144,8 +125,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasNo-Claim">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#No-Claim"/>
     </owl:ObjectProperty>
     
 
@@ -155,7 +134,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasNo-Right">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPrivilege"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#No-Right"/>
     </owl:ObjectProperty>
     
 
@@ -164,8 +142,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasObject">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Object"/>
     </owl:ObjectProperty>
     
 
@@ -175,8 +151,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasObligation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasRight"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Obligation"/>
     </owl:ObjectProperty>
     
 
@@ -185,8 +159,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPower">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Power"/>
     </owl:ObjectProperty>
     
 
@@ -195,8 +167,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPrivilege">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Privilege"/>
     </owl:ObjectProperty>
     
 
@@ -205,8 +175,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasPurpose">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Purpose"/>
     </owl:ObjectProperty>
     
 
@@ -215,8 +183,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasRight">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Right"/>
     </owl:ObjectProperty>
     
 
@@ -226,8 +192,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSource">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Source"/>
     </owl:ObjectProperty>
     
 
@@ -236,8 +200,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSubject">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Subject"/>
     </owl:ObjectProperty>
     
 
@@ -246,8 +208,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasTarget">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Target"/>
     </owl:ObjectProperty>
     
 
@@ -856,10 +816,64 @@
     
 
 
-    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion -->
+    <!-- http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryStatement -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion">
+    <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#TaskEnvironment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasAction"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasConstraint"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Constraint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasException"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Exception"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasExplicitHohfeldianConcept"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#ExplictHohfeldianConcept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasImplicitHohfeldianConcept"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#ImplicitHohfeldianConcept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasObject"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSource"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Source"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSubject"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasTarget"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Target"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -890,12 +904,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Subject">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#TaskEnvironment"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#hasSubject"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Stakeholders"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment>The subject is the actor who performs an action on an object in the activity.</rdfs:comment>
     </owl:Class>
     
@@ -1136,7 +1144,7 @@
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Modality"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Object"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Purpose"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryAssertion"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#RegulatoryStatement"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Source"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Subject"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/patcoo/ontologies/2019/2/HohfeldianUpperOntology#Target"/>
@@ -1258,4 +1266,3 @@
 
 
 <!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-
