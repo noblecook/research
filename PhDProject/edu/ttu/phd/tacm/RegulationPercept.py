@@ -9,10 +9,19 @@ import xml.etree.ElementTree as etree
 import time
 import unicodedata
 
+
+FILEPREFIX = 'C:/Users/patcoo/git/research/PhDProject/data/'
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_45_CFR_Section_11_10 = FILEPREFIX+'xml_45_CFR_Section_164_510.xml'
+
 XML_FILE_REGULATION_21_CFR_Sections_11_10  = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_10.xml'
 XML_FILE_REGULATION_21_CFR_Sections_11_30  = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_30.xml'
 XML_FILE_REGULATION_21_CFR_Sections_11_200 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_200.xml'
 XML_FILE_REGULATION_21_CFR_Sections_11_300 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_300.xml'
+
+
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_45_CFR_Section_11_10 = FILEPREFIX+'xml_45_CFR_Section_164_510.xml'
 
 def getInputFromFile(inputFile):
     tree = etree.parse(inputFile)
@@ -45,7 +54,7 @@ def getChildNodes(element):
 def main(): 
     # load regulations from file
 
-    getInputFromFile(XML_FILE_REGULATION_21_CFR_Sections_11_10)
+    getInputFromFile(xml_45_CFR_Section_11_10)
      
     '''
     getInputFromFile(XML_FILE_REGULATION_21_CFR_Sections_11_10)

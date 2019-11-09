@@ -47,6 +47,7 @@ Dublin Core
 '''
 
 SIMPLE = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/simple.xml'
+FILEPREFIX = 'C:/Users/patcoo/git/research/PhDProject/data/'
 
 XML_10_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_10_CFR_ALL.xml'
 XML_20_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_20_CFR_ALL.xml'
@@ -57,8 +58,8 @@ XML_48_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_48_CFR_A
 XML_49_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_49_CFR_ALL.xml'
 XML_50_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_50_CFR_ALL.xml'
 
-xml_21_CFR_Section_11_10 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_10.xml'
-xml_21_CFR_Section_11_30 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_30.xml'
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_21_CFR_Section_11_30 = FILEPREFIX+'xml_21_CFR_Section_11_30.xml'
 
 
 
@@ -202,7 +203,7 @@ def preProcessor(text):
 def main(): 
     tree = etree.parse(xml_21_CFR_Section_11_10)
     root = tree.getroot()
-    #getXML(root)
+    getXML(root)
     
     text = 'Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following:'
     rightText = "Except as provided by paragraph (a)(2) or (3) of this section, an individual has a right to adequate notice of the uses and disclosures of protected health information that may be made by the covered entity, and of the individual's rights and the covered entity's legal duties with respect to protected health information."

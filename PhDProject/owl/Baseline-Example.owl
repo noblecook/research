@@ -1,0 +1,725 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://shamroq.com/projects/hipaa#"
+     xml:base="http://shamroq.com/projects/hipaa"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:shamroq="http://shamroq.com/projects/hipaa#">
+    <owl:Ontology rdf:about="http://shamroq.com/projects/hipaa"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasAction -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasAction">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasActivity"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasActor -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasActor">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasCounterParty -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasCounterParty"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasDutyActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasDutyActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasException -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasException">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasExceptionActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasExceptionActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasNoRightActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasNoRightActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasObject -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasObject">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Object_Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasPredicate -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasPredicate">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasPrivilegeActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasPrivilegeActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Legal_Source"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasPurpose -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasPurpose">
+        <rdfs:domain rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+        <rdfs:range rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasPurposeActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasPurposeActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasRightActivity -->
+
+    <owl:ObjectProperty rdf:about="http://shamroq.com/projects/hipaa#hasRightActivity">
+        <rdfs:subPropertyOf rdf:resource="http://shamroq.com/projects/hipaa#hasActivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://shamroq.com/projects/hipaa#hasAddress"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasDirectory -->
+
+    <owl:DatatypeProperty rdf:about="http://shamroq.com/projects/hipaa#hasDirectory">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://shamroq.com/projects/hipaa#hasName">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#hasPrivilege -->
+
+    <owl:DatatypeProperty rdf:about="http://shamroq.com/projects/hipaa#hasPrivilege">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Action -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Action"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Actor -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Actor"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality">
+        <rdfs:comment>Philosophy of Law, Wesley Hohfeld and the Hohfeldian Analysis (or Incidents)
+1.  Right (Duty)
+2.  Duties (Right)
+3.  Privilege (No-Right)
+4.  No-Right (Privilege)
+
+Generally speaking, 
+
+RIGHT is an [inherent] entitlement and a DUTY is an [enforceable] obligation - and both are bound by some ACTION.
+
+PRIVILEGE is granted - in this case - by the law (and can be taken away) 
+Black&apos;s Law Library</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#CFR_164.510_a_1_i_A -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#CFR_164.510_a_1_i_A">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasNoRightActivity"/>
+                <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#No-Right_To_Prohibit_Use_of_Individual_Name_PHI_ACTIVITY"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasPrivilegeActivity"/>
+                <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Privilege_To_Use_PHI_with_Exception_for_Purpose_ACTIVITY"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Legal_Source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#CoveredEntity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#CoveredEntity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Actor"/>
+        <owl:disjointWith rdf:resource="http://shamroq.com/projects/hipaa#Person"/>
+        <rdfs:comment>Convered Entity - Covered entities are defined in the HIPAA rules as (1) health plans, (2) health care clearinghouses, and (3) health care providers who electronically transmit any health information in connection with transactions for which HHS has adopted standards. 
+
+Generally, these transactions concern billing and payment for services or insurance coverage. For example, hospitals, academic medical centers, physicians, and other health care providers who electronically transmit claims transaction information directly or through an intermediary to a health plan are covered entities. Covered entities can be institutions, organizations, or persons.
+
+Source - https://privacyruleandresearch.nih.gov/pr_06.asp
+
+Examples of Health Care and Social Services Agencies that could be Covered Entities under the Nondiscrimination Laws Enforced By OCR.
+For most of the laws enforced by OCR, a “Covered Entity” must receive, directly or through another entity Federal financial assistance from the U.S. Department of Health and Human Services.  Some of these might be:
+
+State and local government agencies that are responsible for administering health care
+State and local government income assistance and human service agencies
+Hospitals
+Medicaid and Medicare Providers
+Physicians and other health care professionals in private practice with patients assisted by Medicaid
+Family Health Centers
+Community Mental Health Centers
+Alcohol and Drug Treatment Centers
+Nursing Homes
+Foster Care Homes
+Public And Private Adoption And Foster Care Agencies
+Day Care Centers
+Senior Citizen Centers
+Nutrition Programs
+Any entity established under the Affordable Care Act
+OCR also enforces Title II of the Americans with Disabilities Act as it applies to health and social service agencies of state and local governments even if they do not receive Federal financial assistance from HHS.  Some of these might be:
+
+State and local government agencies that are responsible for administering health care
+State and local government income assistance and human service agencies
+Community agencies that carry out health care, income assistance, or human service functions of a state or local government agency as described above under a contract, grant, or other agreement
+While the Office for Civil Rights enforces certain laws and regulations that prohibit discrimination, we do not enforce laws and regulations that apply to housing, police or law enforcement, the courts, prisons or employment.  To learn about civil rights enforcement in these and other areas enforced by other agencies, please see our Civil Rights Enforcement Through Other Agencies page.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Directory_Of_Individuals_In_Facility -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Directory_Of_Individuals_In_Facility">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasAddress"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasDirectory"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Disclose -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Disclose">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Exception -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Exception"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Exception_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Exception_Activity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_2_Opportunity_To_Object_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_2_Opportunity_To_Object_Activity">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasActor"/>
+                <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Exception_Activity"/>
+        <owl:disjointWith rdf:resource="http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_3_Emergency_Circumstances_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_3_Emergency_Circumstances_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_3_Emergency_Circumstances_Activity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Exception_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#HealthCareProvider -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#HealthCareProvider">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#CoveredEntity"/>
+        <rdfs:comment>Health Care Provider – A provider of services (as defined in section 1861(u) of the Act, 42 U.S.C. 1395x(u)), a provider of medical or health services (as defined in section 1861(s) of the Act, 42 U.S.C. 1395x(s)), and any other person or organization who furnishes, bills, or is paid for health care in the normal course of business.
+
+This includes providers such as:
+
+Doctors
+Clinics
+Psychologists
+Dentists
+Chiropractors
+Nursing Homes
+Pharmacies
+...but only if they transmit any information in an electronic form in connection with a transaction for which HHS has adopted a standard.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Individual -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Individual">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Individual_Name_PHI -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Individual_Name_PHI">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasName"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Legal_Source -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Legal_Source"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Maintains -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Maintains">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#MayUse -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#MayUse">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#No-Right_To_Prohibit_Use_of_Individual_Name_PHI_ACTIVITY -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#No-Right_To_Prohibit_Use_of_Individual_Name_PHI_ACTIVITY">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasAction"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Prohibits"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasActor"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasObject"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Individual_Name_PHI"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#ROOT_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Object -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Object"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Object_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Object_Activity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Person -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Person">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Privilege_To_Use_PHI_with_Exception_for_Purpose_ACTIVITY -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Privilege_To_Use_PHI_with_Exception_for_Purpose_ACTIVITY">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasAction"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#MayUse"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasActor"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasExceptionActivity"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_2_Opportunity_To_Object_Activity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasExceptionActivity"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Exception_IAW_164.510_a_3_Emergency_Circumstances_Activity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasObject"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Individual_Name_PHI"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasPurpose"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Purpose_To_Maintain_Directory_of_Individuals_in_Facility_Activity"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#ROOT_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Prohibits -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Prohibits">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Purpose -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Purpose"/>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Purpose_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Purpose_Activity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#Purpose_To_Maintain_Directory_of_Individuals_in_Facility_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#Purpose_To_Maintain_Directory_of_Individuals_in_Facility_Activity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasAction"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Maintains"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasActor"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://shamroq.com/projects/hipaa#hasObject"/>
+                        <owl:someValuesFrom rdf:resource="http://shamroq.com/projects/hipaa#Directory_Of_Individuals_In_Facility"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Purpose_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#ROOT_Activity -->
+
+    <owl:Class rdf:about="http://shamroq.com/projects/hipaa#ROOT_Activity">
+        <rdfs:subClassOf rdf:resource="http://shamroq.com/projects/hipaa#Basic_ACTIVITY_with_Modality"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_CookHospitalCentral -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_CookHospitalCentral">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_DrCharlesRichardDrew -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_DrCharlesRichardDrew">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_DrDavidSatcher -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_DrDavidSatcher">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_DrWilliamAugustusHinton -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_DrWilliamAugustusHinton">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_Individual_Name_As_PHI -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_Individual_Name_As_PHI">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual_Name_PHI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_James -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_James">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_Kory -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_Kory">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_Mary -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_Mary">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_NorthEastPharmacy -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_NorthEastPharmacy">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_Patrina -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_Patrina">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_Shanterra -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_Shanterra">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Individual"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_UniversityMedicalCenter -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_UniversityMedicalCenter">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#HealthCareProvider"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_database_of_individuals_at_UniversityMedicalCenter -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_database_of_individuals_at_UniversityMedicalCenter">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Directory_Of_Individuals_In_Facility"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_privilegeToMaintain -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_privilegeToMaintain">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#Maintains"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shamroq.com/projects/hipaa#_privilegeToUse -->
+
+    <owl:NamedIndividual rdf:about="http://shamroq.com/projects/hipaa#_privilegeToUse">
+        <rdf:type rdf:resource="http://shamroq.com/projects/hipaa#MayUse"/>
+        <hasPrivilege>may use</hasPrivilege>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:comment>https://www.w3.org/TR/owl-features/
+
+https://protegewiki.stanford.edu/wiki/Protege_Ontology_Library</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://shamroq.com/projects/hipaa#Disclose"/>
+            <rdf:Description rdf:about="http://shamroq.com/projects/hipaa#Maintains"/>
+            <rdf:Description rdf:about="http://shamroq.com/projects/hipaa#MayUse"/>
+            <rdf:Description rdf:about="http://shamroq.com/projects/hipaa#Prohibits"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

@@ -46,6 +46,7 @@ Dublin Core
 '''
 
 SIMPLE = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/simple.xml'
+FILEPREFIX = 'C:/Users/patcoo/git/research/PhDProject/data/'
 
 XML_10_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_10_CFR_ALL.xml'
 XML_20_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_20_CFR_ALL.xml'
@@ -56,7 +57,8 @@ XML_48_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_48_CFR_A
 XML_49_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_49_CFR_ALL.xml'
 XML_50_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_50_CFR_ALL.xml'
 
-xml_21_CFR_Section_11_10 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_10.xml'
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_45_CFR_Section_11_10 = FILEPREFIX+'xml_45_CFR_Section_164_510.xml'
 xml_21_CFR_Section_11_30 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_30.xml'
 
 
@@ -125,7 +127,7 @@ def getXML(node):
                 print('PARAGRAPH FOUND ---------------->>> ')
                 PARAGRAPH = rdflib.Literal(node.text)                
                 print(node.text)
-                time.sleep(10)
+                time.sleep(1)
                 g.add((REG_21_CFR_11_10,has_PARAGRAPH,PARAGRAPH))
         except:
             print('--------------------->>>> could not print text')
@@ -155,19 +157,19 @@ def preProcessor(text):
 
             chunked = chunkParser.parse(tagged)
             print(chunked)
-            chunked.draw()
+            #chunked.draw()
             
 
     except Exception as e:
         print(str(e))   
 
 def main(): 
-    tree = etree.parse(xml_21_CFR_Section_11_10)
+    tree = etree.parse(xml_45_CFR_Section_11_10)
     root = tree.getroot()
-    #getXML(root)
+    getXML(root)
     
-    text = 'Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following:'
-    preProcessor(text)
+    #text = 'Persons who use closed systems to create, modify, maintain, or transmit electronic records shall employ procedures and controls designed to ensure the authenticity, integrity, and, when appropriate, the confidentiality of electronic records, and to ensure that the signer cannot readily repudiate the signed record as not genuine. Such procedures and controls shall include the following:'
+    #preProcessor(text)
     
     
     print('Triples in graph after add: ', len(g))

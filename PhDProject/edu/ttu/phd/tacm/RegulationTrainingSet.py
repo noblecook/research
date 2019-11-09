@@ -13,6 +13,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import rdflib
+
+
+
 g = rdflib.Graph()
 REGULATION = rdflib.URIRef('http://www.shamroq.pcook.ttu.edu/has_cfrtitle')
 has_CFRTITLE = rdflib.URIRef('http://www.shamroq.pcook.ttu.edu/has_cfrtitle')
@@ -48,10 +51,14 @@ XML_48_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_48_CFR_A
 XML_49_CFR_ALL = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/XML_49_CFR_ALL.xml'
 XML_50_CFR_ALL = 'C:/Users/patcoo/git/research/PhDProject/data/XML_50_CFR_ALL.xml'
 
-xml_21_CFR_Section_11_10 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_10.xml'
-xml_21_CFR_Section_11_30 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_21_CFR_Section_11_30.xml'
-xml_45_CFR_Section_164_522 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_45_CFR_Section_164_522.xml'
-xml_45_CFR_Section_164_510 = 'C:/Users/patcoo/eclipse-workspace/PhDProject/data/xml_45_CFR_Section_164_510.xml'
+
+FILEPREFIX = 'C:/Users/patcoo/git/research/PhDProject/data/'
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_45_CFR_Section_11_10 = FILEPREFIX+'xml_45_CFR_Section_164_510.xml'
+xml_21_CFR_Section_11_10 = FILEPREFIX+'xml_21_CFR_Section_11_10.xml'
+xml_21_CFR_Section_11_30 = FILEPREFIX+'xml_21_CFR_Section_11_30.xml'
+xml_45_CFR_Section_164_522 = FILEPREFIX+'xml_45_CFR_Section_164_522.xml'
+xml_45_CFR_Section_164_510 = FILEPREFIX+'xml_45_CFR_Section_164_510.xml'
 
 
 
@@ -71,10 +78,10 @@ def getXMLData(node):
     
 def main(): 
 
-    tree = etree.parse(xml_45_CFR_Section_164_510)
+    tree = etree.parse(xml_45_CFR_Section_11_10)
     root = tree.getroot()
     getXMLData(root)
-    print (g)
+    #print (g)
     
 if __name__ == "__main__": 
     # calling main function 

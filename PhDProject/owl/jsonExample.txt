@@ -1,0 +1,28 @@
+{
+	"WOLFGANG_v1_TOKEN":
+		{
+			"SECURITY_OBJECT":
+				{
+					"SECURITY_TOKEN": "fjlejf384930",
+		        	"HASH_VALUE": "fdjad0343jfjo3jj343j4r234j23j;ldjf;dljfa;j"  
+		        },
+		    "PRIME_ATTRIBUTES": 
+		        {
+		            "Benefits": "WOLFGANG_v1_ELIGIBLE"            
+		        },
+		    "POLICY_OBJECT":
+		       	{
+		       		"Administration_Policy": 
+		       			{
+		       				"SUBJECT": "TRIAL_MEMBERS", 
+		                	"OBJECT": "PII",
+		                	"MARKETPLANCE": "NA",
+		                	"ACTION": "REGISTRATION"
+		            	},		            
+		            "Regulatory_Policy":
+		            	{
+		                	"PROVISION": "45 CFR 164.510"
+		                }
+		        }
+    	}
+}
