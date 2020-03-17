@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>21</CFRTITLE>
+    <CFRTITLETEXT>Food and Drugs</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2018-04-01</DATE>
+    <ORIGINALDATE>2018-04-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Controls for closed systems.</TITLE>
+    <GRANULENUM>Â§ 11.10</GRANULENUM>
+    <HEADING>Section Â§ 11.10</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 21" SEQ="4">Food and Drugs</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="3">FOOD AND DRUG ADMINISTRATION, DEPARTMENT OF HEALTH AND HUMAN SERVICES</PARENT>
+      <PARENT HEADING="SUBCHAPTER A" SEQ="2">GENERAL</PARENT>
+      <PARENT HEADING="PART 11" SEQ="1">ELECTRONIC RECORDS; ELECTRONIC SIGNATURES</PARENT>
+      <PARENT HEADING="Subpart B" SEQ="0">Electronic Records</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+

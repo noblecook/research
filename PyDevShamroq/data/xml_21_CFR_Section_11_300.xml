@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>21</CFRTITLE>
+    <CFRTITLETEXT>Food and Drugs</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2018-04-01</DATE>
+    <ORIGINALDATE>2018-04-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Controls for identification codes/passwords.</TITLE>
+    <GRANULENUM>Â§ 11.300</GRANULENUM>
+    <HEADING>Section Â§ 11.300</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 21" SEQ="4">Food and Drugs</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="3">FOOD AND DRUG ADMINISTRATION, DEPARTMENT OF HEALTH AND HUMAN SERVICES</PARENT>
+      <PARENT HEADING="SUBCHAPTER A" SEQ="2">GENERAL</PARENT>
+      <PARENT HEADING="PART 11" SEQ="1">ELECTRONIC RECORDS; ELECTRONIC SIGNATURES</PARENT>
+      <PARENT HEADING="Subpart C" SEQ="0">Electronic Signatures</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§11.300</SECTNO>
+    <SUBJECT>Controls for identification codes/passwords.</SUBJECT>
+    <P>Persons who use electronic signatures based upon use of identification codes in combination with passwords shall employ controls to ensure their security and integrity. Such controls shall include:</P>
+    <P>(a) Maintaining the uniqueness of each combined identification code and password, such that no two individuals have the same combination of identification code and password.</P>
+    <P>(b) Ensuring that identification code and password issuances are periodically checked, recalled, or revised (e.g., to cover such events as password aging).</P>
+    <P>(c) Following loss management procedures to electronically deauthorize lost, stolen, missing, or otherwise potentially compromised tokens, cards, and other devices that bear or generate identification code or password information, and to issue temporary or permanent replacements using suitable, rigorous controls.</P>
+    <P>(d) Use of transaction safeguards to prevent unauthorized use of passwords and/or identification codes, and to detect and report in an immediate and urgent manner any attempts at their unauthorized use to the system security unit, and, as appropriate, to organizational management.</P>
+    <P>(e) Initial and periodic testing of devices, such as tokens or cards, that bear or generate identification code or password information to ensure that they function properly and have not been altered in an unauthorized manner.</P>
+  </SECTION>
+</CFRGRANULE>

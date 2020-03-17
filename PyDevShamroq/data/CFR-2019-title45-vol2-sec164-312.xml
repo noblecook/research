@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>45</CFRTITLE>
+    <CFRTITLETEXT>Public Welfare</CFRTITLETEXT>
+    <VOL>2</VOL>
+    <DATE>2019-10-01</DATE>
+    <ORIGINALDATE>2019-10-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Technical safeguards.</TITLE>
+    <GRANULENUM>Â§ 164.312</GRANULENUM>
+    <HEADING>Section Â§ 164.312</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 45" SEQ="4">Public Welfare</PARENT>
+      <PARENT HEADING="Subtitle A" SEQ="3">Department of Health and Human Services</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="2">ADMINISTRATIVE DATA STANDARDS AND RELATED REQUIREMENTS</PARENT>
+      <PARENT HEADING="PART 164" SEQ="1">SECURITY AND PRIVACY</PARENT>
+      <PARENT HEADING="Subpart C" SEQ="0">Security Standards for the Protection of Electronic Protected Health Information</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 164.312</SECTNO>
+    <SUBJECT>Technical safeguards.</SUBJECT>
+    <P>A covered entity or business associate must, in accordance with § 164.306:</P>
+    <P>(a)(1) <E T="03">Standard: Access control.</E> Implement technical policies and procedures for electronic information systems that maintain electronic protected health information to allow access <PRTPAGE P="545"/>only to those persons or software programs that have been granted access rights as specified in § 164.308(a)(4).</P>
+    <P>(2) <E T="03">Implementation specifications:</E>
+    </P>
+    <P>(i) <E T="03">Unique user identification (Required).</E> Assign a unique name and/or number for identifying and tracking user identity.</P>
+    <P>(ii) <E T="03">Emergency access procedure (Required).</E> Establish (and implement as needed) procedures for obtaining necessary electronic protected health information during an emergency.</P>
+    <P>(iii) <E T="03">Automatic logoff (Addressable).</E> Implement electronic procedures that terminate an electronic session after a predetermined time of inactivity.</P>
+    <P>(iv) <E T="03">Encryption and decryption (Addressable).</E> Implement a mechanism to encrypt and decrypt electronic protected health information.</P>
+    <P>(b) <E T="03">Standard: Audit controls.</E> Implement hardware, software, and/or procedural mechanisms that record and examine activity in information systems that contain or use electronic protected health information.</P>
+    <P>(c)(1) <E T="03">Standard: Integrity.</E> Implement policies and procedures to protect electronic protected health information from improper alteration or destruction.</P>
+    <P>(2) <E T="03">Implementation specification: Mechanism to authenticate electronic protected health information (Addressable).</E> Implement electronic mechanisms to corroborate that electronic protected health information has not been altered or destroyed in an unauthorized manner.</P>
+    <P>(d) <E T="03">Standard: Person or entity authentication.</E> Implement procedures to verify that a person or entity seeking access to electronic protected health information is the one claimed.</P>
+    <P>(e)(1) <E T="03">Standard: Transmission security.</E> Implement technical security measures to guard against unauthorized access to electronic protected health information that is being transmitted over an electronic communications network.</P>
+    <P>(2) <E T="03">Implementation specifications:</E>
+    </P>
+    <P>(i) <E T="03">Integrity controls (Addressable).</E> Implement security measures to ensure that electronically transmitted electronic protected health information is not improperly modified without detection until disposed of.</P>
+    <P>(ii) <E T="03">Encryption (Addressable).</E> Implement a mechanism to encrypt electronic protected health information whenever deemed appropriate.</P>
+    <CITA>[68 FR 8376, Feb. 20, 2003, as amended at 78 FR 5694, Jan. 25, 2013]</CITA>
+  </SECTION>
+</CFRGRANULE>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>45</CFRTITLE>
+    <CFRTITLETEXT>Public Welfare</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2018-10-01</DATE>
+    <ORIGINALDATE>2018-10-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Table Of Contents</TITLE>
+    <GRANULENUM/>
+    <ANCESTORS>
+      <PARENT HEADING="Title 45" SEQ="3">Public Welfare</PARENT>
+      <PARENT HEADING="Subtitle A" SEQ="2">Department of Health and Human Services</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">ADMINISTRATIVE DATA STANDARDS AND RELATED REQUIREMENTS</PARENT>
+      <PARENT HEADING="PART 164" SEQ="0">SECURITY AND PRIVACY</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <CONTENTS>
+    <SUBPART>
+      <HD SOURCE="HED">Subpart A—General Provisions</HD>
+      <SECHD>Sec.</SECHD>
+      <SECTNO>164.102</SECTNO>
+      <SUBJECT>Statutory basis.</SUBJECT>
+      <SECTNO>164.103</SECTNO>
+      <SUBJECT>Definitions.</SUBJECT>
+      <SECTNO>164.104</SECTNO>
+      <SUBJECT>Applicability.</SUBJECT>
+      <SECTNO>164.105</SECTNO>
+      <SUBJECT>Organizational requirements.</SUBJECT>
+      <SECTNO>164.106</SECTNO>
+      <SUBJECT>Relationship to other parts.</SUBJECT>
+    </SUBPART>
+    <SUBPART>
+      <RESERVED>Subpart B [Reserved]</RESERVED>
+    </SUBPART>
+    <SUBPART>
+      <HD SOURCE="HED">Subpart C—Security Standards for the Protection of Electronic Protected Health Information</HD>
+      <SECTNO>164.302</SECTNO>
+      <SUBJECT>Applicability.</SUBJECT>
+      <SECTNO>164.304</SECTNO>
+      <SUBJECT>Definitions.</SUBJECT>
+      <SECTNO>164.306</SECTNO>
+      <SUBJECT>Security standards: General rules.</SUBJECT>
+      <SECTNO>164.308</SECTNO>
+      <SUBJECT>Administrative safeguards.</SUBJECT>
+      <SECTNO>164.310</SECTNO>
+      <SUBJECT>Physical safeguards.</SUBJECT>
+      <SECTNO>164.312</SECTNO>
+      <SUBJECT>Technical safeguards.</SUBJECT>
+      <SECTNO>164.314</SECTNO>
+      <SUBJECT>Organizational requirements.</SUBJECT>
+      <SECTNO>164.316</SECTNO>
+      <SUBJECT>Policies and procedures and documentation requirements.</SUBJECT>
+      <SECTNO>164.318</SECTNO>
+      <SUBJECT>Compliance dates for the initial implementation of the security standards.</SUBJECT>
+      <APP>Appendix A to Subpart C of Part 164—Security Standards: Matrix</APP>
+    </SUBPART>
+    <SUBPART>
+      <HD SOURCE="HED">Subpart D—Notification in the Case of Breach of Unsecured Protected Health Information</HD>
+      <SECTNO>164.400</SECTNO>
+      <SUBJECT>Applicability.</SUBJECT>
+      <SECTNO>164.402</SECTNO>
+      <SUBJECT>Definitions.</SUBJECT>
+      <SECTNO>164.404</SECTNO>
+      <SUBJECT>Notification to individuals.</SUBJECT>
+      <SECTNO>164.406</SECTNO>
+      <SUBJECT>Notification to the media.</SUBJECT>
+      <SECTNO>164.408</SECTNO>
+      <SUBJECT>Notification to the Secretary.</SUBJECT>
+      <SECTNO>164.410</SECTNO>
+      <SUBJECT>Notification by a business associate.</SUBJECT>
+      <SECTNO>164.412</SECTNO>
+      <SUBJECT>Law enforcement delay.</SUBJECT>
+      <SECTNO>164.414</SECTNO>
+      <SUBJECT>Administrative requirements and burden of proof.</SUBJECT>
+    </SUBPART>
+    <SUBPART>
+      <HD SOURCE="HED">Subpart E—Privacy of Individually Identifiable Health Information</HD>
+      <SECTNO>164.500</SECTNO>
+      <SUBJECT>Applicability.</SUBJECT>
+      <SECTNO>164.501</SECTNO>
+      <SUBJECT>Definitions.</SUBJECT>
+      <SECTNO>164.502</SECTNO>
+      <SUBJECT>Uses and disclosures of protected health information: General rules.</SUBJECT>
+      <SECTNO>164.504</SECTNO>
+      <SUBJECT>Uses and disclosures: Organizational requirements.</SUBJECT>
+      <SECTNO>164.506</SECTNO>
+      <SUBJECT>Uses and disclosures to carry out treatment, payment, or health care operations.</SUBJECT>
+      <SECTNO>164.508</SECTNO>
+      <SUBJECT>Uses and disclosures for which an authorization is required.</SUBJECT>
+      <SECTNO>164.510</SECTNO>
+      <SUBJECT>Uses and disclosures requiring an opportunity for the individual to agree or to object.</SUBJECT>
+      <SECTNO>164.512</SECTNO>
+      <SUBJECT>Uses and disclosures for which an authorization or opportunity to agree or object is not required.</SUBJECT>
+      <SECTNO>164.514</SECTNO>
+      <SUBJECT>Other requirements relating to uses and disclosures of protected health information.</SUBJECT>
+      <SECTNO>164.520</SECTNO>
+      <SUBJECT>Notice of privacy practices for protected health information.</SUBJECT>
+      <SECTNO>164.522</SECTNO>
+      <SUBJECT>Rights to request privacy protection for protected health information.</SUBJECT>
+      <SECTNO>164.524</SECTNO>
+      <SUBJECT>Access of individuals to protected health information.</SUBJECT>
+      <SECTNO>164.526</SECTNO>
+      <SUBJECT>Amendment of protected health information.<PRTPAGE P="1300"/>
+      </SUBJECT>
+      <SECTNO>164.528</SECTNO>
+      <SUBJECT>Accounting of disclosures of protected health information.</SUBJECT>
+      <SECTNO>164.530</SECTNO>
+      <SUBJECT>Administrative requirements.</SUBJECT>
+      <SECTNO>164.532</SECTNO>
+      <SUBJECT>Transition provisions.</SUBJECT>
+      <SECTNO>164.534</SECTNO>
+      <SUBJECT>Compliance dates for initial implementation of the privacy standards.</SUBJECT>
+    </SUBPART>
+  </CONTENTS>
+  <AUTH>
+    <HD SOURCE="HED">Authority:</HD>
+    <P>42 U.S.C. 1302(a); 42 U.S.C. 1320d-1320d-9; sec. 264, Pub. L. 104-191, 110 Stat. 2033-2034 (42 U.S.C. 1320d-2(note)); and secs. 13400-13424, Pub. L. 111-5, 123 Stat. 258-279.</P>
+  </AUTH>
+  <SOURCE>
+    <HD SOURCE="HED">Source:</HD>
+    <P>65 FR 82802, Dec. 28, 2000, unless otherwise noted.</P>
+  </SOURCE>
+</CFRGRANULE>
