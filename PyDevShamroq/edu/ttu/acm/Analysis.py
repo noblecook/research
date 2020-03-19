@@ -84,7 +84,10 @@ regList = [xml_21_CFR_Section_11_10, xml_21_CFR_Section_11_30, xml_45_CFR_Sectio
                xml_45_CFR_Section_164_312, xml_45_CFR_Section_164_314]
 
 xml_45_306 = FILEPREFIX+'CFR45-164-306.xml'
-regListSingle = [xml_45_CFR_Section_164_510]
+regListSingle = [xml_45_306]
+regListNine = [xml_21_CFR_Section_11_10, xml_21_CFR_Section_11_30, xml_45_CFR_Section_164_510, 
+               xml_45_CFR_Section_164_520, xml_45_CFR_Section_164_522, xml_45_CFR_Section_164_524,
+               xml_45_CFR_Section_164_526, xml_45_CFR_Section_164_306, xml_45_CFR_Section_164_310]
 
 def pauseForTheCause ():
     time.sleep(5)
@@ -107,6 +110,7 @@ def getXMLData(node):
                     print('node.itertext(): ' + innerText)
                 else:
                     print('node.text: ', node.text)
+                    
             except:
                 '''
                 The utf-8 encoder/decoder addresses the "unicodeencodeerror 'charmap' codec can't 
@@ -135,14 +139,18 @@ def getXMLData(node):
         return 0
 
 def getRootNode(listOfRegulations): 
+    print('Number of Regulations ---------> ' , len(listOfRegulations))
     for regulation in listOfRegulations:
         tree = etree.parse(regulation)
         rootNode = tree.getroot()
-        return rootNode    
+        print('\n')
+        print('Regulation --------------------> ' + regulation)
+        print('\n')
+        getXMLData(rootNode) 
+          
   
 def main(): 
-    root = getRootNode(regListSingle) 
-    getXMLData(root)  
+    getRootNode(regListNine) 
     print("preProcessor() ------> Done!")
     
     
