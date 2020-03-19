@@ -76,12 +76,15 @@ def getXMLData(node):
     else:
         return 0
     
-def main(): 
-
+    
+def scan(): 
     tree = etree.parse(xml_45_CFR_Section_11_10)
     root = tree.getroot()
     getXMLData(root)
     #print (g)
+    
+def main(): 
+    scan()
     
 if __name__ == "__main__": 
     # calling main function 

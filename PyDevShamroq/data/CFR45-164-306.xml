@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <SECTION>
+    <SECTNO>§ 164.306</SECTNO>
+    <SUBJECT>Security standards: General rules.</SUBJECT>
+    <P>(a) <E T="03">General requirements.</E> Covered entities and business associates must do the following:</P>
+    <P>(d) <E T="03">Implementation specifications.</E> In this subpart:</P>
+    <P>(1) Implementation specifications are required or addressable. If an implementation specification is required, the word “Required” appears in parentheses after the title of the implementation specification. If an implementation specification is addressable, the word “Addressable” appears in parentheses after the title of the implementation specification.</P>
+
+    <P>(2) When a standard adopted in § 164.308, § 164.310, § 164.312, § 164.314, or § 164.316 includes required implementation specifications, a covered entity or <PRTPAGE P="542"/>business associate must implement the implementation specifications.</P>
+    <P>(3) When a standard adopted in § 164.308, § 164.310, § 164.312, § 164.314, or § 164.316 includes addressable implementation specifications, a covered entity or business associate must—</P>
+    <P>(i) Assess whether each implementation specification is a reasonable and appropriate safeguard in its environment, when analyzed with reference to the likely contribution to protecting electronic protected health information; and</P>
+    <P>(ii) As applicable to the covered entity or business associate—</P>
+    <P>(A) Implement the implementation specification if reasonable and appropriate; or</P>
+    <P>(B) If implementing the implementation specification is not reasonable and appropriate—</P>
+    <P>$(<E T="03">1</E>) Document why it would not be reasonable and appropriate to implement the implementation specification; and</P>
+    <P>$(<E T="03">2</E>) Implement an equivalent alternative measure if reasonable and appropriate.</P>
+    <P>(e) <E T="03">Maintenance.</E> A covered entity or business associate must review and modify the security measures implemented under this subpart as needed to continue provision of reasonable and appropriate protection of electronic protected health information, and update documentation of such security measures in accordance with § 164.316(b)(2)(iii).</P>
+    <CITA>[68 FR 8376, Feb. 20, 2003; 68 FR 17153, Apr. 8, 2003; 78 FR 5693, Jan. 25, 2013]</CITA>
+  </SECTION>
+</CFRGRANULE>

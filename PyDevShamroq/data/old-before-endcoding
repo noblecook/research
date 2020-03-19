@@ -1,0 +1,269 @@
+regList(index) = file ------> C:/Users/patri/git/research/PyDevShamroq/data/CFR-2019-title45-vol2-sec164-306.xml
+
+
+node.tag:  CFRGRANULE
+node.attrib:  {'{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation': 'CFRMergedXML.xsd'}
+node.text:  
+  
+
+
+node.tag:  FDSYS
+node.attrib:  {}
+node.text:  
+    
+
+
+node.tag:  CFRTITLE
+node.attrib:  {}
+node.text:  45
+
+
+node.tag:  CFRTITLETEXT
+node.attrib:  {}
+node.text:  Public Welfare
+
+
+node.tag:  VOL
+node.attrib:  {}
+node.text:  2
+
+
+node.tag:  DATE
+node.attrib:  {}
+node.text:  2019-10-01
+
+
+node.tag:  ORIGINALDATE
+node.attrib:  {}
+node.text:  2019-10-01
+
+
+node.tag:  COVERONLY
+node.attrib:  {}
+node.text:  false
+
+
+node.tag:  TITLE
+node.attrib:  {}
+node.text:  Security standards: General rules.
+
+
+node.tag:  GRANULENUM
+node.attrib:  {}
+node.text:  Â§ 164.306
+
+
+node.tag:  HEADING
+node.attrib:  {}
+node.text:  Section Â§ 164.306
+
+
+node.tag:  ANCESTORS
+node.attrib:  {}
+node.text:  
+      
+
+
+node.tag:  PARENT
+node.attrib:  {'HEADING': 'Title 45', 'SEQ': '4'}
+node.text:  Public Welfare
+
+
+node.tag:  PARENT
+node.attrib:  {'HEADING': 'Subtitle A', 'SEQ': '3'}
+node.text:  Department of Health and Human Services
+
+
+node.tag:  PARENT
+node.attrib:  {'HEADING': 'SUBCHAPTER C', 'SEQ': '2'}
+node.text:  ADMINISTRATIVE DATA STANDARDS AND RELATED REQUIREMENTS
+
+
+node.tag:  PARENT
+node.attrib:  {'HEADING': 'PART 164', 'SEQ': '1'}
+node.text:  SECURITY AND PRIVACY
+
+
+node.tag:  PARENT
+node.attrib:  {'HEADING': 'Subpart C', 'SEQ': '0'}
+node.text:  Security Standards for the Protection of Electronic Protected Health Information
+
+
+node.tag:  SECTION
+node.attrib:  {}
+node.text:  
+    
+
+
+node.tag:  SECTNO
+node.attrib:  {}
+node.text:  --------------------->>>> could not print text
+
+
+node.tag:  SUBJECT
+node.attrib:  {}
+node.text:  Security standards: General rules.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (a) 
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  General requirements.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (1) Ensure the confidentiality, integrity, and availability of all electronic protected health information the covered entity or business associate creates, receives, maintains, or transmits.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (2) Protect against any reasonably anticipated threats or hazards to the security or integrity of such information.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (3) Protect against any reasonably anticipated uses or disclosures of such information that are not permitted or required under subpart E of this part.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (4) Ensure compliance with this subpart by its workforce.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (b) 
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  Flexibility of approach.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (2) In deciding which security measures to use, a covered entity or business associate must take into account the following factors:
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (i) The size, complexity, and capabilities of the covered entity or business associate.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (ii) The covered entity's or the business associate's technical infrastructure, hardware, and software security capabilities.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (iii) The costs of security measures.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (iv) The probability and criticality of potential risks to electronic protected health information.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (c) 
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  Standards.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (d) 
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  Implementation specifications.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (1) Implementation specifications are required or addressable. If an implementation specification is required, the word “Required” appears in parentheses after the title of the implementation specification. If an implementation specification is addressable, the word “Addressable” appears in parentheses after the title of the implementation specification.
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  --------------------->>>> could not print text
+
+
+node.tag:  PRTPAGE
+node.attrib:  {'P': '542'}
+node.text:  None
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  --------------------->>>> could not print text
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (i) Assess whether each implementation specification is a reasonable and appropriate safeguard in its environment, when analyzed with reference to the likely contribution to protecting electronic protected health information; and
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (ii) As applicable to the covered entity or business associate—
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (A) Implement the implementation specification if reasonable and appropriate; or
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (B) If implementing the implementation specification is not reasonable and appropriate—
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  $(
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  1
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  $(
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  2
+
+
+node.tag:  P
+node.attrib:  {}
+node.text:  (e) 
+
+
+node.tag:  E
+node.attrib:  {'T': '03'}
+node.text:  Maintenance.
+
+
+node.tag:  CITA
+node.attrib:  {}
+node.text:  [68 FR 8376, Feb. 20, 2003; 68 FR 17153, Apr. 8, 2003; 78 FR 5693, Jan. 25, 2013]
+
+
+preProcessor() ------> Done!
+
