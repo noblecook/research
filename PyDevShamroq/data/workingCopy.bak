@@ -117,7 +117,7 @@ def getXMLData(node):
                 encode character ' u\2009'.  The unicodeencodeerror was a byproduct of an "Thin Space"
                 Unicode Character that was embedded in the xml file during the download. The character
                 set is an "a-hat" followed by Euro-currency, followed by 0/00
-                Example:   (U+2009) (thin space)
+                Example: â€‰ (U+2009) (thin space)
                 
                 Question:  
                 (1) Why encode in utf-8, then decode with sys.stdout.encoding?

@@ -1,0 +1,112 @@
+Number of Regulations --------->  1
+Filename  ------> C:/Users/patri/git/research/PyDevShamroq/data/CFR45-164-306.xml
+
+node.tag:  CFRGRANULE
+node.attrib:  {'{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation': 'CFRMergedXML.xsd'}
+0  Tokens (Sentences) :  []
+Unexpected error 0: <class 'UnicodeDecodeError'>
+Unexpected error 1: 'charmap' codec can't decode byte 0x9d in position 347: character maps to <undefined>
+Unexpected error 2: <traceback object at 0x18DE2528>
+
+
+node.tag:  SECTION
+node.attrib:  {}
+0  Tokens (Sentences) :  []
+Unexpected error 0: <class 'UnicodeDecodeError'>
+Unexpected error 1: 'charmap' codec can't decode byte 0x9d in position 344: character maps to <undefined>
+Unexpected error 2: <traceback object at 0x18DE2568>
+
+
+node.tag:  SECTNO
+node.attrib:  {}
+1  Tokens (Sentences) :  ['§\u2009164.306']
+TAGS------------>   [('§', '$'), ('164.306', 'CD')]
+node.tag:  SUBJECT
+node.attrib:  {}
+1  Tokens (Sentences) :  ['Security standards: General rules.']
+TAGS------------>   [('Security', 'NN'), ('standards', 'NNS'), (':', ':'), ('General', 'JJ'), ('rules', 'NNS'), ('.', '.')]
+node.tag:  P
+node.attrib:  {}
+2  Tokens (Sentences) :  ['(a) General requirements.', 'Covered entities and business associates must do the following:']
+TAGS------------>   [('(', '('), ('a', 'DT'), (')', ')'), ('General', 'JJ'), ('requirements', 'NNS'), ('.', '.')]
+TAGS------------>   [('Covered', 'NNP'), ('entities', 'NNS'), ('and', 'CC'), ('business', 'NN'), ('associates', 'NNS'), ('must', 'MD'), ('do', 'VB'), ('the', 'DT'), ('following', 'NN'), (':', ':')]
+node.tag:  E
+node.attrib:  {'T': '03'}
+1  Tokens (Sentences) :  ['General requirements.']
+TAGS------------>   [('General', 'JJ'), ('requirements', 'NNS'), ('.', '.')]
+node.tag:  P
+node.attrib:  {}
+2  Tokens (Sentences) :  ['(d) Implementation specifications.', 'In this subpart:']
+TAGS------------>   [('(', '('), ('d', 'NN'), (')', ')'), ('Implementation', 'NN'), ('specifications', 'NNS'), ('.', '.')]
+TAGS------------>   [('In', 'IN'), ('this', 'DT'), ('subpart', 'NN'), (':', ':')]
+node.tag:  E
+node.attrib:  {'T': '03'}
+1  Tokens (Sentences) :  ['Implementation specifications.']
+TAGS------------>   [('Implementation', 'NN'), ('specifications', 'NNS'), ('.', '.')]
+node.tag:  P
+node.attrib:  {}
+3  Tokens (Sentences) :  ['(1) Implementation specifications are required or addressable.', 'If an implementation specification is required, the word “Required” appears in parentheses after the title of the implementation specification.', 'If an implementation specification is addressable, the word “Addressable” appears in parentheses after the title of the implementation specification.']
+TAGS------------>   [('(', '('), ('1', 'CD'), (')', ')'), ('Implementation', 'NN'), ('specifications', 'NNS'), ('are', 'VBP'), ('required', 'VBN'), ('or', 'CC'), ('addressable', 'JJ'), ('.', '.')]
+TAGS------------>   [('If', 'IN'), ('an', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('is', 'VBZ'), ('required', 'VBN'), (',', ','), ('the', 'DT'), ('word', 'NN'), ('“', 'NN'), ('Required', 'NNP'), ('”', 'NNP'), ('appears', 'VBZ'), ('in', 'IN'), ('parentheses', 'NNS'), ('after', 'IN'), ('the', 'DT'), ('title', 'NN'), ('of', 'IN'), ('the', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('.', '.')]
+TAGS------------>   [('If', 'IN'), ('an', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('is', 'VBZ'), ('addressable', 'JJ'), (',', ','), ('the', 'DT'), ('word', 'NN'), ('“', 'NNP'), ('Addressable', 'NNP'), ('”', 'NNP'), ('appears', 'VBZ'), ('in', 'IN'), ('parentheses', 'NNS'), ('after', 'IN'), ('the', 'DT'), ('title', 'NN'), ('of', 'IN'), ('the', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('.', '.')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(2) When a standard adopted in §\u2009164.308, §\u2009164.310, §\u2009164.312, §\u2009164.314, or §\u2009164.316 includes required implementation specifications, a covered entity or business associate must implement the implementation specifications.']
+TAGS------------>   [('(', '('), ('2', 'CD'), (')', ')'), ('When', 'WRB'), ('a', 'DT'), ('standard', 'NN'), ('adopted', 'VBN'), ('in', 'IN'), ('§', 'JJ'), ('164.308', 'CD'), (',', ','), ('§', 'FW'), ('164.310', 'CD'), (',', ','), ('§', 'FW'), ('164.312', 'CD'), (',', ','), ('§', 'FW'), ('164.314', 'CD'), (',', ','), ('or', 'CC'), ('§', '$'), ('164.316', 'CD'), ('includes', 'VBZ'), ('required', 'VBN'), ('implementation', 'NN'), ('specifications', 'NNS'), (',', ','), ('a', 'DT'), ('covered', 'JJ'), ('entity', 'NN'), ('or', 'CC'), ('business', 'NN'), ('associate', 'NN'), ('must', 'MD'), ('implement', 'VB'), ('the', 'DT'), ('implementation', 'NN'), ('specifications', 'NNS'), ('.', '.')]
+node.tag:  PRTPAGE
+node.attrib:  {'P': '542'}
+-->Exception<--: - node.text: 
+Unexpected error 0: <class 'TypeError'>
+Unexpected error 1: expected string or bytes-like object
+Unexpected error 2: <traceback object at 0x1A410228>
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(3) When a standard adopted in §\u2009164.308, §\u2009164.310, §\u2009164.312, §\u2009164.314, or §\u2009164.316 includes addressable implementation specifications, a covered entity or business associate must—']
+TAGS------------>   [('(', '('), ('3', 'CD'), (')', ')'), ('When', 'WRB'), ('a', 'DT'), ('standard', 'NN'), ('adopted', 'VBN'), ('in', 'IN'), ('§', 'JJ'), ('164.308', 'CD'), (',', ','), ('§', 'FW'), ('164.310', 'CD'), (',', ','), ('§', 'FW'), ('164.312', 'CD'), (',', ','), ('§', 'FW'), ('164.314', 'CD'), (',', ','), ('or', 'CC'), ('§', '$'), ('164.316', 'CD'), ('includes', 'VBZ'), ('addressable', 'JJ'), ('implementation', 'NN'), ('specifications', 'NNS'), (',', ','), ('a', 'DT'), ('covered', 'JJ'), ('entity', 'NN'), ('or', 'CC'), ('business', 'NN'), ('associate', 'NN'), ('must—', 'NN')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(i) Assess whether each implementation specification is a reasonable and appropriate safeguard in its environment, when analyzed with reference to the likely contribution to protecting electronic protected health information; and']
+TAGS------------>   [('(', '('), ('i', 'NN'), (')', ')'), ('Assess', 'NNP'), ('whether', 'IN'), ('each', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('is', 'VBZ'), ('a', 'DT'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate', 'JJ'), ('safeguard', 'NN'), ('in', 'IN'), ('its', 'PRP$'), ('environment', 'NN'), (',', ','), ('when', 'WRB'), ('analyzed', 'VBN'), ('with', 'IN'), ('reference', 'NN'), ('to', 'TO'), ('the', 'DT'), ('likely', 'JJ'), ('contribution', 'NN'), ('to', 'TO'), ('protecting', 'VBG'), ('electronic', 'JJ'), ('protected', 'VBN'), ('health', 'NN'), ('information', 'NN'), (';', ':'), ('and', 'CC')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(ii) As applicable to the covered entity or business associate—']
+TAGS------------>   [('(', '('), ('ii', 'NN'), (')', ')'), ('As', 'IN'), ('applicable', 'JJ'), ('to', 'TO'), ('the', 'DT'), ('covered', 'JJ'), ('entity', 'NN'), ('or', 'CC'), ('business', 'NN'), ('associate—', 'NN')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(A) Implement the implementation specification if reasonable and appropriate; or']
+TAGS------------>   [('(', '('), ('A', 'DT'), (')', ')'), ('Implement', 'NNP'), ('the', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('if', 'IN'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate', 'JJ'), (';', ':'), ('or', 'CC')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['(B) If implementing the implementation specification is not reasonable and appropriate—']
+TAGS------------>   [('(', '('), ('B', 'NNP'), (')', ')'), ('If', 'IN'), ('implementing', 'VBG'), ('the', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), ('is', 'VBZ'), ('not', 'RB'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate—', 'JJ')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['$(1) Document why it would not be reasonable and appropriate to implement the implementation specification; and']
+TAGS------------>   [('$', '$'), ('(', '('), ('1', 'CD'), (')', ')'), ('Document', 'NNP'), ('why', 'WRB'), ('it', 'PRP'), ('would', 'MD'), ('not', 'RB'), ('be', 'VB'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate', 'JJ'), ('to', 'TO'), ('implement', 'VB'), ('the', 'DT'), ('implementation', 'NN'), ('specification', 'NN'), (';', ':'), ('and', 'CC')]
+node.tag:  E
+node.attrib:  {'T': '03'}
+1  Tokens (Sentences) :  ['1']
+TAGS------------>   [('1', 'CD')]
+node.tag:  P
+node.attrib:  {}
+1  Tokens (Sentences) :  ['$(2) Implement an equivalent alternative measure if reasonable and appropriate.']
+TAGS------------>   [('$', '$'), ('(', '('), ('2', 'CD'), (')', ')'), ('Implement', 'NNP'), ('an', 'DT'), ('equivalent', 'JJ'), ('alternative', 'JJ'), ('measure', 'NN'), ('if', 'IN'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate', 'JJ'), ('.', '.')]
+node.tag:  E
+node.attrib:  {'T': '03'}
+1  Tokens (Sentences) :  ['2']
+TAGS------------>   [('2', 'CD')]
+node.tag:  P
+node.attrib:  {}
+2  Tokens (Sentences) :  ['(e) Maintenance.', 'A covered entity or business associate must review and modify the security measures implemented under this subpart as needed to continue provision of reasonable and appropriate protection of electronic protected health information, and update documentation of such security measures in accordance with §\u2009164.316(b)(2)(iii).']
+TAGS------------>   [('(', '('), ('e', 'NN'), (')', ')'), ('Maintenance', 'NN'), ('.', '.')]
+TAGS------------>   [('A', 'DT'), ('covered', 'JJ'), ('entity', 'NN'), ('or', 'CC'), ('business', 'NN'), ('associate', 'NN'), ('must', 'MD'), ('review', 'VB'), ('and', 'CC'), ('modify', 'VB'), ('the', 'DT'), ('security', 'NN'), ('measures', 'NNS'), ('implemented', 'VBN'), ('under', 'IN'), ('this', 'DT'), ('subpart', 'NN'), ('as', 'IN'), ('needed', 'VBN'), ('to', 'TO'), ('continue', 'VB'), ('provision', 'NN'), ('of', 'IN'), ('reasonable', 'JJ'), ('and', 'CC'), ('appropriate', 'JJ'), ('protection', 'NN'), ('of', 'IN'), ('electronic', 'JJ'), ('protected', 'VBN'), ('health', 'NN'), ('information', 'NN'), (',', ','), ('and', 'CC'), ('update', 'JJ'), ('documentation', 'NN'), ('of', 'IN'), ('such', 'JJ'), ('security', 'NN'), ('measures', 'NNS'), ('in', 'IN'), ('accordance', 'NN'), ('with', 'IN'), ('§', 'JJ'), ('164.316', 'CD'), ('(', '('), ('b', 'NN'), (')', ')'), ('(', '('), ('2', 'CD'), (')', ')'), ('(', '('), ('iii', 'NN'), (')', ')'), ('.', '.')]
+node.tag:  E
+node.attrib:  {'T': '03'}
+1  Tokens (Sentences) :  ['Maintenance.']
+TAGS------------>   [('Maintenance', 'NN'), ('.', '.')]
+node.tag:  CITA
+node.attrib:  {}
+2  Tokens (Sentences) :  ['[68 FR 8376, Feb. 20, 2003; 68 FR 17153, Apr.', '8, 2003; 78 FR 5693, Jan. 25, 2013]']
+TAGS------------>   [('[', 'RB'), ('68', 'CD'), ('FR', 'NNP'), ('8376', 'CD'), (',', ','), ('Feb.', 'NNP'), ('20', 'CD'), (',', ','), ('2003', 'CD'), (';', ':'), ('68', 'CD'), ('FR', 'NNP'), ('17153', 'CD'), (',', ','), ('Apr', 'NNP'), ('.', '.')]
+TAGS------------>   [('8', 'CD'), (',', ','), ('2003', 'CD'), (';', ':'), ('78', 'CD'), ('FR', 'NNP'), ('5693', 'CD'), (',', ','), ('Jan.', 'NNP'), ('25', 'CD'), (',', ','), ('2013', 'CD'), (']', 'NN')]
+preProcessor() ------> Done!
