@@ -1,0 +1,83 @@
+import sys
+import nltk
+from nltk.tokenize import sent_tokenize
+
+def tokenizeTheNode(regulatoryText):
+    _tokens = sent_tokenize(regulatoryText)
+    print(len(_tokens), ' Tokens (Sentences) : ' ,_tokens)
+    return _tokens
+
+def getPTagText(node):
+    innerText = ''
+    if node != None:
+        try:
+            '''
+            There is an issue printing the $(<E T="03">1</E>) trailing information. The initial 
+            observation is that the parser is not recognizing the CLOSING tags...
+            As an example, <P>(a) <E T="03">General requirements.</E> Covered entities and business 
+            associates must do the following:</P> only General requirements are printed - and not the 
+            Covered entities statements. 
+            '''
+            if (node.tag == 'P'):
+                innerText = ''.join(node.itertext())
+                #listOfTokens = tokenizeTheNode(innerText)
+                #tagPartsOfSpeech(listOfTokens)
+                print('node.itertext(): ' + innerText)
+            else:
+                innerText = node.text
+                print('Meta Data: ' + innerText)
+            
+        except:
+            '''
+            The utf-8 encoder/decoder addresses the "unicodeencodeerror 'charmap' codec can't 
+            encode character ' u\2009'.  The unicodeencodeerror was a byproduct of an "Thin Space"
+            Unicode Character that was embedded in the xml file during the download. The character
+            set is an "a-hat" followed by Euro-currency, followed by 0/00
+            Example:   (U+2009) (thin space)
+            
+            Question:  
+            (1) Why encode in utf-8, then decode with sys.stdout.encoding?
+            (2) Is there another way to do this?
+            '''
+            #print('-->Exception<--: - node.text: ', node.text.encode('utf-8').decode(sys.stdout.encoding))
+            innerText = ''.join(node.itertext())
+            print('-->Exception<--: - node.text: ' + innerText.encode('utf-8').decode(sys.stdout.encoding))
+            print("Unexpected error 0:", sys.exc_info()[0])
+            print("Unexpected error 1:", sys.exc_info()[1])
+            print("Unexpected error 2:", sys.exc_info()[2])            
+    else:
+        innerText = 'NONE' 
+    
+    return innerText
+
+def tagPartsOfSpeech(listOfSentences):
+    try:
+        for legalSentence in listOfSentences:
+            words = nltk.word_tokenize(legalSentence)
+            #frequencyDistributions(words)
+            _posTags = nltk.pos_tag(words)
+            print('TAGS------------>  ', _posTags)
+    except Exception as e:
+        print(str(e))
+    return _posTags
+
+def getXMLData(node):
+    if node != None:
+        try:
+            print('node.tag: ', node.tag)
+            print('node.attrib: ', node.attrib)         
+            getPTagText(node)
+        except Exception as e:
+            print(str(e))
+            
+        for item in node:
+            getXMLData(item)
+    else:
+        return 0
+    
+    
+    
+    
+    
+
+
