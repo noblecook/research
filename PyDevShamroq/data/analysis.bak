@@ -29,17 +29,24 @@ import matplotlib.pyplot as plt
 FILEPREFIX = 'C:/Users/patri/git/research/PyDevShamroq/data/'
 xml_45_164_306 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-310.xml'
-regListSingle = [xml_45_164_306, xml_45_164_310]
+xml_45_164_312 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-312.xml'
+xml_45_164_510 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-510.xml'
+regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
+#regListSingle = [xml_45_164_510]
           
 def driver(listOfRegulations): 
     print('Number of Regulations ---------> ' , len(regListSingle))
     for regulation in listOfRegulations:
         xmlData = shamroqScanner.readXMLFile(regulation)
-        xmlDataResults = shamroqPreprocessor.getXMLData(xmlData)
-        print('LIST ? ' , len(xmlDataResults))
+        xmlDataResults = shamroqPreprocessor.getXMLData(xmlData,regulation )
+        print('LIST ? ---------------->' , len(xmlDataResults))
+        print('\n')
+#         for key, value in xmlDataResults.items():
+#             print(key, ' : ', value)
+        
         for _myList in xmlDataResults:
-            print(_myList)
-            shamroqUtils.pauseForTheCause(1) 
+            print(_myList.index)
+            shamroqUtils.pauseForTheCause(0) 
 
 def main(): 
     driver(regListSingle) 
