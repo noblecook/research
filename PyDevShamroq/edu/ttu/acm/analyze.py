@@ -15,15 +15,14 @@ Model Agent
 */
 '''
 
-
 import scan
 import preprocess
 import clean
+import time
 '''
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-, word_tokenize 
+import matplotlib.pyplot as plt, word_tokenize 
 
 '''
 FILEPREFIX = 'C:/Users/patri/git/research/PyDevShamroq/data/'
@@ -33,13 +32,21 @@ xml_45_164_312 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-312.xml'
 xml_45_164_510 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-510.xml'
 regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 #regListSingle = [xml_45_164_510]
+
+def printResults(dictionaryResult):
+    for key, value in dictionaryResult.items():
+        print("Key:", key)       
+        for nestedCategory in value:
+            print ('   ' + nestedCategory + ' : ', value[nestedCategory])
+            time.sleep(1)
           
 def driver(listOfRegulations): 
     print('Number of Regulations ---------> ' , len(regListSingle))
     for regulation in listOfRegulations:
         xmlData = scan.readXMLFile(regulation)
         xmlDataResults = preprocess.getXMLData(xmlData,regulation )
-        clean.synthesizedData(xmlDataResults)
+        cleanResults = clean.synthesizedData(xmlDataResults)
+        printResults(cleanResults)
 
 
 def main(): 
