@@ -72,6 +72,22 @@ def classifyText2(content):
             classifyResults = classifyTree(parseTreeResults)
     return newContent;
 
+def getGrammar2():
+    grammar = """NP:{<NNP>+}
+                    {<NN>+}
+                    {<NNP><NN>}
+                 PERSON:{<PERSON>}
+                      {<PERSON><ORGANISATION>}
+                 PLACE: {<ORGANIZATION><NP>}
+                 ORG:{<GPE><ORGANIZATION>}
+                     {<ORGANIZATION>}
+                     {<GPE><NP>}
+                     {<GPE>}
+                     {<JJ><NNP><NNP>}
+                ACTION:{<VB|VBD|VBG|VBN|VBP|VBZ>}
+    """
+    return grammar
+
 def getGrammar():
     '''
         note the prepositional phrase is a part 
@@ -79,15 +95,14 @@ def getGrammar():
         a prepositional phrase and add to the end of 
         noun phrase 
     '''
-    cfgNPGrammar = r"""
-        START: {<\(><DT><\)>}
-        Topic: {<JJ>+<NNS><\.>}
-        NOUNPHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
-        EXCEPTION: {<IN><WRB.*><DT><NN.*>+}
-        MODALITY: {<MD>}
-        CONJ: {<CC>}
-        CONTINUANCE: {<\:>}
-        ACTION: {<RB.*>*<VBZ>?<VB|VBN|VBZ>*<RB|RBR>?}
+    cfgNPGrammar = r"""SECTION: {<\(><DT|CD><\)>?}
+                       Topic: {<JJ>+<NNS><\.>}
+                       NOUNPHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
+                       EXCEPTION: {<IN><WRB.*><DT><NN.*>+}
+                       MODALITY: {<MD>}
+                       CONJ: {<CC>}
+                       CONTINUANCE: {<\:>}
+                       ACTION: {<RB.*>*<VBZ>?<VB|VBN|VBZ>*<RB|RBR>?}
         """;
     return cfgNPGrammar
 
@@ -96,6 +111,7 @@ def classifyText(content):
     newContent = None;
     stagingList = content["Body"]["content"]
     cfgNPGrammar = getGrammar() 
+    #cfgNPGrammar = getGrammar2()
     for eachList in stagingList:       
         word = nltk.word_tokenize(eachList)
         tagged = nltk.pos_tag(word)
