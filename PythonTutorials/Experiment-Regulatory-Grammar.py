@@ -196,6 +196,8 @@ def driver2():
     txt = sampleText
     customSentTokenizer = getPunktSentTokens(trainingText)
     tokenizedRegs = customSentTokenizer.tokenize(txt)
+    print(type(tokenizedRegs))
+    time.sleep(100)
     try:
         for regSent in tokenizedRegs:
             word = getWordTokens(regSent)
@@ -218,6 +220,8 @@ def driver():
     
     customSentTokenizer = getPunktSentTokens(trainingText)
     tokenizedRegs = customSentTokenizer.tokenize(txt)
+    print(type(tokenizedRegs))
+    time.sleep(100)
     try:
         for regSent in tokenizedRegs:
             word = getWordTokens(regSent)

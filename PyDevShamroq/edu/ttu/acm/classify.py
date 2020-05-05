@@ -81,8 +81,7 @@ def getGrammar():
     '''
     cfgNPGrammar = r"""
         START: {<\(><DT><\)>}
-        Topic: {<JJ>+<NNS><\.>}        
-        
+        Topic: {<JJ>+<NNS><\.>}
         NOUNPHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
         EXCEPTION: {<IN><WRB.*><DT><NN.*>+}
         MODALITY: {<MD>}
