@@ -19,6 +19,7 @@ import scan
 import preprocess
 import clean
 import time
+import classify
 '''
 import pandas as pd
 import numpy as np
@@ -30,26 +31,29 @@ xml_45_164_306 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-312.xml'
 xml_45_164_510 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-510.xml'
-regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-#regListSingle = [xml_45_164_510]
+#regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
+regListSingle = [xml_45_164_510]
 
-def printResults(dictionaryResult):
+def printData(dictionaryResult):
     for key, value in dictionaryResult.items():
         print("Key:", key)       
         for nestedCategory in value:
             print ('   ' + nestedCategory + ' : ', value[nestedCategory])
-            time.sleep(1)
+            time.sleep(0)
           
 def driver(listOfRegulations): 
     print('Number of Regulations ---------> ' , len(regListSingle))
     for regulation in listOfRegulations:
-        xmlData = scan.readXMLFile(regulation)
-        xmlDataResults = preprocess.getXMLData(xmlData,regulation )
-        cleanResults = clean.synthesizedData(xmlDataResults)
-        printResults(cleanResults)
-
+        xmlData = scan.init(regulation)
+        preProcessResults = preprocess.init(xmlData, regulation)
+        cleanResults = clean.init(preProcessResults)
+        #printData(cleanResults)
+        classifyResults = classify.init(cleanResults)
+        #printData(classifyResults)
 
 def main(): 
+    print("... starting analyze")
+    time.sleep(1)
     driver(regListSingle) 
     print("preProcessor() ------> Done!")
     

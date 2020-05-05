@@ -1,6 +1,7 @@
 import uuid
 regulatoryText = []
 dict = {}
+import time
 
 def getText(node):
     innerText = ''
@@ -28,12 +29,15 @@ def processData(node, reg):
         except Exception as e:
             print(str(e))
         for item in node:
-            getXMLData(item, reg)
+            #getXMLData(item, reg)
+            processData(item, reg)
     else:
         return 0
     return dict;
 
-def getXMLData(node, reg):
+def init(node, reg):
+    print("... starting preprocess")
+    time.sleep(1)
     result = processData(node, reg) 
     contentDict = {"Content": regulatoryText}
     result.update(contentDict)

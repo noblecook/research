@@ -11,7 +11,7 @@ def printResults(dictionaryResult):
             print ('   ' + nestedCategory + ' : ', value[nestedCategory])
             time.sleep(0)
 
-def synthesizedData(input):
+def cleanData(input):
     cfr = input['CFRTITLE']
     sectionNo = input['SECTNO']
     title =  cfr + sectionNo
@@ -25,7 +25,7 @@ def synthesizedData(input):
             "priority":  100,
             "degreeOfNecessisty": "Explain"
             },
-        "Heading": {
+        "Header": {
             "cfrtitle" :  input['CFRTITLE'],
             "cfrtitletext":  input['CFRTITLETEXT'],
             "vol":  input['VOL'],
@@ -37,13 +37,19 @@ def synthesizedData(input):
             "heading":  input['HEADING'],
             "parent":  input['PARENT'],         
             },
-        "Content": {
+        "Body": {
             "sectno":  input['SECTNO'],
             "subject":  input['SUBJECT'], 
             "content" :  input['Content'],
             "cita" :  input['CITA']
             }
         }
-    #printResults(jsonResult)
  
     return jsonResult
+
+def init(input):
+    print("... starting clean")
+    time.sleep(1)
+    cleanResults = cleanData(input);
+    return cleanResults
+
