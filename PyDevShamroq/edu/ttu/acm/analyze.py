@@ -16,7 +16,7 @@ Model Agent
 '''
 
 import scan
-import preprocess
+import preprocessor
 import clean
 import time
 import classify
@@ -45,7 +45,7 @@ def driver(listOfRegulations):
     print('Number of Regulations ---------> ' , len(regListSingle))
     for regulation in listOfRegulations:
         xmlData = scan.init(regulation)
-        preProcessResults = preprocess.init(xmlData, regulation)
+        preProcessResults = preprocessor.init(xmlData, regulation)
         cleanResults = clean.init(preProcessResults)
         #printData(cleanResults)
         classifyResults = classify.init(cleanResults)
