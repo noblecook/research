@@ -1,28 +1,8 @@
-"""
-CFG - context free grammar
-Definitions
-1. Syntax
-2. Grammar
-3. Phrase Structure
-4. Tokenization
-5. Chunking (grouping tokens
-6. Chinking
-7. Parts of Speech Tags
 
-
-X. Tree Representation
-Sentence
-Noun Phrase (NP) & Verb Phrase (VP)
-NP Det Adj N
-VP V PP
-PP P NP
-NP DET N
-
-
-"""
 import nltk
 import re
 from nltk.tokenize import PunktSentenceTokenizer
+import stanfordnlp
 
 oneLiner = """
 A covered entity or business associate must review and modify the security measures implemented under this subpart as needed to continue provision of reasonable and appropriate protection of electronic protected health information, and update documentation of such security measures in accordance with § 164.316(b)(2)(iii).
