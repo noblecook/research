@@ -31,8 +31,8 @@ xml_45_164_306 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-312.xml'
 xml_45_164_510 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-510.xml'
-regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-#regListSingle = [xml_45_164_510]
+#regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
+regListSingle = [xml_45_164_510]
 
 def printData(dictionaryResult):
     for key, value in dictionaryResult.items():

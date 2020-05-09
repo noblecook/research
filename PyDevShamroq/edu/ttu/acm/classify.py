@@ -40,53 +40,22 @@ the individual with the opportunity to restrict or prohibit some or all of the u
 (5) Uses and disclosures when the individual is deceased. If the individual is deceased, a covered entity may disclose to a family member, or other persons identified in paragraph (b)(1) of this section who were involved in the individual's care or payment for health care prior to the individual's death, protected health information of the individual that is relevant to such person's involvement, unless doing so is inconsistent with any prior expressed preference of the individual that is known to the covered entity.
 """
 
-def classifyTree(sentTree):
-    stringResult = []   
-    for child in sentTree:
-        print(child)
+def evaluateTree(chunkGrammarTree):
+    print("... evaluateTree <><><>")
+    for subtree in chunkGrammarTree.subtrees(): 
+        print (type(subtree))  
+        if subtree.label() == 'NOUN_PHRASE':
+            print ("FOUND IT!")
+            print (subtree)
+            time.sleep(20)   
+            
+def chunkTree(contentTree):
+    stringResult = [] 
+    for eachTag in contentTree:
+        #print(eachTag)
+        stringResult.append(eachTag)
     return stringResult;
 
-
-
-def printPOSTags(content):
-    #print(content);
-    print("... size of Tree", type(content))
-    for eachTag in content:
-        print(eachTag);
-    return content;
-
-
-def classifyText2(content):
-    newContent = []
-    stagingList = content["Body"]["content"]
-    cfgNPGrammar = getGrammar() 
-    trainedSentTokenizer = PunktSentenceTokenizer(trainingText);           
-    for eachList in stagingList:       
-        sent = trainedSentTokenizer.tokenize(eachList)
-        for eachSent in sent:
-            word = nltk.word_tokenize(eachSent)
-            tagged = nltk.pos_tag(word)
-            parser = nltk.RegexpParser(cfgNPGrammar);
-            parseTreeResults = parser.parse(tagged);
-            printPOSTags(parseTreeResults);
-            classifyResults = classifyTree(parseTreeResults)
-    return newContent;
-
-def getGrammar2():
-    grammar = """NP:{<NNP>+}
-                    {<NN>+}
-                    {<NNP><NN>}
-                 PERSON:{<PERSON>}
-                      {<PERSON><ORGANISATION>}
-                 PLACE: {<ORGANIZATION><NP>}
-                 ORG:{<GPE><ORGANIZATION>}
-                     {<ORGANIZATION>}
-                     {<GPE><NP>}
-                     {<GPE>}
-                     {<JJ><NNP><NNP>}
-                ACTION:{<VB|VBD|VBG|VBN|VBP|VBZ>}
-    """
-    return grammar
 
 def getGrammar():
     '''
@@ -97,8 +66,8 @@ def getGrammar():
     '''
     cfgNPGrammar = r"""SECTION: {<\(><DT|CD><\)>?}
                        Topic: {<JJ>+<NNS><\.>}
-                       NOUNPHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
-                       EXCEPTION: {<IN><WRB.*><DT><NN.*>+}
+                       EXCEPTION: {<IN><WRB><DT><NN.*>+}
+                       NOUN_PHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
                        MODALITY: {<MD>}
                        CONJ: {<CC>}
                        CONTINUANCE: {<\:>}
@@ -107,23 +76,74 @@ def getGrammar():
     return cfgNPGrammar
 
 
+
+
+def evaluateChunks(chunkGrammarTree):
+    print("... evaluate Chunks")
+    print (type(chunkGrammarTree))
+    for subtree in chunkGrammarTree.subtrees(): 
+        if subtree.label() == 'SECTION':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)
+        if subtree.label() == 'Topic':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)
+        if subtree.label() == 'EXCEPTION':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)
+        if subtree.label() == 'NOUN_PHRASE':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)
+        if subtree.label() == 'MODALITY':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)    
+        if subtree.label() == 'CONJ':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)    
+        if subtree.label() == 'CONTINUANCE':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)    
+        if subtree.label() == 'ACTION':
+            print ('FOUND IT')
+            print (type(subtree))  
+            print (subtree)
+            time.sleep(1)    
+        
+    
+
 def classifyText(content):
-    newContent = None;
+    newParseTree = [];
     stagingList = content["Body"]["content"]
     cfgNPGrammar = getGrammar() 
-    #cfgNPGrammar = getGrammar2()
     for eachList in stagingList:       
         word = nltk.word_tokenize(eachList)
         tagged = nltk.pos_tag(word)
         parser = nltk.RegexpParser(cfgNPGrammar);
         parseTreeResults = parser.parse(tagged);
-        newContent= printPOSTags(parseTreeResults);
-    return newContent;
+        evaluateChunks(parseTreeResults)
+        #newParseTree.append(chunkTree(parseTreeResults));
+    return newParseTree;  
 
 def init(content):
     print("... starting classify")
     time.sleep(1)
     classifyResult = classifyText(content)
+    #chunckResultTree = evaluateTree(classifyResult)
+    #print (type(chunckResultTree))
     return classifyResult
 
 
