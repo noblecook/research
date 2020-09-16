@@ -18,8 +18,8 @@ Model Agent
 import scan
 import preprocessor
 import clean
-import time
 import classify
+import time
 '''
 import pandas as pd
 import numpy as np
@@ -34,32 +34,31 @@ xml_45_164_510 = FILEPREFIX+'CFR-2019-title45-vol2-sec164-510.xml'
 #regListSingle = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 regListSingle = [xml_45_164_510]
 
-def printData(dictionaryResult):
-    for key, value in dictionaryResult.items():
-        print("Key:", key)       
-        for nestedCategory in value:
-            print ('   ' + nestedCategory + ' : ', value[nestedCategory])
-            time.sleep(0)
-          
-def driver(listOfRegulations): 
-    print('Number of Regulations ---------> ' , len(regListSingle))
+         
+
+
+def processRegulations(listofRegs):
+    for regulation in listofRegs:
+        xmlData = scan.init(regulation)
+        preProcessResults = preprocessor.init(xmlData, regulation)
+        cleanResults = clean.sanitize(preProcessResults)
+    return cleanResults
+
+         
+'''
+The driver method takes a 'list' datatype that contains 1 or more xml files
+The xml files are representative of one section in the code of federal regulations (CFR).
+The for loop reads each regulation, starting at index 0, and passes it to 
+scanner.  The results of the scanner 
+
+'''    
+
+def init(listOfRegulations): 
+    print("... starting Analyze")
+    time.sleep(1)
     for regulation in listOfRegulations:
         xmlData = scan.init(regulation)
         preProcessResults = preprocessor.init(xmlData, regulation)
-        cleanResults = clean.init(preProcessResults)
-        #printData(cleanResults)
+        cleanResults = clean.sanitize(preProcessResults)
         classifyResults = classify.init(cleanResults)
-        #printData(classifyResults)
-
-def main(): 
-    print("... starting analyze")
-    time.sleep(1)
-    driver(regListSingle) 
-    print("preProcessor() ------> Done!")
-    
-    
-if __name__ == "__main__": 
-    # calling main function 
-    main() 
-
 

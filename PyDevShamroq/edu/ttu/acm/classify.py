@@ -39,23 +39,44 @@ the individual with the opportunity to restrict or prohibit some or all of the u
 (4) Uses and disclosures for disaster relief purposes. A covered entity may use or disclose protected health information to a public or private entity authorized by law or by its charter to assist in disaster relief efforts, for the purpose of coordinating with such entities the uses or disclosures permitted by paragraph (b)(1)(ii) of this section. The requirements in paragraphs (b)(2), (b)(3), or (b)(5) of this section apply to such uses and disclosures to the extent that the covered entity, in the exercise of professional judgment, determines that the requirements do not interfere with the ability to respond to the emergency circumstances.
 (5) Uses and disclosures when the individual is deceased. If the individual is deceased, a covered entity may disclose to a family member, or other persons identified in paragraph (b)(1) of this section who were involved in the individual's care or payment for health care prior to the individual's death, protected health information of the individual that is relevant to such person's involvement, unless doing so is inconsistent with any prior expressed preference of the individual that is known to the covered entity.
 """
+"""
+        elif subtree.label() == 'S':
+            print("Superman")
+            time.sleep(10)
+            getLeaves(subtree.label(), subtree)            
+        else:
+            print("no label")
+            time.sleep(10)
+            getLeaves(subtree.label(), subtree)
+"""
 
-def evaluateTree(chunkGrammarTree):
-    print("... evaluateTree <><><>")
-    for subtree in chunkGrammarTree.subtrees(): 
-        print (type(subtree))  
-        if subtree.label() == 'NOUN_PHRASE':
-            print ("FOUND IT!")
-            print (subtree)
-            time.sleep(20)   
             
 def chunkTree(contentTree):
     stringResult = [] 
     for eachTag in contentTree:
-        #print(eachTag)
+        print(eachTag)
         stringResult.append(eachTag)
     return stringResult;
 
+
+def getGrammarWithVerbPhrase():
+    '''
+        note the prepositional phrase is a part 
+        of the noun phrase... see if we can define
+        a prepositional phrase and add to the end of 
+        noun phrase 
+    '''
+    cfgNPGrammarWithVerb = r"""SECTION: {<\(>+<[a-z]><\)>+}
+                       Topic: {<JJ>+<NNS><\.>}
+                       EXCEPTION: {<IN><WRB><DT><NN.*>+}
+                       NOUN_PHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
+                       MODALITY: {<MD>}
+                       CONJ: {<CC>}
+                       CONTINUANCE: {<\:>}
+                       ACTION: {<RB.*>*<VBZ>?<VB.?>*<RB|RBR>?}
+                       END_OF_STATEMENT: {<NOUN_PHRASE><\.>}
+        """;
+    return cfgNPGrammarWithVerb
 
 def getGrammar():
     '''
@@ -64,86 +85,97 @@ def getGrammar():
         a prepositional phrase and add to the end of 
         noun phrase 
     '''
-    cfgNPGrammar = r"""SECTION: {<\(><DT|CD><\)>?}
+    cfgNPGrammar = r"""SECTION: {<\(><DT|CD|NN.*> <\)>}
                        Topic: {<JJ>+<NNS><\.>}
                        EXCEPTION: {<IN><WRB><DT><NN.*>+}
                        NOUN_PHRASE: {<IN>?<DT>?<JJ.*>*<NN.*>+}
                        MODALITY: {<MD>}
                        CONJ: {<CC>}
                        CONTINUANCE: {<\:>}
-                       ACTION: {<RB.*>*<VBZ>?<VB|VBN|VBZ>*<RB|RBR>?}
+                       ACTION: {<RB.*>*<VBZ>?<VB.?>*<RB|RBR>?}
+                       END_OF_STATEMENT: {<NOUN_PHRASE><\.>}
         """;
     return cfgNPGrammar
 
 
-
+def getLeaves(label, subtree):
+    leaves = [x[0] for x in subtree.leaves()]
+    phrase = " ".join(leaves)
+    #print (label, phrase) 
+    return phrase
 
 def evaluateChunks(chunkGrammarTree):
-    print("... evaluate Chunks")
-    print (type(chunkGrammarTree))
+    leaf = "";
     for subtree in chunkGrammarTree.subtrees(): 
         if subtree.label() == 'SECTION':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)
-        if subtree.label() == 'Topic':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)
-        if subtree.label() == 'EXCEPTION':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)
-        if subtree.label() == 'NOUN_PHRASE':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)
-        if subtree.label() == 'MODALITY':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)    
-        if subtree.label() == 'CONJ':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)    
-        if subtree.label() == 'CONTINUANCE':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)    
-        if subtree.label() == 'ACTION':
-            print ('FOUND IT')
-            print (type(subtree))  
-            print (subtree)
-            time.sleep(1)    
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'Topic':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'EXCEPTION': 
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'NOUN_PHRASE':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'VERB_PHRASE':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'MODALITY':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'CONJ':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'CONTINUANCE':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'ACTION':
+            leaf = getLeaves(subtree.label(), subtree)
+        elif subtree.label() == 'END_OF_STATEMENT':
+            leaf = getLeaves(subtree.label(), subtree)
+        else:
+            #print("NULL Statement as defined by the ONTOLOGY")
+            pass
         
-    
+    return leaf
+'''
+Note content is a nested dictionary with Metadata, Header, and Body.
+Here is only look at the Body structure.  However, we should consider
+collecting the Metadata and Header and storing the content.
 
+'''
 def classifyText(content):
     newParseTree = [];
     stagingList = content["Body"]["content"]
+    print("The staging List is broken up into " , len(stagingList), "parts")
+    time.sleep(3)
     cfgNPGrammar = getGrammar() 
-    for eachList in stagingList:       
-        word = nltk.word_tokenize(eachList)
+    chunckGrammar = nltk.RegexpParser(cfgNPGrammar);
+    '''
+     Basic NLP Pipeline processing: 
+    '''
+    for eachList in stagingList:  
+        word = nltk.word_tokenize(eachList) 
         tagged = nltk.pos_tag(word)
-        parser = nltk.RegexpParser(cfgNPGrammar);
-        parseTreeResults = parser.parse(tagged);
-        evaluateChunks(parseTreeResults)
-        #newParseTree.append(chunkTree(parseTreeResults));
-    return newParseTree;  
+        '''
+        --- below we see chunked = chunckGrammar.parse(tagged);
+        --- here is where we get the tree structure
+        --- at this point in the game, the tree is not 
+        --- stored anywhere, but can be accessed via the 
+        --- chunked.subtrees() method.. 
+        '''
+        chunked = chunckGrammar.parse(tagged);
+        #print("Printing the RegEx Grammar TREE with POS Tags")  
+        #print(chunked)
+        #time.sleep(10)    
+        branch = evaluateChunks(chunked)
+        newParseTree.append(branch)
+    return newParseTree;
 
+
+'''
+Now we need to consider using Owlready2 0.24
+'''
 def init(content):
-    print("... starting classify")
-    time.sleep(1)
+    print("... starting Classify()")
     classifyResult = classifyText(content)
-    #chunckResultTree = evaluateTree(classifyResult)
-    #print (type(chunckResultTree))
+    for results in classifyResult:
+        print (results)
+        time.sleep(10)
     return classifyResult
 
 

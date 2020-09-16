@@ -10,13 +10,19 @@ def readTextFile(textFile):
 
 
 def readXMLFile(xmlFile): 
-    print('Filename  ------> ' + xmlFile + '\n')
+    #print('Filename  ------> ' + xmlFile + '\n')
     tree = etree.parse(xmlFile)
     rootNode = tree.getroot()
     return rootNode;
 
-def init(xmlFile): 
-    print("... starting scan")
+'''
+The scanner receives as input an xml file.  In this instance, the xml file
+represents a section of the code of federal regulations (CFR).  the xml files
+is processed for programmatic use and stored in a "tree" data structure
+'''
+
+def init(file): 
+    print("... starting Analyze.scan()")
     time.sleep(1)
-    rootNode = readXMLFile(xmlFile)
+    rootNode = readXMLFile(file)
     return rootNode;

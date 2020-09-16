@@ -5,15 +5,17 @@ import re
 
 
 def printResults(dictionaryResult):
+    print("\n")
+    print("Printing Semi-Structured Data of the CFR - as a python dictionary")
+    time.sleep(3);
     for key, value in dictionaryResult.items():
         print("Key:", key)       
         for nestedCategory in value:
             print ('   ' + nestedCategory + ' : ', value[nestedCategory])
-            time.sleep(0)
 
-def cleanData(input):
-    cfr = input['CFRTITLE']
-    sectionNo = input['SECTNO']
+def rinseCycle(inputDataSet):
+    cfr = inputDataSet['CFRTITLE']
+    sectionNo = inputDataSet['SECTNO']
     title =  cfr + sectionNo
     
     #note this can be a properties file
@@ -26,30 +28,40 @@ def cleanData(input):
             "degreeOfNecessisty": "Explain"
             },
         "Header": {
-            "cfrtitle" :  input['CFRTITLE'],
-            "cfrtitletext":  input['CFRTITLETEXT'],
-            "vol":  input['VOL'],
-            "date":  input['DATE'],
-            "originalDate":  input['ORIGINALDATE'],
-            "coverOnly":  input['COVERONLY'],
-            "title":  input['TITLE'],
-            "granulenum":  input['GRANULENUM'],
-            "heading":  input['HEADING'],
-            "parent":  input['PARENT'],         
+            "cfrtitle" :  inputDataSet['CFRTITLE'],
+            "cfrtitletext":  inputDataSet['CFRTITLETEXT'],
+            "vol":  inputDataSet['VOL'],
+            "date":  inputDataSet['DATE'],
+            "originalDate":  inputDataSet['ORIGINALDATE'],
+            "coverOnly":  inputDataSet['COVERONLY'],
+            "title":  inputDataSet['TITLE'],
+            "granulenum":  inputDataSet['GRANULENUM'],
+            "heading":  inputDataSet['HEADING'],
+            "parent":  inputDataSet['PARENT'],         
             },
         "Body": {
-            "sectno":  input['SECTNO'],
-            "subject":  input['SUBJECT'], 
-            "content" :  input['Content'],
-            "cita" :  input['CITA']
+            "sectno":  inputDataSet['SECTNO'],
+            "subject":  inputDataSet['SUBJECT'], 
+            "content" :  inputDataSet['Content'],
+            "cita" :  inputDataSet['CITA']
             }
         }
  
     return jsonResult
 
-def init(input):
-    print("... starting clean")
+
+''''
+The input 
+The clean result returns a semi structured set of the regulations stored
+in a nested dictionary with three components: Metadata, Header, and Body.
+The dictionary data structured is returned back to the caller.
+''' 
+
+def sanitize(regulatoryDataSet):
+    print("... starting Analyze.clean()")
     time.sleep(1)
-    cleanResults = cleanData(input);
+    cleanResults = rinseCycle(regulatoryDataSet);
+    #printResults(cleanResults)
+    #time.sleep(5)
     return cleanResults
 
