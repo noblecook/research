@@ -69,7 +69,7 @@ data structure with the Regulation name and the contents
 '''
 def init(node, reg):
     print("... starting Analyze.preprocessor()")
-    time.sleep(1)
+    time.sleep(0)
     result = processData(node, reg) 
     contentDict = {"Content": regulatoryText}
     result.update(contentDict)

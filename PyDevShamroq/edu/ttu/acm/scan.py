@@ -23,6 +23,6 @@ is processed for programmatic use and stored in a "tree" data structure
 
 def init(file): 
     print("... starting Analyze.scan()")
-    time.sleep(1)
+    time.sleep(0)
     rootNode = readXMLFile(file)
     return rootNode;
