@@ -4,21 +4,12 @@ import uuid
 import re
 
 
-def printResults(dictionaryResult):
-    print("\n")
-    print("Printing Semi-Structured Data of the CFR - as a python dictionary")
-    time.sleep(0);
-    for key, value in dictionaryResult.items():
-        print("Key:", key)       
-        for nestedCategory in value:
-            print ('   ' + nestedCategory + ' : ', value[nestedCategory])
-
 def rinseCycle(inputDataSet):
     cfr = inputDataSet['CFRTITLE']
     sectionNo = inputDataSet['SECTNO']
     title =  cfr + sectionNo
     
-    #note this can be a properties file
+    #note this can be a properties file or read from a database
     jsonResult = {
         "Metadata": {
             "uniqueID" :  uuid.uuid4(),
@@ -59,9 +50,6 @@ The dictionary data structured is returned back to the caller.
 
 def sanitize(regulatoryDataSet):
     print("... starting Analyze.clean()")
-    time.sleep(0)
     cleanResults = rinseCycle(regulatoryDataSet);
-    printResults(cleanResults)
-    #time.sleep(5)
     return cleanResults
 

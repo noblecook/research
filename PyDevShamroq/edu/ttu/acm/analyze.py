@@ -18,7 +18,6 @@ Model Agent
 import scan
 import preprocessor
 import clean
-import time
        
         
 '''
@@ -31,7 +30,6 @@ scanner.  The results of the scanner
 
 def init(regulation): 
     print("... starting Analyze")
-    time.sleep(0)
     xmlData = scan.init(regulation)
     preProcessResults = preprocessor.init(xmlData, regulation)
     cleanRegulations = clean.sanitize(preProcessResults)

@@ -2,6 +2,7 @@
 import nltk
 import time
 from nltk.tokenize import PunktSentenceTokenizer
+from nltk.corpus import stopwords
 
 trainingText = """
 A covered entity may use or disclose protected health information, provided that the individual is
@@ -63,6 +64,34 @@ def getGrammar():
     return cfgNPGrammar
 
 
+def getContextFreeGrammar():
+    '''
+        note the prepositional phrase is a part 
+        of the noun phrase... see if we can define
+        a prepositional phrase and add to the end of 
+        noun phrase 
+        
+        The rules that make up a chunk grammar use "tag patterns" 
+    '''
+    cfgNPGrammar = nltk.CFG.fromstring("""
+                        S-> NP VP
+                        VP -> V N
+                        V -> "use" | "disclose"
+                        NP -> "A covered entity"
+                        N -> "information" 
+                        """);
+    return cfgNPGrammar
+
+
+def removeStopWords(tokenziedWordsInput):
+    stop_words = set(stopwords.words('english'))
+    print (stop_words)
+    time.sleep(5)
+    wordsMinusStopWords = []
+    for w in tokenziedWordsInput:
+        if w not in stop_words:
+            wordsMinusStopWords.append(w);
+    return wordsMinusStopWords
 
 '''
 Note content is a nested dictionary with Metadata, Header, and Body.
@@ -77,14 +106,17 @@ def extractParseTag(content):
     cfgNPGrammar = getGrammar() 
     chunckGrammar = nltk.RegexpParser(cfgNPGrammar);
     
+    
     '''
      Basic NLP Pipeline processing:
      print("The staging List is broken up into " , len(stagingList), "parts")
      time.sleep(3) 
     '''
     for eachList in stagingList:  
-        word = nltk.word_tokenize(eachList) 
-        tagged = nltk.pos_tag(word)
+        wordTokens = nltk.word_tokenize(eachList) 
+        #tokensWithoutStopWords = removeStopWords(wordTokens)
+        #posTaggedWords = nltk.pos_tag(tokensWithoutStopWords)
+        posTaggedWords = nltk.pos_tag(wordTokens)
         '''
         --- below we see chunked = chunckGrammar.parse(tagged);
         --- here is where we get the tree structure
@@ -92,7 +124,7 @@ def extractParseTag(content):
         --- stored anywhere, but can be accessed via the 
         --- chunked.subtrees() method.. 
         '''
-        chunked = chunckGrammar.parse(tagged);
+        chunked = chunckGrammar.parse(posTaggedWords);
         newParseTree.append(chunked)
     return newParseTree;
 

@@ -1,4 +1,5 @@
 import uuid
+from nltk.tokenize import sent_tokenize
 regulatoryText = []
 dict = {}
 import time
@@ -26,15 +27,22 @@ def getText(node):
         try:
             if (node.tag == 'P'):
                 innerText = ''.join(node.itertext())
-                regulatoryText.append(innerText)
-                dict[uuid.uuid4()] = innerText                
+                if (len(sent_tokenize(innerText)) > 1):
+                    for stmt in sent_tokenize(innerText):
+                        regulatoryText.append(stmt)
+                        dict[uuid.uuid4()] = stmt 
+                else:     
+                    regulatoryText.append(innerText)
+                    dict[uuid.uuid4()] = innerText                
             else:
-                innerText = node.text
+                innerText = node.text               
                 dict[node.tag] = innerText              
         except Exception as e:
             print(str(e) + '\n')           
     else:
         innerText = 'NONE' 
+        
+    
     return innerText
 
 '''
@@ -78,7 +86,6 @@ def init(node, reg):
     To view the contents of the dictionary, uncomment this code
     '''
     #printDictionary(result)
-
     return result
     
     
