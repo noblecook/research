@@ -1,0 +1,49 @@
+A covered entity may use or disclose protected health information, provided that the individual is informed in advance of the use or disclosure and has the opportunity to agree to or prohibit or restrict the use or disclosure, in accordance with the applicable requirements of this section. 
+(a) Validation of systems to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records.
+(b) The ability to generate accurate and complete copies of records in both human readable and electronic form suitable for inspection, review, and copying by the agency. Persons should contact the agency if there are any questions regarding the ability of the agency to perform such review and copying of the electronic records. 
+(c) Protection of records to enable their accurate and ready retrieval throughout the records retention period.
+(d) Limiting system access to authorized individuals.
+(e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying.
+
+
+sampleText = '''Mr. Clinton is teaching Algebra to the students. Monkeys are playing around in the garden. Oxygen is essential for life on earth.  John F. Kennedy was elected as US President in 1960. Honesty is the best policy. Horses are majestic animals.When students travel to US, they usually go by air.
+'''
+
+sampleText2 = '''
+1.I want to lose weight, yet I eat chocolate daily.
+
+2.A man may die, nations may rise and fall, but an idea lives on.
+
+3.I used to be snow white, but I drifted.
+
+4.We went to the mall; however, we only went window-shopping.
+
+5.She is famous, yet she is very humble.
+
+6.I saw Samuel yesterday but he didn’t see me.
+'''
+
+regText =  '''A covered entity may use or disclose protected health information, provided that the individual is informed in advance of the use or disclosure and has the opportunity to agree to or prohibit or restrict the use or disclosure, in accordance with the applicable requirements of this section. 
+(a) Validation of systems to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records.
+(b) The ability to generate accurate and complete copies of records in both human readable and electronic form suitable for inspection, review, and copying by the agency. Persons should contact the agency if there are any questions regarding the ability of the agency to perform such review and copying of the electronic records. 
+(c) Protection of records to enable their accurate and ready retrieval throughout the records retention period.
+(d) Limiting system access to authorized individuals.
+(e) Use of secure, computer-generated, time-stamped audit trails to independently record the date and time of operator entries and actions that create, modify, or delete electronic records. Record changes shall not obscure previously recorded information. Such audit trail documentation shall be retained for a period at least as long as that required for the subject electronic records and shall be available for agency review and copying. [65 FR 82802, Dec. 28, 2000, as amended at 67 FR 53270, Aug. 14, 2002; 78 FR 5699, Jan. 25, 2013'''
+
+sent = "This is a sentence!"
+
+'''
+Try the following
+0. Take some time to master this "https://spacy.io/usage/spacy-101"
+1. Rule-based Matching - using "Matcher" - https://spacy.io/usage/rule-based-matching
+    Basically, a "Grammar" like rudimentary, but you can improve upon it. Here you can demo
+    the patterns - https://explosion.ai/demos/matcher; Also a youtube video - https://www.youtube.com/watch?v=KL4-Mpgbahw&t=3s
+    
+2. Try looking for parts of speech and putting them in a triple.
+ 
+3. Text Classification
+ 
+4. Training - "Spacy 101" speaks to this.  https://spacy.io/usage/spacy-101
+
+5. Blackstone is an option - example here https://research.iclr.co.uk/blog/blackstone-goes-live
+'''

@@ -18,6 +18,7 @@ Model Agent
 import scan
 import preprocessor
 import clean
+import time
        
         
 '''
@@ -33,6 +34,8 @@ def init(regulation):
     xmlData = scan.init(regulation)
     preProcessResults = preprocessor.init(xmlData, regulation)
     cleanRegulations = clean.sanitize(preProcessResults)
+    print(cleanRegulations)
+    time.sleep(1000000)
     return cleanRegulations 
 
 
