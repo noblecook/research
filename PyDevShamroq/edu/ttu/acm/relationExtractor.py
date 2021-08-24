@@ -7,19 +7,16 @@ Open up a terminal
 python -m spacy download en_core_web_sm
 Word wrap "Alt+Shift+Y
 '''
+
 import time
 import spacy
 from spacy import displacy
 from spacy.matcher import Matcher
 from spacy.matcher import PhraseMatcher
 
-
-
-
-
 nlp = spacy.load("en_core_web_sm")
 
-regText164_510='''A covered entity may use or disclose protected health information, provided that the individual is informed in advance of the use or disclosure and has the opportunity to agree to or prohibit or restrict the use or disclosure, in accordance with the applicable requirements of this section. 
+regText164_510 = '''A covered entity may use or disclose protected health information, provided that the individual is informed in advance of the use or disclosure and has the opportunity to agree to or prohibit or restrict the use or disclosure, in accordance with the applicable requirements of this section. 
 
 The covered entity may orally inform the individual of and obtain the individual's oral agreement or objection to a use or disclosure permitted by this section. 
 
@@ -50,24 +47,21 @@ The covered entity may orally inform the individual of and obtain the individual
 sampleRegulation = '''Hello World. My name is Patrick. Except when an objection is expressed in accordance with paragraphs (a)(2) or (3) of this section, a covered health care provider may: (i) Use the following protected health information to maintain a directory of individuals in its facility:(A) The individual's name;(B) The individual's location in the covered health care provider's facility;(C) The individual's condition described in general terms that does not communicate specific medical information about the individual; and (D) The individual's religious affiliation; and (ii) Use or disclose for directory purposes such information: (A) To members of the clergy; or (B) Except for religious affiliation, to other persons who ask for the individual by name. This is true.'''
 sample = "Hello my name is Patrick Cook."
 
-    
-right_pattern_01 = [{'LOWER': 'has'}, 
-                   {'LOWER': 'a'},
-                   {'LOWER': 'right'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-right_pattern_02 = [{'LOWER': 'has'}, 
-                   {'LOWER': 'the'},
-                   {'LOWER': 'right'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-right_pattern_03 = [{'LOWER': 'retains'}, 
-                   {'LOWER': 'the'},
-                   {'LOWER': 'right'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-
-
+right_pattern_01 = [{'LOWER': 'has'},
+                    {'LOWER': 'a'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
+right_pattern_02 = [{'LOWER': 'has'},
+                    {'LOWER': 'the'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
+right_pattern_03 = [{'LOWER': 'retains'},
+                    {'LOWER': 'the'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
 
 obligation_pattern_01 = [{'LOWER': 'must'},
                          {'POS': 'VERB'}]
@@ -76,15 +70,15 @@ obligation_pattern_02 = [{'LOWER': 'is'},
                          {'LOWER': 'to'},
                          {'POS': 'VERB'}]
 obligation_pattern_03 = [{'LOWER': 'shall'},
-                         {'POS': 'VERB'},]    
+                         {'POS': 'VERB'}, ]
 obligation_pattern_04 = [{'LOWER': 'may'},
-                         {'LOWER': 'not'}]   
+                         {'LOWER': 'not'}]
 obligation_pattern_05 = [{'LOWER': 'is'},
-                         {'LOWER': 'prohibited'}]    
+                         {'LOWER': 'prohibited'}]
 obligation_pattern_06 = [{'LOWER': 'is'},
                          {'LOWER': 'subject'},
                          {'LOWER': 'to'},
-                         {'POS': 'VERB'}]  
+                         {'POS': 'VERB'}]
 priv_pattern_00 = [{'LOWER': 'may'},
                    {'IS_PUNCT': True, 'OP': '?'}]
 
@@ -92,57 +86,63 @@ priv_pattern_01 = [{'LOWER': 'may'},
                    {'POS': 'ADV', 'OP': '?'},
                    {'IS_PUNCT': True, 'OP': '?'},
                    {'POS': 'VERB'}]
-priv_pattern_02 = [{'LOWER': 'may'}, 
+priv_pattern_02 = [{'LOWER': 'may'},
                    {'LOWER': 'elect'},
                    {'LOWER': 'not'},
                    {'LOWER': 'to'}]
-priv_pattern_03 = [{'LOWER': 'is'}, 
+priv_pattern_03 = [{'LOWER': 'is'},
                    {'LOWER': 'not'},
                    {'LOWER': 'required'},
                    {'LOWER': 'to'},
                    {'POS': 'VERB'}]
-priv_pattern_04 = [{'LOWER': 'requirement'}, 
+priv_pattern_04 = [{'LOWER': 'requirement'},
                    {'LOWER': 'does'},
                    {'LOWER': 'not'},
                    {'LOWER': 'apply'},
                    {'LOWER': 'to'},
                    {'POS': 'VERB'}]
-priv_pattern_05 = [{'LOWER': 'is'}, 
+priv_pattern_05 = [{'LOWER': 'is'},
                    {'LOWER': 'permitted'},
                    {'LOWER': 'to'},
                    {'POS': 'VERB'}]
-priv_pattern_06 = [{'LOWER': 'at'}, 
+priv_pattern_06 = [{'LOWER': 'at'},
                    {'LOWER': 'the'},
                    {'LOWER': 'election'},
                    {'LOWER': 'of'},
                    {'POS': 'NOUN'}]
-priv_pattern_07 = [{'LOWER': 'is'}, 
+priv_pattern_07 = [{'LOWER': 'is'},
                    {'LOWER': 'not'},
                    {'LOWER': 'subject'},
                    {'LOWER': 'to'},
                    {'POS': 'VERB'}]
+
+
 def test01(spacyDoc):
     '''print Document type and attributes'''
-    print("Type ", type(spacyDoc)) 
+    print("Type ", type(spacyDoc))
     print(iter(spacyDoc))
 
-def test02(spacyDoc): 
+
+def test02(spacyDoc):
     '''print Token type and attributes'''
     token = spacyDoc[0]
-    print(type(token))   
+    print(type(token))
     print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
-            token.shape_, token.is_alpha, token.is_stop)
-        
-def test03_DepencyGraph(spacyDoc): 
+          token.shape_, token.is_alpha, token.is_stop)
+
+
+def test03_DepencyGraph(spacyDoc):
     '''print Token type and attributes'''
     displacy.serve(spacyDoc, style="dep")
 
-def test04(spacyDoc): 
+
+def test04(spacyDoc):
     '''
         print Token type and attributes
         http://localhost:5000
     '''
-    displacy.serve(spacyDoc, style="ent")    
+    displacy.serve(spacyDoc, style="ent")
+
 
 def test05_SentenceSegmentation(spacyDoc):
     '''
@@ -152,8 +152,9 @@ def test05_SentenceSegmentation(spacyDoc):
       -- note the default use-case is a "dependency parser"
     '''
     for number, sent in enumerate(spacyDoc.sents):
-        print (number, sent)
-    
+        print(number, sent)
+
+
 def test06_Dependecy_Parser(spacyDoc):
     '''
       CFR45 164.510 
@@ -162,8 +163,9 @@ def test06_Dependecy_Parser(spacyDoc):
       -- note the default use-case is a "dependency parser"
     '''
     for number, sent in enumerate(spacyDoc.sents):
-        print (number, sent)
-        
+        print(number, sent)
+
+
 def test07_Rule_Based_Matching(spacyDoc):
     '''
      Using the Matcher object in SpaCy
@@ -174,21 +176,20 @@ def test07_Rule_Based_Matching(spacyDoc):
      https://explosion.ai/demos/matcher
 
     '''
-    
+
     shamroqMatcher = Matcher(nlp.vocab)
-        
+
     shamroqMatcher.add("RIGHT01", None, right_pattern_01)
     shamroqMatcher.add("RIGHT02", None, right_pattern_02)
     shamroqMatcher.add("RIGHT03", None, right_pattern_03)
-    
+
     shamroqMatcher.add("OBLIGATION01", None, obligation_pattern_01)
     shamroqMatcher.add("OBLIGATION02", None, obligation_pattern_02)
     shamroqMatcher.add("OBLIGATION03", None, obligation_pattern_03)
     shamroqMatcher.add("OBLIGATION04", None, obligation_pattern_04)
     shamroqMatcher.add("OBLIGATION05", None, obligation_pattern_05)
     shamroqMatcher.add("OBLIGATION06", None, obligation_pattern_06)
-    
-    
+
     shamroqMatcher.add("PRIVILEGE01", None, priv_pattern_01)
     shamroqMatcher.add("PRIVILEGE02", None, priv_pattern_02)
     shamroqMatcher.add("PRIVILEGE03", None, priv_pattern_03)
@@ -201,37 +202,39 @@ def test07_Rule_Based_Matching(spacyDoc):
         string_id = nlp.vocab.strings[match_id]
         span = spacyDoc[start:end]
         print(i, "  ", string_id, "  ", span.text)
-        i = i+1;
-        #time.sleep(2)
-        
+        i = i + 1;
+        # time.sleep(2)
+
+
 def test08_Phrase_Matcher_01(spacyDoc):
-    shamroqPhraseMatcher = PhraseMatcher(nlp.vocab)  
+    shamroqPhraseMatcher = PhraseMatcher(nlp.vocab)
     privilege_terms = ["may"]
     privilege_patterns = [nlp.make_doc(text) for text in privilege_terms]
     shamroqPhraseMatcher.add("PRIVILEGE", privilege_patterns)
     shamroqMatches = shamroqPhraseMatcher(spacyDoc);
-    
+
     i = 1
     for match_id, start, end in shamroqMatches:
         span = spacyDoc[start:end]
         print(i, "  ", span.text)
-        i = i+1;
+        i = i + 1;
         time.sleep(1)
 
+
 def test08_Phrase_Matcher_02(spacyDoc):
-    shamroqPhraseMatcher = PhraseMatcher(nlp.vocab)  
+    shamroqPhraseMatcher = PhraseMatcher(nlp.vocab)
     privilege_terms = ["may"]
     privilege_patterns = [nlp.make_doc(text) for text in privilege_terms]
     shamroqPhraseMatcher.add("PRIVILEGE", privilege_patterns)
     shamroqMatches = shamroqPhraseMatcher(spacyDoc);
-    
+
     i = 1
     for match_id, start, end in shamroqMatches:
         span = spacyDoc[start:end]
         print(i, "  ", span.text)
-        i = i+1;
+        i = i + 1;
         time.sleep(1)
-        
+
 
 def test09_RBM_with_CALLBACK(spacyDoc):
     testString = '''I may decide to work with you.  Or, I may elect not to work with you. A covered entity may orally inform the person on file.  For some unknown obligatory reason, I may not eat, workout, or study.  However, under the following circumstances, I may:  eat; workout; study; or sleep. In the event, you do not follow instructions, the constable may revoke your power.  On the other hand, the constable may terminate your license.  Finally, if all goes well, we may not authorize the constable to disable you in that manner.'''
@@ -240,57 +243,55 @@ def test09_RBM_with_CALLBACK(spacyDoc):
 
     print("Rule Based Matching (RBM)")
     print("test09_RBM_with_CALLBACK")
-    
+
     shamroqMatcher = Matcher(nlp.vocab)
-    shamroqMatcher.add("RIGHT", None, right_pattern_01,right_pattern_02, right_pattern_03)
-    shamroqMatcher.add("OBLIGATION", None, obligation_pattern_01,obligation_pattern_02,obligation_pattern_03,obligation_pattern_04,obligation_pattern_05,obligation_pattern_06)
-    shamroqMatcher.add("PRIVILEGE", None, priv_pattern_00, priv_pattern_01,priv_pattern_02,priv_pattern_03,priv_pattern_04,priv_pattern_05,priv_pattern_06,priv_pattern_07)
-    
+    shamroqMatcher.add("RIGHT", None, right_pattern_01, right_pattern_02, right_pattern_03)
+    shamroqMatcher.add("OBLIGATION", None, obligation_pattern_01, obligation_pattern_02, obligation_pattern_03,
+                       obligation_pattern_04, obligation_pattern_05, obligation_pattern_06)
+    shamroqMatcher.add("PRIVILEGE", None, priv_pattern_00, priv_pattern_01, priv_pattern_02, priv_pattern_03,
+                       priv_pattern_04, priv_pattern_05, priv_pattern_06, priv_pattern_07)
+
     i = 1
     for match_id, start, end in shamroqMatcher(spacyDoc):
         string_id = nlp.vocab.strings[match_id]
         span = spacyDoc[start:end]
         print(i, "  ", string_id, "  ", span.text)
-        i = i+1;
-        #time.sleep(2)
-        
+        i = i + 1;
+        # time.sleep(2)
+
+
 def test10_RBM_filter_OVERLAPPING_Matches(spacyDoc):
     testString = '''I may decide to work with you.  Or, I may elect not to work with you. A covered entity may orally inform the person on file.  For some unknown obligatory reason, I may not eat, workout, or study.  However, under the following circumstances, I may:  eat; workout; study; or sleep. In the event, you do not follow instructions, the constable may revoke your power.  On the other hand, the constable may terminate your license.  Finally, if all goes well, we may not authorize the constable to disable you in that manner.'''
 
-    #spacyDoc = nlp(testString)
+    # spacyDoc = nlp(testString)
 
     print("Rule Based Matching (RBM)")
     print("test09_RBM_with_CALLBACK")
-       
-  
-        
+
     shamroqMatcher = Matcher(nlp.vocab)
-    shamroqMatcher.add("RIGHT", None, right_pattern_01,right_pattern_02, right_pattern_03)
-    shamroqMatcher.add("OBLIGATION", None, obligation_pattern_01,obligation_pattern_02,obligation_pattern_03,obligation_pattern_04,obligation_pattern_05,obligation_pattern_06)
-    shamroqMatcher.add("PRIVILEGE", None, priv_pattern_00, priv_pattern_01,priv_pattern_02,priv_pattern_03,priv_pattern_04,priv_pattern_05,priv_pattern_06,priv_pattern_07)
+    shamroqMatcher.add("RIGHT", None, right_pattern_01, right_pattern_02, right_pattern_03)
+    shamroqMatcher.add("OBLIGATION", None, obligation_pattern_01, obligation_pattern_02, obligation_pattern_03,
+                       obligation_pattern_04, obligation_pattern_05, obligation_pattern_06)
+    shamroqMatcher.add("PRIVILEGE", None, priv_pattern_00, priv_pattern_01, priv_pattern_02, priv_pattern_03,
+                       priv_pattern_04, priv_pattern_05, priv_pattern_06, priv_pattern_07)
 
-
-
-    
-    matches = shamroqMatcher(spacyDoc)        
-    spans = [spacyDoc[start:end] for match_id, start, end in matches]  
-    noDuplicates =  filter_spans(spans)
+    matches = shamroqMatcher(spacyDoc)
+    spans = [spacyDoc[start:end] for match_id, start, end in matches]
+    noDuplicates = filter_spans(spans)
     i = 1;
-    for span in noDuplicates: 
+    for span in noDuplicates:
         print(type(span))
         print("----------------------------")
         print("Modality & Action: --> ", span.text)
         print("----------------------------")
-        print(i, span.sent) 
+        print(i, span.sent)
         for spanToken in span.sent:
             if (spanToken.dep_ == 'nsubj'):
-                print("Subject --> ", spanToken.text)     
+                print("Subject --> ", spanToken.text)
         print("\n\n")
-        i = i+1
+        i = i + 1
 
 
-
-        
 def foundThem(matcher, doc, id, matches):
     for match_id, start, end in matches:
         string_id = nlp.vocab.strings[match_id]
@@ -298,8 +299,9 @@ def foundThem(matcher, doc, id, matches):
         print("String id = ", string_id)
         print("Span = ", span)
         print("id = ", id)
-        #print('Matched!', matches) 
-                
+        # print('Matched!', matches)
+
+
 def shamroq(text):
     doc = nlp(text)
     '''
@@ -326,6 +328,7 @@ def filter_spans(spans):
     result = sorted(result, key=lambda span: span.start)
     return result
 
+
 def main():
     print("Spacy Example -->", len(sampleRegulation))
     print("/------------------------------------------/")
@@ -333,20 +336,19 @@ def main():
     print("/------------------------------------------/")
     print()
     print()
-    
+
     shamroq(regText164_510)
-    
+
     print()
     print()
     print("/------------------------------------------/")
     print("... completing main()")
     print("/------------------------------------------/")
 
+
 if __name__ == '__main__':
     main()
-    
-    
-    
+
 '''
 
     print("Span sentence = " , spans[0].sent, 

@@ -97,23 +97,31 @@ def removeStopWords(tokenziedWordsInput):
 Note content is a nested dictionary with Metadata, Header, and Body.
 Here is only look at the Body structure.  However, we should consider
 collecting the Metadata and Header and storing the content.
-
 '''
+
+
 def extractParseTag(content):
     print("... starting Classify.extractParseTag()")
-    newParseTree = [];
+    newParseTree = []
     stagingList = content["Body"]["content"]
-    cfgNPGrammar = getGrammar() 
-    chunckGrammar = nltk.RegexpParser(cfgNPGrammar);
-    
-    
+    cfgNPGrammar = getGrammar()
+    chunckGrammar = nltk.RegexpParser(cfgNPGrammar)
+
+
+    print ("------------------")
+    print (type(stagingList))
+    print (stagingList)
+    print ("-------------stop here----8/14")
+    time.sleep(1000)
+
+
     '''
      Basic NLP Pipeline processing:
      print("The staging List is broken up into " , len(stagingList), "parts")
      time.sleep(3) 
     '''
-    for eachList in stagingList:  
-        wordTokens = nltk.word_tokenize(eachList) 
+    for eachList in stagingList:
+        wordTokens = nltk.word_tokenize(eachList)
         #tokensWithoutStopWords = removeStopWords(wordTokens)
         #posTaggedWords = nltk.pos_tag(tokensWithoutStopWords)
         posTaggedWords = nltk.pos_tag(wordTokens)

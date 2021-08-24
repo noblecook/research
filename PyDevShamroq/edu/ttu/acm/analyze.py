@@ -19,24 +19,28 @@ import scan
 import preprocessor
 import clean
 import time
-       
-        
+
 '''
 The driver method takes a 'list' datatype that contains 1 or more xml files
 The xml files are representative of one section in the code of federal regulations (CFR).
 The for loop reads each regulation, starting at index 0, and passes it to 
 scanner.  The results of the scanner 
 
-'''    
-
-def init(regulation): 
+'''
+def init_old(regulation):
     print("... starting Analyze")
+
+    # scan.init() returns a nested xml structure and stores in xmlData
     xmlData = scan.init(regulation)
+
+    # preprocessor.init() returns a dictionary of the xml version of the CFR
     preProcessResults = preprocessor.init(xmlData, regulation)
+
+    # clean.sanitize() returns a structured dictionary
     cleanRegulations = clean.sanitize(preProcessResults)
-    print(cleanRegulations)
-    time.sleep(1000000)
-    return cleanRegulations 
+    return cleanRegulations
 
 
-
+def init(scannedFile):
+    print("... starting Analyze")
+    pass
