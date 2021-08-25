@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Voluntary Commission Approval Processes.</TITLE>
+    <GRANULENUM>Â§ 312.12</GRANULENUM>
+    <HEADING>Section Â§ 312.12</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.12</SECTNO>
+    <SUBJECT>Voluntary Commission Approval Processes.</SUBJECT>
+    <P>(a) <E T="03">Parental consent methods.</E> An interested party may file a written request for Commission approval of parental consent methods not currently enumerated in § 312.5(b). To be considered for approval, a party must provide a detailed description of the proposed parental consent methods, together with an analysis of how the methods meet § 312.5(b)(1). The request shall be filed with the Commission's Office of the Secretary. The Commission will publish in the <E T="04">Federal Register</E> a document seeking public comment on the request. The Commission shall issue a written determination within 120 days of the filing of the request; and</P>
+    <P>(b) <E T="03">Support for internal operations of the Web site or online service.</E> An interested party may file a written request for Commission approval of additional activities to be included within the definition of support for internal operations. To be considered for approval, a party must provide a detailed justification why such activities should be deemed support for internal operations, and an analysis of their potential effects on children's online privacy. The request shall be filed with the Commission's Office of the Secretary. The Commission will publish in the <E T="04">Federal Register</E> a document seeking public comment on the request. The Commission shall issue a written determination within 120 days of the filing of the request.</P>
+  </SECTION>
+</CFRGRANULE>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Confidentiality, security, and integrity of personal information collected from children.</TITLE>
+    <GRANULENUM>Â§ 312.8</GRANULENUM>
+    <HEADING>Section Â§ 312.8</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.8</SECTNO>
+    <SUBJECT>Confidentiality, security, and integrity of personal information collected from children.</SUBJECT>
+    <P>The operator must establish and maintain reasonable procedures to protect the confidentiality, security, and integrity of personal information collected from children. The operator must also take reasonable steps to release children's personal information only to service providers and third parties who are capable of maintaining the confidentiality, security and integrity of such information, and who provide assurances that they will maintain the information in such a manner.</P>
+  </SECTION>
+</CFRGRANULE>

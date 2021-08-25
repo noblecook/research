@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Data retention and deletion requirements.</TITLE>
+    <GRANULENUM>Â§ 312.10</GRANULENUM>
+    <HEADING>Section Â§ 312.10</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.10</SECTNO>
+    <SUBJECT>Data retention and deletion requirements.</SUBJECT>
+    <P>An operator of a Web site or online service shall retain personal information collected online from a child for only as long as is reasonably necessary to fulfill the purpose for which the information was collected. The operator must delete such information using reasonable measures to protect against unauthorized access to, or use of, the information in connection with its deletion.</P>
+  </SECTION>
+</CFRGRANULE>

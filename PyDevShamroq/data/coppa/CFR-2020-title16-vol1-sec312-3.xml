@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Regulation of unfair or deceptive acts or practices in connection with the collection, use, and/or disclosure of personal information from and about children on the Internet.</TITLE>
+    <GRANULENUM>Â§ 312.3</GRANULENUM>
+    <HEADING>Section Â§ 312.3</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.3</SECTNO>
+    <SUBJECT>Regulation of unfair or deceptive acts or practices in connection with the collection, use, and/or disclosure of personal information from and about children on the Internet.</SUBJECT>
+    <P>
+      <E T="03">General requirements.</E> It shall be unlawful for any operator of a Web site or online service directed to children, or any operator that has actual knowledge that it is collecting or maintaining personal information from a child, to collect personal information from a child in a manner that violates the regulations prescribed under this part. Generally, under this part, an operator must:</P>
+    <P>(a) Provide notice on the Web site or online service of what information it collects from children, how it uses such information, and its disclosure practices for such information (§ 312.4(b));</P>
+    <P>(b) Obtain verifiable parental consent prior to any collection, use, and/or disclosure of personal information from children (§ 312.5);</P>
+    <P>(c) Provide a reasonable means for a parent to review the personal information collected from a child and to refuse to permit its further use or maintenance (§ 312.6);</P>
+    <P>(d) Not condition a child's participation in a game, the offering of a prize, or another activity on the child disclosing more personal information than is reasonably necessary to participate in such activity (§ 312.7); and</P>
+    <P>(e) Establish and maintain reasonable procedures to protect the confidentiality, security, and integrity of personal information collected from children (§ 312.8).</P>
+  </SECTION>
+</CFRGRANULE>

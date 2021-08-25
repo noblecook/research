@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Severability.</TITLE>
+    <GRANULENUM>Â§ 312.13</GRANULENUM>
+    <HEADING>Section Â§ 312.13</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.13</SECTNO>
+    <SUBJECT>Severability.</SUBJECT>
+    <P>The provisions of this part are separate and severable from one another. If any provision is stayed or determined to be invalid, it is the Commission's intention that the remaining provisions shall continue in effect.</P>
+  </SECTION>
+</CFRGRANULE>

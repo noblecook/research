@@ -18,7 +18,6 @@ Model Agent
 import scan
 import preprocessor
 import clean
-import time
 
 '''
 The driver method takes a 'list' datatype that contains 1 or more xml files

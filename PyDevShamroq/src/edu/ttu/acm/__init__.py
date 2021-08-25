@@ -6,16 +6,18 @@ import preprocessor
 import clean
 import time
 
-FILE_PREFIX_OLD = 'C:/Users/patri/git/research/PyDevShamroq/data/'
-FILE_PREFIX = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/'
-jsonCFR45 = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/cfr-json/title-45.json'
-xml_45_164_306 = FILE_PREFIX + 'CFR-2019-title45-vol2-sec164-306.xml'
-xml_45_164_310 = FILE_PREFIX + 'CFR-2019-title45-vol2-sec164-310.xml'
-xml_45_164_312 = FILE_PREFIX + 'CFR-2019-title45-vol2-sec164-312.xml'
-xml_45_164_510 = FILE_PREFIX + 'CFR-2019-title45-vol2-sec164-510.xml'
+FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
+FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
+
+xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
+xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
+xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
+xml_45_164_510 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-510.xml'
+xml_16_132_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-regList = [xml_45_164_510]
+
+regList = [xml_16_132_011]
 
 
 def getTimeNow():

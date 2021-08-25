@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+  <FDSYS>
+    <CFRTITLE>16</CFRTITLE>
+    <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+    <VOL>1</VOL>
+    <DATE>2020-01-01</DATE>
+    <ORIGINALDATE>2020-01-01</ORIGINALDATE>
+    <COVERONLY>false</COVERONLY>
+    <TITLE>Notice.</TITLE>
+    <GRANULENUM>Â§ 312.4</GRANULENUM>
+    <HEADING>Section Â§ 312.4</HEADING>
+    <ANCESTORS>
+      <PARENT HEADING="Title 16" SEQ="3">Commercial Practices</PARENT>
+      <PARENT HEADING="CHAPTER I" SEQ="2">FEDERAL TRADE COMMISSION</PARENT>
+      <PARENT HEADING="SUBCHAPTER C" SEQ="1">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+      <PARENT HEADING="PART 312" SEQ="0">CHILDREN'S ONLINE PRIVACY PROTECTION RULE</PARENT>
+    </ANCESTORS>
+  </FDSYS>
+  <SECTION>
+    <SECTNO>§ 312.4</SECTNO>
+    <SUBJECT>Notice.</SUBJECT>
+    <P>(a) <E T="03">General principles of notice.</E> It shall be the obligation of the operator to provide notice and obtain verifiable parental consent prior to collecting, using, or disclosing personal information from children. Such notice must be clearly and understandably written, complete, and must contain no unrelated, confusing, or contradictory materials.</P>
+    <P>(b) <E T="03">Direct notice to the parent.</E> An operator must make reasonable efforts, taking into account available technology, to ensure that a parent of a child receives direct notice of the operator's practices with regard to the collection, use, or disclosure of personal information from children, including notice of any material change in the collection, use, or disclosure practices to which the parent has previously consented.</P>
+    <P>(c) <E T="03">Content of the direct notice to the parent</E>—(1) <E T="03">Content of the direct notice to the parent under § 312.5(c)(1) (Notice to Obtain Parent's Affirmative Consent to the Collection, Use, or Disclosure of a Child's Personal Information).</E> This direct notice shall set forth:</P>
+    <P>(i) That the operator has collected the parent's online contact information from the child, and, if such is the case, the name of the child or the parent, in order to obtain the parent's consent;</P>
+    <P>(ii) That the parent's consent is required for the collection, use, or disclosure of such information, and that the operator will not collect, use, or disclose any personal information from the child if the parent does not provide such consent;</P>
+    <P>(iii) The additional items of personal information the operator intends to collect from the child, or the potential opportunities for the disclosure of personal information, should the parent provide consent;</P>
+    <P>(iv) A hyperlink to the operator's online notice of its information practices required under paragraph (d) of this section;</P>
+    <P>(v) The means by which the parent can provide verifiable consent to the collection, use, and disclosure of the information; and</P>
+
+    <P>(vi) That if the parent does not provide consent within a reasonable time from the date the direct notice was sent, the operator will delete the parent's online contact information from its records.<PRTPAGE P="404"/>
+    </P>
+    <P>(2) <E T="03">Content of the direct notice to the parent under</E> § <E T="03">312.5(c)(2) (Voluntary Notice to Parent of a Child's Online Activities Not Involving the Collection, Use or Disclosure of Personal Information).</E> Where an operator chooses to notify a parent of a child's participation in a Web site or online service, and where such site or service does not collect any personal information other than the parent's online contact information, the direct notice shall set forth:</P>
+    <P>(i) That the operator has collected the parent's online contact information from the child in order to provide notice to, and subsequently update the parent about, a child's participation in a Web site or online service that does not otherwise collect, use, or disclose children's personal information;</P>
+    <P>(ii) That the parent's online contact information will not be used or disclosed for any other purpose;</P>
+    <P>(iii) That the parent may refuse to permit the child's participation in the Web site or online service and may require the deletion of the parent's online contact information, and how the parent can do so; and</P>
+    <P>(iv) A hyperlink to the operator's online notice of its information practices required under paragraph (d) of this section.</P>
+    <P>(3) <E T="03">Content of the direct notice to the parent under</E> § <E T="03">312.5(c)(4) (Notice to a Parent of Operator's Intent to Communicate with the Child Multiple Times).</E> This direct notice shall set forth:</P>
+    <P>(i) That the operator has collected the child's online contact information from the child in order to provide multiple online communications to the child;</P>
+    <P>(ii) That the operator has collected the parent's online contact information from the child in order to notify the parent that the child has registered to receive multiple online communications from the operator;</P>
+    <P>(iii) That the online contact information collected from the child will not be used for any other purpose, disclosed, or combined with any other information collected from the child;</P>
+    <P>(iv) That the parent may refuse to permit further contact with the child and require the deletion of the parent's and child's online contact information, and how the parent can do so;</P>
+    <P>(v) That if the parent fails to respond to this direct notice, the operator may use the online contact information collected from the child for the purpose stated in the direct notice; and</P>
+    <P>(vi) A hyperlink to the operator's online notice of its information practices required under paragraph (d) of this section.</P>
+    <P>(4) <E T="03">Content of the direct notice to the parent required under § 312.5(c)(5) (Notice to a Parent In Order to Protect a Child's Safety).</E> This direct notice shall set forth:</P>
+    <P>(i) That the operator has collected the name and the online contact information of the child and the parent in order to protect the safety of a child;</P>
+    <P>(ii) That the information will not be used or disclosed for any purpose unrelated to the child's safety;</P>
+    <P>(iii) That the parent may refuse to permit the use, and require the deletion, of the information collected, and how the parent can do so;</P>
+    <P>(iv) That if the parent fails to respond to this direct notice, the operator may use the information for the purpose stated in the direct notice; and</P>
+    <P>(v) A hyperlink to the operator's online notice of its information practices required under paragraph (d) of this section.</P>
+    <P>(d) <E T="03">Notice on the Web site or online service.</E> In addition to the direct notice to the parent, an operator must post a prominent and clearly labeled link to an online notice of its information practices with regard to children on the home or landing page or screen of its Web site or online service, <E T="03">and,</E> at each area of the Web site or online service where personal information is collected from children. The link must be in close proximity to the requests for information in each such area. An operator of a general audience Web site or online service that has a separate children's area must post a link to a notice of its information practices with regard to children on the home or landing page or screen of the children's area. To be complete, the online notice of the Web site or online service's information practices must state the following:</P>
+
+    <P>(1) The name, address, telephone number, and email address of all operators collecting or maintaining personal <PRTPAGE P="405"/>information from children through the Web site or online service. <E T="03">Provided that:</E> The operators of a Web site or online service may list the name, address, phone number, and email address of one operator who will respond to all inquiries from parents concerning the operators' privacy policies and use of children's information, as long as the names of all the operators collecting or maintaining personal information from children through the Web site or online service are also listed in the notice;</P>
+    <P>(2) A description of what information the operator collects from children, including whether the Web site or online service enables a child to make personal information publicly available; how the operator uses such information; and, the operator's disclosure practices for such information; and</P>
+    <P>(3) That the parent can review or have deleted the child's personal information, and refuse to permit further collection or use of the child's information, and state the procedures for doing so.</P>
+  </SECTION>
+</CFRGRANULE>
