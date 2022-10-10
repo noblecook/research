@@ -37,7 +37,7 @@ xml_16_132_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
 xml_16_132_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 xml_16_132_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
 
-xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2020-title16-vol1-sec312-5.xml'
+xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2021-title16-vol1-sec313-9.xml'
 
 
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
