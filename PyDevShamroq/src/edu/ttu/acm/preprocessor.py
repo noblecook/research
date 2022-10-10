@@ -20,7 +20,10 @@ once we find it, we get the corresponding text, create a unique key, and store t
 of the regulation.  
 
 Why do I need a key, since I am using a dictionary, there must be unique keys.  I am using 
-using the uuid to generate unique keys so that I can have access to all the text on each line
+the uuid to generate unique keys so that I can have access to all the text on each line
+
+NOTE - instead of using the UUID, I must consider using the regulation as the key.
+i.e 45CFR SECTION 1ABii (something to this affect)
 
 I don't like the idea of the global dictionary, I must create a method to append and return, or
 do it all in the same method
@@ -52,9 +55,8 @@ def getText(node):
 
 
 '''
-The processData method takes a node and string.  The node is the tree, the regulations is used
-to capture the specific regulation and location.  Afterword the getText method is called, provided
-that the node is not empty, and recursively iterate through each node and leaves.. 
+The processData method takes a node and string.  The node is the tree and the string is the regulatory text.
+Nthe getText method is called, provided that the node is not empty, and recursively iterate through each node and leaves.. 
 
 This can probably be made more efficient.  I will revisit once I have a completely working 
 code base 
@@ -76,7 +78,7 @@ def processData(node, reg):
 
 
 '''
-The init method takes a tree data sturucture and a string.  The tree contains the 
+The init method takes a tree data structure and a string.  The tree contains the 
 root and children nodes of the CFR - initially represented as an xml structure.  The 
 tree and string are passed to the processData method to populate and return a dictionary
 data structure with the Regulation name and the contents 
@@ -87,20 +89,31 @@ def init(node, reg):
     print("... Starting preprocessor.init()")
     time.sleep(0)
     result = processData(node, reg)
-    contentDict = {"Content": regulatoryText}
-    result.update(contentDict)
 
     '''
     To view the contents of the dictionary, uncomment this code
     Need to convert this dictionary into something else... thinking a data frame.. then return..
-    '''
-
+    
     df = pd.DataFrame.from_dict(result, orient='index', columns=['col_1'])
+    print("\n\n ------->   start data frame ")
     for i, row in df.iterrows():
         print("Key ", i)
         print("Value ", f"{row[0]}")
 
     print("\n\nstop data frame here --------------- ")
-    time.sleep(10)
 
+    time.sleep(5)
+    '''
     return result
+
+
+
+'''
+    # is this needed? ----------------
+    #contentDict = {"Content": regulatoryText}
+    # is this needed? ----------------
+    #result.update(contentDict)
+    #print("result update")
+    #print(result)
+    #time.sleep(60)
+'''

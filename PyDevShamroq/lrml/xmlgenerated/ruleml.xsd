@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#">
+    <xs:import namespace="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#" schemaLocation="e.xsd"/>
+    <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="ex8b-defeasible-normal.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+    <xs:element name="Rule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="lrml:hasParaphrase"/>
+                <xs:element minOccurs="0" ref="lrml:hasStrength"/>
+                <xs:element minOccurs="0" ref="ruleml:if"/>
+                <xs:element ref="ruleml:then"/>
+            </xs:sequence>
+            <xs:attribute name="closure" type="xs:NCName"/>
+            <xs:attribute name="key" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="keyref" type="xs:NMTOKEN"/>
+            <xs:attribute name="strength" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="if">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:And"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="And">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="ruleml:formula"/>
+            </xs:sequence>
+            <xs:attribute name="key" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="then">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="ruleml:Atom"/>
+                <xs:element ref="ruleml:Neg"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Neg">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:strong"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="strong">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:Atom"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="formula">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="ruleml:Or"/>
+                <xs:element minOccurs="0" ref="ruleml:Atom"/>
+            </xs:sequence>
+            <xs:attribute name="index" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Or">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="ruleml:formula"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Atom">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:op"/>
+                <xs:element minOccurs="0" ref="ruleml:arg"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="keyref" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="op">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:Rel"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Rel">
+        <xs:complexType>
+            <xs:attribute name="iri" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="arg">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:Ind"/>
+            </xs:sequence>
+            <xs:attribute name="index" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Ind" type="xs:NCName"/>
+</xs:schema>

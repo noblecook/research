@@ -116,6 +116,31 @@ priv_pattern_07 = [{'LOWER': 'is'},
                    {'LOWER': 'to'},
                    {'POS': 'VERB'}]
 
+shamroqMatcher = Matcher(nlp.vocab)
+
+shamroqMatcher.add("RIGHT01", [right_pattern_01])
+shamroqMatcher.add("RIGHT02", [right_pattern_02])
+shamroqMatcher.add("RIGHT03", [right_pattern_03])
+
+shamroqMatcher.add("OBLIGATION01", [obligation_pattern_01])
+shamroqMatcher.add("OBLIGATION02", [obligation_pattern_02])
+shamroqMatcher.add("OBLIGATION03", [obligation_pattern_03])
+shamroqMatcher.add("OBLIGATION04", [obligation_pattern_04])
+shamroqMatcher.add("OBLIGATION05", [obligation_pattern_05])
+shamroqMatcher.add("OBLIGATION06", [obligation_pattern_06])
+
+shamroqMatcher.add("PRIVILEGE01", [priv_pattern_01])
+shamroqMatcher.add("PRIVILEGE02", [priv_pattern_02])
+shamroqMatcher.add("PRIVILEGE03", [priv_pattern_03])
+shamroqMatcher.add("PRIVILEGE04", [priv_pattern_04])
+shamroqMatcher.add("PRIVILEGE05", [priv_pattern_05])
+shamroqMatcher.add("PRIVILEGE06", [priv_pattern_06])
+shamroqMatcher.add("PRIVILEGE07", [priv_pattern_07])
+
+
+
+
+
 
 def test01(spacyDoc):
     '''print Document type and attributes'''
@@ -337,7 +362,7 @@ def main():
     print()
     print()
 
-    shamroq(regText164_510)
+    #shamroq(regText164_510)
 
     print()
     print()

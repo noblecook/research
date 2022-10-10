@@ -1,10 +1,9 @@
 import time
-import datetime
 import uuid
-import re
+import pandas as pd
 
 
-def rinseCycle(inputDataSet):
+def sanitize(inputDataSet):
     cfr = inputDataSet['CFRTITLE']
     sectionNo = inputDataSet['SECTNO']
     title = cfr + sectionNo
@@ -32,9 +31,9 @@ def rinseCycle(inputDataSet):
         },
         "Body": {
             "sectno": inputDataSet['SECTNO'],
-            "subject": inputDataSet['SUBJECT'],
-            "content": inputDataSet['Content'],
-            "cita": inputDataSet['CITA']
+            "subject": inputDataSet['SUBJECT']
+            #"content": inputDataSet['Content'],
+            #"cita": inputDataSet['CITA']
         }
     }
 
@@ -49,7 +48,7 @@ The dictionary data structured is returned back to the caller.
 '''
 
 
-def sanitize(regDataset):
+def init(regDataset):
     print("... starting Analyze.clean()")
-    cleanResults = rinseCycle(regDataset);
+    cleanResults = sanitize(regDataset)
     return cleanResults

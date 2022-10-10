@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#">
+    <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="ex8b-defeasible-normal.xsd"/>
+    <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+    <xs:element name="b" type="xs:NCName"/>
+</xs:schema>

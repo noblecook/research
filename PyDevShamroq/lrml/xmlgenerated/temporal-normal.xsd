@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Time" type="spec:TimeType" xmlns:spec="http://ruleml.org/spec"/>
+  <xs:complexType name="argType">
+    <xs:sequence>
+      <xs:element name="Data">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="2012-07-21T00:00:00Z"/>
+            <xs:enumeration value="2012-07-22T00:00:00Z"/>
+            <xs:enumeration value="2012-07-23T00:00:00Z"/>
+            <xs:enumeration value="2012-06-20T00:00:00Z"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="index" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TimeType">
+    <xs:sequence>
+      <xs:element type="spec:argType" name="arg" xmlns:spec="http://ruleml.org/spec"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="key" use="optional"/>
+  </xs:complexType>
+</xs:schema>

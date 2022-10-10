@@ -1,0 +1,1157 @@
+﻿<HTML xmlns:dt="http://www.w3.org/2001/XMLSchema-instance" xmlns:d2="urn:schemas-microsoft-com:datatypes">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <STYLE>
+          
+    body {font-family:Courier New;font-size:10pt;margin-right:1.5em;background:AliceBlue}
+    .c{ }
+    .m{color:#505050}                   /* markup */
+    .b{color:red;font-weight:bold;text-decoration:none}  /* non breaking space */
+    .e{margin-left:1em;text-indent:-1em;margin-right:1em}  /* expandable */
+    .k{margin-left:1em;text-indent:-1em;margin-right:1em}  /* outer comment (non-expandable)? */
+    .at{color:Maroon}          /* attribute name */
+    .av {color:Black;}       /* attribute value */
+    .t {color:#004080}                 /* element name */
+    .tx{color:Black}   /* text content */
+    .pi{color:Purple}                      /* pi name and content */
+    .ci{color:Green}                 /* comment value */    
+    .side{background-color:#FFFACD}   /* intro div */    
+    .outputtip { display:block }
+    a { color:#004080 }
+    a:visited { color:Purple }
+    a:hover { color:Purple }
+    pre {margin:0px;display:inline}
+        </STYLE>
+  </HEAD>
+  <BODY class="st">
+    <div style="padding:5px;" class="side tx">
+          
+            Your XML document contains no xml-stylesheet processing instruction. To provide
+            an <a href="https://www.tutorialspoint.com/xslt/index.htm" target="_new">XSLT transform</a>, add the following to the top of your file and edit the href
+            attribute accordingly:
+
+            <pre><span class="m">&lt;?</span><span class="pi">xml-stylesheet</span> <span class="at">type</span><span class="m">="</span><span class="av">text/xsl</span><span class="m">" </span><span class="at">href</span><span class="m">="</span><span class="av">stylesheet.xsl</span><span class="m">" ?&gt;</span></pre>
+      <p>
+            You can also enter the XSLT file name using the above "XSLT Location:" text box, but this will not
+            persist with your XML document.
+          </p>
+      <div class="outputtip">
+            You can specify a default output file name using the following in your XML documents:
+            <pre><span class="m">&lt;?</span><span class="pi">xsl-output</span> <span class="at">default</span><span class="m">="</span><span class="av">xslt_output</span><span class="m">" ?&gt;</span></pre>
+      </div>
+    </div>
+    <div class="k"><span><span class="m">&lt;!--</span></span><span id="clean" class="ci"><pre> Adapted by
+  OASIS LegalRuleML TC with the permission of
+  RuleML Inc.
+  from http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd of
+  Deliberation RuleML 1.02
+  dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License,
+  Version 1.0 (the "License"); you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML.
+  Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ...,
+  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the rulemlifics governing
+  permissions and limitations under the License.' ]
+
+
+  &lt;xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/&gt;
+  &lt;xs:import namespace="http://www.w3.org/2001/XMLSchema-datatypes" schemaLocation="XMLSchema-datatypes.xsd"/&gt;
+  &lt;xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/&gt;
+
+  </pre></span><span class="b">&nbsp;</span><span class="m">--&gt;</span></div>
+    <div class="e">
+      <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:schema</span> 
+    <span class="at">elementFormDefault</span><span class="m">="</span><span class="av">qualified</span><span class="m">"</span>
+   
+    <span class="at">targetNamespace</span><span class="m">="</span><span class="av">http://ruleml.org/spec</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+      <div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">duration</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:duration</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">dateTime</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:dateTime</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">time</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:time</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">date</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:date</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">gYearMonth</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:gYearMonth</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">gYear</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:gYear</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">gDay</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:gDay</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">gMonth</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:gMonth</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">boolean</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:boolean</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">base64Binary</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:base64Binary</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">hexBinary</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:hexBinary</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">float</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:float</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">decimal</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:decimal</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">double</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:double</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">anyURI</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:anyURI</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attribute</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">xml:base</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">QName</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:QName</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">NOTATION</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:NOTATION</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">String</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:string</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">normalizedString</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:normalizedString</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">Token</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:token</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">language</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:language</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">Name</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:Name</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">NCName</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:NCName</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">NMTOKEN</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:NMTOKEN</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">NMTOKENS</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:NMTOKENS</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">ENTITY</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:ENTITY</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">ENTITIES</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:ENTITIES</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">integer</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:integer</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">nonPositiveInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:nonPositiveInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">negativeInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:negativeInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">long</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:long</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">int</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:int</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">short</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:short</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">byte</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:byte</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">nonNegativeInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:nonNegativeInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">unsignedLong</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:unsignedLong</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">unsignedInt</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:unsignedInt</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">unsignedByte</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:unsignedByte</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">positiveInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:positiveInteger</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div class="e">
+          <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:complexType</span> 
+    <span class="at">name</span><span class="m">="</span><span class="av">anySimpleType</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+          <div>
+            <div class="e">
+              <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              <div>
+                <div class="e">
+                  <div class="c" STYLE="margin-left:1em;text-indent:-2em"><A href="#" onclick="return false" onfocus="h()" class="b"></A><span class="m">&lt;</span><span class="t">xs:extension</span> 
+    <span class="at">base</span><span class="m">="</span><span class="av">xs:anySimpleType</span><span class="m">"</span>
+  <span class="m">&gt;</span></div>
+                  <div>
+                    <div class="e">
+                      <div STYLE="margin-left:1em;text-indent:-2em"><span class="b">&nbsp;</span><span class="m">&lt;</span><span class="t">xs:attributeGroup</span> 
+    <span class="at">ref</span><span class="m">="</span><span class="av">ruleml:commonNode.attlist</span><span class="m">"</span>
+  <span class="m">/&gt;</span></div>
+                    </div>
+                    <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:extension</span><span class="m">&gt;</span></div>
+                  </div>
+                </div>
+                <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:simpleContent</span><span class="m">&gt;</span></div>
+              </div>
+            </div>
+            <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:complexType</span><span class="m">&gt;</span></div>
+          </div>
+        </div>
+        <div><span class="b">&nbsp;</span><span class="m">&lt;/</span><span class="t">xs:schema</span><span class="m">&gt;</span></div>
+      </div>
+    </div>
+  </BODY>
+</HTML>

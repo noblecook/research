@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#">
+    <xs:import namespace="http://docs.oasis-open.org/legalruleml/examples/compactified/ex8-defeasible-compact#" schemaLocation="e.xsd"/>
+    <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+    <xs:element name="LegalRuleML">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasContext"/>
+                <xs:element ref="lrml:hasStatements"/>
+            </xs:sequence>
+            <xs:attribute ref="xsi:schemaLocation" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasContext">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Context"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Context">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:appliesStrength"/>
+                <xs:element ref="lrml:inScope"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="appliesStrength">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="lrml:StrictStrength"/>
+            </xs:sequence>
+            <xs:attribute name="iri" type="xs:anyURI"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="inScope">
+        <xs:complexType>
+            <xs:attribute name="keyref" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasStatements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Statements"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Statements">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="lrml:hasQualification"/>
+                <xs:element ref="lrml:hasStatement"/>
+            </xs:choice>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasQualification">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Override"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Override">
+        <xs:complexType>
+            <xs:attribute name="over" use="required"/>
+            <xs:attribute name="under" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasStatement">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="lrml:ConstitutiveStatement"/>
+                <xs:element ref="lrml:PrescriptiveStatement"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ConstitutiveStatement">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="lrml:lrml.hasTemplate">
+                    <xs:attribute name="key" use="required" type="xs:NCName"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PrescriptiveStatement">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="lrml:lrml.hasTemplate">
+                    <xs:attribute name="key" use="required" type="xs:NCName"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="StrictStrength">
+        <xs:complexType>
+            <xs:attribute name="iri" type="xs:anyURI"/>
+            <xs:attribute name="key" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="lrml.hasTemplate">
+        <xs:sequence>
+            <xs:element ref="lrml:hasTemplate"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="hasTemplate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:Rule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasParaphrase">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Paraphrase"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Paraphrase">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="e:b"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasStrength">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="lrml:StrictStrength"/>
+                <xs:element ref="lrml:DefeasibleStrength"/>
+                <xs:element ref="lrml:Defeater"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DefeasibleStrength">
+        <xs:complexType>
+            <xs:attribute name="iri" use="required" type="xs:anyURI"/>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Defeater">
+        <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+    <xs:element name="LegalRuleML">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasPrefix"/>
+                <xs:element ref="lrml:hasComment"/>
+                <xs:element ref="lrml:hasLegalReferences"/>
+                <xs:element ref="lrml:hasLegalSources"/>
+                <xs:element ref="lrml:hasSources"/>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasAssociations"/>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasContext"/>
+                <xs:element ref="lrml:hasStatements"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+            <xs:attribute ref="xsi:schemaLocation" use="required"/>
+            <xs:attribute ref="xml:base" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasPrefix">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Prefix"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Prefix">
+        <xs:complexType>
+            <xs:attribute name="pre" use="required" type="xs:NCName"/>
+            <xs:attribute name="refID" use="required" type="xs:anyURI"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasComment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Comment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Comment" type="xs:string"/>
+    <xs:element name="hasLegalReferences">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:LegalReferences"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LegalReferences">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasLegalReference"/>
+            </xs:sequence>
+            <xs:attribute name="refType" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasLegalReference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:LegalReference"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LegalReference">
+        <xs:complexType>
+            <xs:attribute name="refID" use="required" type="xs:anyURI"/>
+            <xs:attribute name="refIDSystemName" use="required"/>
+            <xs:attribute name="refIDSystemSource" type="xs:NMTOKEN"/>
+            <xs:attribute name="refersTo" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasLegalSources">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:LegalSources"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LegalSources">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasLegalSource"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasLegalSource">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:LegalSource"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LegalSource">
+        <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+            <xs:attribute name="sameAs" use="required" type="xs:anyURI"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasSources">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Sources"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Sources">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasSource"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasSource">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Source"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Source">
+        <xs:complexType>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+            <xs:attribute name="sameAs" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasAssociations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Associations"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Associations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="lrml:hasAssociation"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasAssociation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Association"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Association">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:appliesSource"/>
+                <xs:element ref="lrml:toTarget"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="appliesSource">
+        <xs:complexType>
+            <xs:attribute name="keyref" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="toTarget">
+        <xs:complexType>
+            <xs:attribute name="keyref" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasContext">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Context"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Context">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:appliesAssociations"/>
+                <xs:element maxOccurs="unbounded" ref="lrml:inScope"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="appliesAssociations">
+        <xs:complexType>
+            <xs:attribute name="keyref" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="inScope">
+        <xs:complexType>
+            <xs:attribute name="keyref" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasStatements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:Statements"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Statements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:hasStatement"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasStatement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:ConstitutiveStatement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ConstitutiveStatement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="lrml:hasTemplate"/>
+            </xs:sequence>
+            <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasTemplate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ruleml:Rule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Atom">
+        <xs:sequence>
+            <xs:element ref="ruleml:Atom"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

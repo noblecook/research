@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="LegalRuleML" type="v1:LegalRuleMLType" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+  <xs:complexType name="hasTimeType">
+    <xs:sequence>
+      <xs:element ref="spec:Time" xmlns:spec="http://ruleml.org/spec"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TimesType">
+    <xs:sequence>
+      <xs:element type="v1:hasTimeType" name="hasTime" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hasTimesType">
+    <xs:sequence>
+      <xs:element type="v1:TimesType" name="Times" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="forStatusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="iri" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hasStatusDevelopmentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="iri" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="atTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristicType">
+    <xs:sequence>
+      <xs:element type="v1:forStatusType" name="forStatus" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:hasStatusDevelopmentType" name="hasStatusDevelopment" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:atTimeType" name="atTime" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="key" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="hasTemporalCharacteristicType">
+    <xs:sequence>
+      <xs:element type="v1:TemporalCharacteristicType" name="TemporalCharacteristic" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristicsType">
+    <xs:sequence>
+      <xs:element type="v1:hasTemporalCharacteristicType" name="hasTemporalCharacteristic" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="key" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="hasTemporalCharacteristicsType">
+    <xs:sequence>
+      <xs:element type="v1:TemporalCharacteristicsType" name="TemporalCharacteristics" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="appliesSourceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="toTargetType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AssociationType">
+    <xs:sequence>
+      <xs:element type="v1:appliesSourceType" name="appliesSource" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:appliesTemporalCharacteristicsType" name="appliesTemporalCharacteristics" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:toTargetType" name="toTarget" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hasAssociationType">
+    <xs:sequence>
+      <xs:element type="v1:AssociationType" name="Association" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AssociationsType">
+    <xs:sequence>
+      <xs:element type="v1:hasAssociationType" name="hasAssociation" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="key" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="hasAssociationsType">
+    <xs:sequence>
+      <xs:element type="v1:AssociationsType" name="Associations" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="appliesTemporalCharacteristicsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="appliesAssociationsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="inScopeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="keyref"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ContextType">
+    <xs:sequence>
+      <xs:element type="v1:appliesAssociationsType" name="appliesAssociations" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:inScopeType" name="inScope" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="key"/>
+  </xs:complexType>
+  <xs:complexType name="hasContextType">
+    <xs:sequence>
+      <xs:element type="v1:ContextType" name="Context" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LegalRuleMLType">
+    <xs:sequence>
+      <xs:element type="v1:hasTimesType" name="hasTimes" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:hasTemporalCharacteristicsType" name="hasTemporalCharacteristics" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:hasAssociationsType" name="hasAssociations" maxOccurs="unbounded" minOccurs="0" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+      <xs:element type="v1:hasContextType" name="hasContext" xmlns:v1="http://docs.oasis-open.org/legalruleml/ns/v1.0/"/>
+    </xs:sequence>
+    <xs:attribute ref="xml:base"/>
+  </xs:complexType>
+</xs:schema>

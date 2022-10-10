@@ -36,7 +36,7 @@ def evaluateTree(chunkGrammarTree):
         print ("--", i, "--")
         print ("//////////")
         i = i+1
-        time.sleep(3)     
+        time.sleep(0)
         '''
         time.sleep(1)            
         if subtree.label() == 'SECTION':
@@ -80,9 +80,7 @@ def evaluateTree2(chunkGrammarTree):
             print ("--", i, "--")
             print ("//////////")
             i = i+1
-            time.sleep(1)    
-            
-            time.sleep(1)            
+
             if subtree.label() == 'SECTION':
                 leaf = getLeaves(subtree.label(), subtree)
             elif subtree.label() == 'Topic':
@@ -106,15 +104,14 @@ def evaluateTree2(chunkGrammarTree):
             else:
                 #print("NULL Statement as defined by the ONTOLOGY")
                 pass
-                
-            
     print("done... I think!")    
     return leaf
+
 
 def printResults(dictionaryResult):
     print("\n")
     print("Printing Semi-Structured Data of the CFR - as a python dictionary")
-    time.sleep(0);
+    time.sleep(1);
     for key, value in dictionaryResult.items():
         print("Key:", key)       
         for nestedCategory in value:
@@ -130,13 +127,15 @@ def modelRegulatoryFacts(TreeStructure):
     '''
     for results in TreeStructure:
         evaluateTree(results)  
-        print ("--------")
-        print ("--", i, "--")
-        print ("--------")
+        print("--------")
+        print("--", i, "--")
+        print("--------")
         i = i+1
-        time.sleep(500)
+        time.sleep(3)
+        print("line 135 of model.py -  in the modelRegulatoryFacts(TreeStructure) method")
 
-def init(metaDataDictionary, classificatonResults):
+
+def init(metaDataDictionary, classificationResults):
     print("... starting Model")
     
     '''
@@ -144,10 +143,5 @@ def init(metaDataDictionary, classificatonResults):
     base set of attributes (properties) to the Regulation
     '''
     print("metaDataDictionary", type(metaDataDictionary))
-    print("classificatonResults", type(classificatonResults))
-    modelRegulatoryFacts(classificatonResults)    
-        
-        
-        
-        
-          
+    print("classificationResults", type(classificationResults))
+    modelRegulatoryFacts(classificationResults)
