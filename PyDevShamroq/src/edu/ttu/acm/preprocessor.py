@@ -90,6 +90,11 @@ def init(node, reg):
     time.sleep(0)
     result = processData(node, reg)
 
+    # print("printDictionary(result) ........\n\n\n\n")
+    contentDict = {"Content": regulatoryText}
+    result.update(contentDict)
+
+
     '''
     To view the contents of the dictionary, uncomment this code
     Need to convert this dictionary into something else... thinking a data frame.. then return..

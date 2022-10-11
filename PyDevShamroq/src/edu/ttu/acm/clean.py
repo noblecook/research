@@ -31,8 +31,8 @@ def sanitize(inputDataSet):
         },
         "Body": {
             "sectno": inputDataSet['SECTNO'],
-            "subject": inputDataSet['SUBJECT']
-            #"content": inputDataSet['Content'],
+            "subject": inputDataSet['SUBJECT'],
+            "content": inputDataSet['Content']
             #"cita": inputDataSet['CITA']
         }
     }

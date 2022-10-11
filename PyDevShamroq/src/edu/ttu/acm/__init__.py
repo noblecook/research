@@ -9,6 +9,8 @@ import scan
 import preprocessor
 import clean
 import requests
+
+from PyDevShamroq.src.edu.ttu.acm import classifyMetaModel
 from relationExtractor import *
 from spacy import displacy
 from spacy.matcher import Matcher
@@ -43,12 +45,13 @@ xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2021-title16-vol1-sec313-9.xml'
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 
 #regList = [xml_16_132_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-regList = [xml_16_132_005, xml_16_313_009, xml_45_164_510]
+#regList = [xml_16_132_005, xml_16_313_009, xml_45_164_510]
+regList = [xml_16_132_005]
 
 
 def getTimeNow():
     t = time.localtime()
-    current_time = time.strftime("%H:%M:%S", t)
+    current_time = time.strftime("%c", t)
     print("Current Time =", current_time)
     return t
 
@@ -72,20 +75,16 @@ def shamroq(listOfRegulations):
         # print("preProcessedResults is of type ", python Dictionary );
         # print("regulation is of type ", String);
         preProcessedResults = preprocessor.init(scannedResults, regulation)
-        for key, value in preProcessedResults.items():
-            print("key---------->", key)
-            #time.sleep(1)
-            print("value-------->", value, "\n\n")
-            #time.sleep(3)
-
 
         # clean.init() returns a structured dictionary
-        # cleanedResults = clean.init(preProcessedResults)
-
-
-
+        # input = "preProcessedResults", a dictionary of the CFR regulation
+        # output = "cleanedResults" a dictionary of the CFR regulation with metadata
+        cleanedResults = clean.init(preProcessedResults)
 
         # classify.init()
+        # Todo:  Must classify "Grounding" - Permission, Obligation, Prohibition
+        # Todo:  Must classify "The MetaModel" - Subject, Verb, Object, Target
+        # Todo:  We want to use SPACY here!!!
         # input => dictionary of x;
         # output => list
         # Option 1) use nltk, work tokenized, POS tagging, and chunking [ CURRENT ]
@@ -93,18 +92,15 @@ def shamroq(listOfRegulations):
         # List the pros and cons of each; then what I used and why
         # ----- THIS IS REALLY ANALYZE ------
         # ----- Build another class to use Spacy and Textacy ------
-        '''
-        classificationResults = classify.init(cleanedResults)
-        for line in classificationResults:
-            print(line)
-            time.sleep(3)
+
+        classificationResults = classifyMetaModel.init(cleanedResults)
+        #print(classificationResults)
+
 
         # ----- HERE WE WILL USE OWLREADY2 ------
         # ----- Build another class to use Spacy and Textacy ------
         # model.init() input = list of x; output = list
         # model.init(cleanedResults, classificationResults)
-        '''
-    time.sleep(5)
 
     getTimeNow()
     return requirements
@@ -117,18 +113,6 @@ def main():
     print("/------------------------------------------/")
     print("\n")
     shamroq(regList)
-
-    time.sleep(100000)
-
-    #validating LRML
-    test = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/lrml/compact/lrml-compact.xsd"
-
-    try:
-        schema = xmlschema.XMLSchema11(test)
-        print(schema.is_valid(test));
-    except:
-        print("Failed - please try again")
-
     print("\n")
     print("/------------------------------------------/")
     print("... completing main()")
@@ -141,9 +125,31 @@ if __name__ == '__main__':
 
 
 '''
+
+
+classificationResults = classify.init(cleanedResults)
+        for line in classificationResults:
+            print(line)
+            time.sleep(5)
+            
+            
+            
  for key, value in preProcessedResults.items():
             print(key)
             time.sleep(3)
             print(value)
             time.sleep(3)
+            
+            #validating LRML
+    test = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/lrml/compact/lrml-compact.xsd"
+
+    try:
+        schema = xmlschema.XMLSchema11(test)
+        print(schema.is_valid(test));
+    except:
+        print("Failed - please try again")
+
+        for key, value in cleanedResults.items():
+            print("key---------->", key)
+            print("value-------->", value, "\n\n")
 '''
