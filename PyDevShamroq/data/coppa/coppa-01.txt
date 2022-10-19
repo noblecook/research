@@ -1,0 +1,404 @@
+╭─────┬────────┬─────┬──────────────┬───────┬──────────────┬──────────────┬──────────────┬──────────────────────────────╮
+│ SN  │  Text  │ TAG │  Expln Tag   │  Dep  │  Expln Dep   │    Child     │  Ancestors   │           Subtree            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  0  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['1', 'requi │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  1  │   1    │ LS  │ list item ma │ meta  │ meta modifie │    [(, )]    │ ['required'] │          [(, 1, )]           │
+│     │        │     │     rker     │       │      r       │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  2  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['1', 'requi │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  3  │   An   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['operator', │             [An]             │
+│     │        │     │              │       │              │              │  'required'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  4  │ operat │ NN  │ noun, singul │ nsubj │ nominal subj │     [An]     │ ['required'] │        [An, operator]        │
+│     │   or   │     │  ar or mass  │ pass  │ ect (passive │              │              │                              │
+│     │        │     │              │       │      )       │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  5  │   is   │ VBZ │ verb, 3rd pe │ auxpa │ auxiliary (p │      []      │ ['required'] │             [is]             │
+│     │        │     │ rson singula │  ss   │   assive)    │              │              │                              │
+│     │        │     │  r present   │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  6  │ requir │ VBN │ verb, past p │ ROOT  │     root     │ [1, operator │      []      │ [(, 1, ), An, operator, is,  │
+│     │   ed   │     │  articiple   │       │              │ , is, obtain │              │ required, to, obtain, verifi │
+│     │        │     │              │       │              │     , .]     │              │ able, parental, consent, bef │
+│     │        │     │              │       │              │              │              │ ore, any, collection, ,, use │
+│     │        │     │              │       │              │              │              │ , ,, or, disclosure, of, per │
+│     │        │     │              │       │              │              │              │ sonal, information, from, ch │
+│     │        │     │              │       │              │              │              │ ildren, ,, including, consen │
+│     │        │     │              │       │              │              │              │ t, to, any, material, change │
+│     │        │     │              │       │              │              │              │ , in, the, collection, ,, us │
+│     │        │     │              │       │              │              │              │ e, ,, or, disclosure, practi │
+│     │        │     │              │       │              │              │              │ ces, to, which, the, parent, │
+│     │        │     │              │       │              │              │              │  has, previously, consented, │
+│     │        │     │              │       │              │              │              │              .]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  7  │   to   │ TO  │ infinitival  │  aux  │  auxiliary   │      []      │ ['obtain', ' │             [to]             │
+│     │        │     │     "to"     │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  8  │ obtain │ VB  │ verb, base f │ xcomp │ open clausal │ [to, consent │ ['required'] │ [to, obtain, verifiable, par │
+│     │        │     │     orm      │       │  complement  │  , before]   │              │ ental, consent, before, any, │
+│     │        │     │              │       │              │              │              │  collection, ,, use, ,, or,  │
+│     │        │     │              │       │              │              │              │ disclosure, of, personal, in │
+│     │        │     │              │       │              │              │              │ formation, from, children, , │
+│     │        │     │              │       │              │              │              │ , including, consent, to, an │
+│     │        │     │              │       │              │              │              │ y, material, change, in, the │
+│     │        │     │              │       │              │              │              │ , collection, ,, use, ,, or, │
+│     │        │     │              │       │              │              │              │  disclosure, practices, to,  │
+│     │        │     │              │       │              │              │              │ which, the, parent, has, pre │
+│     │        │     │              │       │              │              │              │     viously, consented]      │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  9  │ verifi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['consent',  │         [verifiable]         │
+│     │  able  │     │ nglish), oth │       │   odifier    │              │ 'obtain', 'r │                              │
+│     │        │     │ er noun-modi │       │              │              │  equired']   │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 10  │ parent │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['consent',  │          [parental]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │ 'obtain', 'r │                              │
+│     │        │     │ er noun-modi │       │              │              │  equired']   │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 11  │ consen │ NN  │ noun, singul │ dobj  │ direct objec │ [verifiable, │ ['obtain', ' │ [verifiable, parental, conse │
+│     │   t    │     │  ar or mass  │       │      t       │   parental]  │  required']  │             nt]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 12  │ before │ IN  │ conjunction, │ prep  │ prepositiona │ [collection] │ ['obtain', ' │ [before, any, collection, ,, │
+│     │        │     │  subordinati │       │  l modifier  │              │  required']  │  use, ,, or, disclosure, of, │
+│     │        │     │ ng or prepos │       │              │              │              │  personal, information, from │
+│     │        │     │    ition     │       │              │              │              │ , children, ,, including, co │
+│     │        │     │              │       │              │              │              │ nsent, to, any, material, ch │
+│     │        │     │              │       │              │              │              │ ange, in, the, collection, , │
+│     │        │     │              │       │              │              │              │ , use, ,, or, disclosure, pr │
+│     │        │     │              │       │              │              │              │ actices, to, which, the, par │
+│     │        │     │              │       │              │              │              │ ent, has, previously, consen │
+│     │        │     │              │       │              │              │              │             ted]             │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 13  │  any   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['collection │            [any]             │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 14  │ collec │ NN  │ noun, singul │ pobj  │ object of pr │ [any, ,, use │ ['before', ' │ [any, collection, ,, use, ,, │
+│     │  tion  │     │  ar or mass  │       │  eposition   │ , ,, includi │ obtain', 're │  or, disclosure, of, persona │
+│     │        │     │              │       │              │     ng]      │   quired']   │ l, information, from, childr │
+│     │        │     │              │       │              │              │              │ en, ,, including, consent, t │
+│     │        │     │              │       │              │              │              │ o, any, material, change, in │
+│     │        │     │              │       │              │              │              │ , the, collection, ,, use, , │
+│     │        │     │              │       │              │              │              │ , or, disclosure, practices, │
+│     │        │     │              │       │              │              │              │  to, which, the, parent, has │
+│     │        │     │              │       │              │              │              │   , previously, consented]   │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 15  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 16  │  use   │ NN  │ noun, singul │ conj  │   conjunct   │ [,, or, disc │ ['collection │ [use, ,, or, disclosure, of, │
+│     │        │     │  ar or mass  │       │              │   losure]    │ ', 'before', │  personal, information, from │
+│     │        │     │              │       │              │              │  'obtain', ' │         , children]          │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 17  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['use', 'col │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 18  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'col │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ lection', 'b │                              │
+│     │        │     │      g       │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 19  │ disclo │ NN  │ noun, singul │ conj  │   conjunct   │     [of]     │ ['use', 'col │ [disclosure, of, personal, i │
+│     │  sure  │     │  ar or mass  │       │              │              │ lection', 'b │ nformation, from, children]  │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 20  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │ [information │ ['disclosure │ [of, personal, information,  │
+│     │        │     │  subordinati │       │  l modifier  │      ]       │ ', 'use', 'c │       from, children]        │
+│     │        │     │ ng or prepos │       │              │              │ ollection',  │                              │
+│     │        │     │    ition     │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │ btain', 'req │                              │
+│     │        │     │              │       │              │              │   uired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 21  │ person │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['informatio │          [personal]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │ n', 'of', 'd │                              │
+│     │        │     │ er noun-modi │       │              │              │ isclosure',  │                              │
+│     │        │     │ fier (Chines │       │              │              │ 'use', 'coll │                              │
+│     │        │     │      e)      │       │              │              │ ection', 'be │                              │
+│     │        │     │              │       │              │              │ fore', 'obta │                              │
+│     │        │     │              │       │              │              │ in', 'requir │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 22  │ inform │ NN  │ noun, singul │ pobj  │ object of pr │ [personal, f │ ['of', 'disc │ [personal, information, from │
+│     │ ation  │     │  ar or mass  │       │  eposition   │     rom]     │ losure', 'us │         , children]          │
+│     │        │     │              │       │              │              │ e', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'befor │                              │
+│     │        │     │              │       │              │              │ e', 'obtain' │                              │
+│     │        │     │              │       │              │              │ , 'required' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 23  │  from  │ IN  │ conjunction, │ prep  │ prepositiona │  [children]  │ ['informatio │       [from, children]       │
+│     │        │     │  subordinati │       │  l modifier  │              │ n', 'of', 'd │                              │
+│     │        │     │ ng or prepos │       │              │              │ isclosure',  │                              │
+│     │        │     │    ition     │       │              │              │ 'use', 'coll │                              │
+│     │        │     │              │       │              │              │ ection', 'be │                              │
+│     │        │     │              │       │              │              │ fore', 'obta │                              │
+│     │        │     │              │       │              │              │ in', 'requir │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 24  │ childr │ NNS │ noun, plural │ pobj  │ object of pr │      []      │ ['from', 'in │          [children]          │
+│     │   en   │     │              │       │  eposition   │              │ formation',  │                              │
+│     │        │     │              │       │              │              │ 'of', 'discl │                              │
+│     │        │     │              │       │              │              │ osure', 'use │                              │
+│     │        │     │              │       │              │              │ ', 'collecti │                              │
+│     │        │     │              │       │              │              │ on', 'before │                              │
+│     │        │     │              │       │              │              │ ', 'obtain', │                              │
+│     │        │     │              │       │              │              │  'required'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 25  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 26  │ includ │ VBG │ verb, gerund │ prep  │ prepositiona │  [consent]   │ ['collection │ [including, consent, to, any │
+│     │  ing   │     │  or present  │       │  l modifier  │              │ ', 'before', │ , material, change, in, the, │
+│     │        │     │  participle  │       │              │              │  'obtain', ' │  collection, ,, use, ,, or,  │
+│     │        │     │              │       │              │              │  required']  │ disclosure, practices, to, w │
+│     │        │     │              │       │              │              │              │ hich, the, parent, has, prev │
+│     │        │     │              │       │              │              │              │      iously, consented]      │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 27  │ consen │ NN  │ noun, singul │ pobj  │ object of pr │     [to]     │ ['including' │ [consent, to, any, material, │
+│     │   t    │     │  ar or mass  │       │  eposition   │              │ , 'collectio │  change, in, the, collection │
+│     │        │     │              │       │              │              │ n', 'before' │ , ,, use, ,, or, disclosure, │
+│     │        │     │              │       │              │              │ , 'obtain',  │  practices, to, which, the,  │
+│     │        │     │              │       │              │              │ 'required']  │ parent, has, previously, con │
+│     │        │     │              │       │              │              │              │           sented]            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 28  │   to   │ IN  │ conjunction, │ prep  │ prepositiona │   [change]   │ ['consent',  │ [to, any, material, change,  │
+│     │        │     │  subordinati │       │  l modifier  │              │ 'including', │ in, the, collection, ,, use, │
+│     │        │     │ ng or prepos │       │              │              │  'collection │  ,, or, disclosure, practice │
+│     │        │     │    ition     │       │              │              │ ', 'before', │ s, to, which, the, parent, h │
+│     │        │     │              │       │              │              │  'obtain', ' │  as, previously, consented]  │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 29  │  any   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['change', ' │            [any]             │
+│     │        │     │              │       │              │              │ to', 'consen │                              │
+│     │        │     │              │       │              │              │ t', 'includi │                              │
+│     │        │     │              │       │              │              │ ng', 'collec │                              │
+│     │        │     │              │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │ ', 'required │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 30  │ materi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['change', ' │          [material]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │ to', 'consen │                              │
+│     │        │     │ er noun-modi │       │              │              │ t', 'includi │                              │
+│     │        │     │ fier (Chines │       │              │              │ ng', 'collec │                              │
+│     │        │     │      e)      │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │ ', 'required │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 31  │ change │ NN  │ noun, singul │ pobj  │ object of pr │ [any, materi │ ['to', 'cons │ [any, material, change, in,  │
+│     │        │     │  ar or mass  │       │  eposition   │   al, in]    │ ent', 'inclu │ the, collection, ,, use, ,,  │
+│     │        │     │              │       │              │              │ ding', 'coll │ or, disclosure, practices, t │
+│     │        │     │              │       │              │              │ ection', 'be │ o, which, the, parent, has,  │
+│     │        │     │              │       │              │              │ fore', 'obta │    previously, consented]    │
+│     │        │     │              │       │              │              │ in', 'requir │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 32  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │ [collection] │ ['change', ' │ [in, the, collection, ,, use │
+│     │        │     │  subordinati │       │  l modifier  │              │ to', 'consen │ , ,, or, disclosure, practic │
+│     │        │     │ ng or prepos │       │              │              │ t', 'includi │ es, to, which, the, parent,  │
+│     │        │     │    ition     │       │              │              │ ng', 'collec │ has, previously, consented]  │
+│     │        │     │              │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │ ', 'required │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 33  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['collection │            [the]             │
+│     │        │     │              │       │              │              │ ', 'in', 'ch │                              │
+│     │        │     │              │       │              │              │ ange', 'to', │                              │
+│     │        │     │              │       │              │              │  'consent',  │                              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 34  │ collec │ NN  │ noun, singul │ pobj  │ object of pr │ [the, ,, use │ ['in', 'chan │ [the, collection, ,, use, ,, │
+│     │  tion  │     │  ar or mass  │       │  eposition   │      ]       │ ge', 'to', ' │  or, disclosure, practices,  │
+│     │        │     │              │       │              │              │ consent', 'i │ to, which, the, parent, has, │
+│     │        │     │              │       │              │              │ ncluding', ' │    previously, consented]    │
+│     │        │     │              │       │              │              │ collection', │                              │
+│     │        │     │              │       │              │              │  'before', ' │                              │
+│     │        │     │              │       │              │              │ obtain', 're │                              │
+│     │        │     │              │       │              │              │   quired']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 35  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'in', 'ch │                              │
+│     │        │     │              │       │              │              │ ange', 'to', │                              │
+│     │        │     │              │       │              │              │  'consent',  │                              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 36  │  use   │ NN  │ noun, singul │ conj  │   conjunct   │ [,, or, prac │ ['collection │ [use, ,, or, disclosure, pra │
+│     │        │     │  ar or mass  │       │              │    tices]    │ ', 'in', 'ch │ ctices, to, which, the, pare │
+│     │        │     │              │       │              │              │ ange', 'to', │ nt, has, previously, consent │
+│     │        │     │              │       │              │              │  'consent',  │             ed]              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │  'obtain', ' │                              │
+│     │        │     │              │       │              │              │  required']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 37  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['use', 'col │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ lection', 'i │                              │
+│     │        │     │              │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 38  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'col │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ lection', 'i │                              │
+│     │        │     │      g       │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 39  │ disclo │ NN  │ noun, singul │ compo │   compound   │      []      │ ['practices' │         [disclosure]         │
+│     │  sure  │     │  ar or mass  │  und  │              │              │ , 'use', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ in', 'change │                              │
+│     │        │     │              │       │              │              │ ', 'to', 'co │                              │
+│     │        │     │              │       │              │              │ nsent', 'inc │                              │
+│     │        │     │              │       │              │              │ luding', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ before', 'ob │                              │
+│     │        │     │              │       │              │              │ tain', 'requ │                              │
+│     │        │     │              │       │              │              │    ired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 40  │ practi │ NNS │ noun, plural │ conj  │   conjunct   │ [disclosure, │ ['use', 'col │ [disclosure, practices, to,  │
+│     │  ces   │     │              │       │              │  consented]  │ lection', 'i │ which, the, parent, has, pre │
+│     │        │     │              │       │              │              │ n', 'change' │     viously, consented]      │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 41  │   to   │ TO  │ infinitival  │ prep  │ prepositiona │   [which]    │ ['consented' │         [to, which]          │
+│     │        │     │     "to"     │       │  l modifier  │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │ btain', 'req │                              │
+│     │        │     │              │       │              │              │   uired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 42  │ which  │ WDT │ wh-determine │ pobj  │ object of pr │      []      │ ['to', 'cons │           [which]            │
+│     │        │     │      r       │       │  eposition   │              │ ented', 'pra │                              │
+│     │        │     │              │       │              │              │ ctices', 'us │                              │
+│     │        │     │              │       │              │              │ e', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'change', 't │                              │
+│     │        │     │              │       │              │              │ o', 'consent │                              │
+│     │        │     │              │       │              │              │ ', 'includin │                              │
+│     │        │     │              │       │              │              │ g', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'befor │                              │
+│     │        │     │              │       │              │              │ e', 'obtain' │                              │
+│     │        │     │              │       │              │              │ , 'required' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 43  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['parent', ' │            [the]             │
+│     │        │     │              │       │              │              │ consented',  │                              │
+│     │        │     │              │       │              │              │ 'practices', │                              │
+│     │        │     │              │       │              │              │  'use', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'i │                              │
+│     │        │     │              │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'requi │                              │
+│     │        │     │              │       │              │              │    red']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 44  │ parent │ NN  │ noun, singul │ nsubj │ nominal subj │    [the]     │ ['consented' │        [the, parent]         │
+│     │        │     │  ar or mass  │       │     ect      │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │ btain', 'req │                              │
+│     │        │     │              │       │              │              │   uired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 45  │  has   │ VBZ │ verb, 3rd pe │  aux  │  auxiliary   │      []      │ ['consented' │            [has]             │
+│     │        │     │ rson singula │       │              │              │ , 'practices │                              │
+│     │        │     │  r present   │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │ btain', 'req │                              │
+│     │        │     │              │       │              │              │   uired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 46  │ previo │ RB  │    adverb    │ advmo │ adverbial mo │      []      │ ['consented' │         [previously]         │
+│     │  usly  │     │              │   d   │    difier    │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │ btain', 'req │                              │
+│     │        │     │              │       │              │              │   uired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 47  │ consen │ VBN │ verb, past p │ relcl │ relative cla │ [to, parent, │ ['practices' │ [to, which, the, parent, has │
+│     │  ted   │     │  articiple   │       │ use modifier │  has, previo │ , 'use', 'co │   , previously, consented]   │
+│     │        │     │              │       │              │    usly]     │ llection', ' │                              │
+│     │        │     │              │       │              │              │ in', 'change │                              │
+│     │        │     │              │       │              │              │ ', 'to', 'co │                              │
+│     │        │     │              │       │              │              │ nsent', 'inc │                              │
+│     │        │     │              │       │              │              │ luding', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ before', 'ob │                              │
+│     │        │     │              │       │              │              │ tain', 'requ │                              │
+│     │        │     │              │       │              │              │    ired']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 48  │   .    │  .  │ punctuation  │ punct │ punctuation  │      []      │ ['required'] │             [.]              │
+│     │        │     │ mark, senten │       │              │              │              │                              │
+│     │        │     │  ce closer   │       │              │              │              │                              │
+╰─────┴────────┴─────┴──────────────┴───────┴──────────────┴──────────────┴──────────────┴──────────────────────────────╯

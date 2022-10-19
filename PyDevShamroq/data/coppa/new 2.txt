@@ -1,0 +1,1339 @@
+
+How many times do these pattern come up - in COPPA?
+
+╭─────┬────────┬─────┬──────────────┬───────┬──────────────┬──────────────┬──────────────┬──────────────────────────────╮
+│ SN  │  Text  │ TAG │  Expln Tag   │  Dep  │  Expln Dep   │    Child     │  Ancestors   │           Subtree            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  0  │   An   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['operator', │             [An]             │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  1  │ operat │ NN  │ noun, singul │ nsubj │ nominal subj │     [An]     │  ['obtain']  │        [An, operator]        │
+│     │   or   │     │  ar or mass  │       │     ect      │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  2  │  must  │ MD  │ verb, modal  │  aux  │  auxiliary   │      []      │  ['obtain']  │            [must]            │
+│     │        │     │  auxiliary   │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  3  │ obtain │ VB  │ verb, base f │ ROOT  │     root     │ [operator, m │      []      │ [An, operator, must, obtain, │
+│     │        │     │     orm      │       │              │ ust, consent │              │  verifiable, parental, conse │
+│     │        │     │              │       │              │ , before, .] │              │ nt, before, any, collection, │
+│     │        │     │              │       │              │              │              │  ,, use, ,, or, disclosure,  │
+│     │        │     │              │       │              │              │              │ of, personal, information, f │
+│     │        │     │              │       │              │              │              │ rom, children, ,, including, │
+│     │        │     │              │       │              │              │              │  consent, to, any, material, │
+│     │        │     │              │       │              │              │              │  change, in, the, collection │
+│     │        │     │              │       │              │              │              │ , ,, use, ,, or, disclosure, │
+│     │        │     │              │       │              │              │              │  practices, to, which, the,  │
+│     │        │     │              │       │              │              │              │ parent, has, previously, con │
+│     │        │     │              │       │              │              │              │          sented, .]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  4  │ verifi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['consent',  │         [verifiable]         │
+│     │  able  │     │ nglish), oth │       │   odifier    │              │  'obtain']   │                              │
+│     │        │     │ er noun-modi │       │              │              │              │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  5  │ parent │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['consent',  │          [parental]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │  'obtain']   │                              │
+│     │        │     │ er noun-modi │       │              │              │              │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  6  │ consen │ NN  │ noun, singul │ dobj  │ direct objec │ [verifiable, │  ['obtain']  │ [verifiable, parental, conse │
+│     │   t    │     │  ar or mass  │       │      t       │   parental]  │              │             nt]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  7  │ before │ IN  │ conjunction, │ prep  │ prepositiona │ [collection] │  ['obtain']  │ [before, any, collection, ,, │
+│     │        │     │  subordinati │       │  l modifier  │              │              │  use, ,, or, disclosure, of, │
+│     │        │     │ ng or prepos │       │              │              │              │  personal, information, from │
+│     │        │     │    ition     │       │              │              │              │ , children, ,, including, co │
+│     │        │     │              │       │              │              │              │ nsent, to, any, material, ch │
+│     │        │     │              │       │              │              │              │ ange, in, the, collection, , │
+│     │        │     │              │       │              │              │              │ , use, ,, or, disclosure, pr │
+│     │        │     │              │       │              │              │              │ actices, to, which, the, par │
+│     │        │     │              │       │              │              │              │ ent, has, previously, consen │
+│     │        │     │              │       │              │              │              │             ted]             │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  8  │  any   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['collection │            [any]             │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  9  │ collec │ NN  │ noun, singul │ pobj  │ object of pr │ [any, ,, use │ ['before', ' │ [any, collection, ,, use, ,, │
+│     │  tion  │     │  ar or mass  │       │  eposition   │ , ,, includi │   obtain']   │  or, disclosure, of, persona │
+│     │        │     │              │       │              │     ng]      │              │ l, information, from, childr │
+│     │        │     │              │       │              │              │              │ en, ,, including, consent, t │
+│     │        │     │              │       │              │              │              │ o, any, material, change, in │
+│     │        │     │              │       │              │              │              │ , the, collection, ,, use, , │
+│     │        │     │              │       │              │              │              │ , or, disclosure, practices, │
+│     │        │     │              │       │              │              │              │  to, which, the, parent, has │
+│     │        │     │              │       │              │              │              │   , previously, consented]   │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 10  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 11  │  use   │ NN  │ noun, singul │ conj  │   conjunct   │ [,, or, disc │ ['collection │ [use, ,, or, disclosure, of, │
+│     │        │     │  ar or mass  │       │              │   losure]    │ ', 'before', │  personal, information, from │
+│     │        │     │              │       │              │              │   'obtain']  │         , children]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 12  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['use', 'col │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 13  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'col │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ lection', 'b │                              │
+│     │        │     │      g       │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 14  │ disclo │ NN  │ noun, singul │ conj  │   conjunct   │     [of]     │ ['use', 'col │ [disclosure, of, personal, i │
+│     │  sure  │     │  ar or mass  │       │              │              │ lection', 'b │ nformation, from, children]  │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 15  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │ [information │ ['disclosure │ [of, personal, information,  │
+│     │        │     │  subordinati │       │  l modifier  │      ]       │ ', 'use', 'c │       from, children]        │
+│     │        │     │ ng or prepos │       │              │              │ ollection',  │                              │
+│     │        │     │    ition     │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │   btain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 16  │ person │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['informatio │          [personal]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │ n', 'of', 'd │                              │
+│     │        │     │ er noun-modi │       │              │              │ isclosure',  │                              │
+│     │        │     │ fier (Chines │       │              │              │ 'use', 'coll │                              │
+│     │        │     │      e)      │       │              │              │ ection', 'be │                              │
+│     │        │     │              │       │              │              │ fore', 'obta │                              │
+│     │        │     │              │       │              │              │     in']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 17  │ inform │ NN  │ noun, singul │ pobj  │ object of pr │ [personal, f │ ['of', 'disc │ [personal, information, from │
+│     │ ation  │     │  ar or mass  │       │  eposition   │     rom]     │ losure', 'us │         , children]          │
+│     │        │     │              │       │              │              │ e', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'befor │                              │
+│     │        │     │              │       │              │              │ e', 'obtain' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 18  │  from  │ IN  │ conjunction, │ prep  │ prepositiona │  [children]  │ ['informatio │       [from, children]       │
+│     │        │     │  subordinati │       │  l modifier  │              │ n', 'of', 'd │                              │
+│     │        │     │ ng or prepos │       │              │              │ isclosure',  │                              │
+│     │        │     │    ition     │       │              │              │ 'use', 'coll │                              │
+│     │        │     │              │       │              │              │ ection', 'be │                              │
+│     │        │     │              │       │              │              │ fore', 'obta │                              │
+│     │        │     │              │       │              │              │     in']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 19  │ childr │ NNS │ noun, plural │ pobj  │ object of pr │      []      │ ['from', 'in │          [children]          │
+│     │   en   │     │              │       │  eposition   │              │ formation',  │                              │
+│     │        │     │              │       │              │              │ 'of', 'discl │                              │
+│     │        │     │              │       │              │              │ osure', 'use │                              │
+│     │        │     │              │       │              │              │ ', 'collecti │                              │
+│     │        │     │              │       │              │              │ on', 'before │                              │
+│     │        │     │              │       │              │              │ ', 'obtain'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 20  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 21  │ includ │ VBG │ verb, gerund │ prep  │ prepositiona │  [consent]   │ ['collection │ [including, consent, to, any │
+│     │  ing   │     │  or present  │       │  l modifier  │              │ ', 'before', │ , material, change, in, the, │
+│     │        │     │  participle  │       │              │              │   'obtain']  │  collection, ,, use, ,, or,  │
+│     │        │     │              │       │              │              │              │ disclosure, practices, to, w │
+│     │        │     │              │       │              │              │              │ hich, the, parent, has, prev │
+│     │        │     │              │       │              │              │              │      iously, consented]      │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 22  │ consen │ NN  │ noun, singul │ pobj  │ object of pr │     [to]     │ ['including' │ [consent, to, any, material, │
+│     │   t    │     │  ar or mass  │       │  eposition   │              │ , 'collectio │  change, in, the, collection │
+│     │        │     │              │       │              │              │ n', 'before' │ , ,, use, ,, or, disclosure, │
+│     │        │     │              │       │              │              │ , 'obtain']  │  practices, to, which, the,  │
+│     │        │     │              │       │              │              │              │ parent, has, previously, con │
+│     │        │     │              │       │              │              │              │           sented]            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 23  │   to   │ IN  │ conjunction, │ prep  │ prepositiona │   [change]   │ ['consent',  │ [to, any, material, change,  │
+│     │        │     │  subordinati │       │  l modifier  │              │ 'including', │ in, the, collection, ,, use, │
+│     │        │     │ ng or prepos │       │              │              │  'collection │  ,, or, disclosure, practice │
+│     │        │     │    ition     │       │              │              │ ', 'before', │ s, to, which, the, parent, h │
+│     │        │     │              │       │              │              │   'obtain']  │  as, previously, consented]  │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 24  │  any   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['change', ' │            [any]             │
+│     │        │     │              │       │              │              │ to', 'consen │                              │
+│     │        │     │              │       │              │              │ t', 'includi │                              │
+│     │        │     │              │       │              │              │ ng', 'collec │                              │
+│     │        │     │              │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 25  │ materi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['change', ' │          [material]          │
+│     │   al   │     │ nglish), oth │       │   odifier    │              │ to', 'consen │                              │
+│     │        │     │ er noun-modi │       │              │              │ t', 'includi │                              │
+│     │        │     │ fier (Chines │       │              │              │ ng', 'collec │                              │
+│     │        │     │      e)      │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 26  │ change │ NN  │ noun, singul │ pobj  │ object of pr │ [any, materi │ ['to', 'cons │ [any, material, change, in,  │
+│     │        │     │  ar or mass  │       │  eposition   │   al, in]    │ ent', 'inclu │ the, collection, ,, use, ,,  │
+│     │        │     │              │       │              │              │ ding', 'coll │ or, disclosure, practices, t │
+│     │        │     │              │       │              │              │ ection', 'be │ o, which, the, parent, has,  │
+│     │        │     │              │       │              │              │ fore', 'obta │    previously, consented]    │
+│     │        │     │              │       │              │              │     in']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 27  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │ [collection] │ ['change', ' │ [in, the, collection, ,, use │
+│     │        │     │  subordinati │       │  l modifier  │              │ to', 'consen │ , ,, or, disclosure, practic │
+│     │        │     │ ng or prepos │       │              │              │ t', 'includi │ es, to, which, the, parent,  │
+│     │        │     │    ition     │       │              │              │ ng', 'collec │ has, previously, consented]  │
+│     │        │     │              │       │              │              │ tion', 'befo │                              │
+│     │        │     │              │       │              │              │ re', 'obtain │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 28  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['collection │            [the]             │
+│     │        │     │              │       │              │              │ ', 'in', 'ch │                              │
+│     │        │     │              │       │              │              │ ange', 'to', │                              │
+│     │        │     │              │       │              │              │  'consent',  │                              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 29  │ collec │ NN  │ noun, singul │ pobj  │ object of pr │ [the, ,, use │ ['in', 'chan │ [the, collection, ,, use, ,, │
+│     │  tion  │     │  ar or mass  │       │  eposition   │      ]       │ ge', 'to', ' │  or, disclosure, practices,  │
+│     │        │     │              │       │              │              │ consent', 'i │ to, which, the, parent, has, │
+│     │        │     │              │       │              │              │ ncluding', ' │    previously, consented]    │
+│     │        │     │              │       │              │              │ collection', │                              │
+│     │        │     │              │       │              │              │  'before', ' │                              │
+│     │        │     │              │       │              │              │   obtain']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 30  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['collection │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'in', 'ch │                              │
+│     │        │     │              │       │              │              │ ange', 'to', │                              │
+│     │        │     │              │       │              │              │  'consent',  │                              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 31  │  use   │ NN  │ noun, singul │ conj  │   conjunct   │ [,, or, prac │ ['collection │ [use, ,, or, disclosure, pra │
+│     │        │     │  ar or mass  │       │              │    tices]    │ ', 'in', 'ch │ ctices, to, which, the, pare │
+│     │        │     │              │       │              │              │ ange', 'to', │ nt, has, previously, consent │
+│     │        │     │              │       │              │              │  'consent',  │             ed]              │
+│     │        │     │              │       │              │              │ 'including', │                              │
+│     │        │     │              │       │              │              │  'collection │                              │
+│     │        │     │              │       │              │              │ ', 'before', │                              │
+│     │        │     │              │       │              │              │   'obtain']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 32  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['use', 'col │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ lection', 'i │                              │
+│     │        │     │              │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 33  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'col │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ lection', 'i │                              │
+│     │        │     │      g       │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 34  │ disclo │ NN  │ noun, singul │ compo │   compound   │      []      │ ['practices' │         [disclosure]         │
+│     │  sure  │     │  ar or mass  │  und  │              │              │ , 'use', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ in', 'change │                              │
+│     │        │     │              │       │              │              │ ', 'to', 'co │                              │
+│     │        │     │              │       │              │              │ nsent', 'inc │                              │
+│     │        │     │              │       │              │              │ luding', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ before', 'ob │                              │
+│     │        │     │              │       │              │              │    tain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 35  │ practi │ NNS │ noun, plural │ conj  │   conjunct   │ [disclosure, │ ['use', 'col │ [disclosure, practices, to,  │
+│     │  ces   │     │              │       │              │  consented]  │ lection', 'i │ which, the, parent, has, pre │
+│     │        │     │              │       │              │              │ n', 'change' │     viously, consented]      │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 36  │   to   │ TO  │ infinitival  │ prep  │ prepositiona │   [which]    │ ['consented' │         [to, which]          │
+│     │        │     │     "to"     │       │  l modifier  │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │   btain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 37  │ which  │ WDT │ wh-determine │ pobj  │ object of pr │      []      │ ['to', 'cons │           [which]            │
+│     │        │     │      r       │       │  eposition   │              │ ented', 'pra │                              │
+│     │        │     │              │       │              │              │ ctices', 'us │                              │
+│     │        │     │              │       │              │              │ e', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'change', 't │                              │
+│     │        │     │              │       │              │              │ o', 'consent │                              │
+│     │        │     │              │       │              │              │ ', 'includin │                              │
+│     │        │     │              │       │              │              │ g', 'collect │                              │
+│     │        │     │              │       │              │              │ ion', 'befor │                              │
+│     │        │     │              │       │              │              │ e', 'obtain' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 38  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['parent', ' │            [the]             │
+│     │        │     │              │       │              │              │ consented',  │                              │
+│     │        │     │              │       │              │              │ 'practices', │                              │
+│     │        │     │              │       │              │              │  'use', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'i │                              │
+│     │        │     │              │       │              │              │ n', 'change' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'con │                              │
+│     │        │     │              │       │              │              │ sent', 'incl │                              │
+│     │        │     │              │       │              │              │ uding', 'col │                              │
+│     │        │     │              │       │              │              │ lection', 'b │                              │
+│     │        │     │              │       │              │              │ efore', 'obt │                              │
+│     │        │     │              │       │              │              │    ain']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 39  │ parent │ NN  │ noun, singul │ nsubj │ nominal subj │    [the]     │ ['consented' │        [the, parent]         │
+│     │        │     │  ar or mass  │       │     ect      │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │   btain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 40  │  has   │ VBZ │ verb, 3rd pe │  aux  │  auxiliary   │      []      │ ['consented' │            [has]             │
+│     │        │     │ rson singula │       │              │              │ , 'practices │                              │
+│     │        │     │  r present   │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │   btain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 41  │ previo │ RB  │    adverb    │ advmo │ adverbial mo │      []      │ ['consented' │         [previously]         │
+│     │  usly  │     │              │   d   │    difier    │              │ , 'practices │                              │
+│     │        │     │              │       │              │              │ ', 'use', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'chang │                              │
+│     │        │     │              │       │              │              │ e', 'to', 'c │                              │
+│     │        │     │              │       │              │              │ onsent', 'in │                              │
+│     │        │     │              │       │              │              │ cluding', 'c │                              │
+│     │        │     │              │       │              │              │ ollection',  │                              │
+│     │        │     │              │       │              │              │ 'before', 'o │                              │
+│     │        │     │              │       │              │              │   btain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 42  │ consen │ VBN │ verb, past p │ relcl │ relative cla │ [to, parent, │ ['practices' │ [to, which, the, parent, has │
+│     │  ted   │     │  articiple   │       │ use modifier │  has, previo │ , 'use', 'co │   , previously, consented]   │
+│     │        │     │              │       │              │    usly]     │ llection', ' │                              │
+│     │        │     │              │       │              │              │ in', 'change │                              │
+│     │        │     │              │       │              │              │ ', 'to', 'co │                              │
+│     │        │     │              │       │              │              │ nsent', 'inc │                              │
+│     │        │     │              │       │              │              │ luding', 'co │                              │
+│     │        │     │              │       │              │              │ llection', ' │                              │
+│     │        │     │              │       │              │              │ before', 'ob │                              │
+│     │        │     │              │       │              │              │    tain']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 43  │   .    │  .  │ punctuation  │ punct │ punctuation  │      []      │  ['obtain']  │             [.]              │
+│     │        │     │ mark, senten │       │              │              │              │                              │
+│     │        │     │  ce closer   │       │              │              │              │                              │
+╰─────┴────────┴─────┴──────────────┴───────┴──────────────┴──────────────┴──────────────┴──────────────────────────────╯
+1
+------------------------------------->
+
+╭─────┬────────┬─────┬──────────────┬───────┬──────────────┬──────────────┬──────────────┬──────────────────────────────╮
+│ SN  │  Text  │ TAG │  Expln Tag   │  Dep  │  Expln Dep   │    Child     │  Ancestors   │           Subtree            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  0  │  The   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['entity', ' │            [The]             │
+│     │        │     │              │       │              │              │   inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  1  │ covere │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['entity', ' │          [covered]           │
+│     │   d    │     │ nglish), oth │       │   odifier    │              │   inform']   │                              │
+│     │        │     │ er noun-modi │       │              │              │              │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  2  │ entity │ NN  │ noun, singul │ nsubj │ nominal subj │ [The, covere │  ['inform']  │    [The, covered, entity]    │
+│     │        │     │  ar or mass  │       │     ect      │      d]      │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  3  │  may   │ MD  │ verb, modal  │  aux  │  auxiliary   │      []      │  ['inform']  │            [may]             │
+│     │        │     │  auxiliary   │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  4  │ orally │ RB  │    adverb    │ advmo │ adverbial mo │      []      │  ['inform']  │           [orally]           │
+│     │        │     │              │   d   │    difier    │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  5  │ inform │ VB  │ verb, base f │ ROOT  │     root     │ [entity, may │      []      │ [The, covered, entity, may,  │
+│     │        │     │     orm      │       │              │ , orally, in │              │ orally, inform, the, individ │
+│     │        │     │              │       │              │ dividual, of │              │ ual, of, and, obtain, the, i │
+│     │        │     │              │       │              │ , and, obtai │              │ ndividual, 's, oral, agreeme │
+│     │        │     │              │       │              │    n, .]     │              │ nt, or, objection, to, a, us │
+│     │        │     │              │       │              │              │              │ e, or, disclosure, permitted │
+│     │        │     │              │       │              │              │              │   , by, this, section, .]    │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  6  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [the]             │
+│     │        │     │              │       │              │              │ ', 'inform'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  7  │ indivi │ NN  │ noun, singul │ dobj  │ direct objec │    [the]     │  ['inform']  │      [the, individual]       │
+│     │  dual  │     │  ar or mass  │       │      t       │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  8  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │      []      │  ['inform']  │             [of]             │
+│     │        │     │  subordinati │       │  l modifier  │              │              │                              │
+│     │        │     │ ng or prepos │       │              │              │              │                              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  9  │  and   │ CC  │ conjunction, │  cc   │ coordinating │      []      │  ['inform']  │            [and]             │
+│     │        │     │  coordinatin │       │  conjunction │              │              │                              │
+│     │        │     │      g       │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 10  │ obtain │ VB  │ verb, base f │ conj  │   conjunct   │ [agreement,  │  ['inform']  │ [obtain, the, individual, 's │
+│     │        │     │     orm      │       │              │     to]      │              │ , oral, agreement, or, objec │
+│     │        │     │              │       │              │              │              │ tion, to, a, use, or, disclo │
+│     │        │     │              │       │              │              │              │ sure, permitted, by, this, s │
+│     │        │     │              │       │              │              │              │           ection]            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 11  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [the]             │
+│     │        │     │              │       │              │              │ ', 'agreemen │                              │
+│     │        │     │              │       │              │              │ t', 'obtain' │                              │
+│     │        │     │              │       │              │              │ , 'inform']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 12  │ indivi │ NN  │ noun, singul │ poss  │ possession m │  [the, 's]   │ ['agreement' │    [the, individual, 's]     │
+│     │  dual  │     │  ar or mass  │       │   odifier    │              │ , 'obtain',  │                              │
+│     │        │     │              │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 13  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['individual │             ['s]             │
+│     │        │     │    nding     │       │              │              │ ', 'agreemen │                              │
+│     │        │     │              │       │              │              │ t', 'obtain' │                              │
+│     │        │     │              │       │              │              │ , 'inform']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 14  │  oral  │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['agreement' │            [oral]            │
+│     │        │     │ nglish), oth │       │   odifier    │              │ , 'obtain',  │                              │
+│     │        │     │ er noun-modi │       │              │              │  'inform']   │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 15  │ agreem │ NN  │ noun, singul │ dobj  │ direct objec │ [individual, │ ['obtain', ' │ [the, individual, 's, oral,  │
+│     │  ent   │     │  ar or mass  │       │      t       │  oral, or, o │   inform']   │  agreement, or, objection]   │
+│     │        │     │              │       │              │  bjection]   │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 16  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['agreement' │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ , 'obtain',  │                              │
+│     │        │     │      g       │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 17  │ object │ NN  │ noun, singul │ conj  │   conjunct   │      []      │ ['agreement' │         [objection]          │
+│     │  ion   │     │  ar or mass  │       │              │              │ , 'obtain',  │                              │
+│     │        │     │              │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 18  │   to   │ IN  │ conjunction, │ prep  │ prepositiona │    [use]     │ ['obtain', ' │ [to, a, use, or, disclosure, │
+│     │        │     │  subordinati │       │  l modifier  │              │   inform']   │  permitted, by, this, sectio │
+│     │        │     │ ng or prepos │       │              │              │              │              n]              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 19  │   a    │ DT  │  determiner  │  det  │  determiner  │      []      │ ['use', 'to' │             [a]              │
+│     │        │     │              │       │              │              │ , 'obtain',  │                              │
+│     │        │     │              │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 20  │  use   │ NN  │ noun, singul │ pobj  │ object of pr │ [a, or, disc │ ['to', 'obta │ [a, use, or, disclosure, per │
+│     │        │     │  ar or mass  │       │  eposition   │ losure, perm │ in', 'inform │  mitted, by, this, section]  │
+│     │        │     │              │       │              │    itted]    │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 21  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'to' │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ , 'obtain',  │                              │
+│     │        │     │      g       │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 22  │ disclo │ NN  │ noun, singul │ conj  │   conjunct   │      []      │ ['use', 'to' │         [disclosure]         │
+│     │  sure  │     │  ar or mass  │       │              │              │ , 'obtain',  │                              │
+│     │        │     │              │       │              │              │  'inform']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 23  │ permit │ VBN │ verb, past p │  acl  │ clausal modi │     [by]     │ ['use', 'to' │ [permitted, by, this, sectio │
+│     │  ted   │     │  articiple   │       │ fier of noun │              │ , 'obtain',  │              n]              │
+│     │        │     │              │       │  (adjectival │              │  'inform']   │                              │
+│     │        │     │              │       │    clause)   │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 24  │   by   │ IN  │ conjunction, │ agent │    agent     │  [section]   │ ['permitted' │     [by, this, section]      │
+│     │        │     │  subordinati │       │              │              │ , 'use', 'to │                              │
+│     │        │     │ ng or prepos │       │              │              │ ', 'obtain', │                              │
+│     │        │     │    ition     │       │              │              │   'inform']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 25  │  this  │ DT  │  determiner  │  det  │  determiner  │      []      │ ['section',  │            [this]            │
+│     │        │     │              │       │              │              │ 'by', 'permi │                              │
+│     │        │     │              │       │              │              │ tted', 'use' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'obt │                              │
+│     │        │     │              │       │              │              │ ain', 'infor │                              │
+│     │        │     │              │       │              │              │     m']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 26  │ sectio │ NN  │ noun, singul │ pobj  │ object of pr │    [this]    │ ['by', 'perm │       [this, section]        │
+│     │   n    │     │  ar or mass  │       │  eposition   │              │ itted', 'use │                              │
+│     │        │     │              │       │              │              │ ', 'to', 'ob │                              │
+│     │        │     │              │       │              │              │ tain', 'info │                              │
+│     │        │     │              │       │              │              │     rm']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 27  │   .    │  .  │ punctuation  │ punct │ punctuation  │      []      │  ['inform']  │             [.]              │
+│     │        │     │ mark, senten │       │              │              │              │                              │
+│     │        │     │  ce closer   │       │              │              │              │                              │
+╰─────┴────────┴─────┴──────────────┴───────┴──────────────┴──────────────┴──────────────┴──────────────────────────────╯
+​
+------------------------------------->
+
+
+
+
+
+
+
+╭─────┬────────┬─────┬──────────────┬───────┬──────────────┬──────────────┬──────────────┬──────────────────────────────╮
+│ SN  │  Text  │ TAG │  Expln Tag   │  Dep  │  Expln Dep   │    Child     │  Ancestors   │           Subtree            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  0  │ Except │ IN  │ conjunction, │ ROOT  │     root     │    [Use]     │      []      │ [Except, when, an, objection │
+│     │        │     │  subordinati │       │              │              │              │ , is, expressed, in, accorda │
+│     │        │     │ ng or prepos │       │              │              │              │ nce, with, paragraphs, (, a) │
+│     │        │     │    ition     │       │              │              │              │ (2, ), or, (, 3, ), of, this │
+│     │        │     │              │       │              │              │              │ , section, ,, a, covered, he │
+│     │        │     │              │       │              │              │              │ alth, care, provider, may, : │
+│     │        │     │              │       │              │              │              │ , (, i, ), Use, the, followi │
+│     │        │     │              │       │              │              │              │ ng, protected, health, infor │
+│     │        │     │              │       │              │              │              │ mation, (, A, ), The, indivi │
+│     │        │     │              │       │              │              │              │ dual, 's, name, ;, (, B, ),  │
+│     │        │     │              │       │              │              │              │ to, maintain, a, directory,  │
+│     │        │     │              │       │              │              │              │ of, individuals, in, its, fa │
+│     │        │     │              │       │              │              │              │          cility, :]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  1  │  when  │ WRB │  wh-adverb   │ advmo │ adverbial mo │      []      │ ['expressed' │            [when]            │
+│     │        │     │              │   d   │    difier    │              │ , 'may', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  2  │   an   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['objection' │             [an]             │
+│     │        │     │              │       │              │              │ , 'expressed │                              │
+│     │        │     │              │       │              │              │ ', 'may', 'U │                              │
+│     │        │     │              │       │              │              │ se', 'Except │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  3  │ object │ NN  │ noun, singul │ nsubj │ nominal subj │     [an]     │ ['expressed' │       [an, objection]        │
+│     │  ion   │     │  ar or mass  │ pass  │ ect (passive │              │ , 'may', 'Us │                              │
+│     │        │     │              │       │      )       │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  4  │   is   │ VBZ │ verb, 3rd pe │ auxpa │ auxiliary (p │      []      │ ['expressed' │             [is]             │
+│     │        │     │ rson singula │  ss   │   assive)    │              │ , 'may', 'Us │                              │
+│     │        │     │  r present   │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  5  │ expres │ VBN │ verb, past p │ advcl │ adverbial cl │ [when, objec │ ['may', 'Use │ [when, an, objection, is, ex │
+│     │  sed   │     │  articiple   │       │ ause modifie │ tion, is, in │ ', 'Except'] │ pressed, in, accordance, wit │
+│     │        │     │              │       │      r       │      ]       │              │ h, paragraphs, (, a)(2, ), o │
+│     │        │     │              │       │              │              │              │ r, (, 3, ), of, this, sectio │
+│     │        │     │              │       │              │              │              │              n]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  6  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │ [accordance] │ ['expressed' │ [in, accordance, with, parag │
+│     │        │     │  subordinati │       │  l modifier  │              │ , 'may', 'Us │ raphs, (, a)(2, ), or, (, 3, │
+│     │        │     │ ng or prepos │       │              │              │ e', 'Except' │     ), of, this, section]    │
+│     │        │     │    ition     │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  7  │ accord │ NN  │ noun, singul │ pobj  │ object of pr │    [with]    │ ['in', 'expr │ [accordance, with, paragraph │
+│     │  ance  │     │  ar or mass  │       │  eposition   │              │ essed', 'may │ s, (, a)(2, ), or, (, 3, ),  │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │      of, this, section]      │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  8  │  with  │ IN  │ conjunction, │ prep  │ prepositiona │ [paragraphs] │ ['accordance │ [with, paragraphs, (, a)(2,  │
+│     │        │     │  subordinati │       │  l modifier  │              │ ', 'in', 'ex │ ), or, (, 3, ), of, this, se │
+│     │        │     │ ng or prepos │       │              │              │ pressed', 'm │            ction]            │
+│     │        │     │    ition     │       │              │              │ ay', 'Use',  │                              │
+│     │        │     │              │       │              │              │  'Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  9  │ paragr │ NNS │ noun, plural │ pobj  │ object of pr │ [(, a)(2, ), │ ['with', 'ac │ [paragraphs, (, a)(2, ), or, │
+│     │  aphs  │     │              │       │  eposition   │    or, 3]    │ cordance', ' │  (, 3, ), of, this, section] │
+│     │        │     │              │       │              │              │ in', 'expres │                              │
+│     │        │     │              │       │              │              │ sed', 'may', │                              │
+│     │        │     │              │       │              │              │  'Use', 'Exc │                              │
+│     │        │     │              │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 10  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['paragraphs │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ ', 'with', ' │                              │
+│     │        │     │              │       │              │              │ accordance', │                              │
+│     │        │     │              │       │              │              │  'in', 'expr │                              │
+│     │        │     │              │       │              │              │ essed', 'may │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │                              │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 11  │  a)(2  │ CD  │ cardinal num │ appos │ appositional │      []      │ ['paragraphs │            [a)(2]            │
+│     │        │     │     ber      │       │   modifier   │              │ ', 'with', ' │                              │
+│     │        │     │              │       │              │              │ accordance', │                              │
+│     │        │     │              │       │              │              │  'in', 'expr │                              │
+│     │        │     │              │       │              │              │ essed', 'may │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │                              │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 12  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['paragraphs │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ ', 'with', ' │                              │
+│     │        │     │              │       │              │              │ accordance', │                              │
+│     │        │     │              │       │              │              │  'in', 'expr │                              │
+│     │        │     │              │       │              │              │ essed', 'may │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │                              │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 13  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['paragraphs │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ ', 'with', ' │                              │
+│     │        │     │      g       │       │              │              │ accordance', │                              │
+│     │        │     │              │       │              │              │  'in', 'expr │                              │
+│     │        │     │              │       │              │              │ essed', 'may │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │                              │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 14  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['3', 'parag │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ raphs', 'wit │                              │
+│     │        │     │              │       │              │              │ h', 'accorda │                              │
+│     │        │     │              │       │              │              │ nce', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'expressed', │                              │
+│     │        │     │              │       │              │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 15  │   3    │ LS  │ list item ma │ conj  │   conjunct   │  [(, ), of]  │ ['paragraphs │ [(, 3, ), of, this, section] │
+│     │        │     │     rker     │       │              │              │ ', 'with', ' │                              │
+│     │        │     │              │       │              │              │ accordance', │                              │
+│     │        │     │              │       │              │              │  'in', 'expr │                              │
+│     │        │     │              │       │              │              │ essed', 'may │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'E │                              │
+│     │        │     │              │       │              │              │   xcept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 16  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['3', 'parag │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ raphs', 'wit │                              │
+│     │        │     │              │       │              │              │ h', 'accorda │                              │
+│     │        │     │              │       │              │              │ nce', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'expressed', │                              │
+│     │        │     │              │       │              │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 17  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │  [section]   │ ['3', 'parag │     [of, this, section]      │
+│     │        │     │  subordinati │       │  l modifier  │              │ raphs', 'wit │                              │
+│     │        │     │ ng or prepos │       │              │              │ h', 'accorda │                              │
+│     │        │     │    ition     │       │              │              │ nce', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'expressed', │                              │
+│     │        │     │              │       │              │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 18  │  this  │ DT  │  determiner  │  det  │  determiner  │      []      │ ['section',  │            [this]            │
+│     │        │     │              │       │              │              │ 'of', '3', ' │                              │
+│     │        │     │              │       │              │              │ paragraphs', │                              │
+│     │        │     │              │       │              │              │  'with', 'ac │                              │
+│     │        │     │              │       │              │              │ cordance', ' │                              │
+│     │        │     │              │       │              │              │ in', 'expres │                              │
+│     │        │     │              │       │              │              │ sed', 'may', │                              │
+│     │        │     │              │       │              │              │  'Use', 'Exc │                              │
+│     │        │     │              │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 19  │ sectio │ NN  │ noun, singul │ pobj  │ object of pr │    [this]    │ ['of', '3',  │       [this, section]        │
+│     │   n    │     │  ar or mass  │       │  eposition   │              │ 'paragraphs' │                              │
+│     │        │     │              │       │              │              │ , 'with', 'a │                              │
+│     │        │     │              │       │              │              │ ccordance',  │                              │
+│     │        │     │              │       │              │              │ 'in', 'expre │                              │
+│     │        │     │              │       │              │              │ ssed', 'may' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'Ex │                              │
+│     │        │     │              │       │              │              │    cept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 20  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['may', 'Use │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 21  │   a    │ DT  │  determiner  │  det  │  determiner  │      []      │ ['provider', │             [a]              │
+│     │        │     │              │       │              │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 22  │ covere │ VBN │ verb, past p │ amod  │ adjectival m │      []      │ ['provider', │          [covered]           │
+│     │   d    │     │  articiple   │       │   odifier    │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 23  │ health │ NN  │ noun, singul │ compo │   compound   │      []      │ ['care', 'pr │           [health]           │
+│     │        │     │  ar or mass  │  und  │              │              │ ovider', 'ma │                              │
+│     │        │     │              │       │              │              │ y', 'Use', ' │                              │
+│     │        │     │              │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 24  │  care  │ NN  │ noun, singul │ compo │   compound   │   [health]   │ ['provider', │        [health, care]        │
+│     │        │     │  ar or mass  │  und  │              │              │  'may', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 25  │ provid │ NN  │ noun, singul │ nsubj │ nominal subj │ [a, covered, │ ['may', 'Use │ [a, covered, health, care, p │
+│     │   er   │     │  ar or mass  │       │     ect      │     care]    │ ', 'Except'] │           rovider]           │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 26  │  may   │ MD  │ verb, modal  │  aux  │  auxiliary   │ [expressed,  │ ['Use', 'Exc │ [when, an, objection, is, ex │
+│     │        │     │  auxiliary   │       │              │ ,, provider] │    ept']     │ pressed, in, accordance, wit │
+│     │        │     │              │       │              │              │              │ h, paragraphs, (, a)(2, ), o │
+│     │        │     │              │       │              │              │              │ r, (, 3, ), of, this, sectio │
+│     │        │     │              │       │              │              │              │ n, ,, a, covered, health, ca │
+│     │        │     │              │       │              │              │              │      re, provider, may]      │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 27  │   :    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['Use', 'Exc │             [:]              │
+│     │        │     │ mark, colon  │       │              │              │    ept']     │                              │
+│     │        │     │ or ellipsis  │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 28  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['Use', 'Exc │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 29  │   i    │ NN  │ noun, singul │ nsubj │ nominal subj │      []      │ ['Use', 'Exc │             [i]              │
+│     │        │     │  ar or mass  │       │     ect      │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 30  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['Use', 'Exc │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 31  │  Use   │ VB  │ verb, base f │ pcomp │ complement o │ [may, :, (,  │  ['Except']  │ [when, an, objection, is, ex │
+│     │        │     │     orm      │       │ f prepositio │ i, ), inform │              │ pressed, in, accordance, wit │
+│     │        │     │              │       │      n       │ ation, maint │              │ h, paragraphs, (, a)(2, ), o │
+│     │        │     │              │       │              │   ain, :]    │              │ r, (, 3, ), of, this, sectio │
+│     │        │     │              │       │              │              │              │ n, ,, a, covered, health, ca │
+│     │        │     │              │       │              │              │              │ re, provider, may, :, (, i,  │
+│     │        │     │              │       │              │              │              │ ), Use, the, following, prot │
+│     │        │     │              │       │              │              │              │ ected, health, information,  │
+│     │        │     │              │       │              │              │              │ (, A, ), The, individual, 's │
+│     │        │     │              │       │              │              │              │ , name, ;, (, B, ), to, main │
+│     │        │     │              │       │              │              │              │ tain, a, directory, of, indi │
+│     │        │     │              │       │              │              │              │ viduals, in, its, facility,  │
+│     │        │     │              │       │              │              │              │              :]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 32  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['informatio │            [the]             │
+│     │        │     │              │       │              │              │ n', 'Use', ' │                              │
+│     │        │     │              │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 33  │ follow │ VBG │ verb, gerund │ amod  │ adjectival m │      []      │ ['informatio │         [following]          │
+│     │  ing   │     │  or present  │       │   odifier    │              │ n', 'Use', ' │                              │
+│     │        │     │  participle  │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 34  │ protec │ VBN │ verb, past p │ amod  │ adjectival m │      []      │ ['informatio │         [protected]          │
+│     │  ted   │     │  articiple   │       │   odifier    │              │ n', 'Use', ' │                              │
+│     │        │     │              │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 35  │ health │ NN  │ noun, singul │ compo │   compound   │      []      │ ['informatio │           [health]           │
+│     │        │     │  ar or mass  │  und  │              │              │ n', 'Use', ' │                              │
+│     │        │     │              │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 36  │ inform │ NN  │ noun, singul │ dobj  │ direct objec │ [the, follow │ ['Use', 'Exc │ [the, following, protected,  │
+│     │ ation  │     │  ar or mass  │       │      t       │ ing, protect │    ept']     │ health, information, (, A, ) │
+│     │        │     │              │       │              │ ed, health,  │              │ , The, individual, 's, name, │
+│     │        │     │              │       │              │      A]      │              │          ;, (, B, )]         │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 37  │   to   │ TO  │ infinitival  │  aux  │  auxiliary   │      []      │ ['maintain', │             [to]             │
+│     │        │     │     "to"     │       │              │              │  'Use', 'Exc │                              │
+│     │        │     │              │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 38  │ mainta │ VB  │ verb, base f │ advcl │ adverbial cl │ [to, directo │ ['Use', 'Exc │ [to, maintain, a, directory, │
+│     │   in   │     │     orm      │       │ ause modifie │     ry]      │    ept']     │  of, individuals, in, its, f │
+│     │        │     │              │       │      r       │              │              │           acility]           │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 39  │   a    │ DT  │  determiner  │  det  │  determiner  │      []      │ ['directory' │             [a]              │
+│     │        │     │              │       │              │              │ , 'maintain' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'Ex │                              │
+│     │        │     │              │       │              │              │    cept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 40  │ direct │ NN  │ noun, singul │ dobj  │ direct objec │   [a, of]    │ ['maintain', │ [a, directory, of, individua │
+│     │  ory   │     │  ar or mass  │       │      t       │              │  'Use', 'Exc │    ls, in, its, facility]    │
+│     │        │     │              │       │              │              │    ept']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 41  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │ [individuals │ ['directory' │ [of, individuals, in, its, f │
+│     │        │     │  subordinati │       │  l modifier  │      ]       │ , 'maintain' │           acility]           │
+│     │        │     │ ng or prepos │       │              │              │ , 'Use', 'Ex │                              │
+│     │        │     │    ition     │       │              │              │    cept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 42  │ indivi │ NNS │ noun, plural │ pobj  │ object of pr │     [in]     │ ['of', 'dire │ [individuals, in, its, facil │
+│     │ duals  │     │              │       │  eposition   │              │ ctory', 'mai │             ity]             │
+│     │        │     │              │       │              │              │ ntain', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'Except'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 43  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │  [facility]  │ ['individual │     [in, its, facility]      │
+│     │        │     │  subordinati │       │  l modifier  │              │ s', 'of', 'd │                              │
+│     │        │     │ ng or prepos │       │              │              │ irectory', ' │                              │
+│     │        │     │    ition     │       │              │              │ maintain', ' │                              │
+│     │        │     │              │       │              │              │ Use', 'Excep │                              │
+│     │        │     │              │       │              │              │     t']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 44  │  its   │ PRP │ pronoun, pos │ poss  │ possession m │      []      │ ['facility', │            [its]             │
+│     │        │  $  │   sessive    │       │   odifier    │              │  'in', 'indi │                              │
+│     │        │     │              │       │              │              │ viduals', 'o │                              │
+│     │        │     │              │       │              │              │ f', 'directo │                              │
+│     │        │     │              │       │              │              │ ry', 'mainta │                              │
+│     │        │     │              │       │              │              │ in', 'Use',  │                              │
+│     │        │     │              │       │              │              │  'Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 45  │ facili │ NN  │ noun, singul │ pobj  │ object of pr │    [its]     │ ['in', 'indi │       [its, facility]        │
+│     │   ty   │     │  ar or mass  │       │  eposition   │              │ viduals', 'o │                              │
+│     │        │     │              │       │              │              │ f', 'directo │                              │
+│     │        │     │              │       │              │              │ ry', 'mainta │                              │
+│     │        │     │              │       │              │              │ in', 'Use',  │                              │
+│     │        │     │              │       │              │              │  'Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 46  │   :    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['Use', 'Exc │             [:]              │
+│     │        │     │ mark, colon  │       │              │              │    ept']     │                              │
+│     │        │     │ or ellipsis  │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 47  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['A', 'infor │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ mation', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 48  │   A    │ NN  │ noun, singul │ appos │ appositional │ [(, ), name, │ ['informatio │ [(, A, ), The, individual, ' │
+│     │        │     │  ar or mass  │       │   modifier   │      B]      │ n', 'Use', ' │     s, name, ;, (, B, )]     │
+│     │        │     │              │       │              │              │   Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 49  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['A', 'infor │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ mation', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 50  │  The   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [The]             │
+│     │        │     │              │       │              │              │ ', 'name', ' │                              │
+│     │        │     │              │       │              │              │ A', 'informa │                              │
+│     │        │     │              │       │              │              │ tion', 'Use' │                              │
+│     │        │     │              │       │              │              │ , 'Except']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 51  │ indivi │ NN  │ noun, singul │ poss  │ possession m │  [The, 's]   │ ['name', 'A' │    [The, individual, 's]     │
+│     │  dual  │     │  ar or mass  │       │   odifier    │              │ , 'informati │                              │
+│     │        │     │              │       │              │              │ on', 'Use',  │                              │
+│     │        │     │              │       │              │              │  'Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 52  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['individual │             ['s]             │
+│     │        │     │    nding     │       │              │              │ ', 'name', ' │                              │
+│     │        │     │              │       │              │              │ A', 'informa │                              │
+│     │        │     │              │       │              │              │ tion', 'Use' │                              │
+│     │        │     │              │       │              │              │ , 'Except']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 53  │  name  │ NN  │ noun, singul │ appos │ appositional │ [individual, │ ['A', 'infor │ [The, individual, 's, name,  │
+│     │        │     │  ar or mass  │       │   modifier   │      ;]      │ mation', 'Us │              ;]              │
+│     │        │     │              │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 54  │   ;    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['name', 'A' │             [;]              │
+│     │        │     │ mark, colon  │       │              │              │ , 'informati │                              │
+│     │        │     │ or ellipsis  │       │              │              │ on', 'Use',  │                              │
+│     │        │     │              │       │              │              │  'Except']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 55  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['B', 'A', ' │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ information' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'Ex │                              │
+│     │        │     │              │       │              │              │    cept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 56  │   B    │ NN  │ noun, singul │ appos │ appositional │    [(, )]    │ ['A', 'infor │          [(, B, )]           │
+│     │        │     │  ar or mass  │       │   modifier   │              │ mation', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'Except' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 57  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['B', 'A', ' │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ information' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'Ex │                              │
+│     │        │     │              │       │              │              │    cept']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 58  │  The   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [The]             │
+│     │        │     │              │       │              │              │ ', 'location │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 59  │ indivi │ NN  │ noun, singul │ poss  │ possession m │  [The, 's]   │ ['location'] │    [The, individual, 's]     │
+│     │  dual  │     │  ar or mass  │       │   odifier    │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 60  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['individual │             ['s]             │
+│     │        │     │    nding     │       │              │              │ ', 'location │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 61  │ locati │ NN  │ noun, singul │ ROOT  │     root     │ [individual, │      []      │ [The, individual, 's, locati │
+│     │   on   │     │  ar or mass  │       │              │   in, ;, C]  │              │ on, in, the, covered, health │
+│     │        │     │              │       │              │              │              │ , care, provider, 's, facili │
+│     │        │     │              │       │              │              │              │       ty, ;, (, C, )]        │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 62  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │  [facility]  │ ['location'] │ [in, the, covered, health, c │
+│     │        │     │  subordinati │       │  l modifier  │              │              │ are, provider, 's, facility] │
+│     │        │     │ ng or prepos │       │              │              │              │                              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 63  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['provider', │            [the]             │
+│     │        │     │              │       │              │              │  'facility', │                              │
+│     │        │     │              │       │              │              │  'in', 'loca │                              │
+│     │        │     │              │       │              │              │    tion']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 64  │ covere │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['provider', │          [covered]           │
+│     │   d    │     │ nglish), oth │       │   odifier    │              │  'facility', │                              │
+│     │        │     │ er noun-modi │       │              │              │  'in', 'loca │                              │
+│     │        │     │ fier (Chines │       │              │              │    tion']    │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 65  │ health │ NN  │ noun, singul │ compo │   compound   │      []      │ ['care', 'pr │           [health]           │
+│     │        │     │  ar or mass  │  und  │              │              │ ovider', 'fa │                              │
+│     │        │     │              │       │              │              │ cility', 'in │                              │
+│     │        │     │              │       │              │              │ ', 'location │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 66  │  care  │ NN  │ noun, singul │ compo │   compound   │   [health]   │ ['provider', │        [health, care]        │
+│     │        │     │  ar or mass  │  und  │              │              │  'facility', │                              │
+│     │        │     │              │       │              │              │  'in', 'loca │                              │
+│     │        │     │              │       │              │              │    tion']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 67  │ provid │ NN  │ noun, singul │ poss  │ possession m │ [the, covere │ ['facility', │ [the, covered, health, care, │
+│     │   er   │     │  ar or mass  │       │   odifier    │ d, care, 's] │  'in', 'loca │         provider, 's]        │
+│     │        │     │              │       │              │              │    tion']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 68  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['provider', │             ['s]             │
+│     │        │     │    nding     │       │              │              │  'facility', │                              │
+│     │        │     │              │       │              │              │  'in', 'loca │                              │
+│     │        │     │              │       │              │              │    tion']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 69  │ facili │ NN  │ noun, singul │ pobj  │ object of pr │  [provider]  │ ['in', 'loca │ [the, covered, health, care, │
+│     │   ty   │     │  ar or mass  │       │  eposition   │              │    tion']    │    provider, 's, facility]   │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 70  │   ;    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['location'] │             [;]              │
+│     │        │     │ mark, colon  │       │              │              │              │                              │
+│     │        │     │ or ellipsis  │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 71  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['C', 'locat │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │    ion']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 72  │   C    │ NN  │ noun, singul │ appos │ appositional │    [(, )]    │ ['location'] │          [(, C, )]           │
+│     │        │     │  ar or mass  │       │   modifier   │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 73  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['C', 'locat │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │    ion']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 74  │  The   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [The]             │
+│     │        │     │              │       │              │              │ ', 'conditio │                              │
+│     │        │     │              │       │              │              │ n', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 75  │ indivi │ NN  │ noun, singul │ poss  │ possession m │  [The, 's]   │ ['condition' │    [The, individual, 's]     │
+│     │  dual  │     │  ar or mass  │       │   odifier    │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 76  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['individual │             ['s]             │
+│     │        │     │    nding     │       │              │              │ ', 'conditio │                              │
+│     │        │     │              │       │              │              │ n', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 77  │ condit │ NN  │ noun, singul │ nsubj │ nominal subj │ [individual] │ ['described' │ [The, individual, 's, condit │
+│     │  ion   │     │  ar or mass  │       │     ect      │              │      ]       │             ion]             │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 78  │ descri │ VBN │ verb, past p │ ROOT  │     root     │ [condition,  │      []      │ [The, individual, 's, condit │
+│     │  bed   │     │  articiple   │       │              │ in, communic │              │ ion, described, in, general, │
+│     │        │     │              │       │              │ ate, ;, and, │              │  terms, that, does, not, com │
+│     │        │     │              │       │              │     D, .]    │              │ municate, specific, medical, │
+│     │        │     │              │       │              │              │              │  information, about, the, in │
+│     │        │     │              │       │              │              │              │ dividual, ;, and, (, D, ), T │
+│     │        │     │              │       │              │              │              │ he, individual, 's, religiou │
+│     │        │     │              │       │              │              │              │ s, affiliation, ;, and, (, i │
+│     │        │     │              │       │              │              │              │ i, ), Use, or, disclose, for │
+│     │        │     │              │       │              │              │              │ , directory, purposes, such, │
+│     │        │     │              │       │              │              │              │  information, :, (, A, ), To │
+│     │        │     │              │       │              │              │              │ , members, of, the, clergy,  │
+│     │        │     │              │       │              │              │              │ ;, or, (, B, ), Except, for, │
+│     │        │     │              │       │              │              │              │  religious, affiliation, ,,  │
+│     │        │     │              │       │              │              │              │ to, other, persons, who, ask │
+│     │        │     │              │       │              │              │              │ , for, the, individual, by,  │
+│     │        │     │              │       │              │              │              │           name, .]           │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 79  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │   [terms]    │ ['described' │     [in, general, terms]     │
+│     │        │     │  subordinati │       │  l modifier  │              │      ]       │                              │
+│     │        │     │ ng or prepos │       │              │              │              │                              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 80  │ genera │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['terms', 'i │          [general]           │
+│     │   l    │     │ nglish), oth │       │   odifier    │              │ n', 'describ │                              │
+│     │        │     │ er noun-modi │       │              │              │     ed']     │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 81  │ terms  │ NNS │ noun, plural │ pobj  │ object of pr │  [general]   │ ['in', 'desc │       [general, terms]       │
+│     │        │     │              │       │  eposition   │              │   ribed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 82  │  that  │ WDT │ wh-determine │ nsubj │ nominal subj │      []      │ ['communicat │            [that]            │
+│     │        │     │      r       │       │     ect      │              │ e', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 83  │  does  │ VBZ │ verb, 3rd pe │  aux  │  auxiliary   │      []      │ ['communicat │            [does]            │
+│     │        │     │ rson singula │       │              │              │ e', 'describ │                              │
+│     │        │     │  r present   │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 84  │  not   │ RB  │    adverb    │  neg  │ negation mod │      []      │ ['communicat │            [not]             │
+│     │        │     │              │       │    ifier     │              │ e', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 85  │ commun │ VB  │ verb, base f │ ccomp │ clausal comp │ [that, does, │ ['described' │ [that, does, not, communicat │
+│     │ icate  │     │     orm      │       │    lement    │  not, inform │      ]       │ e, specific, medical, inform │
+│     │        │     │              │       │              │    ation]    │              │ ation, about, the, individua │
+│     │        │     │              │       │              │              │              │              l]              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 86  │ specif │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['informatio │          [specific]          │
+│     │   ic   │     │ nglish), oth │       │   odifier    │              │ n', 'communi │                              │
+│     │        │     │ er noun-modi │       │              │              │ cate', 'desc │                              │
+│     │        │     │ fier (Chines │       │              │              │   ribed']    │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 87  │ medica │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['informatio │          [medical]           │
+│     │   l    │     │ nglish), oth │       │   odifier    │              │ n', 'communi │                              │
+│     │        │     │ er noun-modi │       │              │              │ cate', 'desc │                              │
+│     │        │     │ fier (Chines │       │              │              │   ribed']    │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 88  │ inform │ NN  │ noun, singul │ dobj  │ direct objec │ [specific, m │ ['communicat │ [specific, medical, informat │
+│     │ ation  │     │  ar or mass  │       │      t       │ edical, abou │ e', 'describ │ ion, about, the, individual] │
+│     │        │     │              │       │              │      t]      │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 89  │ about  │ IN  │ conjunction, │ prep  │ prepositiona │ [individual] │ ['informatio │   [about, the, individual]   │
+│     │        │     │  subordinati │       │  l modifier  │              │ n', 'communi │                              │
+│     │        │     │ ng or prepos │       │              │              │ cate', 'desc │                              │
+│     │        │     │    ition     │       │              │              │   ribed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 90  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [the]             │
+│     │        │     │              │       │              │              │ ', 'about',  │                              │
+│     │        │     │              │       │              │              │ 'information │                              │
+│     │        │     │              │       │              │              │ ', 'communic │                              │
+│     │        │     │              │       │              │              │ ate', 'descr │                              │
+│     │        │     │              │       │              │              │    ibed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 91  │ indivi │ NN  │ noun, singul │ pobj  │ object of pr │    [the]     │ ['about', 'i │      [the, individual]       │
+│     │  dual  │     │  ar or mass  │       │  eposition   │              │ nformation', │                              │
+│     │        │     │              │       │              │              │  'communicat │                              │
+│     │        │     │              │       │              │              │ e', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 92  │   ;    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['described' │             [;]              │
+│     │        │     │ mark, colon  │       │              │              │      ]       │                              │
+│     │        │     │ or ellipsis  │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 93  │  and   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['described' │            [and]             │
+│     │        │     │  coordinatin │       │  conjunction │              │      ]       │                              │
+│     │        │     │      g       │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 94  │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['D', 'descr │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │    ibed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 95  │   D    │ NNP │ noun, proper │ conj  │   conjunct   │ [(, ), affil │ ['described' │ [(, D, ), The, individual, ' │
+│     │        │     │   singular   │       │              │ iation, and, │      ]       │ s, religious, affiliation, ; │
+│     │        │     │              │       │              │     Use]     │              │ , and, (, ii, ), Use, or, di │
+│     │        │     │              │       │              │              │              │ sclose, for, directory, purp │
+│     │        │     │              │       │              │              │              │ oses, such, information, :,  │
+│     │        │     │              │       │              │              │              │ (, A, ), To, members, of, th │
+│     │        │     │              │       │              │              │              │ e, clergy, ;, or, (, B, ), E │
+│     │        │     │              │       │              │              │              │ xcept, for, religious, affil │
+│     │        │     │              │       │              │              │              │ iation, ,, to, other, person │
+│     │        │     │              │       │              │              │              │ s, who, ask, for, the, indiv │
+│     │        │     │              │       │              │              │              │       idual, by, name]       │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 96  │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['D', 'descr │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │    ibed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 97  │  The   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [The]             │
+│     │        │     │              │       │              │              │ ', 'affiliat │                              │
+│     │        │     │              │       │              │              │ ion', 'D', ' │                              │
+│     │        │     │              │       │              │              │ described']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 98  │ indivi │ NN  │ noun, singul │ poss  │ possession m │  [The, 's]   │ ['affiliatio │    [The, individual, 's]     │
+│     │  dual  │     │  ar or mass  │       │   odifier    │              │ n', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 99  │   's   │ POS │ possessive e │ case  │ case marking │      []      │ ['individual │             ['s]             │
+│     │        │     │    nding     │       │              │              │ ', 'affiliat │                              │
+│     │        │     │              │       │              │              │ ion', 'D', ' │                              │
+│     │        │     │              │       │              │              │ described']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 100 │ religi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['affiliatio │         [religious]          │
+│     │  ous   │     │ nglish), oth │       │   odifier    │              │ n', 'D', 'de │                              │
+│     │        │     │ er noun-modi │       │              │              │  scribed']   │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 101 │ affili │ NN  │ noun, singul │ appos │ appositional │ [individual, │ ['D', 'descr │ [The, individual, 's, religi │
+│     │ ation  │     │  ar or mass  │       │   modifier   │  religious,  │    ibed']    │     ous, affiliation, ;]     │
+│     │        │     │              │       │              │      ;]      │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 102 │   ;    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['affiliatio │             [;]              │
+│     │        │     │ mark, colon  │       │              │              │ n', 'D', 'de │                              │
+│     │        │     │ or ellipsis  │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 103 │  and   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['D', 'descr │            [and]             │
+│     │        │     │  coordinatin │       │  conjunction │              │    ibed']    │                              │
+│     │        │     │      g       │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 104 │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['Use', 'D', │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │  'described' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 105 │   ii   │ LS  │ list item ma │ nmod  │ modifier of  │      []      │ ['Use', 'D', │             [ii]             │
+│     │        │     │     rker     │       │   nominal    │              │  'described' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 106 │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['Use', 'D', │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │  'described' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 107 │  Use   │ NN  │ noun, singul │ conj  │   conjunct   │ [(, ii, ), o │ ['D', 'descr │ [(, ii, ), Use, or, disclose │
+│     │        │     │  ar or mass  │       │              │ r, disclose] │    ibed']    │ , for, directory, purposes,  │
+│     │        │     │              │       │              │              │              │ such, information, :, (, A,  │
+│     │        │     │              │       │              │              │              │ ), To, members, of, the, cle │
+│     │        │     │              │       │              │              │              │ rgy, ;, or, (, B, ), Except, │
+│     │        │     │              │       │              │              │              │  for, religious, affiliation │
+│     │        │     │              │       │              │              │              │ , ,, to, other, persons, who │
+│     │        │     │              │       │              │              │              │ , ask, for, the, individual, │
+│     │        │     │              │       │              │              │              │           by, name]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 108 │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['Use', 'D', │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │  'described' │                              │
+│     │        │     │      g       │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 109 │ disclo │ VB  │ verb, base f │ conj  │   conjunct   │ [for, inform │ ['Use', 'D', │ [disclose, for, directory, p │
+│     │   se   │     │     orm      │       │              │    ation]    │  'described' │ urposes, such, information,  │
+│     │        │     │              │       │              │              │      ]       │ :, (, A, ), To, members, of, │
+│     │        │     │              │       │              │              │              │  the, clergy, ;, or, (, B, ) │
+│     │        │     │              │       │              │              │              │ , Except, for, religious, af │
+│     │        │     │              │       │              │              │              │ filiation, ,, to, other, per │
+│     │        │     │              │       │              │              │              │ sons, who, ask, for, the, in │
+│     │        │     │              │       │              │              │              │     dividual, by, name]      │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 110 │  for   │ IN  │ conjunction, │ prep  │ prepositiona │  [purposes]  │ ['disclose', │  [for, directory, purposes]  │
+│     │        │     │  subordinati │       │  l modifier  │              │  'Use', 'D', │                              │
+│     │        │     │ ng or prepos │       │              │              │  'described' │                              │
+│     │        │     │    ition     │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 111 │ direct │ NN  │ noun, singul │ compo │   compound   │      []      │ ['purposes', │         [directory]          │
+│     │  ory   │     │  ar or mass  │  und  │              │              │  'for', 'dis │                              │
+│     │        │     │              │       │              │              │ close', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'D', 'des │                              │
+│     │        │     │              │       │              │              │   cribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 112 │ purpos │ NNS │ noun, plural │ pobj  │ object of pr │ [directory]  │ ['for', 'dis │    [directory, purposes]     │
+│     │   es   │     │              │       │  eposition   │              │ close', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'D', 'des │                              │
+│     │        │     │              │       │              │              │   cribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 113 │  such  │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['informatio │            [such]            │
+│     │        │     │ nglish), oth │       │   odifier    │              │ n', 'disclos │                              │
+│     │        │     │ er noun-modi │       │              │              │ e', 'Use', ' │                              │
+│     │        │     │ fier (Chines │       │              │              │ D', 'describ │                              │
+│     │        │     │      e)      │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 114 │ inform │ NN  │ noun, singul │ dobj  │ direct objec │ [such, :, A] │ ['disclose', │ [such, information, :, (, A, │
+│     │ ation  │     │  ar or mass  │       │      t       │              │  'Use', 'D', │  ), To, members, of, the, cl │
+│     │        │     │              │       │              │              │  'described' │ ergy, ;, or, (, B, ), Except │
+│     │        │     │              │       │              │              │      ]       │ , for, religious, affiliatio │
+│     │        │     │              │       │              │              │              │ n, ,, to, other, persons, wh │
+│     │        │     │              │       │              │              │              │ o, ask, for, the, individual │
+│     │        │     │              │       │              │              │              │         , by, name]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 115 │   :    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['informatio │             [:]              │
+│     │        │     │ mark, colon  │       │              │              │ n', 'disclos │                              │
+│     │        │     │ or ellipsis  │       │              │              │ e', 'Use', ' │                              │
+│     │        │     │              │       │              │              │ D', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 116 │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['A', 'infor │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 117 │   A    │ NN  │ noun, singul │ appos │ appositional │ [(, ), To, ; │ ['informatio │ [(, A, ), To, members, of, t │
+│     │        │     │  ar or mass  │       │   modifier   │ , or, B, Exc │ n', 'disclos │ he, clergy, ;, or, (, B, ),  │
+│     │        │     │              │       │              │ ept, ,, to]  │ e', 'Use', ' │ Except, for, religious, affi │
+│     │        │     │              │       │              │              │ D', 'describ │ liation, ,, to, other, perso │
+│     │        │     │              │       │              │              │     ed']     │ ns, who, ask, for, the, indi │
+│     │        │     │              │       │              │              │              │      vidual, by, name]       │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 118 │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['A', 'infor │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 119 │   To   │ IN  │ conjunction, │ prep  │ prepositiona │  [members]   │ ['A', 'infor │ [To, members, of, the, clerg │
+│     │        │     │  subordinati │       │  l modifier  │              │ mation', 'di │              y]              │
+│     │        │     │ ng or prepos │       │              │              │ sclose', 'Us │                              │
+│     │        │     │    ition     │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 120 │ member │ NNS │ noun, plural │ pobj  │ object of pr │     [of]     │ ['To', 'A',  │  [members, of, the, clergy]  │
+│     │   s    │     │              │       │  eposition   │              │ 'information │                              │
+│     │        │     │              │       │              │              │ ', 'disclose │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'D │                              │
+│     │        │     │              │       │              │              │ ', 'describe │                              │
+│     │        │     │              │       │              │              │     d']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 121 │   of   │ IN  │ conjunction, │ prep  │ prepositiona │   [clergy]   │ ['members',  │      [of, the, clergy]       │
+│     │        │     │  subordinati │       │  l modifier  │              │ 'To', 'A', ' │                              │
+│     │        │     │ ng or prepos │       │              │              │ information' │                              │
+│     │        │     │    ition     │       │              │              │ , 'disclose' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 122 │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['clergy', ' │            [the]             │
+│     │        │     │              │       │              │              │ of', 'member │                              │
+│     │        │     │              │       │              │              │ s', 'To', 'A │                              │
+│     │        │     │              │       │              │              │ ', 'informat │                              │
+│     │        │     │              │       │              │              │ ion', 'discl │                              │
+│     │        │     │              │       │              │              │ ose', 'Use', │                              │
+│     │        │     │              │       │              │              │  'D', 'descr │                              │
+│     │        │     │              │       │              │              │    ibed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 123 │ clergy │ NNS │ noun, plural │ pobj  │ object of pr │    [the]     │ ['of', 'memb │        [the, clergy]         │
+│     │        │     │              │       │  eposition   │              │ ers', 'To',  │                              │
+│     │        │     │              │       │              │              │ 'A', 'inform │                              │
+│     │        │     │              │       │              │              │ ation', 'dis │                              │
+│     │        │     │              │       │              │              │ close', 'Use │                              │
+│     │        │     │              │       │              │              │ ', 'D', 'des │                              │
+│     │        │     │              │       │              │              │   cribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 124 │   ;    │  :  │ punctuation  │ punct │ punctuation  │      []      │ ['A', 'infor │             [;]              │
+│     │        │     │ mark, colon  │       │              │              │ mation', 'di │                              │
+│     │        │     │ or ellipsis  │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 125 │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['A', 'infor │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ mation', 'di │                              │
+│     │        │     │      g       │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 126 │   (    │ -LR │ left round b │ punct │ punctuation  │      []      │ ['B', 'A', ' │             [(]              │
+│     │        │ B-  │    racket    │       │              │              │ information' │                              │
+│     │        │     │              │       │              │              │ , 'disclose' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 127 │   B    │ NN  │ noun, singul │ conj  │   conjunct   │    [(, )]    │ ['A', 'infor │          [(, B, )]           │
+│     │        │     │  ar or mass  │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 128 │   )    │ -RR │ right round  │ punct │ punctuation  │      []      │ ['B', 'A', ' │             [)]              │
+│     │        │ B-  │   bracket    │       │              │              │ information' │                              │
+│     │        │     │              │       │              │              │ , 'disclose' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 129 │ Except │ IN  │ conjunction, │ prep  │ prepositiona │    [for]     │ ['A', 'infor │ [Except, for, religious, aff │
+│     │        │     │  subordinati │       │  l modifier  │              │ mation', 'di │          iliation]           │
+│     │        │     │ ng or prepos │       │              │              │ sclose', 'Us │                              │
+│     │        │     │    ition     │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 130 │  for   │ IN  │ conjunction, │ prep  │ prepositiona │ [affiliation │ ['Except', ' │ [for, religious, affiliation │
+│     │        │     │  subordinati │       │  l modifier  │      ]       │ A', 'informa │              ]               │
+│     │        │     │ ng or prepos │       │              │              │ tion', 'disc │                              │
+│     │        │     │    ition     │       │              │              │ lose', 'Use' │                              │
+│     │        │     │              │       │              │              │ , 'D', 'desc │                              │
+│     │        │     │              │       │              │              │   ribed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 131 │ religi │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['affiliatio │         [religious]          │
+│     │  ous   │     │ nglish), oth │       │   odifier    │              │ n', 'for', ' │                              │
+│     │        │     │ er noun-modi │       │              │              │ Except', 'A' │                              │
+│     │        │     │ fier (Chines │       │              │              │ , 'informati │                              │
+│     │        │     │      e)      │       │              │              │ on', 'disclo │                              │
+│     │        │     │              │       │              │              │ se', 'Use',  │                              │
+│     │        │     │              │       │              │              │ 'D', 'descri │                              │
+│     │        │     │              │       │              │              │    bed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 132 │ affili │ NN  │ noun, singul │ pobj  │ object of pr │ [religious]  │ ['for', 'Exc │   [religious, affiliation]   │
+│     │ ation  │     │  ar or mass  │       │  eposition   │              │ ept', 'A', ' │                              │
+│     │        │     │              │       │              │              │ information' │                              │
+│     │        │     │              │       │              │              │ , 'disclose' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 133 │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['A', 'infor │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 134 │   to   │ IN  │ conjunction, │ prep  │ prepositiona │  [persons]   │ ['A', 'infor │ [to, other, persons, who, as │
+│     │        │     │  subordinati │       │  l modifier  │              │ mation', 'di │ k, for, the, individual, by, │
+│     │        │     │ ng or prepos │       │              │              │ sclose', 'Us │             name]            │
+│     │        │     │    ition     │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 135 │ other  │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['persons',  │           [other]            │
+│     │        │     │ nglish), oth │       │   odifier    │              │ 'to', 'A', ' │                              │
+│     │        │     │ er noun-modi │       │              │              │ information' │                              │
+│     │        │     │ fier (Chines │       │              │              │ , 'disclose' │                              │
+│     │        │     │      e)      │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 136 │ person │ NNS │ noun, plural │ pobj  │ object of pr │ [other, ask] │ ['to', 'A',  │ [other, persons, who, ask, f │
+│     │   s    │     │              │       │  eposition   │              │ 'information │ or, the, individual, by, nam │
+│     │        │     │              │       │              │              │ ', 'disclose │              e]              │
+│     │        │     │              │       │              │              │ ', 'Use', 'D │                              │
+│     │        │     │              │       │              │              │ ', 'describe │                              │
+│     │        │     │              │       │              │              │     d']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 137 │  who   │ WP  │ wh-pronoun,  │ nsubj │ nominal subj │      []      │ ['ask', 'per │            [who]             │
+│     │        │     │   personal   │       │     ect      │              │ sons', 'to', │                              │
+│     │        │     │              │       │              │              │  'A', 'infor │                              │
+│     │        │     │              │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 138 │  ask   │ VBP │ verb, non-3r │ relcl │ relative cla │ [who, for, b │ ['persons',  │ [who, ask, for, the, individ │
+│     │        │     │ d person sin │       │ use modifier │      y]      │ 'to', 'A', ' │        ual, by, name]        │
+│     │        │     │ gular presen │       │              │              │ information' │                              │
+│     │        │     │      t       │       │              │              │ , 'disclose' │                              │
+│     │        │     │              │       │              │              │ , 'Use', 'D' │                              │
+│     │        │     │              │       │              │              │ , 'described │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 139 │  for   │ IN  │ conjunction, │ prep  │ prepositiona │ [individual] │ ['ask', 'per │    [for, the, individual]    │
+│     │        │     │  subordinati │       │  l modifier  │              │ sons', 'to', │                              │
+│     │        │     │ ng or prepos │       │              │              │  'A', 'infor │                              │
+│     │        │     │    ition     │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 140 │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [the]             │
+│     │        │     │              │       │              │              │ ', 'for', 'a │                              │
+│     │        │     │              │       │              │              │ sk', 'person │                              │
+│     │        │     │              │       │              │              │ s', 'to', 'A │                              │
+│     │        │     │              │       │              │              │ ', 'informat │                              │
+│     │        │     │              │       │              │              │ ion', 'discl │                              │
+│     │        │     │              │       │              │              │ ose', 'Use', │                              │
+│     │        │     │              │       │              │              │  'D', 'descr │                              │
+│     │        │     │              │       │              │              │    ibed']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 141 │ indivi │ NN  │ noun, singul │ pobj  │ object of pr │    [the]     │ ['for', 'ask │      [the, individual]       │
+│     │  dual  │     │  ar or mass  │       │  eposition   │              │ ', 'persons' │                              │
+│     │        │     │              │       │              │              │ , 'to', 'A', │                              │
+│     │        │     │              │       │              │              │  'informatio │                              │
+│     │        │     │              │       │              │              │ n', 'disclos │                              │
+│     │        │     │              │       │              │              │ e', 'Use', ' │                              │
+│     │        │     │              │       │              │              │ D', 'describ │                              │
+│     │        │     │              │       │              │              │     ed']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 142 │   by   │ IN  │ conjunction, │ prep  │ prepositiona │    [name]    │ ['ask', 'per │          [by, name]          │
+│     │        │     │  subordinati │       │  l modifier  │              │ sons', 'to', │                              │
+│     │        │     │ ng or prepos │       │              │              │  'A', 'infor │                              │
+│     │        │     │    ition     │       │              │              │ mation', 'di │                              │
+│     │        │     │              │       │              │              │ sclose', 'Us │                              │
+│     │        │     │              │       │              │              │ e', 'D', 'de │                              │
+│     │        │     │              │       │              │              │  scribed']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 143 │  name  │ NN  │ noun, singul │ pobj  │ object of pr │      []      │ ['by', 'ask' │            [name]            │
+│     │        │     │  ar or mass  │       │  eposition   │              │ , 'persons', │                              │
+│     │        │     │              │       │              │              │  'to', 'A',  │                              │
+│     │        │     │              │       │              │              │ 'information │                              │
+│     │        │     │              │       │              │              │ ', 'disclose │                              │
+│     │        │     │              │       │              │              │ ', 'Use', 'D │                              │
+│     │        │     │              │       │              │              │ ', 'describe │                              │
+│     │        │     │              │       │              │              │     d']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 144 │   .    │  .  │ punctuation  │ punct │ punctuation  │      []      │ ['described' │             [.]              │
+│     │        │     │ mark, senten │       │              │              │      ]       │                              │
+│     │        │     │  ce closer   │       │              │              │              │                              │
+╰─────┴────────┴─────┴──────────────┴───────┴──────────────┴──────────────┴──────────────┴──────────────────────────────╯
+
+
+
+
+

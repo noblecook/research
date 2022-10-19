@@ -1,0 +1,351 @@
+╭─────┬────────┬─────┬──────────────┬───────┬──────────────┬──────────────┬──────────────┬──────────────────────────────╮
+│ SN  │  Text  │ TAG │  Expln Tag   │  Dep  │  Expln Dep   │    Child     │  Ancestors   │           Subtree            │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  0  │   A    │ DT  │  determiner  │  det  │  determiner  │      []      │ ['entity', ' │             [A]              │
+│     │        │     │              │       │              │              │    use']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  1  │ covere │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['entity', ' │          [covered]           │
+│     │   d    │     │ nglish), oth │       │   odifier    │              │    use']     │                              │
+│     │        │     │ er noun-modi │       │              │              │              │                              │
+│     │        │     │ fier (Chines │       │              │              │              │                              │
+│     │        │     │      e)      │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  2  │ entity │ NN  │ noun, singul │ nsubj │ nominal subj │ [A, covered] │   ['use']    │     [A, covered, entity]     │
+│     │        │     │  ar or mass  │       │     ect      │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  3  │  may   │ MD  │ verb, modal  │  aux  │  auxiliary   │      []      │   ['use']    │            [may]             │
+│     │        │     │  auxiliary   │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  4  │  use   │ VB  │ verb, base f │ ROOT  │     root     │ [entity, may │      []      │ [A, covered, entity, may, us │
+│     │        │     │     orm      │       │              │ , or, disclo │              │ e, or, disclose, protected,  │
+│     │        │     │              │       │              │ se, ,, provi │              │ health, information, ,, prov │
+│     │        │     │              │       │              │   ded, .]    │              │ ided, that, the, individual, │
+│     │        │     │              │       │              │              │              │  is, informed, in, advance,  │
+│     │        │     │              │       │              │              │              │ of, the, use, or, disclosure │
+│     │        │     │              │       │              │              │              │ , and, has, the, opportunity │
+│     │        │     │              │       │              │              │              │ , to, agree, to, or, prohibi │
+│     │        │     │              │       │              │              │              │ t, or, restrict, the, use, o │
+│     │        │     │              │       │              │              │              │ r, disclosure, ,, in, accord │
+│     │        │     │              │       │              │              │              │ ance, with, the, applicable, │
+│     │        │     │              │       │              │              │              │  requirements, of, this, sec │
+│     │        │     │              │       │              │              │              │           tion, .]           │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  5  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │   ['use']    │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │              │                              │
+│     │        │     │      g       │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  6  │ disclo │ VB  │ verb, base f │ conj  │   conjunct   │ [information │   ['use']    │ [disclose, protected, health │
+│     │   se   │     │     orm      │       │              │      ]       │              │        , information]        │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  7  │ protec │ VBN │ verb, past p │ amod  │ adjectival m │      []      │ ['informatio │         [protected]          │
+│     │  ted   │     │  articiple   │       │   odifier    │              │ n', 'disclos │                              │
+│     │        │     │              │       │              │              │  e', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  8  │ health │ NN  │ noun, singul │ compo │   compound   │      []      │ ['informatio │           [health]           │
+│     │        │     │  ar or mass  │  und  │              │              │ n', 'disclos │                              │
+│     │        │     │              │       │              │              │  e', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│  9  │ inform │ NN  │ noun, singul │ dobj  │ direct objec │ [protected,  │ ['disclose', │ [protected, health, informat │
+│     │ ation  │     │  ar or mass  │       │      t       │   health]    │    'use']    │             ion]             │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 10  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │   ['use']    │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 11  │ provid │ VBN │ verb, past p │ conj  │   conjunct   │  [informed]  │   ['use']    │ [provided, that, the, indivi │
+│     │   ed   │     │  articiple   │       │              │              │              │ dual, is, informed, in, adva │
+│     │        │     │              │       │              │              │              │ nce, of, the, use, or, discl │
+│     │        │     │              │       │              │              │              │ osure, and, has, the, opport │
+│     │        │     │              │       │              │              │              │ unity, to, agree, to, or, pr │
+│     │        │     │              │       │              │              │              │ ohibit, or, restrict, the, u │
+│     │        │     │              │       │              │              │              │ se, or, disclosure, ,, in, a │
+│     │        │     │              │       │              │              │              │ ccordance, with, the, applic │
+│     │        │     │              │       │              │              │              │ able, requirements, of, this │
+│     │        │     │              │       │              │              │              │          , section]          │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 12  │  that  │ IN  │ conjunction, │ mark  │    marker    │      []      │ ['informed', │            [that]            │
+│     │        │     │  subordinati │       │              │              │  'provided', │                              │
+│     │        │     │ ng or prepos │       │              │              │    'use']    │                              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 13  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['individual │            [the]             │
+│     │        │     │              │       │              │              │ ', 'informed │                              │
+│     │        │     │              │       │              │              │ ', 'provided │                              │
+│     │        │     │              │       │              │              │  ', 'use']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 14  │ indivi │ NN  │ noun, singul │ nsubj │ nominal subj │    [the]     │ ['informed', │      [the, individual]       │
+│     │  dual  │     │  ar or mass  │ pass  │ ect (passive │              │  'provided', │                              │
+│     │        │     │              │       │      )       │              │    'use']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 15  │   is   │ VBZ │ verb, 3rd pe │ auxpa │ auxiliary (p │      []      │ ['informed', │             [is]             │
+│     │        │     │ rson singula │  ss   │   assive)    │              │  'provided', │                              │
+│     │        │     │  r present   │       │              │              │    'use']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 16  │ inform │ VBN │ verb, past p │ ccomp │ clausal comp │ [that, indiv │ ['provided', │ [that, the, individual, is,  │
+│     │   ed   │     │  articiple   │       │    lement    │ idual, is, i │    'use']    │ informed, in, advance, of, t │
+│     │        │     │              │       │              │ n, and, has] │              │ he, use, or, disclosure, and │
+│     │        │     │              │       │              │              │              │ , has, the, opportunity, to, │
+│     │        │     │              │       │              │              │              │  agree, to, or, prohibit, or │
+│     │        │     │              │       │              │              │              │ , restrict, the, use, or, di │
+│     │        │     │              │       │              │              │              │ sclosure, ,, in, accordance, │
+│     │        │     │              │       │              │              │              │  with, the, applicable, requ │
+│     │        │     │              │       │              │              │              │ irements, of, this, section] │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 17  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │  [advance]   │ ['informed', │ [in, advance, of, the, use,  │
+│     │        │     │  subordinati │       │  l modifier  │              │  'provided', │       or, disclosure]        │
+│     │        │     │ ng or prepos │       │              │              │    'use']    │                              │
+│     │        │     │    ition     │       │              │              │              │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 18  │ advanc │ NN  │ noun, singul │ pobj  │ object of pr │     [of]     │ ['in', 'info │ [advance, of, the, use, or,  │
+│     │   e    │     │  ar or mass  │       │  eposition   │              │ rmed', 'prov │         disclosure]          │
+│     │        │     │              │       │              │              │ ided', 'use' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 19  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │    [use]     │ ['advance',  │ [of, the, use, or, disclosur │
+│     │        │     │  subordinati │       │  l modifier  │              │ 'in', 'infor │              e]              │
+│     │        │     │ ng or prepos │       │              │              │ med', 'provi │                              │
+│     │        │     │    ition     │       │              │              │ ded', 'use'] │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 20  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['use', 'of' │            [the]             │
+│     │        │     │              │       │              │              │ , 'advance', │                              │
+│     │        │     │              │       │              │              │  'in', 'info │                              │
+│     │        │     │              │       │              │              │ rmed', 'prov │                              │
+│     │        │     │              │       │              │              │ ided', 'use' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 21  │  use   │ NN  │ noun, singul │ pobj  │ object of pr │ [the, or, di │ ['of', 'adva │  [the, use, or, disclosure]  │
+│     │        │     │  ar or mass  │       │  eposition   │  sclosure]   │ nce', 'in',  │                              │
+│     │        │     │              │       │              │              │ 'informed',  │                              │
+│     │        │     │              │       │              │              │ 'provided',  │                              │
+│     │        │     │              │       │              │              │    'use']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 22  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'of' │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ , 'advance', │                              │
+│     │        │     │      g       │       │              │              │  'in', 'info │                              │
+│     │        │     │              │       │              │              │ rmed', 'prov │                              │
+│     │        │     │              │       │              │              │ ided', 'use' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 23  │ disclo │ NN  │ noun, singul │ conj  │   conjunct   │      []      │ ['use', 'of' │         [disclosure]         │
+│     │  sure  │     │  ar or mass  │       │              │              │ , 'advance', │                              │
+│     │        │     │              │       │              │              │  'in', 'info │                              │
+│     │        │     │              │       │              │              │ rmed', 'prov │                              │
+│     │        │     │              │       │              │              │ ided', 'use' │                              │
+│     │        │     │              │       │              │              │      ]       │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 24  │  and   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['informed', │            [and]             │
+│     │        │     │  coordinatin │       │  conjunction │              │  'provided', │                              │
+│     │        │     │      g       │       │              │              │    'use']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 25  │  has   │ VBZ │ verb, 3rd pe │ conj  │   conjunct   │ [opportunity │ ['informed', │ [has, the, opportunity, to,  │
+│     │        │     │ rson singula │       │              │      ]       │  'provided', │ agree, to, or, prohibit, or, │
+│     │        │     │  r present   │       │              │              │    'use']    │  restrict, the, use, or, dis │
+│     │        │     │              │       │              │              │              │ closure, ,, in, accordance,  │
+│     │        │     │              │       │              │              │              │ with, the, applicable, requi │
+│     │        │     │              │       │              │              │              │ rements, of, this, section]  │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 26  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['opportunit │            [the]             │
+│     │        │     │              │       │              │              │ y', 'has', ' │                              │
+│     │        │     │              │       │              │              │ informed', ' │                              │
+│     │        │     │              │       │              │              │ provided', ' │                              │
+│     │        │     │              │       │              │              │    use']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 27  │ opport │ NN  │ noun, singul │ dobj  │ direct objec │ [the, agree] │ ['has', 'inf │ [the, opportunity, to, agree │
+│     │ unity  │     │  ar or mass  │       │      t       │              │ ormed', 'pro │ , to, or, prohibit, or, rest │
+│     │        │     │              │       │              │              │ vided', 'use │ rict, the, use, or, disclosu │
+│     │        │     │              │       │              │              │      ']      │ re, ,, in, accordance, with, │
+│     │        │     │              │       │              │              │              │  the, applicable, requiremen │
+│     │        │     │              │       │              │              │              │    ts, of, this, section]    │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 28  │   to   │ TO  │ infinitival  │  aux  │  auxiliary   │      []      │ ['agree', 'o │             [to]             │
+│     │        │     │     "to"     │       │              │              │ pportunity', │                              │
+│     │        │     │              │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 29  │ agree  │ VB  │ verb, base f │  acl  │ clausal modi │ [to, to, or, │ ['opportunit │ [to, agree, to, or, prohibit │
+│     │        │     │     orm      │       │ fier of noun │   prohibit]  │ y', 'has', ' │ , or, restrict, the, use, or │
+│     │        │     │              │       │  (adjectival │              │ informed', ' │ , disclosure, ,, in, accorda │
+│     │        │     │              │       │    clause)   │              │ provided', ' │ nce, with, the, applicable,  │
+│     │        │     │              │       │              │              │    use']     │ requirements, of, this, sect │
+│     │        │     │              │       │              │              │              │             ion]             │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 30  │   to   │ IN  │ conjunction, │ prep  │ prepositiona │      []      │ ['agree', 'o │             [to]             │
+│     │        │     │  subordinati │       │  l modifier  │              │ pportunity', │                              │
+│     │        │     │ ng or prepos │       │              │              │  'has', 'inf │                              │
+│     │        │     │    ition     │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 31  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['agree', 'o │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ pportunity', │                              │
+│     │        │     │      g       │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 32  │ prohib │ VB  │ verb, base f │ conj  │   conjunct   │ [or, restric │ ['agree', 'o │ [prohibit, or, restrict, the │
+│     │   it   │     │     orm      │       │              │    t, in]    │ pportunity', │ , use, or, disclosure, ,, in │
+│     │        │     │              │       │              │              │  'has', 'inf │ , accordance, with, the, app │
+│     │        │     │              │       │              │              │ ormed', 'pro │ licable, requirements, of, t │
+│     │        │     │              │       │              │              │ vided', 'use │        his, section]         │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 33  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['prohibit', │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │  'agree', 'o │                              │
+│     │        │     │      g       │       │              │              │ pportunity', │                              │
+│     │        │     │              │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 34  │ restri │ VB  │ verb, base f │ conj  │   conjunct   │   [use, ,]   │ ['prohibit', │ [restrict, the, use, or, dis │
+│     │   ct   │     │     orm      │       │              │              │  'agree', 'o │         closure, ,]          │
+│     │        │     │              │       │              │              │ pportunity', │                              │
+│     │        │     │              │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 35  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['use', 'res │            [the]             │
+│     │        │     │              │       │              │              │ trict', 'pro │                              │
+│     │        │     │              │       │              │              │ hibit', 'agr │                              │
+│     │        │     │              │       │              │              │ ee', 'opport │                              │
+│     │        │     │              │       │              │              │ unity', 'has │                              │
+│     │        │     │              │       │              │              │ ', 'informed │                              │
+│     │        │     │              │       │              │              │ ', 'provided │                              │
+│     │        │     │              │       │              │              │  ', 'use']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 36  │  use   │ NN  │ noun, singul │ dobj  │ direct objec │ [the, or, di │ ['restrict', │  [the, use, or, disclosure]  │
+│     │        │     │  ar or mass  │       │      t       │  sclosure]   │  'prohibit', │                              │
+│     │        │     │              │       │              │              │  'agree', 'o │                              │
+│     │        │     │              │       │              │              │ pportunity', │                              │
+│     │        │     │              │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 37  │   or   │ CC  │ conjunction, │  cc   │ coordinating │      []      │ ['use', 'res │             [or]             │
+│     │        │     │  coordinatin │       │  conjunction │              │ trict', 'pro │                              │
+│     │        │     │      g       │       │              │              │ hibit', 'agr │                              │
+│     │        │     │              │       │              │              │ ee', 'opport │                              │
+│     │        │     │              │       │              │              │ unity', 'has │                              │
+│     │        │     │              │       │              │              │ ', 'informed │                              │
+│     │        │     │              │       │              │              │ ', 'provided │                              │
+│     │        │     │              │       │              │              │  ', 'use']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 38  │ disclo │ NN  │ noun, singul │ conj  │   conjunct   │      []      │ ['use', 'res │         [disclosure]         │
+│     │  sure  │     │  ar or mass  │       │              │              │ trict', 'pro │                              │
+│     │        │     │              │       │              │              │ hibit', 'agr │                              │
+│     │        │     │              │       │              │              │ ee', 'opport │                              │
+│     │        │     │              │       │              │              │ unity', 'has │                              │
+│     │        │     │              │       │              │              │ ', 'informed │                              │
+│     │        │     │              │       │              │              │ ', 'provided │                              │
+│     │        │     │              │       │              │              │  ', 'use']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 39  │   ,    │  ,  │ punctuation  │ punct │ punctuation  │      []      │ ['restrict', │             [,]              │
+│     │        │     │ mark, comma  │       │              │              │  'prohibit', │                              │
+│     │        │     │              │       │              │              │  'agree', 'o │                              │
+│     │        │     │              │       │              │              │ pportunity', │                              │
+│     │        │     │              │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 40  │   in   │ IN  │ conjunction, │ prep  │ prepositiona │ [accordance] │ ['prohibit', │ [in, accordance, with, the,  │
+│     │        │     │  subordinati │       │  l modifier  │              │  'agree', 'o │ applicable, requirements, of │
+│     │        │     │ ng or prepos │       │              │              │ pportunity', │       , this, section]       │
+│     │        │     │    ition     │       │              │              │  'has', 'inf │                              │
+│     │        │     │              │       │              │              │ ormed', 'pro │                              │
+│     │        │     │              │       │              │              │ vided', 'use │                              │
+│     │        │     │              │       │              │              │      ']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 41  │ accord │ NN  │ noun, singul │ pobj  │ object of pr │    [with]    │ ['in', 'proh │ [accordance, with, the, appl │
+│     │  ance  │     │  ar or mass  │       │  eposition   │              │ ibit', 'agre │ icable, requirements, of, th │
+│     │        │     │              │       │              │              │ e', 'opportu │         is, section]         │
+│     │        │     │              │       │              │              │ nity', 'has' │                              │
+│     │        │     │              │       │              │              │ , 'informed' │                              │
+│     │        │     │              │       │              │              │ , 'provided' │                              │
+│     │        │     │              │       │              │              │   , 'use']   │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 42  │  with  │ IN  │ conjunction, │ prep  │ prepositiona │ [requirement │ ['accordance │ [with, the, applicable, requ │
+│     │        │     │  subordinati │       │  l modifier  │      s]      │ ', 'in', 'pr │ irements, of, this, section] │
+│     │        │     │ ng or prepos │       │              │              │ ohibit', 'ag │                              │
+│     │        │     │    ition     │       │              │              │ ree', 'oppor │                              │
+│     │        │     │              │       │              │              │ tunity', 'ha │                              │
+│     │        │     │              │       │              │              │ s', 'informe │                              │
+│     │        │     │              │       │              │              │ d', 'provide │                              │
+│     │        │     │              │       │              │              │  d', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 43  │  the   │ DT  │  determiner  │  det  │  determiner  │      []      │ ['requiremen │            [the]             │
+│     │        │     │              │       │              │              │ ts', 'with', │                              │
+│     │        │     │              │       │              │              │  'accordance │                              │
+│     │        │     │              │       │              │              │ ', 'in', 'pr │                              │
+│     │        │     │              │       │              │              │ ohibit', 'ag │                              │
+│     │        │     │              │       │              │              │ ree', 'oppor │                              │
+│     │        │     │              │       │              │              │ tunity', 'ha │                              │
+│     │        │     │              │       │              │              │ s', 'informe │                              │
+│     │        │     │              │       │              │              │ d', 'provide │                              │
+│     │        │     │              │       │              │              │  d', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 44  │ applic │ JJ  │ adjective (E │ amod  │ adjectival m │      []      │ ['requiremen │         [applicable]         │
+│     │  able  │     │ nglish), oth │       │   odifier    │              │ ts', 'with', │                              │
+│     │        │     │ er noun-modi │       │              │              │  'accordance │                              │
+│     │        │     │ fier (Chines │       │              │              │ ', 'in', 'pr │                              │
+│     │        │     │      e)      │       │              │              │ ohibit', 'ag │                              │
+│     │        │     │              │       │              │              │ ree', 'oppor │                              │
+│     │        │     │              │       │              │              │ tunity', 'ha │                              │
+│     │        │     │              │       │              │              │ s', 'informe │                              │
+│     │        │     │              │       │              │              │ d', 'provide │                              │
+│     │        │     │              │       │              │              │  d', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 45  │ requir │ NNS │ noun, plural │ pobj  │ object of pr │ [the, applic │ ['with', 'ac │ [the, applicable, requiremen │
+│     │ ements │     │              │       │  eposition   │  able, of]   │ cordance', ' │    ts, of, this, section]    │
+│     │        │     │              │       │              │              │ in', 'prohib │                              │
+│     │        │     │              │       │              │              │ it', 'agree' │                              │
+│     │        │     │              │       │              │              │ , 'opportuni │                              │
+│     │        │     │              │       │              │              │ ty', 'has',  │                              │
+│     │        │     │              │       │              │              │ 'informed',  │                              │
+│     │        │     │              │       │              │              │ 'provided',  │                              │
+│     │        │     │              │       │              │              │    'use']    │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 46  │   of   │ IN  │ conjunction, │ prep  │ prepositiona │  [section]   │ ['requiremen │     [of, this, section]      │
+│     │        │     │  subordinati │       │  l modifier  │              │ ts', 'with', │                              │
+│     │        │     │ ng or prepos │       │              │              │  'accordance │                              │
+│     │        │     │    ition     │       │              │              │ ', 'in', 'pr │                              │
+│     │        │     │              │       │              │              │ ohibit', 'ag │                              │
+│     │        │     │              │       │              │              │ ree', 'oppor │                              │
+│     │        │     │              │       │              │              │ tunity', 'ha │                              │
+│     │        │     │              │       │              │              │ s', 'informe │                              │
+│     │        │     │              │       │              │              │ d', 'provide │                              │
+│     │        │     │              │       │              │              │  d', 'use']  │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 47  │  this  │ DT  │  determiner  │  det  │  determiner  │      []      │ ['section',  │            [this]            │
+│     │        │     │              │       │              │              │ 'of', 'requi │                              │
+│     │        │     │              │       │              │              │ rements', 'w │                              │
+│     │        │     │              │       │              │              │ ith', 'accor │                              │
+│     │        │     │              │       │              │              │ dance', 'in' │                              │
+│     │        │     │              │       │              │              │ , 'prohibit' │                              │
+│     │        │     │              │       │              │              │ , 'agree', ' │                              │
+│     │        │     │              │       │              │              │ opportunity' │                              │
+│     │        │     │              │       │              │              │ , 'has', 'in │                              │
+│     │        │     │              │       │              │              │ formed', 'pr │                              │
+│     │        │     │              │       │              │              │ ovided', 'us │                              │
+│     │        │     │              │       │              │              │     e']      │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 48  │ sectio │ NN  │ noun, singul │ pobj  │ object of pr │    [this]    │ ['of', 'requ │       [this, section]        │
+│     │   n    │     │  ar or mass  │       │  eposition   │              │ irements', ' │                              │
+│     │        │     │              │       │              │              │ with', 'acco │                              │
+│     │        │     │              │       │              │              │ rdance', 'in │                              │
+│     │        │     │              │       │              │              │ ', 'prohibit │                              │
+│     │        │     │              │       │              │              │ ', 'agree',  │                              │
+│     │        │     │              │       │              │              │ 'opportunity │                              │
+│     │        │     │              │       │              │              │ ', 'has', 'i │                              │
+│     │        │     │              │       │              │              │ nformed', 'p │                              │
+│     │        │     │              │       │              │              │ rovided', 'u │                              │
+│     │        │     │              │       │              │              │     se']     │                              │
+├─────┼────────┼─────┼──────────────┼───────┼──────────────┼──────────────┼──────────────┼──────────────────────────────┤
+│ 49  │   .    │  .  │ punctuation  │ punct │ punctuation  │      []      │   ['use']    │             [.]              │
+│     │        │     │ mark, senten │       │              │              │              │                              │
+│     │        │     │  ce closer   │       │              │              │              │                              │
+╰─────┴────────┴─────┴──────────────┴───────┴──────────────┴──────────────┴──────────────┴──────────────────────────────╯
