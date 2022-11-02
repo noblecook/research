@@ -1,6 +1,7 @@
 import time
 import uuid
 import pandas as pd
+jsonResult = {}
 
 
 def sanitize(inputDataSet):

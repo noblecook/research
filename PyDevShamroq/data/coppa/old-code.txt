@@ -1,0 +1,76 @@
+right_pattern_01 = [{'LOWER': 'has'},
+                    {'LOWER': 'a'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
+right_pattern_02 = [{'LOWER': 'has'},
+                    {'LOWER': 'the'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
+right_pattern_03 = [{'LOWER': 'retains'},
+                    {'LOWER': 'the'},
+                    {'LOWER': 'right'},
+                    {'LOWER': 'to'},
+                    {'POS': 'VERB'}]
+
+obligation_pattern_01 = [{'LOWER': 'must'},
+                         {'POS': 'VERB'}]
+obligation_pattern_02 = [{'LOWER': 'is'},
+                         {'LOWER': 'required'},
+                         {'LOWER': 'to'},
+                         {'POS': 'VERB'}]
+obligation_pattern_03 = [{'LOWER': 'shall'},
+                         {'POS': 'VERB'}, ]
+obligation_pattern_04 = [{'LOWER': 'may'},
+                         {'LOWER': 'not'}]
+obligation_pattern_05 = [{'LOWER': 'is'},
+                         {'LOWER': 'prohibited'}]
+obligation_pattern_06 = [{'LOWER': 'is'},
+                         {'LOWER': 'subject'},
+                         {'LOWER': 'to'},
+                         {'POS': 'VERB'}]
+obligation_pattern_07 = [{'LOWER': 'must'},
+                         {'LOWER': 'be'},
+                         {'POS': 'ADV'},
+                         {'POS': 'VERB'}]
+priv_pattern_00 = [{'LOWER': 'may'},
+                   {'IS_PUNCT': True, 'OP': '?'}]
+
+priv_pattern_01 = [{'LOWER': 'may'},
+                   {'POS': 'ADV', 'OP': '?'},
+                   {'IS_PUNCT': True, 'OP': '?'},
+                   {'POS': 'VERB'}]
+priv_pattern_02 = [{'LOWER': 'may'},
+                   {'LOWER': 'elect'},
+                   {'LOWER': 'not'},
+                   {'LOWER': 'to'}]
+priv_pattern_03 = [{'LOWER': 'is'},
+                   {'LOWER': 'not'},
+                   {'LOWER': 'required'},
+                   {'LOWER': 'to'},
+                   {'POS': 'VERB'}]
+priv_pattern_04 = [{'LOWER': 'requirement'},
+                   {'LOWER': 'does'},
+                   {'LOWER': 'not'},
+                   {'LOWER': 'apply'},
+                   {'LOWER': 'to'},
+                   {'POS': 'VERB'}]
+priv_pattern_05 = [{'LOWER': 'is'},
+                   {'LOWER': 'permitted'},
+                   {'LOWER': 'to'},
+                   {'POS': 'VERB'}]
+priv_pattern_06 = [{'LOWER': 'at'},
+                   {'LOWER': 'the'},
+                   {'LOWER': 'election'},
+                   {'LOWER': 'of'},
+                   {'POS': 'NOUN'}]
+priv_pattern_07 = [{'LOWER': 'is'},
+                   {'LOWER': 'not'},
+                   {'LOWER': 'subject'},
+                   {'LOWER': 'to'},
+                   {'POS': 'VERB'}]
+groundPattern01 = [{'POS': 'DET', 'OP': '?'},
+                   {'POS': 'ADJ', 'OP': '*'},
+                   {'POS': 'NOUN', 'OP': '+', 'DEP': 'nsubj'},
+                   {'POS': 'VERB', 'DEP': 'ROOT'}]

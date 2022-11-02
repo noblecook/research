@@ -10,7 +10,7 @@ import time
 def printDictionary(input):
     for k, v, in input.items():
         print(k, " = ", v)
-        time.sleep(3)
+        time.sleep(0)
 
 
 '''
@@ -88,11 +88,11 @@ data structure with the Regulation name and the contents
 def init(node, reg):
     print("... Starting preprocessor.init()")
     time.sleep(0)
+    regulatoryText.clear()
     result = processData(node, reg)
-
-    # print("printDictionary(result) ........\n\n\n\n")
     contentDict = {"Content": regulatoryText}
     result.update(contentDict)
+
 
 
     '''
@@ -109,6 +109,7 @@ def init(node, reg):
 
     time.sleep(5)
     '''
+
     return result
 
 

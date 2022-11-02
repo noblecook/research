@@ -33,21 +33,21 @@ xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
 xml_45_164_510 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-510.xml'
 
-xml_16_132_002 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-2.xml'
-xml_16_132_004 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-4.xml'
-xml_16_132_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
-xml_16_132_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
-xml_16_132_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
+xml_16_312_002 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-2.xml'
+xml_16_312_004 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-4.xml'
+xml_16_312_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
+xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
+xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
 
 xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2021-title16-vol1-sec313-9.xml'
 
 
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 
-#regList = [xml_16_132_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
+#regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 #regList = [xml_16_132_005, xml_16_313_009, xml_45_164_510]
-#regList = [xml_16_132_005]
-regList = [xml_16_132_ALL]
+regList = [xml_16_312_005]
+#regList = [xml_16_312_ALL]
 
 
 def getTimeNow():
@@ -75,12 +75,16 @@ def shamroq(listOfRegulations):
         # output = "preProcessedResults" a dictionary of the CFR regulation
         # print("preProcessedResults is of type ", python Dictionary );
         # print("regulation is of type ", String);
+
         preProcessedResults = preprocessor.init(scannedResults, regulation)
 
         # clean.init() returns a structured dictionary
         # input = "preProcessedResults", a dictionary of the CFR regulation
         # output = "cleanedResults" a dictionary of the CFR regulation with metadata
+
         cleanedResults = clean.init(preProcessedResults)
+
+
 
         # classify.init()
         # Todo:  Must classify "Grounding" - Permission, Obligation, Prohibition
@@ -95,13 +99,17 @@ def shamroq(listOfRegulations):
         # ----- Build another class to use Spacy and Textacy ------
 
         classificationResults = classifyMetaModel.init(cleanedResults)
-        #print(classificationResults)
 
 
         # ----- HERE WE WILL USE OWLREADY2 ------
         # ----- Build another class to use Spacy and Textacy ------
         # model.init() input = list of x; output = list
         # model.init(cleanedResults, classificationResults)
+
+        print("-------------------------------///////////////------------------")
+        print("-------------------------------///////////////------------------")
+        print("-------------------------------///////////////------------------")
+        time.sleep(1)
 
     getTimeNow()
     return requirements
