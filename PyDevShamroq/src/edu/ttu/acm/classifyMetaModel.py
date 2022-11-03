@@ -3,6 +3,11 @@ import spacy
 import textacy
 from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+linguisticFeatures = ['TOKEN', 'POS', 'TAG', 'DEP']
+df = pd.DataFrame(columns=linguisticFeatures)
 
 
 nlp = spacy.load("en_core_web_lg")
@@ -137,8 +142,14 @@ def printEachProvision(params):
                          ---> Process the Grounding
                         '''
                         text = proValue[x]
-                        print(text)
-                        getDepData(text)
+                        #print(text)
+
+                        rows = setDataFrame(text)
+                        #print(rows)
+                        #time.sleep(10)
+
+                        #getFrequencyData(text)
+                        #getDepData(text)
                         #classifyWithMatcher(text)
                         # classifyHohfeldian(text)
                         # classifySVO(text)
@@ -148,6 +159,20 @@ def printEachProvision(params):
                         # classifyHohfeldian(text)
                         #classBasicActivityPattern(text)
 
+            print("---------DONE--------.. nothing to see here\n\n\n")
+            count = df['DEP'].value_counts()
+            print(count)
+            time.sleep(10)
+
+            #df['DEP'].hist(bins=40, figsize=(15,15))
+            df['DEP'].hist(bins=54, figsize=(15, 10), legend=True, color="red", ec="black")
+            plt.show()
+
+
+            #df.plot.hist(column=['DEP'])
+            #plt.show()
+
+            #print(df)
             print("\n FINISHED\n\n\n")
         time.sleep(0)
 
@@ -158,6 +183,25 @@ def printEachProvision(params):
 '''
 
 
+def setDataFrame(text):
+    doc = nlp(text)
+    for token in doc:
+        df.loc[len(df.index)] = [token.text, token.pos_, token.tag_, token.dep_]
+        #print(df)
+    return df
+
+def getFrequencyData(text):
+    doc = nlp(text)
+    countTags = doc.count_by(spacy.attrs.DEP)
+    for pos, count in sorted(countTags.items()):
+        senTag = doc.vocab[pos].text
+        print(senTag, count)
+
+
+'''
+A list of dependency labels listed here 
+- https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
+'''
 def getDepData(text):
     doc = nlp(text)
     SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
@@ -174,6 +218,7 @@ def getDepData(text):
     print(table)
     time.sleep(10)
     return doc
+
 
 def classifyWithMatcher(text):
 
@@ -223,6 +268,17 @@ OP	DESCRIPTION
 {n,m}	Require the pattern to match at least n but not more than m times.
 {n,}	Require the pattern to match at least n times.
 {,m}	Require the pattern to match at most m times.
+
+dfColHeadings = ['ACL', 'ACOMP', 'ADVCL', 'ADVMOD', 'AGENT', 'AMOD', 'APPOS', 'ATTR',
+                     'AUX', 'AUXPASS', 'CASE', 'CC', 'CCOMP', 'COMPOUND', 'CONJ', 'CSUBJ',
+                     'CUSBJPASS', 'DATIVE', 'DEP', 'DET', 'DOBJ', 'EXPL', 'INTJ', 'MARK',
+                     'META', 'NEG', 'NOUNMOD', 'NPMOD', 'NSUBJ', 'NSUBJPASS', 'NUMMOD',
+                     'OPRD', 'PARATAXIS', 'PCOMP', 'POBJ', 'POSS', 'PRECONJ', 'PREDET',
+                     'PREP', 'PRT', 'PUNCT', 'QUANTMOD', 'RELCL', 'ROOT', 'XCOMP']
+                     
+    for token in doc:
+        df.concat([token.text, token.lemma_, token.pos_, token.tag_,
+                   token.dep_, token.head.text, token.head.pos_])
 
 
 '''
