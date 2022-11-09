@@ -1,9 +1,11 @@
 import time
 import spacy
+import textacy
 from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 linguisticFeatures = ['TOKEN', 'POS', 'TAG', 'DEP']
 df = pd.DataFrame(columns=linguisticFeatures)
 
@@ -17,96 +19,6 @@ https://spacy.io/usage/rule-based-matching
 https://demos.explosion.ai/matcher
 
 '''
-
-right_pattern_01 = [{'LOWER': 'has'},{'LOWER': 'a'},{'LOWER': 'right'},{'LOWER': 'to'},{'POS': 'VERB'}]
-right_pattern_02 = [{'LOWER': 'has'},{'LOWER': 'the'},{'LOWER': 'right'},{'LOWER': 'to'},{'POS': 'VERB'}]
-right_pattern_03 = [{'LOWER': 'retains'}, {'LOWER': 'the'}, {'LOWER': 'right'}, {'LOWER': 'to'}, {'POS': 'VERB'}]
-
-obligation_pattern_01 = [{'LOWER': 'must'},
-                         {'POS': 'VERB'}]
-obligation_pattern_02 = [{'LOWER': 'is'},
-                         {'LOWER': 'required'},
-                         {'LOWER': 'to'},
-                         {'POS': 'VERB'}]
-obligation_pattern_03 = [{'LOWER': 'shall'},
-                         {'POS': 'VERB'}, ]
-obligation_pattern_04 = [{'LOWER': 'may'},
-                         {'LOWER': 'not'}]
-obligation_pattern_05 = [{'LOWER': 'is'},
-                         {'LOWER': 'prohibited'}]
-obligation_pattern_06 = [{'LOWER': 'is'},
-                         {'LOWER': 'subject'},
-                         {'LOWER': 'to'},
-                         {'POS': 'VERB'}]
-priv_pattern_00 = [{'LOWER': 'may'},
-                   {'IS_PUNCT': True, 'OP': '?'}]
-
-priv_pattern_01 = [{'LOWER': 'may'},
-                   {'POS': 'ADV', 'OP': '?'},
-                   {'IS_PUNCT': True, 'OP': '?'},
-                   {'POS': 'VERB'}]
-priv_pattern_02 = [{'LOWER': 'may'},
-                   {'LOWER': 'elect'},
-                   {'LOWER': 'not'},
-                   {'LOWER': 'to'}]
-priv_pattern_03 = [{'LOWER': 'is'},
-                   {'LOWER': 'not'},
-                   {'LOWER': 'required'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-priv_pattern_04 = [{'LOWER': 'requirement'},
-                   {'LOWER': 'does'},
-                   {'LOWER': 'not'},
-                   {'LOWER': 'apply'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-priv_pattern_05 = [{'LOWER': 'is'},
-                   {'LOWER': 'permitted'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-priv_pattern_06 = [{'LOWER': 'at'},
-                   {'LOWER': 'the'},
-                   {'LOWER': 'election'},
-                   {'LOWER': 'of'},
-                   {'POS': 'NOUN'}]
-priv_pattern_07 = [{'LOWER': 'is'},
-                   {'LOWER': 'not'},
-                   {'LOWER': 'subject'},
-                   {'LOWER': 'to'},
-                   {'POS': 'VERB'}]
-
-
-
-groundingMatcher = Matcher(nlp.vocab)
-
-'''
---- Rights-----
-'''
-groundingMatcher.add("Right --> 01", [right_pattern_01], greedy="LONGEST")
-groundingMatcher.add("Right --> 01", [right_pattern_02], greedy="LONGEST")
-groundingMatcher.add("Right --> 01", [right_pattern_03], greedy="LONGEST")
-
-'''
---- Obligations-----
-'''
-groundingMatcher.add("Obligation --> 01", [obligation_pattern_01], greedy="LONGEST")
-groundingMatcher.add("Obligation --> 02", [obligation_pattern_02], on_match=obligation02, greedy="LONGEST")
-groundingMatcher.add("Obligation --> 03", [obligation_pattern_03], greedy="LONGEST")
-groundingMatcher.add("Obligation --> 04", [obligation_pattern_04], greedy="LONGEST")
-groundingMatcher.add("Obligation --> 05", [obligation_pattern_05], greedy="LONGEST")
-groundingMatcher.add("Obligation --> 06", [obligation_pattern_06], greedy="LONGEST")
-
-'''
---- Privileges-----
-'''
-groundingMatcher.add("Privileges --> 00", [priv_pattern_00], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 01", [priv_pattern_01], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 02", [priv_pattern_02], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 03", [priv_pattern_03], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 04", [priv_pattern_04], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 05", [priv_pattern_05], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 06", [priv_pattern_06], greedy="LONGEST")
-groundingMatcher.add("Privileges --> 07", [priv_pattern_07], greedy="LONGEST")
 
 #coppa 312.5 01
 svo100 = [{'TAG': 'DT'},
@@ -213,7 +125,7 @@ svo201 = [{'TAG': 'DT'},
           {'TAG': 'DT'}]
 
 
-def processEachProvision(params):
+def printEachProvision(params):
     for key, value in params.items():
         if key == "Metadata":
             print("key---------->", key)
@@ -223,23 +135,58 @@ def processEachProvision(params):
             print("value-------->", value, "\n\n")
         if key == "Body":
             print("body -------->  Body")
-            for statementKey, statementValue in value.items():
-                if statementKey == "content":
-                    for x in range(len(statementValue)):
-                        text = statementValue[x]
-
+            for proKey, proValue in value.items():
+                if proKey == "content":
+                    for x in range(len(proValue)):
                         '''
                          ---> Process the Grounding
                         '''
-                        classifyGrounding(text)
+                        text = proValue[x]
+                        #print(text)
 
+                        rows = setDataFrame(text)
+                        #print(rows)
+                        #time.sleep(10)
+
+                        #getFrequencyData(text)
+                        #getDepData(text)
+                        #classifyWithMatcher(text)
+                        # classifyHohfeldian(text)
+                        # classifySVO(text)
+                        #classifySVONounChunks(text)
+                        # classifySVOList(text)
+                        # classifyNounPhrases(text)
+                        # classifyHohfeldian(text)
+                        #classBasicActivityPattern(text)
                         '''
                         ---> Process the MetaModel
-                        '''
-                        classifyMetaModel(text)
-                        print("Text... classifyMetaModel", text)
+                        '''                       
 
 
+            print("---------DONE--------.. nothing to see here\n\n\n")
+            count = df['DEP'].value_counts()
+            #print(count)
+            #time.sleep(10)
+
+
+            #df['DEP'].hist(bins=40, figsize=(15,15))
+            #df['POS'].hist(bins=65, figsize=(25, 100), legend=True, color="red", ec="black")
+            #plt.xticks(rotation=45)
+            #plt.hist(df)
+            #df['POS'].plot(kind='hist')
+            #df['POS'].hist(bins=65, figsize=(25, 100), legend=True, color="red", ec="black")
+
+
+            plt.hist(df['DEP'], orientation='horizontal')
+            plt.show()
+
+
+            #df.plot.hist(column=['DEP'])
+            #plt.show()
+
+            #print(df)
+            print("\n FINISHED\n\n\n")
+        time.sleep(0)
 
 
 '''
@@ -285,39 +232,8 @@ def getDepData(text):
     return doc
 
 
-def classifyGrounding(text):
-    doc = nlp(text)
-    matches = groundingMatcher(doc)
+def classifyWithMatcher(text):
 
-    '''
-        This yields good result, but I don't have control over the object (noun phrase)
-        linguisticFeatures = ['TOKEN', 'POS', 'TAG', 'DEP']
-        use spaCy 3.3.1
-    '''
-    for match_id, start, end in matches:
-        '''
-            If there is a match for the grounding, classify the Hohfeldian concepts
-        '''
-        # Get string representation
-        string_id = nlp.vocab.strings[match_id]
-        # The matched span
-        span = doc[start:end]
-        print("<><><>")
-        print("<><><> ==========> ", string_id, start, end, span.text)
-        df.loc[len(df.index)] = [text, span.text, len(span.text), string_id]
-        print("<><><>")
-        print("\n\n")
-        time.sleep(5)
-        print("Printing df.... ")
-        print(df.head())
-
-        '''
-            Then classify the metamodel and store in the dataframe
-        '''
-        #classifyMetaModel(text, df)
-
-
-def classifyMetaModel(text):
     doc = nlp(text)
     regMatcher = Matcher(nlp.vocab)
     regMatcher.add("Subject Verb Object  -----> svo100 ", [svo100], greedy="LONGEST")
@@ -342,18 +258,8 @@ def classifyMetaModel(text):
         string_id = nlp.vocab.strings[match_id]
         # The matched span
         span = doc[start:end]
-        print("\n||||||||| ")
         print("\n<><><> ==========> ", string_id, start, end, span.text)
-        print("\n||||||||| ")
-
-
-def on_match(matcher, doc, id, matches):
-    print("Hello World!")
-    print("matcher ", matcher)
-    print("doc ..", doc)
-    print("id ..", id)
-    print("matches ..", doc)
-    time.sleep(100)
+        time.sleep(10)
 
 
 def getMetalModel(inputDictionary):
@@ -390,16 +296,9 @@ dfColHeadings = ['ACL', 'ACOMP', 'ADVCL', 'ADVMOD', 'AGENT', 'AMOD', 'APPOS', 'A
 '''
 
 
-def readConfigFile():
-    config = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/rule-oblig.cfg"
-    f = open(config, "r")
-    for line in f.readline():
-        print(line)
-    f.close()
-
-
 def init(inputDict):
-    regulation = inputDict
-    processEachProvision(regulation)
-    #prepareModel()
-    return regulation
+    metaModel = inputDict
+    #clasifyGrounding()
+    #classifyMetaModel()
+    printEachProvision(metaModel)
+    return metaModel

@@ -45,8 +45,8 @@ xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2021-title16-vol1-sec313-9.xml'
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 
 #regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-#regList = [xml_16_132_005, xml_16_313_009, xml_45_164_510]
-regList = [xml_16_312_005]
+regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
+#regList = [xml_16_312_005]
 #regList = [xml_16_312_ALL]
 
 
