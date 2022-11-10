@@ -4,7 +4,7 @@ from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
 import pandas as pd
 import matplotlib.pyplot as plt
-linguisticFeatures = ['TOKEN', 'POS', 'TAG', 'DEP']
+linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'MODALITY', 'SUBJ', 'VERB', 'OBJECT']
 df = pd.DataFrame(columns=linguisticFeatures)
 
 
@@ -90,7 +90,7 @@ groundingMatcher.add("Right --> 01", [right_pattern_03], greedy="LONGEST")
 --- Obligations-----
 '''
 groundingMatcher.add("Obligation --> 01", [obligation_pattern_01], greedy="LONGEST")
-groundingMatcher.add("Obligation --> 02", [obligation_pattern_02], on_match=obligation02, greedy="LONGEST")
+groundingMatcher.add("Obligation --> 02", [obligation_pattern_02], greedy="LONGEST")
 groundingMatcher.add("Obligation --> 03", [obligation_pattern_03], greedy="LONGEST")
 groundingMatcher.add("Obligation --> 04", [obligation_pattern_04], greedy="LONGEST")
 groundingMatcher.add("Obligation --> 05", [obligation_pattern_05], greedy="LONGEST")
@@ -231,63 +231,83 @@ def processEachProvision(params):
                         '''
                          ---> Process the Grounding
                         '''
-                        classifyGrounding(text)
+                        classify(text)
 
                         '''
                         ---> Process the MetaModel
                         '''
-                        classifyMetaModel(text)
-                        print("Text... classifyMetaModel", text)
-
-
+                        #classifyMetaModel(text)
+                        #print("Text... classifyMetaModel", text)
 
 
 '''
  Textacy Documentation - https://textacy.readthedocs.io/en/0.11.0/api_reference/extract.html
  Tutorial - https://textacy.readthedocs.io/en/0.11.0/tutorials/tutorial-2.html
+
+
+def setDataFrame():
+    if (string_id == OBLIGATION):
+        getObligationGroundingAndMetaModel()
+    elif (string_id == PERMISSON):
+        getPermissionGroundingAndMetaModel()
+    elif(string_id == RIGHTS):
+        getRightsGroundingAndMetaModel()
+    else:
+        pass;
 '''
 
 
-def setDataFrame(text):
+# linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'MODALITY', 'SUBJ', 'VERB', 'OBJECT']
+def getObligationGroundingAndMetaModel(text, string_id, span):
+    print("called - getObligationGroundingAndMetaModel")
+    subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; modality = "EMPTY"
+    pattern = string_id
+    print(text)
+
     doc = nlp(text)
     for token in doc:
-        df.loc[len(df.index)] = [token.text, token.pos_, token.tag_, token.dep_]
-        #print(df)
-    return df
+        if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
+            subject = token.text
+            #subject = list(token.subtree)
+            #print("\nNominal Subject =", subject)
+        elif token.dep_ == "nsubjpass" and token.head.pos_ == "VERB":
+            subject = token.text
+            #subject = list(token.subtree)
+            #print("\nNominal PASSIVE Subject =", subject)
+        elif token.tag_ == "MD":
+            modality = token.text
+            #print("MODAL VERB =", modality)
+        elif token.pos_ == "VERB" and token.dep_ == "ROOT":
+            #root = token.text
+            root = list(token.subtree)
+            #print("\nROOT = ", root)
+        elif token.dep_ == "dobj":
+            #directObject = list(token.subtree)
+            directObject = token.text
+            #print("Direct Object (subtree) = ", directObject)
+            #print("\n")
+        else:
+            pass
 
-def getFrequencyData(text):
+    # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'MODALITY'(3), 'SUBJ'(4), 'VERB'(5), 'OBJECT'(6)]
+    df.loc[len(df.index)] = [text, pattern, span, modality, subject, root, directObject]
+
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.expand_frame_repr', False)
+
+
+    print("\n----------> Dataframe Results ...\n")
+    print(df.iloc[0:10, 1:7])
+    print("\n\n\n")
+    time.sleep(1)
+    return df;
+
+
+def classify(text):
     doc = nlp(text)
-    countTags = doc.count_by(spacy.attrs.DEP)
-    for pos, count in sorted(countTags.items()):
-        senTag = doc.vocab[pos].text
-        print(senTag, count)
 
-
-'''
-A list of dependency labels listed here 
-- https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
-'''
-def getDepData(text):
-    doc = nlp(text)
-    SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
-    table = BeautifulTable(maxwidth=165)
-    table.columns.header = ['SN', 'Text', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
-    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
-    table.columns.width = [SN, TOKEN, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
-
-    for token in doc:
-        ancestors = [t.text for t in token.ancestors]
-        children = [child for child in token.children]
-        table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
-                           token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
-    print(table)
-    time.sleep(10)
-    return doc
-
-
-def classifyGrounding(text):
-    doc = nlp(text)
     matches = groundingMatcher(doc)
+
 
     '''
         This yields good result, but I don't have control over the object (noun phrase)
@@ -296,20 +316,13 @@ def classifyGrounding(text):
     '''
     for match_id, start, end in matches:
         '''
-            If there is a match for the grounding, classify the Hohfeldian concepts
+            If there is a match, classify the grounding
         '''
         # Get string representation
         string_id = nlp.vocab.strings[match_id]
         # The matched span
         span = doc[start:end]
-        print("<><><>")
-        print("<><><> ==========> ", string_id, start, end, span.text)
-        df.loc[len(df.index)] = [text, span.text, len(span.text), string_id]
-        print("<><><>")
-        print("\n\n")
-        time.sleep(5)
-        print("Printing df.... ")
-        print(df.head())
+        y = getObligationGroundingAndMetaModel(text, span, string_id)
 
         '''
             Then classify the metamodel and store in the dataframe
@@ -354,6 +367,45 @@ def on_match(matcher, doc, id, matches):
     print("id ..", id)
     print("matches ..", doc)
     time.sleep(100)
+
+
+
+def setDataFrame(text):
+    doc = nlp(text)
+    for token in doc:
+        df.loc[len(df.index)] = [token.text, token.pos_, token.tag_, token.dep_]
+        #print(df)
+    return df
+
+def getFrequencyData(text):
+    doc = nlp(text)
+    countTags = doc.count_by(spacy.attrs.DEP)
+    for pos, count in sorted(countTags.items()):
+        senTag = doc.vocab[pos].text
+        print(senTag, count)
+
+
+
+'''
+A list of dependency labels listed here 
+- https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
+'''
+def getDepData(text):
+    doc = nlp(text)
+    SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
+    table = BeautifulTable(maxwidth=165)
+    table.columns.header = ['SN', 'Text', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
+    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
+    table.columns.width = [SN, TOKEN, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
+
+    for token in doc:
+        ancestors = [t.text for t in token.ancestors]
+        children = [child for child in token.children]
+        table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
+                           token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
+    print(table)
+    time.sleep(10)
+    return doc
 
 
 def getMetalModel(inputDictionary):
