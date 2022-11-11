@@ -1,0 +1,27 @@
+'''
+Universal POS tags - https://universaldependencies.org/u/pos/
+Deplacy - https://spacy.io/universe/project/deplacy
+
+OP	DESCRIPTION
+!	Negate the pattern, by requiring it to match exactly 0 times.
+?	Make the pattern optional, by allowing it to match 0 or 1 times.
++	Require the pattern to match 1 or more times.
+*	Allow the pattern to match zero or more times.
+{n}	Require the pattern to match exactly n times.
+{n,m}	Require the pattern to match at least n but not more than m times.
+{n,}	Require the pattern to match at least n times.
+{,m}	Require the pattern to match at most m times.
+
+dfColHeadings = ['ACL', 'ACOMP', 'ADVCL', 'ADVMOD', 'AGENT', 'AMOD', 'APPOS', 'ATTR',
+                     'AUX', 'AUXPASS', 'CASE', 'CC', 'CCOMP', 'COMPOUND', 'CONJ', 'CSUBJ',
+                     'CUSBJPASS', 'DATIVE', 'DEP', 'DET', 'DOBJ', 'EXPL', 'INTJ', 'MARK',
+                     'META', 'NEG', 'NOUNMOD', 'NPMOD', 'NSUBJ', 'NSUBJPASS', 'NUMMOD',
+                     'OPRD', 'PARATAXIS', 'PCOMP', 'POBJ', 'POSS', 'PRECONJ', 'PREDET',
+                     'PREP', 'PRT', 'PUNCT', 'QUANTMOD', 'RELCL', 'ROOT', 'XCOMP']
+                     
+    for token in doc:
+        df.concat([token.text, token.lemma_, token.pos_, token.tag_,
+                   token.dep_, token.head.text, token.head.pos_])
+
+
+'''

@@ -23,6 +23,46 @@ https://demos.explosion.ai/matcher
 '''
 
 
+def setDataFrame(text):
+    doc = nlp(text)
+    for token in doc:
+        df.loc[len(df.index)] = [token.text, token.pos_, token.tag_, token.dep_]
+        #print(df)
+    return df
+
+
+def getFrequencyData(text):
+    doc = nlp(text)
+    countTags = doc.count_by(spacy.attrs.DEP)
+    for pos, count in sorted(countTags.items()):
+        senTag = doc.vocab[pos].text
+        print(senTag, count)
+
+
+'''
+A list of dependency labels listed here 
+- https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
+'''
+
+
+def getDepData(text):
+    doc = nlp(text)
+    SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
+    table = BeautifulTable(maxwidth=165)
+    table.columns.header = ['SN', 'Text', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
+    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
+    table.columns.width = [SN, TOKEN, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
+
+    for token in doc:
+        ancestors = [t.text for t in token.ancestors]
+        children = [child for child in token.children]
+        table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
+                           token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
+    print(table)
+    time.sleep(0)
+    return doc
+
+
 # linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     print("called - getObligationGroundingAndMetaModel")
@@ -77,51 +117,10 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     '''
 
 
-def setDataFrame(text):
-    doc = nlp(text)
-    for token in doc:
-        df.loc[len(df.index)] = [token.text, token.pos_, token.tag_, token.dep_]
-        #print(df)
-    return df
-
-
-def getFrequencyData(text):
-    doc = nlp(text)
-    countTags = doc.count_by(spacy.attrs.DEP)
-    for pos, count in sorted(countTags.items()):
-        senTag = doc.vocab[pos].text
-        print(senTag, count)
-
-
-'''
-A list of dependency labels listed here 
-- https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
-'''
-
-
-def getDepData(text):
-    doc = nlp(text)
-    SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
-    table = BeautifulTable(maxwidth=165)
-    table.columns.header = ['SN', 'Text', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
-    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
-    table.columns.width = [SN, TOKEN, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
-
-    for token in doc:
-        ancestors = [t.text for t in token.ancestors]
-        children = [child for child in token.children]
-        table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
-                           token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
-    print(table)
-    time.sleep(10)
-    return doc
-
-
 def classifySpan(text):
     doc = nlp(text)
     for span in doc.spans["ruler"]:
         y = getObligationGroundingAndMetaModel(text, span.text, span.label_)
-
     # classifyMetaModel(text, df)
 
 
@@ -147,10 +146,10 @@ def processEachProvision(params):
                         print("|   Evaluate Statement  |")
                         print("|                       |")
                         print(text)
+                        classifySpan(text)
                         getDepData(text)
-                        #classifySpan(text)
                         print("<<<<------------------------------------>>>>>\n\n")
-                        time.sleep(5)
+                        time.sleep(0)
 
                         '''
                         ---> Process the MetaModel
