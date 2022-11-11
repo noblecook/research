@@ -74,3 +74,172 @@ groundPattern01 = [{'POS': 'DET', 'OP': '?'},
                    {'POS': 'ADJ', 'OP': '*'},
                    {'POS': 'NOUN', 'OP': '+', 'DEP': 'nsubj'},
                    {'POS': 'VERB', 'DEP': 'ROOT'}]
+				   
+				   
+				   
+				   '''
+ideas
+1. need a grammar
+2. break the classification up into three parts
+Part 1 - find the pattern
+Part 2 - break the pattern into atomic isomorphic decompositon
+Part 3 - store in a structure that can be use for Legal Rule ML
+Note, this structure can be a json key/value paper that aligns with the Legal Rule ML spec
+
+Because this is SO COMPLEX, work with one provision at a time, then run to see how many align, 
+Let's see if this will yield no more that 50 patterns
+use a combination of POS, OP, REGEX, and Morphology in Spacy... Let's gooooo!!!
+
+The first two here
+(1) An operator is required to obtain verifiable parental consent before any collection, use, or disclosure of personal information from children, including consent to any material change in the collection, use, or disclosure practices to which the parent has previously consented.</P>
+(2) An operator must give the parent the option to consent to the collection and use of the child's personal information without consenting to disclosure of his or her personal information to third parties.</P>
+
+def getGroundingData(text):
+    print("----------------> getGroundingData  \n\n")
+
+    doc = nlp(text)
+    patternResults = findPattern(doc)
+    aid = isomorphism(patternResults)
+    storeLRML = legalRuleMLKB(aid)
+    matches = bapMatcher(doc)
+    for match_id, start, end in matches:
+        string_id = nlp.vocab.strings[match_id]
+        span = doc[start:end]
+        #print(string_id, "  ", span.text)
+        print(match_id, string_id, start, end, span.text)
+        print("\n")
+
+    time.sleep(10)
+
+    print("----------------> classBasicActivityPattern  \n\n")
+'''
+
+
+
+
+
+def classBasicActivityPattern(text):
+
+    doc = nlp(text)
+    matches = bapMatcher(doc)
+    for match_id, start, end in matches:
+        string_id = nlp.vocab.strings[match_id]
+        span = doc[start:end]
+        #print(string_id, "  ", span.text)
+        print(match_id, string_id, start, end, span.text)
+        print("\n")
+
+    time.sleep(10)
+
+    print("----------------> FINISHED:  classBasicActivityPattern  \n\n")
+    time.sleep(2)
+	
+	
+	
+	
+	def classifySVO(text):
+    print("----------------> classifySVO  \n\n")
+    doc = nlp(text)
+    triples = textacy.extract.subject_verb_object_triples(doc)
+    tuples_to_list = list(triples)
+    '''
+    This yields good result, but I don't have control over the object (noun phrase)
+    '''
+    for svo in tuples_to_list:
+        print("Subject ===>", svo.subject)
+        print("Verb ===> ", svo.verb)
+        print("Object ===>", svo.object, "\n")
+
+    print("----------------> classifySVO  \n\n")
+
+
+def classifySVONounChunks(text):
+    print("----------------> classifySVONounChunks  \n\n")
+
+    doc = nlp(text)
+    print("classify SVO Noun Chucks START \n")
+    svoNounChunks = textacy.extract.basics.noun_chunks(doc)
+    for svongram in svoNounChunks:
+        print(svongram)
+    print("classify SVO Noun Chucks DONE ")
+
+    print("----------------> classifySVONounChunks  \n\n")
+
+
+def classifySVOWords(text):
+    print("----------------> classifySVOWords  \n\n")
+    doc = nlp(text)
+    print("classifySVOWords \n")
+    svoWords = textacy.extract.basics.words(doc)
+    for svongram in svoWords:
+        print(svongram)
+    print("classifySVOList DONE ")
+
+    print("----------------> classifySVOWords  \n\n")
+
+
+def classifySVOList(text):
+    print("----------------> classifySVOList  \n\n")
+
+    doc = nlp(text)
+    print("classifySVOList")
+    svoList = list(textacy.extract.ngrams(doc, 3, filter_stops=True, filter_punct=True, filter_nums=False))
+    svoWords = textacy.extract.basics.words(doc)
+    for svongram in svoList:
+        print(svongram)
+    print("classifySVOList DONE ")
+
+    print("----------------> classifySVOList  \n\n")
+
+
+def classifyNounPhrases(text):
+    print("----------------> classifyNounPhrases  \n\n")
+
+    doc = nlp(text)
+    for chunk in doc.noun_chunks:
+        print("chunk.text --> ", chunk.text)
+        print("chunk.root.text --> ", chunk.root.text)
+        print("chunk.root.dep_ --> ", chunk.root.dep_)
+        print("chunk.root.head.text --> ", chunk.root.head.text)
+        print("\n\n")
+        time.sleep(0)
+
+    print("----------------> classifyNounPhrases  \n\n")
+
+
+def classifyHohfeldian(text):
+    print("----------------> classifyHohfeldian  \n\n")
+
+    doc = nlp(text)
+    for match_id, start, end in shamroqMatcher(doc):
+        string_id = nlp.vocab.strings[match_id]
+        span = doc[start:end]
+        print(string_id, "  ", span.text)
+        print("\n")
+        time.sleep(0)
+
+    print("----------------> classifyHohfeldian  \n\n")
+
+
+def classifyGrounding(text):
+    '''
+    https://demos.explosion.ai/matcher
+      takes a nlp doc object
+      need to set up teh following
+    (1) a pattern in the form of
+        groundPattern01 =
+           [{'POS': 'DET', 'OP': '?'},
+           {'POS': 'ADJ', 'OP': '*'},
+           {'POS': 'NOUN', 'OP': '+', 'DEP': 'nsubj'},
+           {'POS': 'VERB', 'DEP': 'ROOT'}]
+    (2) print Token type and attributes
+
+    '''
+    doc = nlp(text)
+    for match_id, start, end in groundMatcher(doc):
+        string_id = nlp.vocab.strings[match_id]
+        span = doc[start:end]
+        print(string_id, "  ", span.text)
+        print("\n")
+        time.sleep(0)
+

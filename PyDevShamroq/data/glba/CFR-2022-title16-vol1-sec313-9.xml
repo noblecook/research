@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cfr.xsl"?>
+<CFRGRANULE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CFRMergedXML.xsd">
+    <FDSYS>
+        <CFRTITLE>16</CFRTITLE>
+        <CFRTITLETEXT>Commercial Practices</CFRTITLETEXT>
+        <VOL>1</VOL>
+        <DATE>2022-01-01</DATE>
+        <ORIGINALDATE>2022-01-01</ORIGINALDATE>
+        <COVERONLY>false</COVERONLY>
+        <TITLE>Delivering privacy and opt out notices.</TITLE>
+        <GRANULENUM>313.9</GRANULENUM>
+        <HEADING>Section 313.9</HEADING>
+        <ANCESTORS>
+            <PARENT HEADING="Title 16" SEQ="4">Commercial Practices</PARENT>
+            <PARENT HEADING="CHAPTER I" SEQ="3">FEDERAL TRADE COMMISSION</PARENT>
+            <PARENT HEADING="SUBCHAPTER C" SEQ="2">REGULATIONS UNDER SPECIFIC ACTS OF CONGRESS</PARENT>
+            <PARENT HEADING="PART 313" SEQ="1">PRIVACY OF CONSUMER FINANCIAL INFORMATION</PARENT>
+            <PARENT HEADING="Subpart A" SEQ="0">Privacy and Opt Out Notices</PARENT>
+        </ANCESTORS>
+    </FDSYS>
+    <SECTION>
+        <SECTNO>§ 313.9</SECTNO>
+        <SUBJECT>Delivering privacy and opt out notices.</SUBJECT>
+        <P>
+            (a) 
+            <E T="03">How to provide notices.</E>
+             You must provide any privacy notices and opt out notices, including short-form initial notices, that this part requires so that each consumer can reasonably be expected to receive actual notice in writing or, if the consumer agrees, electronically.
+        </P>
+        <P>
+            (b)(1) 
+            <E T="03">Examples of reasonable expectation of actual notice.</E>
+             You may reasonably expect that a consumer will receive actual notice if you:
+        </P>
+        <P>(i) Hand-deliver a printed copy of the notice to the consumer;</P>
+        <P>(ii) Mail a printed copy of the notice to the last known address of the consumer;</P>
+        <P>(iii) For the consumer who conducts transactions electronically, clearly and conspicuously post the notice on the electronic site and require the consumer to acknowledge receipt of the notice as a necessary step to obtaining a particular financial product or service;</P>
+        <P>(iv) For an isolated transaction with the consumer, such as an ATM transaction, post the notice on the ATM screen and require the consumer to acknowledge receipt of the notice as a necessary step to obtaining the particular financial product or service.</P>
+        <P>
+            (2) 
+            <E T="03">Examples of unreasonable expectation of actual notice.</E>
+             You may 
+            <E T="03">not,</E>
+             however, reasonably expect that a consumer will receive actual notice of your privacy policies and practices if you:
+        </P>
+        <P>(i) Only post a sign in your branch or office or generally publish advertisements of your privacy policies and practices;</P>
+        <P>(ii) Send the notice via electronic mail to a consumer who does not obtain a financial product or service from you electronically.</P>
+        <P>
+            (c) 
+            <E T="03">Annual notices only.</E>
+             You may reasonably expect that a customer will receive actual notice of your annual privacy notice if:
+        </P>
+        <P>(1) The customer uses your web site to access financial products and services electronically and agrees to receive notices at the web site and you post your current privacy notice continuously in a clear and conspicuous manner on the web site; or</P>
+        <P>(2) The customer has requested that you refrain from sending any information regarding the customer relationship, and your current privacy notice remains available to the customer upon request.</P>
+        <P>
+            (d) 
+            <E T="03">Oral description of notice insufficient.</E>
+             You may not provide any notice required by this part solely by orally explaining the notice, either in person or over the telephone.
+        </P>
+        <P>
+            (e) 
+            <E T="03">Retention or accessibility of notices for customers</E>
+            —(1) For customers only, you must provide the initial notice required by § 313.4(a)(1), the annual notice required by § 313.5(a), and the revised notice required by § 313.8 so that the customer can retain them or obtain them later in writing or, if the customer agrees, electronically.
+        </P>
+        <P>
+            (2) 
+            <E T="03">Examples of retention or accessibility.</E>
+             You provide a privacy notice to the customer so that the customer can retain it or obtain it later if you:
+        </P>
+        <P>(i) Hand-deliver a printed copy of the notice to the customer;</P>
+        <P>(ii) Mail a printed copy of the notice to the last known address of the customer; or</P>
+        <P>(iii) Make your current privacy notice available on a web site (or a link to another web site) for the customer who obtains a financial product or service electronically and agrees to receive the notice at the web site.</P>
+        <P>
+            (f) 
+            <E T="03">Joint notice with other financial institutions.</E>
+             You may provide a joint notice from you and one or more of your affiliates or other financial institutions, as identified in the notice, as long as the notice is accurate with respect to you and the other institutions.
+        </P>
+        <P>
+            (g) 
+            <E T="03">Joint relationships.</E>
+             If two or more consumers jointly obtain a financial product or service from you, you may satisfy the initial, annual, and revised notice requirements of §§ 313.4(a), 313.5(a), and 313.8(a) by providing one 
+            <PRTPAGE P="439"/>
+            notice to those consumers jointly, unless one or more of those consumers requests separate notices.
+        </P>
+    </SECTION>
+</CFRGRANULE>

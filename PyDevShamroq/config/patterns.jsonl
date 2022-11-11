@@ -1,0 +1,16 @@
+{"label":"right_pattern_01","pattern":[{"LOWER":"has"},{"LOWER":"a"},{"LOWER":"right"},{"LOWER":"to"},{"POS":"VERB"}]}
+{"label":"right_pattern_02","pattern":[{"LOWER":"has"},{"LOWER": "the"},{"LOWER": "right"},{"LOWER": "to"},{"POS": "VERB"}]}
+{"label":"right_pattern_03","pattern":[{"LOWER": "retains"}, {"LOWER": "the"}, {"LOWER": "right"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_01","pattern":[{"LOWER": "must"}, {"POS": "AUX", "OP": "?"}, {"POS": "ADV", "OP": "*"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_02","pattern":[{"LOWER": "is"}, {"LOWER": "required"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_03","pattern":[{"LOWER": "shall"}, {"POS": "VERB"} ]}
+{"label":"obligation_pattern_04","pattern":[{"LOWER": "may"}, {"LOWER": "not"}]}
+{"label":"obligation_pattern_05","pattern":[{"LOWER": "is"}, {"LOWER": "prohibited"}]}
+{"label":"obligation_pattern_06","pattern":[{"LOWER": "is"}, {"LOWER": "subject"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_01","pattern":[{"LOWER": "may"},{"POS": "ADV", "OP": "?"},{"IS_PUNCT":true, "OP": "?"},{"POS": "VERB"}]}
+{"label":"priv_pattern_02","pattern":[{"LOWER": "may"},{"LOWER": "elect"}, {"LOWER": "not"}, {"LOWER": "to"}]}
+{"label":"priv_pattern_03","pattern":[{"LOWER": "is"}, {"LOWER": "not"}, {"LOWER": "required"}, {"LOWER": "to"},{"POS": "VERB"}]}
+{"label":"priv_pattern_04","pattern":[{"LOWER": "requirement"}, {"LOWER": "does"}, {"LOWER": "not"}, {"LOWER": "apply"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_05","pattern":[{"LOWER": "is"}, {"LOWER": "permitted"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_06","pattern":[{"LOWER": "at"}, {"LOWER": "the"}, {"LOWER": "election"}, {"LOWER": "of"}, {"POS": "NOUN"}]}
+{"label":"priv_pattern_07","pattern":[{"LOWER": "is"}, {"LOWER": "not"}, {"LOWER": "subject"}, {"LOWER": "to"}, {"POS": "VERB"}]}

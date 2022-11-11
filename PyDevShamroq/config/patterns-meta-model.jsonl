@@ -1,0 +1,136 @@
+{"label":"right_pattern_01","pattern":[{"LOWER":"has"},{"LOWER":"a"},{"LOWER":"right"},{"LOWER":"to"},{"POS":"VERB"}]}
+{"label":"right_pattern_02","pattern":[{"LOWER":"has"},{"LOWER": "the"},{"LOWER": "right"},{"LOWER": "to"},{"POS": "VERB"}]}
+{"label":"right_pattern_03","pattern":[{"LOWER": "retains"}, {"LOWER": "the"}, {"LOWER": "right"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_01","pattern":[{"LOWER": "must"}, {"POS": "AUX", "OP": "?"}, {"POS": "ADV", "OP": "*"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_02","pattern":[{"LOWER": "is"}, {"LOWER": "required"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"obligation_pattern_03","pattern":[{"LOWER": "shall"}, {"POS": "VERB"} ]}
+{"label":"obligation_pattern_04","pattern":[{"LOWER": "may"}, {"LOWER": "not"}]}
+{"label":"obligation_pattern_05","pattern":[{"LOWER": "is"}, {"LOWER": "prohibited"}]}
+{"label":"obligation_pattern_06","pattern":[{"LOWER": "is"}, {"LOWER": "subject"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_01","pattern":[{"LOWER": "may"},{"POS": "ADV", "OP": "?"},{"IS_PUNCT":true, "OP": "?"},{"POS": "VERB"}]}
+{"label":"priv_pattern_02","pattern":[{"LOWER": "may"},{"LOWER": "elect"}, {"LOWER": "not"}, {"LOWER": "to"}]}
+{"label":"priv_pattern_03","pattern":[{"LOWER": "is"}, {"LOWER": "not"}, {"LOWER": "required"}, {"LOWER": "to"},{"POS": "VERB"}]}
+{"label":"priv_pattern_04","pattern":[{"LOWER": "requirement"}, {"LOWER": "does"}, {"LOWER": "not"}, {"LOWER": "apply"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_05","pattern":[{"LOWER": "is"}, {"LOWER": "permitted"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"priv_pattern_06","pattern":[{"LOWER": "at"}, {"LOWER": "the"}, {"LOWER": "election"}, {"LOWER": "of"}, {"POS": "NOUN"}]}
+{"label":"priv_pattern_07","pattern":[{"LOWER": "is"}, {"LOWER": "not"}, {"LOWER": "subject"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+
+
+
+#coppa 312.5 01
+svo100 = [{'TAG': 'DT'},
+         {'DEP': 'nsubjpass'},
+         {'TAG': 'VBZ'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'TO'},
+         {'TAG': 'VB'},
+         {'TAG': 'JJ', 'OP': '*'},
+         {'DEP': 'dobj'}]
+
+
+#coppa 312.5 02
+svo101 = [{'TAG': 'DT'},
+          {'DEP': 'nsubj'},
+          {'TAG': 'MD'},
+          {'DEP': 'ROOT'},
+          {'TAG': 'DT'},
+          {'TAG': 'NN'},
+          {'TAG': 'DT'},
+          {'DEP': 'dobj'}]
+
+svo01 = [{'TAG': 'DT'},
+         {'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'JJ', 'OP': '*'},
+         {'DEP': 'dobj'}]
+
+
+
+svo02 = [{'TAG': 'DT'},
+         {'TAG': 'JJ', 'OP': '*'},
+         {'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'TAG': 'RB'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'DT'},
+         {'DEP': 'dobj'}]
+
+#supports HIPAA
+svo03 = [{'TAG': 'DT'},
+         {'TAG': 'VBN'},
+         {'TAG': 'NN', 'OP': '*'},
+         {'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'TAG': ':'}]
+
+
+#supports HIPAA
+svo04 = [{'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'DT'},
+         {'TAG': 'NN', 'OP': '*'},
+         {'DEP': 'dobj'},
+         {'TAG': 'CC', 'OP': '*'},
+         {'TAG': 'VB'},
+         {'TAG': 'RP'},
+         {'DEP': 'dobj'}]
+
+
+
+
+
+
+
+
+
+
+
+
+svo05 = [{'TAG': 'DT'},
+         {'TAG': 'JJ', 'OP': '*'},
+         {'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'CC'},
+         {'DEP': 'conj'},
+         {'TAG': 'VBN', 'OP': '*'},
+         {'TAG': 'NN', 'OP': '*'},
+         {'DEP': 'dobj'}]
+
+svo06 = [{'DEP': 'nsubj'},
+         {'TAG': 'MD'},
+         {'TAG': 'RB'},
+         {'DEP': 'ROOT'},
+         {'TAG': 'IN'},
+         {'TAG': 'DT'},
+         {'TAG': 'NN'},
+         {'TAG': 'MD'},
+         {'TAG': 'VB'},
+         {'TAG': 'JJ', 'OP': '*'},
+         {'DEP': 'dobj'}]
+
+#hipaa 164.510 01
+svo200 = [{'TAG': 'DT'},
+          {'TAG': 'JJ', 'OP': '*'},
+          {'TAG': 'NN', 'OP': '*'},
+          {'DEP': 'nsubj'},
+          {'TAG': 'MD'},
+          {'DEP': 'ROOT'},
+          {'TAG': 'DT'},
+          {'DEP': 'dobj'}]
+
+#hipaa 164.510 01
+svo201 = [{'TAG': 'DT'},
+          {'TAG': 'VBN'},
+          {'TAG': 'NN', 'OP': '*'},
+          {'DEP': 'nsubj'},
+          {'TAG': 'MD'},
+          {'DEP': 'ROOT'},
+          {'TAG': 'CC'},
+          {'TAG': 'VB'},
+          {'TAG': 'DT'},
+          {'TAG': 'CC'},
+          {'TAG': 'DT'}]
+

@@ -1,0 +1,11 @@
+{"label":"right_pattern_01","pattern":[{"LOWER':'has'},{'LOWER':'a'},{'LOWER':'right'},{'LOWER':'to'},{'POS':'VERB'}]}
+{"label":"right_pattern_02","pattern":[{'LOWER': 'has'},{'LOWER': 'the'},{'LOWER': 'right'},{'LOWER': 'to'},{'POS': 'VERB'}]}
+{"label":"right_pattern_03","pattern":[{'LOWER': 'retains'}, {'LOWER': 'the'}, {'LOWER': 'right'}, {'LOWER': 'to'}, {'POS': 'VERB'}]}
+{"label":"obligation_pattern_01","pattern":[{'LOWER': 'must'}, {'POS': 'AUX', 'OP': '?'}, {'POS': 'ADV', 'OP': '*'}, {'POS': 'VERB'}]}
+{"label":"obligation_pattern_02","pattern":[{'LOWER': 'is'}, {'LOWER': 'required'}, {'LOWER': 'to'}, {'POS': 'VERB'}]}
+{"label":"obligation_pattern_03","pattern":[{'LOWER': 'shall'}, {'POS': 'VERB'} ]}
+{"label":"obligation_pattern_04","pattern":[{'LOWER': 'may'}, {'LOWER': 'not'}]}
+{"label":"obligation_pattern_05","pattern":[{'LOWER': 'is'}, {'LOWER': 'prohibited'}]}
+{"label":"obligation_pattern_06","pattern":[{'LOWER': 'is'}, {'LOWER': 'subject'}, {'LOWER': 'to'}, {'POS': 'VERB'}]}
+
+
