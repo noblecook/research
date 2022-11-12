@@ -38,6 +38,23 @@ def getFrequencyData(text):
         senTag = doc.vocab[pos].text
         print(senTag, count)
 
+def prescriptiveStatment():
+    return pStmt
+
+def constitutieveStatement():
+    return cStmt
+
+def listGroundingPatterns():
+    '''
+        The core objective is the predicate - leading with the ROOT Verb
+        Everything else supports the verb.  Here, I use "thematic/semantic roles
+        to describe each provision - Akin to Breaux's "ACTIVITY". In fact, Breaux
+        says in table IV, of Semantic Parameterization, that his roles maps to the
+        Inquiry Lifecyle Model.
+    '''
+    semanticRole01 = 'theme'
+    semanticRole02 = 'location'
+
 
 '''
 A list of dependency labels listed here 
@@ -65,48 +82,58 @@ def getDepData(text):
 
 # linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
-    print("called - getObligationGroundingAndMetaModel")
+    #print("called - getObligationGroundingAndMetaModel")
     subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = ruleID
 
     doc = nlp(text)
     for token in doc:
         if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
             subject = token.text
-            subjectSubtree = list(token.subtree)
-            print("Nominal Subject - ROOT =", subject)
-            print("Subject Subtree =", subjectSubtree)
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (root head): ", subject)
             # print("\n")
             time.sleep(0)
         elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
             subject = token.text
-            subjectSubtree = list(token.subtree)
-            print("Nominal Subject - PCOMP =", subject)
-            print("Subject Subtree =", subjectSubtree)
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (pcomp): ", subject)
             # print("\n")
         elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
             subject = token.text
-            subjectSubtree = list(token.subtree)
-            print("Nominal PASSIVE Subject - ROOT =", subject)
-            print("Nominal PASSIVE Subject =", subjectSubtree)
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (passive): ", subject)
             # print("\n")
         elif token.pos_ == "VERB" and token.dep_ == "ROOT":
             root = token.text
-            print("ROOT VERB = ", root)
+            print("VERB = ", root)
         elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
-            directObjectSubTree = list(token.subtree)
+            # directObjectSubTree = list(token.subtree)
             directObject = token.text
-            print("Direct Object - ROOT HEAD -(token.text) = ", directObject)
-            print("Direct Object (token.subtree) = ", directObjectSubTree)
+            print("Object (root) = ", directObject)
+            # print("Direct Object (token.subtree) = ", directObjectSubTree)
             # print("\n")
             time.sleep(0)
         elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
+            # directObjectSubTree = list(token.subtree)
             directObject = token.text
-            print("Direct Object - XCOMP HEAD -(token.text) = ", directObject)
+            # print("Direct Object - xcomp = ", directObject)
+            print("Object (xcomp) = ", directObject)
+            # print("\n")
+            time.sleep(0)
+            # print("Direct Object - XCOMP HEAD -(token.text) = ", directObject)
         else:
             pass
 
+
     # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
     # Store Results in a data frame
+    print("\n---------GROUNDING-------------")
+    print ("if ", subject, "(x)")
+    print ("then [OBL]", root, "(x," , directObject, ")")
+    time.sleep(0)
     '''
     df.loc[len(df.index)] = [text, pattern, spanOfPattern, subject, root, directObject]
     pd.set_option('display.max_rows', None)
