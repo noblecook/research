@@ -51,10 +51,18 @@ def listGroundingPatterns():
         to describe each provision - Akin to Breaux's "ACTIVITY". In fact, Breaux
         says in table IV, of Semantic Parameterization, that his roles maps to the
         Inquiry Lifecyle Model.
+        Definition - https://www.ling.upenn.edu/~beatrice/syntax-textbook/box-thematic.html
+        More here - https://en.wikipedia.org/wiki/Grammatical_relation
     '''
-    semanticRole01 = 'theme'
-    semanticRole02 = 'location'
-
+    semanticRole01 = 'agent'
+    semanticRole02 = 'cause'
+    semanticRole03 = 'instrument'
+    semanticRole04 = 'experiencer'
+    semanticRole05 = 'location'
+    semanticRole06 = 'path'
+    semanticRole07 = 'goal'
+    semanticRole08 = 'measure'
+    semanticRole09 = 'theme'
 
 '''
 A list of dependency labels listed here 
@@ -84,6 +92,7 @@ def getDepData(text):
 def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     #print("called - getObligationGroundingAndMetaModel")
     subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = ruleID
+    indirectObj = "EMTPY"
 
     doc = nlp(text)
     for token in doc:
@@ -109,6 +118,9 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
         elif token.pos_ == "VERB" and token.dep_ == "ROOT":
             root = token.text
             print("VERB = ", root)
+        elif token.dep_== "dative":
+            indirectObj = token.text
+            print("Indirect Object = ", indirectObj)
         elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
             # directObjectSubTree = list(token.subtree)
             directObject = token.text
@@ -130,10 +142,17 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
 
     # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
     # Store Results in a data frame
-    print("\n---------GROUNDING-------------")
-    print ("if ", subject, "(x)")
-    print ("then [OBL]", root, "(x," , directObject, ")")
-    time.sleep(0)
+    if indirectObj != "EMTPY":
+        print("\n---------GROUNDING-------------(1)")
+        print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)")
+        print("then [OBL]", root, "(x, y, z)")
+        time.sleep(0)
+    else:
+        print("\n---------GROUNDING-------------(2)")
+        print("if ", subject, "(x)", directObject, "(y)")
+        print("then [OBL]", root, "(x, y)")
+        time.sleep(0)
+
     '''
     df.loc[len(df.index)] = [text, pattern, spanOfPattern, subject, root, directObject]
     pd.set_option('display.max_rows', None)
