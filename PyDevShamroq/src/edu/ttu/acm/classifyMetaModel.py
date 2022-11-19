@@ -38,6 +38,21 @@ def getFrequencyData(text):
         senTag = doc.vocab[pos].text
         print(senTag, count)
 
+def basicActivityPattern01():
+    '''
+        (1) verb phrase masquerading as NOUN or ADJECTIVE.  That is,
+        For a NOUN, ending in "ing" called gerunds or nouns that end in:
+        -ance, -sion, -tion, -ism, -sure, -zure, and -ment often describe
+        activites (i.e. VERBS!!) These verbs can be separated out and made
+        into separate SVO statements.  These nouns are lexically similar to
+        an expanded verb phrase
+
+        For an ADJECTIVE, if derived from past-tense verbs, then they describe
+        activities (i.e. VERBS!!). These verbs can too be separated out and
+        made into separate SVO statements.  These adjective are followed by
+        a noun which is said to always be the object of the described action.
+
+    '''
 def prescriptiveStatment():
     return pStmt
 
@@ -88,6 +103,71 @@ def getDepData(text):
     return doc
 
 
+def findVerbsMasquerading(inputToken):
+    vm = []
+    '''
+     Look for nouns that end in the following
+     -ance, -sion, -tion, -ism, -sure, -zure, -ment
+     then take the verb form
+    '''
+
+
+    for i in inputToken.subtree:
+        if i.tag_ == "VBG":
+            print("ALERT - gerund ", i.lemma_)
+            time.sleep(0)
+        elif i.dep_ == "prep":
+            for j in i.children:
+                doc = nlp(j.text)
+                for t in doc:
+                    print("HOLD IT (LEMMA) ", t.lemma_)
+                    print("HOLD IT (NORM) ", t.norm_)
+                    print("HOLD IT (DOC) ", t.doc)
+                    print("HOLD IT (SUFFIX) ", t.suffix_)
+                    time.sleep(5)
+
+
+    return vm
+
+
+def processPrepositionalPhrase(inputToken):
+    '''
+     if "before" is found then, it belongs in the antecedent
+     also, the noun associated with the prepositional phrase
+     must be in there present-x tense.
+     (e.g. collection becomes collects; disclosure becomes discloses)
+    '''
+
+    if inputToken.text == "before":
+        verbPhraseMasquerading(inputToken)
+        time.sleep(0)
+
+    for i in inputToken.subtree:
+        print ("Subtree ", i)
+
+    for i in inputToken.children:
+        print ("Children ", i)
+
+    for i in inputToken.ancestors:
+        print ("Ancestors ", i)
+
+
+def verbPhraseMasquerading(text):
+    flag = False
+    if text == "before":
+        flag = True
+        print("Found it ---> ", text)
+        time.sleep(1)
+    elif text == "after":
+        flag = True
+    elif text == "while":
+        flag = True
+    else:
+        pass
+
+    return flag;
+
+
 # linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     #print("called - getObligationGroundingAndMetaModel")
@@ -95,6 +175,13 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     indirectObj = "EMTPY"
 
     doc = nlp(text)
+
+    '''
+    for chunk in doc.noun_chunks:
+        print("NOUN CHUNKS: ", chunk)
+        time.sleep(1)
+    '''
+
     for token in doc:
         if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
             subject = token.text
@@ -136,6 +223,11 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
             # print("\n")
             time.sleep(0)
             # print("Direct Object - XCOMP HEAD -(token.text) = ", directObject)
+        elif token.dep_ == "acl" and token.head.dep_ == 'acl':
+            transaction = token.text
+            print(transaction)
+        elif token.dep_ == "prep":
+            processPrepositionalPhrase(token)
         else:
             pass
 
@@ -150,7 +242,7 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
     else:
         print("\n---------GROUNDING-------------(2)")
         print("if ", subject, "(x)", directObject, "(y)")
-        print("then [OBL]", root, "(x, y)")
+        print("---> [OBL]", root, "(x, y)")
         time.sleep(0)
 
     '''
