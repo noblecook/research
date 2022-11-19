@@ -1,3 +1,4 @@
+{"label":"subj_verb_obj_01","pattern": [{"DEP": "nsubj"},{"TAG": "MD"},{"DEP": "ROOT"},{"DEP": "amod", "OP": "*"},{"DEP": "dobj"}]}
 {"label":"right_pattern_01","pattern":[{"LOWER":"has"},{"LOWER":"a"},{"LOWER":"right"},{"LOWER":"to"},{"POS":"VERB"}]}
 {"label":"right_pattern_02","pattern":[{"LOWER":"has"},{"LOWER": "the"},{"LOWER": "right"},{"LOWER": "to"},{"POS": "VERB"}]}
 {"label":"right_pattern_03","pattern":[{"LOWER": "retains"}, {"LOWER": "the"}, {"LOWER": "right"}, {"LOWER": "to"}, {"POS": "VERB"}]}
@@ -14,3 +15,6 @@
 {"label":"priv_pattern_05","pattern":[{"LOWER": "is"}, {"LOWER": "permitted"}, {"LOWER": "to"}, {"POS": "VERB"}]}
 {"label":"priv_pattern_06","pattern":[{"LOWER": "at"}, {"LOWER": "the"}, {"LOWER": "election"}, {"LOWER": "of"}, {"POS": "NOUN"}]}
 {"label":"priv_pattern_07","pattern":[{"LOWER": "is"}, {"LOWER": "not"}, {"LOWER": "subject"}, {"LOWER": "to"}, {"POS": "VERB"}]}
+{"label":"before_01","pattern":[{"DEP": "prep"},{"DEP": "det", "OP": "*"},{"DEP": "pobj"},{"IS_PUNCT": true},{"DEP": "conj"},{"IS_PUNCT": true},{"DEP": "cc"},{"DEP": "conj"},{"DEP": "prep"},{"DEP": "amod", "OP": "*"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "pobj"}]}
+
+

@@ -10,9 +10,12 @@ df = pd.DataFrame(columns=linguisticFeatures)
 nlp = spacy.load("en_core_web_lg")
 patternCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns.jsonl"
 patternMMCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-meta-model.jsonl"
-patterns = srsly.read_jsonl(patternCfg)
+patternPrepPhrCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-prep-phrases.jsonl"
+
+patterns = srsly.read_jsonl(patternPrepPhrCfg)
 ruler = nlp.add_pipe("span_ruler")
 ruler.add_patterns(patterns)
+
 
 '''
 Use this as the example to find patterns
@@ -103,7 +106,7 @@ def getDepData(text):
     return doc
 
 
-def findVerbsMasquerading(inputToken):
+def findMasqueradingVerbPhrase(inputToken):
     vm = []
     '''
      Look for nouns that end in the following
@@ -111,7 +114,7 @@ def findVerbsMasquerading(inputToken):
      then take the verb form
     '''
 
-
+'''
     for i in inputToken.subtree:
         if i.tag_ == "VBG":
             print("ALERT - gerund ", i.lemma_)
@@ -124,10 +127,11 @@ def findVerbsMasquerading(inputToken):
                     print("HOLD IT (NORM) ", t.norm_)
                     print("HOLD IT (DOC) ", t.doc)
                     print("HOLD IT (SUFFIX) ", t.suffix_)
-                    time.sleep(5)
+                    time.sleep(0)
 
 
     return vm
+'''
 
 
 def processPrepositionalPhrase(inputToken):
@@ -139,50 +143,30 @@ def processPrepositionalPhrase(inputToken):
     '''
 
     if inputToken.text == "before":
-        verbPhraseMasquerading(inputToken)
+        print("STOP.. FOUND BEFORE... ")
+        for i in inputToken.subtree:
+            print(i)
+            # findMasqueradingVerbPhrase(inputToken)
+        time.sleep(0)
+    elif inputToken.text == "after":
+        print("STOP.. FOUND AFTER... ")
+        for j in inputToken.subtree:
+            print(j)
+        # findMasqueradingVerbPhrase(inputToken)
         time.sleep(0)
 
-    for i in inputToken.subtree:
-        print ("Subtree ", i)
+def processMatcher(text, foundSpanOfText, spanOfPattern):
+    print("called - processMatcher <>")
+    print("pattern ...", spanOfPattern, "text --> ", foundSpanOfText)
 
-    for i in inputToken.children:
-        print ("Children ", i)
-
-    for i in inputToken.ancestors:
-        print ("Ancestors ", i)
-
-
-def verbPhraseMasquerading(text):
-    flag = False
-    if text == "before":
-        flag = True
-        print("Found it ---> ", text)
-        time.sleep(1)
-    elif text == "after":
-        flag = True
-    elif text == "while":
-        flag = True
-    else:
-        pass
-
-    return flag;
-
-
-# linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
-def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
-    #print("called - getObligationGroundingAndMetaModel")
-    subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = ruleID
+    subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = foundSpanOfText
     indirectObj = "EMTPY"
 
-    doc = nlp(text)
-
-    '''
-    for chunk in doc.noun_chunks:
-        print("NOUN CHUNKS: ", chunk)
-        time.sleep(1)
-    '''
+    doc = nlp(foundSpanOfText)
 
     for token in doc:
+        # print("TOKEN --> ", token.text)
+        time.sleep(0)
         if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
             subject = token.text
             # subjectSubtree = list(token.subtree)
@@ -204,7 +188,7 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
             # print("\n")
         elif token.pos_ == "VERB" and token.dep_ == "ROOT":
             root = token.text
-            print("VERB = ", root)
+            print("VERB --->  ", root)
         elif token.dep_== "dative":
             indirectObj = token.text
             print("Indirect Object = ", indirectObj)
@@ -226,14 +210,104 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
         elif token.dep_ == "acl" and token.head.dep_ == 'acl':
             transaction = token.text
             print(transaction)
-        elif token.dep_ == "prep":
-            processPrepositionalPhrase(token)
+        elif token.text == "before":
+            # processPrepositionalPhrase(doc)
+            pass
         else:
             pass
 
 
     # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
     # Store Results in a data frame
+
+    if indirectObj != "EMTPY":
+        print("\n---------GROUNDING-------------(1)")
+        print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)")
+        print("then [OBL]", root, "(x, y, z)")
+        time.sleep(0)
+    else:
+        print("\n---------GROUNDING-------------(2)")
+        print("if ", subject, "(x)", directObject, "(y)")
+        print("---> [OBL]", root, "(x, y)")
+        time.sleep(0)
+    '''
+    df.loc[len(df.index)] = [text, pattern, spanOfPattern, subject, root, directObject]
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.expand_frame_repr', False)
+    print("\n----------> Dataframe Results ...\n")
+    print(df.iloc[0:500, 1:7])
+    return df
+    '''
+
+# linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
+def processMatches(text, foundSpanOfText, spanOfPattern):
+    print("called - processMatches")
+    print("pattern ...", spanOfPattern, "text --> ", foundSpanOfText)
+
+    subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = foundSpanOfText
+    indirectObj = "EMTPY"
+
+    doc = nlp(foundSpanOfText)
+
+    for token in doc:
+        # print("TOKEN --> ", token.text)
+        time.sleep(0)
+        if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
+            subject = token.text
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (root head): ", subject)
+            # print("\n")
+            time.sleep(0)
+        elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
+            subject = token.text
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (pcomp): ", subject)
+            # print("\n")
+        elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
+            subject = token.text
+            # subjectSubtree = list(token.subtree)
+            # print(subject, "(x)")
+            print("Subject (passive): ", subject)
+            # print("\n")
+        elif token.pos_ == "VERB" and token.dep_ == "ROOT":
+            root = token.text
+            print("VERB --->  ", root)
+        elif token.tag_ == "MD" and token.head.dep_ == "ROOT" and token.text == "must":
+            print("MODALITY = OBLIGATION ---> ", token.text)
+            time.sleep(0)
+        elif token.dep_== "dative":
+            indirectObj = token.text
+            print("Indirect Object = ", indirectObj)
+        elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
+            # directObjectSubTree = list(token.subtree)
+            directObject = token.text
+            print("Object (root) = ", directObject)
+            # print("Direct Object (token.subtree) = ", directObjectSubTree)
+            # print("\n")
+            time.sleep(0)
+        elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
+            # directObjectSubTree = list(token.subtree)
+            directObject = token.text
+            # print("Direct Object - xcomp = ", directObject)
+            print("Object (xcomp) = ", directObject)
+            # print("\n")
+            time.sleep(0)
+            # print("Direct Object - XCOMP HEAD -(token.text) = ", directObject)
+        elif token.dep_ == "acl" and token.head.dep_ == 'acl':
+            transaction = token.text
+            print(transaction)
+        elif token.text == "before":
+            # processPrepositionalPhrase(doc)
+            pass
+        else:
+            pass
+
+
+    # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
+    # Store Results in a data frame
+    '''
     if indirectObj != "EMTPY":
         print("\n---------GROUNDING-------------(1)")
         print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)")
@@ -245,7 +319,6 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
         print("---> [OBL]", root, "(x, y)")
         time.sleep(0)
 
-    '''
     df.loc[len(df.index)] = [text, pattern, spanOfPattern, subject, root, directObject]
     pd.set_option('display.max_rows', None)
     pd.set_option('display.expand_frame_repr', False)
@@ -258,7 +331,7 @@ def getObligationGroundingAndMetaModel(text, ruleID, spanOfPattern):
 def classifySpan(text):
     doc = nlp(text)
     for span in doc.spans["ruler"]:
-        y = getObligationGroundingAndMetaModel(text, span.text, span.label_)
+        y = processMatches(text, span.text, span.label_)
     # classifyMetaModel(text, df)
 
 
@@ -284,8 +357,8 @@ def processEachProvision(params):
                         print("|   Evaluate Statement  |")
                         print("|                       |")
                         print(text)
-                        classifySpan(text)
                         getDepData(text)
+                        classifySpan(text)
                         print("<<<<------------------------------------>>>>>\n\n")
                         time.sleep(0)
 

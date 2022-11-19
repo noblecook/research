@@ -1,0 +1,11 @@
+{"label":"subj_verb_obj_01","pattern":[{"DEP": "nsubj"},{"TAG": "MD"},{"DEP": "ROOT"},{"DEP": "amod", "OP": "*"},{"DEP": "dobj"}]}
+{"label":"subj_verb_obj_02","pattern":[{"DEP": "det"},{"TAG": "JJ", "OP": "*"},{"DEP": "nsubj"},{"TAG": "MD"}, {"DEP": "ROOT"},{"DEP": "det", "OP": "+"},{"DEP": "dative"},{"DEP": "det", "OP": "+"},{"DEP": "dobj"},{"TAG": "TO"},{"DEP": "acl"}]}
+{"label":"preposition_01","pattern":[{"DEP": "prep"},{"DEP": "det", "OP": "*"},{"DEP": "pobj"},{"IS_PUNCT": true},{"DEP": "conj"},{"IS_PUNCT": true},{"DEP": "cc"},{"DEP": "conj"},{"DEP": "prep"},{"DEP": "amod", "OP": "*"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "pobj"}]}
+{"label":"preposition_02","pattern":[{"DEP": "advcl"},{"DEP": "prep"},{"DEP": "pobj"},{"TAG": "JJ", "OP": "*"},{"DEP": "dobj"}]}
+{"label":"preposition_03","pattern":[{"TAG": "VBG"},{"DEP": "pobj"},{"TAG": "IN"},{"DEP": "det"},{"TAG": "JJ", "OP": "*"},{"DEP": "pobj"},{"TAG": "IN"},{"DEP": "det"},{"DEP": "pobj"},{"IS_PUNCT": true},{"DEP": "conj"},{"IS_PUNCT": true},{"TAG": "CC"},{"DEP": "compound"},{"DEP": "conj"}]}
+{"label":"preposition_04","pattern":[{"DEP": "prep"},{"DEP": "pobj"},{"DEP": "det"},{"DEP": "nsubj"},{"TAG": "VBZ"},{"DEP": "advmod"},{"DEP": "relcl"}]}
+
+
+
+
+
