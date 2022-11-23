@@ -4,6 +4,7 @@ import pandas as pd
 import srsly
 from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
+import re
 
 linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 df = pd.DataFrame(columns=linguisticFeatures)
@@ -12,6 +13,11 @@ patternCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patter
 patternMMCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-meta-model.jsonl"
 patternPrepPhrCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-prep-phrases.jsonl"
 
+
+'''
+Adding items to the nlp pipeline
+https://spacy.io/usage/processing-pipelines
+'''
 patterns = srsly.read_jsonl(patternPrepPhrCfg)
 ruler = nlp.add_pipe("span_ruler")
 ruler.add_patterns(patterns)
@@ -101,7 +107,7 @@ def getDepData(text):
         children = [child for child in token.children]
         table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
                            token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
-    print(table)
+    # print(table)
     time.sleep(0)
     return doc
 
@@ -155,7 +161,7 @@ def processPrepositionalPhrase(inputToken):
         # findMasqueradingVerbPhrase(inputToken)
         time.sleep(0)
 
-def processMatcher(text, foundSpanOfText, spanOfPattern):
+def processBACKUPMatcher(text, foundSpanOfText, spanOfPattern):
     print("called - processMatcher <>")
     print("pattern ...", spanOfPattern, "text --> ", foundSpanOfText)
 
@@ -239,36 +245,27 @@ def processMatcher(text, foundSpanOfText, spanOfPattern):
     return df
     '''
 
+
 # linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 def processMatches(text, foundSpanOfText, spanOfPattern):
-    print("called - processMatches")
-    print("pattern ...", spanOfPattern, "text --> ", foundSpanOfText)
-
     subject = "EMPTY"; root = "EMPTY"; directObject = "EMPTY"; pattern = foundSpanOfText
     indirectObj = "EMTPY"
 
-    doc = nlp(foundSpanOfText)
+    # doc = nlp(foundSpanOfText)
+    doc = nlp(text)
 
     for token in doc:
         # print("TOKEN --> ", token.text)
         time.sleep(0)
         if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
             subject = token.text
-            # subjectSubtree = list(token.subtree)
-            # print(subject, "(x)")
             print("Subject (root head): ", subject)
-            # print("\n")
-            time.sleep(0)
         elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
             subject = token.text
-            # subjectSubtree = list(token.subtree)
-            # print(subject, "(x)")
             print("Subject (pcomp): ", subject)
             # print("\n")
         elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
             subject = token.text
-            # subjectSubtree = list(token.subtree)
-            # print(subject, "(x)")
             print("Subject (passive): ", subject)
             # print("\n")
         elif token.pos_ == "VERB" and token.dep_ == "ROOT":
@@ -281,33 +278,17 @@ def processMatches(text, foundSpanOfText, spanOfPattern):
             indirectObj = token.text
             print("Indirect Object = ", indirectObj)
         elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
-            # directObjectSubTree = list(token.subtree)
             directObject = token.text
             print("Object (root) = ", directObject)
-            # print("Direct Object (token.subtree) = ", directObjectSubTree)
-            # print("\n")
-            time.sleep(0)
         elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
-            # directObjectSubTree = list(token.subtree)
             directObject = token.text
-            # print("Direct Object - xcomp = ", directObject)
             print("Object (xcomp) = ", directObject)
-            # print("\n")
-            time.sleep(0)
-            # print("Direct Object - XCOMP HEAD -(token.text) = ", directObject)
-        elif token.dep_ == "acl" and token.head.dep_ == 'acl':
-            transaction = token.text
-            print(transaction)
-        elif token.text == "before":
-            # processPrepositionalPhrase(doc)
-            pass
         else:
             pass
 
-
     # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
     # Store Results in a data frame
-    '''
+
     if indirectObj != "EMTPY":
         print("\n---------GROUNDING-------------(1)")
         print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)")
@@ -325,14 +306,121 @@ def processMatches(text, foundSpanOfText, spanOfPattern):
     print("\n----------> Dataframe Results ...\n")
     print(df.iloc[0:500, 1:7])
     return df
-    '''
+
+
+def getPredicatePredication(text):
+    predicate_dictionary = None
+    subject = "EMPTY"; modality = "EMPTY"; root = "EMPTY"; indirectObj = "EMTPY"; directObject = "EMPTY";  result = None
+    doc = nlp(text)
+    for token in doc:
+        if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
+            role = "location"
+            predicate_dictionary["role"] = role
+        elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
+            subject = token.text
+            predicate_dictionary["subject"] = subject
+        elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
+            subject = token.text
+            predicate_dictionary["subject"] = subject
+        elif token.pos_ == "VERB" and token.dep_ == "ROOT":
+            root = token.text
+            predicate_dictionary["root"] = root
+        elif token.tag_ == "MD" and token.head.dep_ == "ROOT" and token.text == "must":
+            modality = token.text
+            predicate_dictionary["modality"] = modality
+        elif token.dep_ == "dative":
+            indirectObj = token.text
+            predicate_dictionary["indirectObj"] = indirectObj
+        elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
+            directObject = token.text
+            predicate_dictionary["directObject"] = directObject
+        elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
+            directObject = token.text
+            predicate_dictionary["directObject"] = directObject
+        else:
+            pass
+    return predicate_dictionary;
+
+
+def getSVOPredication(text):
+    svo_dictionary = {}
+    subject = "EMPTY"; modality = "EMPTY"; root = "EMPTY"; indirectObj = "EMTPY"; directObject = "EMPTY";  result = None
+    doc = nlp(text)
+    for token in doc:
+        if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
+            subject = token.text
+            svo_dictionary["subject"] = subject
+        elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
+            subject = token.text
+            svo_dictionary["subject"] = subject
+        elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
+            subject = token.text
+            svo_dictionary["subject"] = subject
+        elif token.pos_ == "VERB" and token.dep_ == "ROOT":
+            root = token.text
+            svo_dictionary["root"] = root
+        elif token.tag_ == "MD" and token.head.dep_ == "ROOT" and token.text == "must":
+            modality = token.text
+            svo_dictionary["modality"] = modality
+        elif token.dep_ == "dative":
+            indirectObj = token.text
+            svo_dictionary["indirectObj"] = indirectObj
+        elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
+            directObject = token.text
+            svo_dictionary["directObject"] = directObject
+        elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
+            directObject = token.text
+            svo_dictionary["directObject"] = directObject
+        else:
+            pass
+
+    # linguisticFeatures = ['TEXT' (0), 'PATTERN'(1), 'SPAN'(2), 'SUBJ'(3), 'VERB'(4), 'OBJECT'(5)]
+    # Store Results in a data frame
+
+    if indirectObj != "EMTPY":
+        print("\n---------GROUNDING-------------(1)")
+        print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)" "---> [OBL: ", modality, "]", root, "(x, y, z)")
+    else:
+        print("\n---------GROUNDING-------------(2)")
+        print("if ", subject, "(x)", directObject, "(y)", "---> [OBL: ", modality, "]",  root, "(x, y)")
+
+    return svo_dictionary
+
+def getPredicates(label, text):
+    svoMatch = re.search(r'subj_verb_obj_\d\d', label)
+    prepMatch = re.search(r'preposition_\d\d', label)
+    predicates = None
+    if svoMatch:
+        predicates = getSVOPredication(text)
+        print("Subject Verb [iobj] Object as dictionary ", predicates)
+        time.sleep(3)
+    elif prepMatch:
+        predicates = getPredicatePredication(text)
+        print("Predicates as dictionary ", predicates)
+    else:
+        pass
+    return predicates
 
 
 def classifySpan(text):
     doc = nlp(text)
+    my_dictionary = {}
+    predication = None
+
+    # SpanRule - https://spacy.io/api/spanruler | https://spacy.io/usage/rule-based-matching#spanruler
     for span in doc.spans["ruler"]:
-        y = processMatches(text, span.text, span.label_)
+        # y = processMatches(text, span.text, span.label_)
+        # my_dictionary[span.label_] = span.text
+        # print("Match Found (Label) ", span.label_, "Text: ", span.text, "Predication ", predication)
+        predication = getPredicates(span.label_, span.text)
+        time.sleep(0)
+
+    # print("DONE.... ")
+    # print(doc.spans["ruler"])
+    # print(my_dictionary)
+    # time.sleep(0)
     # classifyMetaModel(text, df)
+    return predication
 
 
 def processEachProvision(params):
@@ -357,7 +445,7 @@ def processEachProvision(params):
                         print("|   Evaluate Statement  |")
                         print("|                       |")
                         print(text)
-                        getDepData(text)
+                        # printDepData(text)
                         classifySpan(text)
                         print("<<<<------------------------------------>>>>>\n\n")
                         time.sleep(0)
