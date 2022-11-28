@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:attributeGroup name="xmlid.attlist">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:attribute ref="xml:id"/>
+  </xs:attributeGroup>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="DummyXmlId">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

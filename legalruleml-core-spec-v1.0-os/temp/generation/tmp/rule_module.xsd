@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="ConstitutivePremiseFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-node.choice"/>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:group name="ConstitutiveConclusionFormula.choice">
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Or-const-dis-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-fo-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="ConstitutiveAndFormula.choice">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-node.choice"/>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-fo-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveOrFormula.choice">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-node.choice"/>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-fo-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveNegFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Or-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-fo-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveForallFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Or-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-fo-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveExistsFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-const-node.choice"/>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+      <xs:group ref="ruleml:Implication-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-const-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-const-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PrescriptiveConclusionFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:SuborderList.Node.choice"/>
+      <xs:group ref="lrml:SuborderFormula.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:group name="Atom.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:sequence>
+          <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
+          <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
+        </xs:sequence>
+        <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equal.main">
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:leftSide-edge.choice"/>
+        <xs:group ref="ruleml:rightSide-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

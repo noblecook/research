@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="Comment.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Comment.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Comment.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Comment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Comment" type="lrml:Comment.type.def">
+    <xs:annotation>
+      <xs:documentation>a comment, which has with no semantic effect.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Comment.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Comment.main">
+        <xs:attributeGroup ref="lrml:Comment.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Comment.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Comment.main">
+    <xs:complexContent>
+      <xs:extension base="lrml:any.type.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Paraphrase.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Paraphrase.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Paraphrase.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Paraphrase"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Paraphrase" type="lrml:Paraphrase.type.def">
+    <xs:annotation>
+      <xs:documentation>a natural language rendering of a Legal  Rule or fragment of it that is an alternative to its Legal Source(s).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Paraphrase.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Paraphrase.main">
+        <xs:attributeGroup ref="lrml:Paraphrase.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Paraphrase.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Paraphrase.main">
+    <xs:complexContent>
+      <xs:extension base="lrml:any.type.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="any.type.choice" mixed="true">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:anyElement.choice"/>
+  </xs:complexType>
+</xs:schema>

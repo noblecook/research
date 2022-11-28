@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML attribute:
+       * @iri
+  -->
+  <xs:attributeGroup name="Resource.attlist">
+    <xs:annotation>
+      <xs:documentation>attribute list for resources includes and optional iri attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="iri" type="ruleml:iri.value">
+      <xs:annotation>
+        <xs:documentation>An attribute for referring to a IRI.    
+See http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="iri-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the oriented equation attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:iri.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="iri.attrib.def">
+    <xs:attribute name="iri" use="required" type="ruleml:iri.value">
+      <xs:annotation>
+        <xs:documentation>An attribute for referring to a IRI.    
+See http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="iri.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+  </xs:simpleType>
+  <!---->
+  <xs:element name="DummyIri">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:iri-att.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

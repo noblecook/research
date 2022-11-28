@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- This module extends the following RuleML choice patterns: -->
+  <!--
+    All the LegalRuleML edges below are optional because
+    it is possible to reconstruct the edge element from
+    the type and/or position of the child Node element
+    
+    To allow only explicit striping (normal form), include
+    the stripe_optional module, but not the stripe_skipping module
+    
+    To allow only stripe-skippining (compact form), include
+    the stripe_skipping module, but not the stripe_optional module
+    
+    To allow either explicit striping or stripe-skippining (relaxed form), include
+    both the stripe_skipping module and the stripe_optional module
+  -->
+  <xs:group name="formula_And-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_And-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_And-const.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_And-const.type.def">
+        <xs:annotation>
+          <xs:documentation>a formula of the conjunction.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_And-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_And-const.content">
+        <xs:attributeGroup ref="ruleml:formula_And-datt.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="formula_Deontic.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Deontic.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Deontic.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Deontic.type.def">
+        <xs:annotation>
+          <xs:documentation>the formula of the deontic operator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Deontic.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_Deontic.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="formula_Exists-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Exists-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Exists-const.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Exists-const.type.def">
+        <xs:annotation>
+          <xs:documentation>the formula of the existential.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Exists-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_Exists-const.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="formula_Forall-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Forall-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Forall-const.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Forall-const.type.def">
+        <xs:annotation>
+          <xs:documentation>the formula of the universal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Forall-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_Forall-const.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="formula_Or-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Or-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Or-const.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Or-const.type.def">
+        <xs:annotation>
+          <xs:documentation>a formula of the disjunction.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Or-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_Or-const.content">
+        <xs:attributeGroup ref="ruleml:formula_Or-datt.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="formula_Suborder.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Suborder.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Suborder.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Suborder.type.def">
+        <xs:annotation>
+          <xs:documentation>a formula of the suborder list.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Suborder.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:formula_Suborder.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="strong-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:strong-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="strong-const.edge.def">
+    <xs:sequence>
+      <xs:element name="strong" type="ruleml:strong-const.type.def">
+        <xs:annotation>
+          <xs:documentation>the formula of the strong negation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="strong-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:strong-const.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="torso-const-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:torso-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="torso-const.edge.def">
+    <xs:sequence>
+      <xs:element name="torso" type="ruleml:torso-const.type.def">
+        <xs:annotation>
+          <xs:documentation>a formula of the equivalence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="torso-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:torso-const.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="argTimeData.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:argTimeData.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="argTimeData.edge.def">
+    <xs:sequence>
+      <xs:element name="arg" type="ruleml:argTimeData.type.def">
+        <xs:annotation>
+          <xs:documentation>data for a time expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="argTimeData.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:argTimeData.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

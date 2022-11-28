@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="Rule-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Rule.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Rule.Node.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Rule" type="ruleml:Rule.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Rule&gt;: defines a rule in Consumer RuleML. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Rule</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Rule.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Rule.content">
+        <xs:attributeGroup ref="ruleml:Rule-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reRule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Rule-datt.choice">
+    <xs:attributeGroup ref="ruleml:material-att-inf.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reRule.attlist">
+    <xs:attributeGroup ref="ruleml:operator-interface.attlist"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Rule.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Rule.header"/>
+      <xs:group minOccurs="0" ref="ruleml:Rule.main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="if_Rule.edge.def">
+    <xs:sequence>
+      <xs:element name="if" type="ruleml:if_Rule.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;if&gt;: contains the premises of the rule. See 
+http://consumer.ruleml.org/1.02/glossary/#gloss-if</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="if_Rule.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:if_Rule.content">
+        <xs:attributeGroup ref="ruleml:if_Rule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="then_Rule.edge.def">
+    <xs:sequence>
+      <xs:element name="then" type="ruleml:then_Rule.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;then&gt;: contains the conclusion of the rule. See 
+http://consumer.ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="then_Rule.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:then_Rule.content">
+        <xs:attributeGroup ref="ruleml:then_Rule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

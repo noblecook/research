@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="Prefix.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Prefix.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Prefix.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Prefix"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Prefix" type="lrml:Prefix.type.def">
+    <xs:annotation>
+      <xs:documentation>a non-empty prefix declaration in a LegalRuleML document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Prefix.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Prefix.main">
+        <xs:attributeGroup ref="lrml:pre.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:prerefID.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:Prefix.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Prefix.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="pre.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="pre">
+      <xs:annotation>
+        <xs:documentation>the (non-empty) prefix in a Prefix declaration, following CURIE conventions.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\i-[:]][\c-[:]]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="pre.attrib.def">
+    <xs:attribute name="pre" use="required">
+      <xs:annotation>
+        <xs:documentation>the (non-empty) prefix in a Prefix declaration, following CURIE conventions.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\i-[:]][\c-[:]]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="prerefID.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:prerefID.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="prerefID.attrib.def">
+    <xs:attribute name="refID" use="required" type="lrml:prerefID.datatype">
+      <xs:annotation>
+        <xs:documentation>the external ID of the Reference or Prefix.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="prerefID.datatype">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^:].*"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

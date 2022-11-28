@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    All the LegalRuleML roles below are optional because
+    it is possible to reconstruct the edge element from
+    the type and/or position of the child Node element.
+    This stripes do not have a leaf form.
+    
+    This module is included only in the normalized serialization.
+  -->
+  <xs:element name="hasAgents" type="lrml:hasAgentCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Agents.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAgentCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAgentCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAgent" type="lrml:hasAgent.type.def">
+    <xs:annotation>
+      <xs:documentation>an Agent in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAgent.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAgent.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAlternatives" type="lrml:hasAlternativeCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Alternatives.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAlternativeCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAlternativeCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAssociations" type="lrml:hasAssociationCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Associations.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAssociationCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAssociationCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAssociation" type="lrml:hasAssociation.type.def">
+    <xs:annotation>
+      <xs:documentation>an Association in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAssociation.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAssociation.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAuthorities" type="lrml:hasAuthorityCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Authorities.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAuthorityCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAuthorityCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasAuthority" type="lrml:hasAuthority.type.def">
+    <xs:annotation>
+      <xs:documentation>an Authority in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasAuthority.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasAuthority.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasContext" type="lrml:hasContext.type.def">
+    <xs:annotation>
+      <xs:documentation>a Context described in the LegalRuleML document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasContext.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasContext.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasFigures" type="lrml:hasFigureCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Figures.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasFigureCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasFigureCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasFigure" type="lrml:hasFigure.type.def">
+    <xs:annotation>
+      <xs:documentation>a Figure in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasFigure.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasFigure.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasJurisdictions" type="lrml:hasJurisdictionCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Jurisdictions.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasJurisdictionCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasJurisdictionCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasJurisdiction" type="lrml:hasJurisdiction.type.def">
+    <xs:annotation>
+      <xs:documentation>a Jurisdiction in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasJurisdiction.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasJurisdiction.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasLegalSources" type="lrml:hasLegalSourceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of LegalSources.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasLegalSourceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasLegalSourceCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasSources" type="lrml:hasSourceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Sources.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasSourceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasSourceCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasLegalSource" type="lrml:hasLegalSource.type.def">
+    <xs:annotation>
+      <xs:documentation>a LegalSource in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasLegalSource.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasLegalSource.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasSource" type="lrml:hasSource.type.def">
+    <xs:annotation>
+      <xs:documentation>a Source in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasSource.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasSource.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasPrefix" type="lrml:hasPrefix.type.def">
+    <xs:annotation>
+      <xs:documentation>a Prefix declared in the LegalRuleML document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasPrefix.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasPrefix.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasLegalReferences" type="lrml:hasLegalReferenceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of LegalReferences.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasLegalReferenceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasLegalReferenceCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasLegalReference" type="lrml:hasLegalReference.type.def">
+    <xs:annotation>
+      <xs:documentation>a LegalReference in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasLegalReference.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasLegalReference.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasReferences" type="lrml:hasReferenceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of References.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasReferenceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasReferenceCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasReference" type="lrml:hasReference.type.def">
+    <xs:annotation>
+      <xs:documentation>a Reference in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasReference.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasReference.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasRoles" type="lrml:hasRoleCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Roles.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasRoleCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasRoleCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasRole" type="lrml:hasRole.type.def">
+    <xs:annotation>
+      <xs:documentation>a Role in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasRole.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasRole.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasStatements" type="lrml:hasStatementCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Legal Statements.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasStatementCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasStatementCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasStatement" type="lrml:hasStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasStatement.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasComment" type="lrml:hasComment.type.def">
+    <xs:annotation>
+      <xs:documentation>a comment on the parent Node Element.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasComment.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasComment.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasParaphrase" type="lrml:hasParaphrase.type.def">
+    <xs:annotation>
+      <xs:documentation>a Paraphrase of the parent Node Element (e.g. a Legal Rule).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasParaphrase.type.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:hasParaphrase.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Constitutive.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Constitutive.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a ConstitutiveStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Constitutive.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Constitutive.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Override.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Override.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a OverrideStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Override.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Override.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Penalty.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Penalty.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a PenaltyStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Penalty.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Penalty.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Prescriptive.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Prescriptive.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a PrescriptiveStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Prescriptive.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Prescriptive.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Reparation.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Reparation.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a ReparationStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Reparation.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Reparation.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasTemporalCharacteristics" type="lrml:hasTemporalCharacteristics.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of TemporalCharacteristics.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasTemporalCharacteristics.type.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemporalCharacteristics.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasTemporalCharacteristic" type="lrml:hasTemporalCharacteristic.type.def">
+    <xs:annotation>
+      <xs:documentation>a TemporalCharacteristic in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasTemporalCharacteristic.type.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemporalCharacteristic.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasTimes" type="lrml:hasTimeCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection of Times.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasTimeCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTimeCollection.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="hasTime" type="lrml:hasTime.type.def">
+    <xs:annotation>
+      <xs:documentation>a Time in the collection.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasTime.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTime.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

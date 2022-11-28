@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Naf>
+               * <weak>
+    This module also declares the following RuleML choice patterns:
+               * NegationAsFailure-node.choice
+               * NafFormula.choice
+  -->
+  <xs:group name="NegationAsFailure-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the weak negation tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Naf"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Naf" type="ruleml:Naf.type.def"/>
+  <xs:complexType name="Naf.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Naf.header"/>
+      <xs:group ref="ruleml:Naf.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:reNaf.attlist"/>
+  </xs:complexType>
+  <!-- The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic. -->
+  <xs:attributeGroup name="reNaf.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Naf.header">
+    <xs:annotation>
+      <xs:documentation>Negation As Failure formulas accept the header patter common to truth-valued connectives.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Naf.main">
+    <xs:annotation>
+      <xs:documentation>Negation As Failure formulas contain a single role.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:weak-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="weak-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the weak tag name in weak negations. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:weak"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="weak" type="ruleml:weak.type.def"/>
+  <xs:complexType name="weak.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:weak.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="weak.content">
+    <xs:annotation>
+      <xs:documentation>The negation role contains a single formula. </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:NafFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NafFormula.choice">
+    <xs:annotation>
+      <xs:documentation>formulas allowed to belong to weak negation formulas include atomic forumulas. </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-fo-node.choice"/>
+        <xs:group ref="ruleml:Or-fo-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>
+<!--
+  For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+  For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+  For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+  For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+-->

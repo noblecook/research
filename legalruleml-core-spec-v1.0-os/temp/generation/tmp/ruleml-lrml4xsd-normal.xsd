@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:include schemaLocation="atom_expansion_module.xsd"/>
+  <xs:include schemaLocation="andor_expansion_module.xsd"/>
+  <xs:include schemaLocation="implication_expansion_module.xsd"/>
+  <xs:include schemaLocation="quantification_expansion_module.xsd"/>
+  <xs:include schemaLocation="expr_expansion_module.xsd"/>
+  <xs:include schemaLocation="folog_cl_expansion_module.xsd"/>
+  <xs:include schemaLocation="folog_closure_expansion_module.xsd"/>
+  <xs:include schemaLocation="default_inf_expansion_module.xsd"/>
+  <xs:include schemaLocation="default_absent_expansion_module.xsd"/>
+  <xs:include schemaLocation="default_absent_folog_expansion_module.xsd"/>
+  <xs:include schemaLocation="default_present_expansion_module.xsd"/>
+  <xs:include schemaLocation="termseq_poly_expansion_module.xsd"/>
+  <xs:include schemaLocation="ordered_groups_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_ordered_groups_expansion_module.xsd"/>
+  <xs:include schemaLocation="web_expansion_module.xsd"/>
+  <xs:include schemaLocation="iri_expansion_module.xsd"/>
+  <xs:include schemaLocation="fuzzy_expansion_module.xsd"/>
+  <xs:include schemaLocation="neg_expansion_module.xsd"/>
+  <xs:include schemaLocation="naf_expansion_module.xsd"/>
+  <xs:include schemaLocation="xml_base_expansion_module.xsd"/>
+  <xs:include schemaLocation="xml_id_expansion_module.xsd"/>
+  <xs:include schemaLocation="equivalent_expansion_module.xsd"/>
+  <xs:include schemaLocation="material_attrib_expansion_module.xsd"/>
+  <xs:include schemaLocation="material_non-default_expansion_module.xsd"/>
+  <xs:include schemaLocation="material_default_expansion_module.xsd"/>
+  <xs:include schemaLocation="oid_expansion_module.xsd"/>
+  <xs:include schemaLocation="slot_expansion_module.xsd"/>
+  <xs:include schemaLocation="card_expansion_module.xsd"/>
+  <xs:include schemaLocation="equal_expansion_module.xsd"/>
+  <xs:include schemaLocation="type_expansion_module.xsd"/>
+  <xs:include schemaLocation="dataterm_any_expansion_module.xsd"/>
+  <xs:include schemaLocation="data_any_content_expansion_module.xsd"/>
+  <xs:include schemaLocation="skolem_expansion_module.xsd"/>
+  <xs:include schemaLocation="individual_expansion_module.xsd"/>
+  <xs:include schemaLocation="ruleml-lrml_expansion_module.xsd"/>
+  <xs:include schemaLocation="variable_expansion_module.xsd"/>
+  <xs:include schemaLocation="closure_expansion_module.xsd"/>
+  <xs:include schemaLocation="resl_expansion_module.xsd"/>
+  <xs:include schemaLocation="repo_expansion_module.xsd"/>
+  <xs:include schemaLocation="plex_expansion_module.xsd"/>
+  <xs:include schemaLocation="val_absence_expansion_module.xsd"/>
+  <xs:include schemaLocation="init_expansion_module.xsd"/>
+  <xs:include schemaLocation="init_expansion_module1.xsd"/>
+  <xs:include schemaLocation="consumer_any_content_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_attribute_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_key_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_interval_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_negation_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_operation_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_rule_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_spatial_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_sti_algebra_expansion_module.xsd"/>
+  <xs:include schemaLocation="consumer_time_expansion_module.xsd"/>
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    
+    ATOMIC FORMULAS INCLUDED
+    
+  -->
+  <!--
+    
+    CONJUNCTIONS AND DISJUNCTIONS INCLUDED
+    
+  -->
+  <!--
+    
+    IMPLICATIONS INCLUDED
+    
+  -->
+  <!--
+    
+    QUANTIFICATION OVER VARIABLES INCLUDED
+    
+  -->
+  <!--
+    
+    EXPRESSIONS INCLUDED
+    
+  -->
+  <!--
+    
+    RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED 
+      FULL FIRST-ORDER EXPRESSIVITY (INCLUDING NEGATION) IS AVAILABLE 
+    
+  -->
+  <!--
+    
+    ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED
+    
+  -->
+  <!--
+    
+    ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
+    
+  -->
+  <!--
+    
+    ATTRIBUTES WITH DEFAULT VALUES REQUIRED
+    
+  -->
+  <!--
+    
+    POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED
+    
+  -->
+  <!--
+    
+    ORDER MODE - UNORDERED GROUPS DISABLED
+    
+  -->
+  <!--
+    
+    STRIPE-SKIPPING MODE DISABLED
+    
+    include "modules-deliberation/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+    include "modules-consumer/consumer_stripe_skipping_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    
+    EXPLICIT DATATYPING DISABLED (include in RNC, not in 4simp or 4xsd)
+    
+    include "modules-deliberation/explicit_datatyping_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    include "modules-deliberation/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    include "modules-deliberation/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    include "modules-deliberation/dataterm_simple_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    include "modules-deliberation/data_simple_content_expansion_module.rnc" inherit = ruleml { 
+     start |= notAllowed
+    }
+    
+    WEB REFERENCES INCLUDED
+    
+  -->
+  <!--
+    
+    INTERNATIONALIZED RESOURCE IDENTIFIERS (IRIs) INCLUDED
+    
+  -->
+  <!--
+    
+    DEGREE OF UNCERTAINTY INCLUDED
+    
+  -->
+  <!--
+    
+    STRONG NEGATION INCLUDED
+    
+  -->
+  <!--
+    
+    WEAK NEGATION INCLUDED
+    
+  -->
+  <!--
+    
+    XML BASE ATTRIBUTE INCLUDED
+    
+  -->
+  <!--
+    
+    XML ID ATTRIBUTE INCLUDED
+    
+  -->
+  <!--
+    
+    EQUIVALENCES INCLUDED
+    
+  -->
+  <!--
+    
+    MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED
+    
+  -->
+  <!--
+    
+    NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <!--
+    
+    DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <!--
+    
+    OBJECT IDENTIFIERS INCLUDED
+    
+  -->
+  <!--
+    
+    SLOTS INCLUDED
+    
+  -->
+  <!--
+    
+    SLOT CARDINALITY INCLUDED
+    
+  -->
+  <!--
+    
+    EQUATIONS INCLUDED
+    
+  -->
+  <!--
+    
+    EXPLICIT TYPING OF TERMS INCLUDED
+    
+  -->
+  <!--
+    
+    DATA TERMS INCLUDED
+    
+  -->
+  <!--
+    
+    DATA ELEMENTS INCLUDED
+    
+  -->
+  <!--
+    
+    SKOLEM CONSTANTS INCLUDED
+    
+  -->
+  <!--
+    
+    INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
+    
+  -->
+  <!--
+    
+    VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
+    
+  -->
+  <!--
+    
+    IMPLICIT CLOSURE INCLUDED
+    
+  -->
+  <!--
+    
+    SLOTTED REST VARIABLES INCLUDED
+    
+  -->
+  <!--
+    
+    POSITIONAL REST VARIABLES INCLUDED
+    
+  -->
+  <!--
+    
+    GENERALIZED LISTS INCLUDED
+    
+  -->
+  <!--
+    
+    SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
+    
+  -->
+  <!--
+    
+    INITIALIZATION MODULES INCLUDED
+    
+  -->
+  <!--
+    
+    INCLUDE CONTENT EDGE FOR FOREIGN NAMESPACE CONTENT
+    
+  -->
+  <xs:complexType name="anycontent.content" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--
+    
+    INCLUDE EXTENEDED ATTRIBUTES FOR SPECIFYING SEMANTIC VARIANTS AND ANNOTATIONS
+    
+  -->
+  <!--
+    
+    INCLUDE KEY AND KEYREF ATTRIBUTES FOR SYNTACTIC LABELLING AND REFERENCING
+    
+  -->
+  <xs:simpleType name="keyref.value">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=":[\i-[:]][\c-[:]]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--
+    
+    INCLUDE INTERVAL TERMS AND FORMULAS
+    
+  -->
+  <!--
+    
+    INCLUDE GENERIC NEGATION OPERATOR
+    
+  -->
+  <!--
+    
+    INCLUDE GENERIC OPERATOR
+    
+  -->
+  <!--
+    
+    INCLUDE RULES
+    
+  -->
+  <!--
+    
+    INCLUDE SPATIAL TERMS AND FORMULAS 
+    
+  -->
+  <!--
+    
+    INCLUDE SPATIAL, TEMPORAL AND INTERVAL ALGEBRA OPERATORS
+    
+  -->
+  <!--
+    
+    INCLUDE TEMPORAL TERMS AND FORMULAS
+    
+  -->
+</xs:schema>

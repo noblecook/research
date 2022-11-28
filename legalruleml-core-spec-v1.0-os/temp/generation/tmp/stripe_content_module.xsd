@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    All the LegalRuleML roles below are optional because
+    it is possible to reconstruct the edge element from
+    the type and/or position of the child Node element
+    This module is included in both the compact and normalized serializations.
+    
+    To allow only explicit striping (normalized serialization), also include
+    the stripe_optional module, but not the stripe_skipping module.
+    
+    To allow only stripe-skippining (compact serialization), also include
+    the stripe_skipping module, but not the stripe_optional module
+  -->
+  <xs:complexType name="hasAgentCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AgentCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasAgent.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:Agent.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasAlternativeCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AlternativeCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasAssociationCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AssociationCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasAssociation.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Association.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasAuthorityCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AuthorityCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasAuthority.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Authority.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasContext.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Context.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasFigureCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:FigureCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasFigure.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:Figure.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasJurisdictionCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:JurisdictionCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasJurisdiction.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Jurisdiction.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasLegalSourceCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalSourceCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasLegalSource.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalSource.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasSourceCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:SourceCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasSource.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Source.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasPrefix.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Prefix.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasLegalReferenceCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalReferenceCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasLegalReference.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalReference.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasReferenceCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ReferenceCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasReference.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Reference.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasRoleCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:RoleCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasRole.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Role.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasStatementCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:StatementCollection.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasStatement.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:Statement.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasComment.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Comment.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasParaphrase.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Paraphrase.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Constitutive.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveStatementFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Override.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:OverrideStatementFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Penalty.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:PenaltyStatementFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Prescriptive.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:PrescriptiveStatementFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Reparation.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ReparationStatementFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemporalCharacteristics.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristicCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTemporalCharacteristic.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristic.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTimeCollection.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TimeCollection.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasTime.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:Time.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_And-const.content">
+    <xs:annotation>
+      <xs:documentation>From RuleML</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveAndFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Deontic.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:DeonticFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="formula_Exists-const.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveExistsFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Forall-const.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveForallFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Or-const.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveOrFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Suborder.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:SuborderFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="strong-const.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveNegFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="torso-const.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group ref="lrml:ConstitutiveConclusionFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="argTimeData.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:TimeData.Node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="hasStrength.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" ref="lrml:Strength.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="appliesStrength.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" ref="lrml:Strength.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasTemplate-Factual.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" ref="lrml:FactualStatementFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="hasQualification.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" ref="lrml:QualificationFormula.choice"/>
+  </xs:complexType>
+  <!--
+    
+    The following content models are LegalRuleML-specific patterns that are applied to required stripes in the RuleML namespace 
+  -->
+  <xs:complexType name="slotDeontic.content">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:DeonticRole.Node.choice"/>
+      <xs:group ref="lrml:AnyTerm.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="body_Implies-const.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutivePremiseFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="head_Implies-const.content">
+    <xs:group ref="lrml:ConstitutiveConclusionFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="body_ConstitutiveRule.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:PremiseFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="head_ConstitutiveRule.content">
+    <xs:group ref="lrml:ConstitutiveConclusionFormula.choice"/>
+  </xs:complexType>
+  <xs:complexType name="body_PrescriptiveRule.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:PremiseFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="head_PrescriptiveRule.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:PrescriptiveConclusionFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

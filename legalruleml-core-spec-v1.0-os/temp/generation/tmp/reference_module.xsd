@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="LegalReferenceCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalReferenceCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LegalReferenceCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:LegalReferences"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LegalReferences" type="lrml:LegalReferenceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a LegalReference.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LegalReferenceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalReferenceCollection.main">
+        <xs:attributeGroup ref="lrml:ReferenceCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReferenceCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ReferenceCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReferenceCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:References"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="References" type="lrml:ReferenceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Reference.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ReferenceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:ReferenceCollection.main">
+        <xs:attributeGroup ref="lrml:ReferenceCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="ReferenceCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:refType.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:refIDSystemName.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:refIDSystemSource.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="LegalReference.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalReference.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LegalReference.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:LegalReference"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LegalReference" type="lrml:LegalReference.type.def">
+    <xs:annotation>
+      <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI identifier, where the non-IRI is paired with some additional information that is sufficient to disambiguate the non-IRI to a unique LegalSource.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LegalReference.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Reference.main">
+        <xs:attributeGroup ref="lrml:refersTo.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:refID.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:Reference.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Reference.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Reference.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Reference.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Reference"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reference" type="lrml:Reference.type.def">
+    <xs:annotation>
+      <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI identifier, where the non-IRI is paired with some additional information that is sufficient to disambiguate the non-IRI to a unique Source.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Reference.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Reference.main">
+        <xs:attributeGroup ref="lrml:refersTo.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:refID.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:Reference.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--
+    
+    Note: can't use commonLRMLNodeInit.attlist here because more than one attribute of type xsd:ID (@refersTo)
+  -->
+  <xs:attributeGroup name="Reference.attlist">
+    <xs:attributeGroup ref="lrml:refType.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:refIDSystemName.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:refIDSystemSource.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Reference.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:attributeGroup name="refType.attrib.opt.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="refType" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the conceptual type of the Reference (or of references contained by the References collection).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refType.attrib.def">
+    <xs:attribute name="refType" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the conceptual type of the Reference (or of references contained by the References collection).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refIDSystemName.attrib.opt.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="refIDSystemName" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>the name of the ID system of the Reference (or of References contained by the References collection).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refIDSystemName.attrib.def">
+    <xs:attribute name="refIDSystemName" use="required" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>the name of the ID system of the Reference (or of References contained by the References collection).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refIDSystemSource.attrib.opt.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="refIDSystemSource" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the IRI source of the ID system of the Reference (or of References contained by the References collection). </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refIDSystemSource.attrib.def">
+    <xs:attribute name="refIDSystemSource" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the IRI source of the ID system of the Reference (or of References contained by the References collection). </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refersTo.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="refersTo" type="lrml:id.datatype">
+      <xs:annotation>
+        <xs:documentation>the internal ID of the Reference.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refersTo.attrib.def">
+    <xs:attribute name="refersTo" use="required" type="lrml:id.datatype">
+      <xs:annotation>
+        <xs:documentation>the internal ID of the Reference.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refID.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="refID" type="lrml:refID.datatype">
+      <xs:annotation>
+        <xs:documentation>the external ID of the Reference or Prefix.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="refID.attrib.def">
+    <xs:attribute name="refID" use="required" type="lrml:refID.datatype">
+      <xs:annotation>
+        <xs:documentation>the external ID of the Reference or Prefix.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="refID.datatype">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>

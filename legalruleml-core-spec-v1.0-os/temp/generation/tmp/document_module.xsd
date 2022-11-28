@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:element name="LegalRuleML" type="lrml:LegalRuleML.type.def">
+    <xs:annotation>
+      <xs:documentation>a formal representation of one or more LegalSources using the LegalRuleML Specifications.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LegalRuleML.type.def">
+    <xs:annotation>
+      <xs:documentation>type of the LegalRuleML element  </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalRuleMLDocument.main">
+        <xs:attributeGroup ref="lrml:LegalRuleMLDocument.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="LegalRuleMLDocument.attlist">
+    <xs:annotation>
+      <xs:documentation>attributes of the LegalRuleML element</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="xml:xml-base.choice"/>
+    <xs:attributeGroup ref="lrml:hasCreationDate.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

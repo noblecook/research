@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:include schemaLocation="agent_module.xsd"/>
+  <xs:include schemaLocation="alternative_module.xsd"/>
+  <xs:include schemaLocation="association_module.xsd"/>
+  <xs:include schemaLocation="authority_module.xsd"/>
+  <xs:include schemaLocation="collection_module.xsd"/>
+  <xs:include schemaLocation="comment_module.xsd"/>
+  <xs:include schemaLocation="common_module.xsd"/>
+  <xs:include schemaLocation="context_module.xsd"/>
+  <xs:include schemaLocation="defeasible_module.xsd"/>
+  <xs:include schemaLocation="deontic_module.xsd"/>
+  <xs:include schemaLocation="jurisdiction_module.xsd"/>
+  <xs:include schemaLocation="legalsource_module.xsd"/>
+  <xs:include schemaLocation="node_label_module.xsd"/>
+  <xs:include schemaLocation="ordered_module.xsd"/>
+  <xs:include schemaLocation="prefix_module.xsd"/>
+  <xs:include schemaLocation="reference_module.xsd"/>
+  <xs:include schemaLocation="rule_module.xsd"/>
+  <xs:include schemaLocation="sameas_module.xsd"/>
+  <xs:include schemaLocation="statement_module.xsd"/>
+  <xs:include schemaLocation="stripe_content_module.xsd"/>
+  <xs:include schemaLocation="suborder_module.xsd"/>
+  <xs:include schemaLocation="temp_module.xsd"/>
+  <xs:include schemaLocation="time_collection_module.xsd"/>
+  <xs:include schemaLocation="init_module.xsd"/>
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+</xs:schema>

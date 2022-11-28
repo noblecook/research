@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following Consumer RuleML elements:
+                     
+                     Spatial, Temporal, Interval Function Constructs 
+                     
+                     * <After>
+                     * <Before>
+    				           * <Every>
+                     * <Any>
+                     * <Timer>
+                     
+                     (Allen's) Interval Relations
+                     
+                     * <During>
+                     * <Overlaps>
+                     * <Starts>
+                     * <Precedes>
+                     * <Succeeds>
+                     * <Meets>
+                     * <Finishes>
+  -->
+  <xs:group name="spatial_temporal_algebra_group.content">
+    <xs:choice>
+      <xs:group ref="ruleml:After-node.choice"/>
+      <xs:group ref="ruleml:Before-node.choice"/>
+      <xs:group ref="ruleml:Every-node.choice"/>
+      <xs:group ref="ruleml:Any-node.choice"/>
+      <xs:group ref="ruleml:Timer-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!---->
+  <xs:group name="interval_algebra_group.content">
+    <xs:choice>
+      <xs:group ref="ruleml:During-node.choice"/>
+      <xs:group ref="ruleml:Overlaps-node.choice"/>
+      <xs:group ref="ruleml:Starts-node.choice"/>
+      <xs:group ref="ruleml:Precedes-node.choice"/>
+      <xs:group ref="ruleml:Succeeds-node.choice"/>
+      <xs:group ref="ruleml:Meets-node.choice"/>
+      <xs:group ref="ruleml:Finishes-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!---->
+  <xs:group name="Before-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the before constructor category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Before"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Before" type="ruleml:BeforeAfter.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Before&gt;: an interval constructor "d before (t)". See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Before</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="After-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the after constructor category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:After"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="After" type="ruleml:BeforeAfter.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;After&gt;: an interval constructor "d after (t)". See
+http://consumer.ruleml.org/1.02/glossary/#gloss-After</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="BeforeAfter.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:BeforeAfter.content">
+        <xs:attributeGroup ref="ruleml:BeforeAfter.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="BeforeAfter.attlist">
+    <xs:attributeGroup ref="ruleml:IntervalAlgebraConstructor.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="BeforeAfter.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Interval_term.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="Every-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the every constructor category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Every"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Every" type="ruleml:Every.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Every&gt;: an interval constructor "every d". See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Every</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Every.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Every.content">
+        <xs:attributeGroup ref="ruleml:Every.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Every.attlist">
+    <xs:attributeGroup ref="ruleml:IntervalAlgebraConstructor.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Every.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Node.header"/>
+      <xs:group minOccurs="0" ref="ruleml:arg_interval_term-edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Any-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the every constructor category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Any"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Any" type="ruleml:Any.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Any&gt;: an interval constructor "any t1, .., tn". See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Any</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Any.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Any.content">
+        <xs:attributeGroup ref="ruleml:Any.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Any.attlist">
+    <xs:attributeGroup ref="ruleml:IntervalAlgebraConstructor.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Any.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Node.header"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:arg_interval_term-edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Timer-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the every constructor category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Timer"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Timer" type="ruleml:Timer.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Timer&gt;: an interval constructor "After t Every d". See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Timer</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Timer.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Timer.content">
+        <xs:attributeGroup ref="ruleml:Timer.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Timer.attlist">
+    <xs:attributeGroup ref="ruleml:IntervalAlgebraConstructor.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Timer.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Interval_term.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="IntervalAlgebraConstructor.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
+  </xs:attributeGroup>
+  <!-- *** (During | Overlaps | Starts | Precedes | Succeeds | Meets | Equals | Finishes) *** -->
+  <xs:group name="During-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the during operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:During"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="During" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;During&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-During</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Overlaps-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the overlaps operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Overlaps"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Overlaps" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Overlaps&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Overlaps</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Starts-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the starts operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Starts"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Starts" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Starts&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Starts</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Precedes-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the preceds operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Precedes"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Precedes" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Precedes&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Precedes</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Succeeds-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the succeeds operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Succeeds"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Succeeds" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Succeeds&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Succeeds</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Meets-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the meets operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Meets"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Meets" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Meets&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Meets</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:group name="Finishes-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the finishes operator category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Finishes"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Finishes" type="ruleml:IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Finishes&gt;: an interval operator. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Finishes</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="IntervalAlgebraOperation.type.def">
+    <xs:annotation>
+      <xs:documentation>Common Patterns for Interval Algebra</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:IntervalAlgebraOperation.content">
+        <xs:attributeGroup ref="ruleml:IntervalAlgebraOperation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="IntervalAlgebraOperation.attlist">
+    <xs:attributeGroup ref="ruleml:operator-interface.attlist"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="IntervalAlgebraOperation.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Node.header"/>
+      <xs:group ref="ruleml:arg_interval_term-edge.choice"/>
+      <xs:group ref="ruleml:arg_interval_term-edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

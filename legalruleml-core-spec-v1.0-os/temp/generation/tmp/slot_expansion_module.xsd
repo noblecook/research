@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * slot
+               * @weight
+               * @card
+  -->
+  <xs:group name="slotTermsForAtoms.sequence">
+    <xs:annotation>
+      <xs:documentation>In atomic formulas, zero or more slots are allowed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slot-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="slotTermsForExpressions.sequence">
+    <xs:annotation>
+      <xs:documentation>In expressions, zero or more slots are allowed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slot-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of slotted rest variables, see the slotted rest variable module (resl_module). -->
+  <xs:group name="slot-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the slot tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:slot.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="slot.edge.def">
+    <xs:sequence>
+      <xs:element name="slot" type="ruleml:slot.type.def">
+        <xs:annotation>
+          <xs:documentation>A user-defined slot (property). See http://deliberation.ruleml.org/1.02/glossary/#gloss-slot</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="slot.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:slot.content">
+        <xs:attributeGroup ref="ruleml:reslot.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="reslot.attlist">
+    <xs:annotation>
+      <xs:documentation>The slot element accepts optional cardinality and  weight attributes. </xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:cardinality-att.choice"/>
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="slot.content">
+    <xs:annotation>
+      <xs:documentation>The slot content model consists of a key (first position) and a filler (second position).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:slotKeyTerm.choice"/>
+      <xs:group ref="ruleml:slotFillerTerm.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="slotKeyTerm.choice">
+    <xs:annotation>
+      <xs:documentation>The key (first position) in a slot contains an interpreted term or data, which may be simple or compound.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
+      <xs:group ref="ruleml:CompoundTerm.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!-- For the declaration of term patterns, see the term module (individual_expansion_module). -->
+  <xs:group name="slotFillerTerm.choice">
+    <xs:annotation>
+      <xs:documentation>The filler (second position) in a slot contains any single term.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:AnyTerm.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of term patterns, see the term module (individual_expansion_module). -->
+  <!---->
+</xs:schema>

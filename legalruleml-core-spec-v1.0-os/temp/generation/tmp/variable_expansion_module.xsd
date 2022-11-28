@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Var>
+  -->
+  <xs:group name="SimpleQuantifiableTerm.choice">
+    <xs:annotation>
+      <xs:documentation>terms that can be bound by a quantifier include variables.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Variable-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Variable-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the variable tag name. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Var"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Var" type="ruleml:Var.type.def">
+    <xs:annotation>
+      <xs:documentation>A logical variable, as in logic programming.
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-Var</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Var.type.def">
+    <xs:simpleContent>
+      <xs:extension base="ruleml:Var.value">
+        <xs:attributeGroup ref="ruleml:reVar.attlist"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:attributeGroup name="reVar.attlist">
+    <xs:annotation>
+      <xs:documentation>Variables optionally accept the attribute pattern of objects with user-defined types.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:Type.attlist"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="Var.value">
+    <xs:annotation>
+      <xs:documentation>The content model for variables is the XSD datatype token.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+</xs:schema>

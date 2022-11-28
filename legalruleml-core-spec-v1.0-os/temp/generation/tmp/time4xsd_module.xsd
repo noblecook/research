@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- This module is for conversion into XSD. -->
+  <xs:complexType name="Time.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:Time.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Time.Node.def">
+    <xs:sequence>
+      <xs:element name="Time" type="ruleml:Timetype.def">
+        <xs:annotation>
+          <xs:documentation>a neutral temporal entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Timetype.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Time.main">
+        <xs:attributeGroup ref="ruleml:Time.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Time.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="TimeData.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Data">
+        <xs:annotation>
+          <xs:documentation>a temporal data value.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:union memberTypes="xs:dateTime xs:date xs:duration"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

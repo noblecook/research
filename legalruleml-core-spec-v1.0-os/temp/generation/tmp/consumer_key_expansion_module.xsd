@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:attributeGroup name="key-att.choice">
+    <xs:annotation>
+      <xs:documentation>@key: defines a unique key attribute which can be used for distributed referencing from a keyref attribute. See
+http://consumer.ruleml.org/1.02/glossary/#.40key</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:key.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="key.attrib.def">
+    <xs:attribute name="key" use="required" type="ruleml:key.value"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="key.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+  </xs:simpleType>
+  <xs:attributeGroup name="keyref-att.choice">
+    <xs:annotation>
+      <xs:documentation>@keyref: defines a reference to a corresponding unique key. See
+http://consumer.ruleml.org/1.02/glossary/#.40keyref</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:keyref.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="keyref.attrib.def">
+    <xs:attribute name="keyref" use="required" type="ruleml:keyref.value"/>
+  </xs:attributeGroup>
+  <!---->
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="DummyKey">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:key-att.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,72 @@
+<lrml:Statements key="textblock1">
+<lrml:hasQualification>
+  <lrml:Override over="#ps2" under="#ps1"/>
+  </lrml:hasQualification>
+  <lrml:PrescriptiveStatement key="ps1">
+      <ruleml:Rule key=":rule1" closure="universal">
+        <lrml:hasStrength>
+          <lrml:DefeasibleStrength key="str1" iri="&defeasible-ontology;#defeasible1"/>
+        </lrml:hasStrength>
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri=":person"/>
+            <ruleml:Var>X</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:SuborderList>
+            <lrml:Prohibition>
+              <ruleml:Atom>
+                <ruleml:Rel iri=":engageCreditActivity"/>
+                <ruleml:Var>X</ruleml:Var>
+              </ruleml:Atom>
+            </lrml:Prohibition>
+          </lrml:SuborderList>
+        </ruleml:then>
+      </ruleml:Rule>
+
+    </lrml:PrescriptiveStatement>
+
+ 
+
+    <lrml:PenaltyStatement key="pen2">
+      <lrml:SuborderList>
+        <lrml:Obligation>
+          <ruleml:Atom>
+            <ruleml:Rel iri=":payPenalUnits"/>
+            <ruleml:Var>X</ruleml:Var>
+            <ruleml:Ind>200</ruleml:Ind>
+          </ruleml:Atom>
+        </lrml:Obligation>
+        <lrml:Obligation>
+          <ruleml:Atom>
+            <ruleml:Rel iri=":imprisonment"/>
+            <ruleml:Var>X</ruleml:Var>
+            <ruleml:Ind>2 years</ruleml:Ind>
+          </ruleml:Atom>
+        </lrml:Obligation>
+        <lrml:Obligation>
+          <ruleml:Atom>
+            <ruleml:Rel iri=":payPenalUnitPlusImprisonment"/>
+            <ruleml:Var>X</ruleml:Var>
+            <ruleml:Ind>200</ruleml:Ind>
+            <ruleml:Ind>2 years</ruleml:Ind>
+          </ruleml:Atom>
+        </lrml:Obligation>
+      </lrml:SuborderList>
+    </lrml:PenaltyStatement>
+ 
+
+    <lrml:ReparationStatement key="rep1">
+      <lrml:Reparation key="assoc1">
+        <lrml:appliesPenalty keyref="#pen1"/>
+        <lrml:toPrescriptiveStatement keyref="#ps1"/>
+      </lrml:Reparation>
+    </lrml:ReparationStatement>
+    <lrml:ReparationStatement key="rep2">
+      <lrml:Reparation keyref="#assoc1">
+        <lrml:appliesPenalty keyref="#pen2"/>
+        <lrml:toPrescriptiveStatement keyref="#ps1"/>
+      </lrml:Reparation>
+    </lrml:ReparationStatement>
+</lrml:Statements>

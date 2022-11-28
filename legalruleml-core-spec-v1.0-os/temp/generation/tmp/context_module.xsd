@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="Context.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Context.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Context.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Context"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Context" type="lrml:Context.type.def">
+    <xs:annotation>
+      <xs:documentation>an application of Associations to their target entities within a Scope.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Context.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Context.main">
+        <xs:attributeGroup ref="lrml:Context.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Context.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:hasCreationDate.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

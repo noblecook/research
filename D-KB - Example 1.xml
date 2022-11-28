@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+The example below is extracted from https://github.com/dapreco/daprecokb/blob/master/gdpr/rioKB_GDPR.xml. It formalizes Article 12, paragraph 7, of the GDPR (available at https://eur-lex.europa.eu/eli/reg/2016/679/oj) in reified I/O logic (see https://academic.oup.com/logcom/article-abstract/27/8/2471/3098296 and https://orbilu.uni.lu/handle/10993/31378):
+
+"The information to be provided to data subjects pursuant to Articles 13 and 14 may be provided in combination with standardised icons in order to give in an easily visible, intelligible and clearly legible manner a meaningful overview of the intended processing. Where the icons are presented electronically they shall be machine-readable."
+
+Article 12, paragraph 7, is formalized via a permission (statements38Formula1) and an obligation (statements38Formula2):
+
+- statements38Formula1 reads "If the controller provides information to the data subject, he is permitted to attach an icon"
+- statements38Formula2 reads "If the controller provides information to the data subject and attach an electronic icon, then he is obliged to make the icon machine-readable"
+
+The example is taken from section 3.2 of the paper:
+
+[Robaldo et al., 2019a] Robaldo, L. and Bartolini, C. and Palmirani, M. and Rossi, A. and Martoni, M. and Lenzini, G.: Formalizing GDPR provisions in reified I/O logic: the DAPRECO knowledge base, The Journal of Logic, Language, and Information (to appear). 
+
+Available at: https://link.springer.com/article/10.1007/s10849-019-09309-z 
+
+-->
+<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ruleml="http://ruleml.org/spec" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/lrml-compact.xsd">
+  <lrml:Prefix pre="GDPR" refID="/akn/eu/act/regulation/2018-05-25/eng@2018-05-25/!main#" />
+  <lrml:Prefix pre="rioOnto" refID="http://www.liviorobaldo.com/rioOnto#" />
+  <lrml:Prefix pre="prOnto" refID="https://w3id.org/ontology/pronto#" />
+  <lrml:Prefix pre="dapreco" refID="http://www.liviorobaldo.com/dapreco#" />
+  <lrml:LegalReferences type="legislative">
+    <lrml:LegalReference refersTo="gdprC3S1A12P7ref" refID="GDPR:art_12__para_7" />
+  </lrml:LegalReferences>
+  <lrml:Associations>
+    <lrml:Association>
+      <lrml:appliesSource keyref="#gdprC3S1A12P7ref" />
+      <lrml:toTarget keyref="#statements38" />
+    </lrml:Association>
+    <lrml:Association>
+	<!-- reified I/O logic is grounded on a massive use of reification. Reification allows to associate predications such as "(give a b c)", 
+		 saying that a gives b to c, with equivalent predications "(give' e a b c)", saying that e is a giving event by a of b to c. 
+		 You can find more explanation about this mechanism at https://www.isi.edu/~hobbs/bgt-evstruct.text or in this book:
+		 https://www.cambridge.org/core/books/formal-theory-of-commonsense-psychology/20289940AFB026AB3EF31EBCF8875628
+		 
+		 The LegalRuleML tag "lrml:appliesModality" is used to mark the reified predications, i.e., those obtained by applying the ' operator to 
+		 another non-reified predicate. -->
+      <lrml:appliesModality iri="#rioOnto:reification" />
+      <lrml:toTarget keyref="#A854" />
+      <lrml:toTarget keyref="#A855" />
+      <lrml:toTarget keyref="#A856" />
+      <lrml:toTarget keyref="#A857" />
+      <lrml:toTarget keyref="#A858" />
+      <lrml:toTarget keyref="#A859" />
+      <lrml:toTarget keyref="#A860" />
+      <lrml:toTarget keyref="#A861" />
+      <lrml:toTarget keyref="#A862" />
+      <lrml:toTarget keyref="#A863" />
+      <lrml:toTarget keyref="#A864" />
+      <lrml:toTarget keyref="#A865" />
+      <lrml:toTarget keyref="#A7330" />
+      <lrml:toTarget keyref="#A7356" />
+      <lrml:toTarget keyref="#A7357" />
+      <lrml:toTarget keyref="#A7358" />
+      <lrml:toTarget keyref="#A7365" />
+      <lrml:toTarget keyref="#A7366" />
+      <lrml:toTarget keyref="#A7367" />
+    </lrml:Association>
+  </lrml:Associations>
+  <!-- reified I/O logic formulae are if-then rules without deontic operators. In I/O logics, deontic inferences are implemented in a meta-level 
+	   (see, e.g., "[Makinson and van der Torre, 2000] D. Makinson, L. van der Torre. Input/Output Logics. Journal of Philosophical Logic, vol. 29, 2000). However, we must distinguish which if-then rules refer to obligations, permissions, and constitutive rules. This is implemented via
+	   the LegalRuleML tag "lrml:Context" --> 
+  <lrml:Context key="context_1" type="rioOnto:obligationRule">
+    <lrml:inScope keyref="#statements38Formula2" />
+  </lrml:Context>
+  <lrml:Context key="context_2" type="rioOnto:permissionRule">
+    <lrml:inScope keyref="#statements38Formula1" />
+  </lrml:Context>
+  <lrml:Context key="context_4" type="rioOnto:constitutiveRule4MappingWithPrOnto">
+    <lrml:inScope keyref="#statements276Formula1" />
+    <lrml:inScope keyref="#statements276Formula2" />
+    <lrml:inScope keyref="#statements276Formula31" />
+    <lrml:inScope keyref="#statements276Formula34" />
+  </lrml:Context>	
+  <lrml:Statements key="statements38">
+    <lrml:ConstitutiveStatement key="statements38Formula1">
+      <!--
+Permission:
+(
+	(rioOnto:RexistAtTime :a1 :t1) & (rioOnto:and' :a1 :ep :en :edp) & (prOnto:DataSubject :w) & (prOnto:PersonalData :z :w)
+	 & (prOnto:Controller :y :z) & (prOnto:Processor :x) & (prOnto:nominates' :edp :y :x)
+	 & (prOnto:PersonalDataProcessing' :ep :x :z) & (prOnto:Communicate' :en :y :w :i),
+
+	(rioOnto:RexistAtTime :eat :t1) & (dapreco:AttachTo' :eat :y :ic :en) & (dapreco:Icon :ic)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Exists>
+            <ruleml:Var key=":a1">a1</ruleml:Var>
+            <ruleml:Var key=":ep">ep</ruleml:Var>
+            <ruleml:Var key=":edp">edp</ruleml:Var>
+            <ruleml:Var key=":w">w</ruleml:Var>
+            <ruleml:Var key=":z">z</ruleml:Var>
+            <ruleml:Var key=":x">x</ruleml:Var>
+            <ruleml:Var key=":i">i</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":a1" />
+                <ruleml:Var key=":t1">t1</ruleml:Var>
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A854">
+                <ruleml:Rel iri="rioOnto:and" />
+                <ruleml:Var keyref=":a1" />
+                <ruleml:Var keyref=":ep" />
+                <ruleml:Var key=":en">en</ruleml:Var>
+                <ruleml:Var keyref=":edp" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:DataSubject" />
+                <ruleml:Var keyref=":w" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:PersonalData" />
+                <ruleml:Var keyref=":z" />
+                <ruleml:Var keyref=":w" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:Controller" />
+                <ruleml:Var key=":y">y</ruleml:Var>
+                <ruleml:Var keyref=":z" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:Processor" />
+                <ruleml:Var keyref=":x" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A855">
+                <ruleml:Rel iri="prOnto:nominates" />
+                <ruleml:Var keyref=":edp" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":x" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A856">
+                <ruleml:Rel iri="prOnto:PersonalDataProcessing" />
+                <ruleml:Var keyref=":ep" />
+                <ruleml:Var keyref=":x" />
+                <ruleml:Var keyref=":z" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A857">
+                <ruleml:Rel iri="prOnto:Communicate" />
+                <ruleml:Var keyref=":en" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":w" />
+                <ruleml:Var keyref=":i" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Exists>
+            <ruleml:Var key=":eat">eat</ruleml:Var>
+            <ruleml:Var key=":ic">ic</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":eat" />
+                <ruleml:Var keyref=":t1" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A858">
+                <ruleml:Rel iri="dapreco:AttachTo" />
+                <ruleml:Var keyref=":eat" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":ic" />
+                <ruleml:Var keyref=":en" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="dapreco:Icon" />
+                <ruleml:Var keyref=":ic" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+    <lrml:ConstitutiveStatement key="statements38Formula2">
+      <!--
+Obligation:
+(
+	(rioOnto:RexistAtTime :a1 :t1) & (rioOnto:and' :a1 :ep :en :eat :el :edp) & (prOnto:DataSubject :w) & (prOnto:PersonalData :z :w)
+	 & (prOnto:Controller :y :z) & (prOnto:Processor :x) & (prOnto:nominates' :edp :y :x)
+	 & (prOnto:PersonalDataProcessing' :ep :x :z) & (prOnto:Communicate' :en :y :w :i) & (dapreco:AttachTo' :eat :y :ic :en)
+	 & (dapreco:Icon :ic) & (dapreco:electronicForm' :el :ic),
+
+	(rioOnto:RexistAtTime :emr :t1) & (dapreco:machineReadableness' :emr :ic)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Exists>
+            <ruleml:Var key=":a1">a1</ruleml:Var>
+            <ruleml:Var key=":ep">ep</ruleml:Var>
+            <ruleml:Var key=":en">en</ruleml:Var>
+            <ruleml:Var key=":eat">eat</ruleml:Var>
+            <ruleml:Var key=":el">el</ruleml:Var>
+            <ruleml:Var key=":edp">edp</ruleml:Var>
+            <ruleml:Var key=":w">w</ruleml:Var>
+            <ruleml:Var key=":z">z</ruleml:Var>
+            <ruleml:Var key=":y">y</ruleml:Var>
+            <ruleml:Var key=":x">x</ruleml:Var>
+            <ruleml:Var key=":i">i</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":a1" />
+                <ruleml:Var key=":t1">t1</ruleml:Var>
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A859">
+                <ruleml:Rel iri="rioOnto:and" />
+                <ruleml:Var keyref=":a1" />
+                <ruleml:Var keyref=":ep" />
+                <ruleml:Var keyref=":en" />
+                <ruleml:Var keyref=":eat" />
+                <ruleml:Var keyref=":el" />
+                <ruleml:Var keyref=":edp" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:DataSubject" />
+                <ruleml:Var keyref=":w" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:PersonalData" />
+                <ruleml:Var keyref=":z" />
+                <ruleml:Var keyref=":w" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:Controller" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":z" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="prOnto:Processor" />
+                <ruleml:Var keyref=":x" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A860">
+                <ruleml:Rel iri="prOnto:nominates" />
+                <ruleml:Var keyref=":edp" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":x" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A861">
+                <ruleml:Rel iri="prOnto:PersonalDataProcessing" />
+                <ruleml:Var keyref=":ep" />
+                <ruleml:Var keyref=":x" />
+                <ruleml:Var keyref=":z" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A862">
+                <ruleml:Rel iri="prOnto:Communicate" />
+                <ruleml:Var keyref=":en" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var keyref=":w" />
+                <ruleml:Var keyref=":i" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A863">
+                <ruleml:Rel iri="dapreco:AttachTo" />
+                <ruleml:Var keyref=":eat" />
+                <ruleml:Var keyref=":y" />
+                <ruleml:Var key=":ic">ic</ruleml:Var>
+                <ruleml:Var keyref=":en" />
+              </ruleml:Atom>
+              <ruleml:Atom>
+                <ruleml:Rel iri="dapreco:Icon" />
+                <ruleml:Var keyref=":ic" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A864">
+                <ruleml:Rel iri="dapreco:electronicForm" />
+                <ruleml:Var keyref=":el" />
+                <ruleml:Var keyref=":ic" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Exists>
+            <ruleml:Var key=":emr">emr</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":emr" />
+                <ruleml:Var keyref=":t1" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A865">
+                <ruleml:Rel iri="dapreco:machineReadableness" />
+                <ruleml:Var keyref=":emr" />
+                <ruleml:Var keyref=":ic" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+  </lrml:Statements>
+  <!-- 
+  The rules below are constitutive rules to connect the predicates dapreco:AttachTo, dapreco:Icon, dapreco:machineReadableness, and 
+  dapreco:electronicForm to the predicates in the PrOnto ontology. dapreco:AttachTo and dapreco:Icon are subclasses of prOnto:Action and 
+  prOnto:Document respectively, while dapreco:machineReadableness and dapreco:electronicForm are attributes of allot:FRBRWork and
+  allot:FRBRManifestation respectively.
+  -->
+  <lrml:Statements key="statements276">
+    <lrml:ConstitutiveStatement key="statements276Formula1">
+      <!--
+Entailment:
+(
+	(dapreco:AttachTo' :e :a :b :c),
+
+	(prOnto:Action :e)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Exists>
+            <ruleml:Var key=":a">a</ruleml:Var>
+            <ruleml:Var key=":b">b</ruleml:Var>
+            <ruleml:Var key=":c">c</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom keyref=":A7330">
+                <ruleml:Rel iri="dapreco:AttachTo" />
+                <ruleml:Var key=":e">e</ruleml:Var>
+                <ruleml:Var keyref=":a" />
+                <ruleml:Var keyref=":b" />
+                <ruleml:Var keyref=":c" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel iri="prOnto:Action" />
+            <ruleml:Var keyref=":e" />
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+    <lrml:ConstitutiveStatement key="statements276Formula2">
+      <!--
+Entailment:
+(
+	(dapreco:Icon :ic),
+
+	(prOnto:Document :ic)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="dapreco:Icon" />
+            <ruleml:Var key=":ic">ic</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel iri="prOnto:Document" />
+            <ruleml:Var keyref=":ic" />
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+    <lrml:ConstitutiveStatement key="statements276Formula31">
+      <!--
+Entailment:
+(
+	(allot:FRBRManifestation :m),
+
+	(rioOnto:RexistAtTime :o1 :t) & (rioOnto:or' :o1 :e :en) & (rioOnto:not' :en :e) & (dapreco:machineReadableness' :e :m)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="allot:FRBRManifestation" />
+            <ruleml:Var key=":m">m</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Exists>
+            <ruleml:Var key=":o1">o1</ruleml:Var>
+            <ruleml:Var key=":e">e</ruleml:Var>
+            <ruleml:Var key=":en">en</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":o1" />
+                <ruleml:Var key=":t">t</ruleml:Var>
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7356">
+                <ruleml:Rel iri="rioOnto:or" />
+                <ruleml:Var keyref=":o1" />
+                <ruleml:Var keyref=":e" />
+                <ruleml:Var keyref=":en" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7357">
+                <ruleml:Rel iri="rioOnto:not" />
+                <ruleml:Var keyref=":en" />
+                <ruleml:Var keyref=":e" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7358">
+                <ruleml:Rel iri="dapreco:machineReadableness" />
+                <ruleml:Var keyref=":e" />
+                <ruleml:Var keyref=":m" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+    <lrml:ConstitutiveStatement key="statements276Formula34">
+      <!--
+Entailment:
+(
+	(allot:FRBRWork :w),
+
+	(rioOnto:RexistAtTime :o1 :t) & (rioOnto:or' :o1 :e :en) & (rioOnto:not' :en :e) & (dapreco:electronicForm' :e :w)
+)
+-->
+      <ruleml:Rule closure="universal">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="allot:FRBRWork" />
+            <ruleml:Var key=":w">w</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Exists>
+            <ruleml:Var key=":o1">o1</ruleml:Var>
+            <ruleml:Var key=":e">e</ruleml:Var>
+            <ruleml:Var key=":en">en</ruleml:Var>
+            <ruleml:And>
+              <ruleml:Atom>
+                <ruleml:Rel iri="rioOnto:RexistAtTime" />
+                <ruleml:Var keyref=":o1" />
+                <ruleml:Var key=":t">t</ruleml:Var>
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7365">
+                <ruleml:Rel iri="rioOnto:or" />
+                <ruleml:Var keyref=":o1" />
+                <ruleml:Var keyref=":e" />
+                <ruleml:Var keyref=":en" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7366">
+                <ruleml:Rel iri="rioOnto:not" />
+                <ruleml:Var keyref=":en" />
+                <ruleml:Var keyref=":e" />
+              </ruleml:Atom>
+              <ruleml:Atom keyref=":A7367">
+                <ruleml:Rel iri="dapreco:electronicForm" />
+                <ruleml:Var keyref=":e" />
+                <ruleml:Var keyref=":w" />
+              </ruleml:Atom>
+            </ruleml:And>
+          </ruleml:Exists>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+  </lrml:Statements>
+</lrml:LegalRuleML>
+

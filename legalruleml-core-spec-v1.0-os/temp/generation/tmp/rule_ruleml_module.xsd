@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="ConstitutiveRule-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:ConstitutiveRule.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveRule.Node.def">
+    <xs:sequence>
+      <xs:element name="Rule" type="ruleml:ConstitutiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>a RuleML Rule encoding a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveRule.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:ConstitutiveRule.header"/>
+      <xs:group ref="lrml:ConstitutiveRule.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:reConstitutiveRule.attlist"/>
+  </xs:complexType>
+  <xs:group name="And-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:And-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="And-const.Node.def">
+    <xs:sequence>
+      <xs:element name="And">
+        <xs:annotation>
+          <xs:documentation>logical conjunction within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:And.header"/>
+            <xs:group ref="lrml:And-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reAnd.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Or-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:annotation>
+          <xs:documentation>logical disjunction within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Or.header"/>
+            <xs:group ref="lrml:Or-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reOr.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implication-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Implies-const-node.choice"/>
+      <xs:group ref="ruleml:Equivalent-const-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Implies-const-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Implies-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implies-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Implies">
+        <xs:annotation>
+          <xs:documentation>logical implication within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Implies.header"/>
+            <xs:group ref="lrml:Implies-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="ruleml:Implies-datt.choice"/>
+          <xs:attributeGroup ref="lrml:reImplies.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equivalent-const-node.choice">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Equivalent-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equivalent-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Equivalent">
+        <xs:annotation>
+          <xs:documentation>logical equivalence within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Equivalent.header"/>
+            <xs:group ref="lrml:Equivalent-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reEquivalent.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Forall-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Forall">
+        <xs:annotation>
+          <xs:documentation>universal quantification within a Constitutive Statement.   </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Forall.header"/>
+            <xs:group ref="lrml:Forall-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reForall.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Exists-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Exists">
+        <xs:annotation>
+          <xs:documentation>existential quantification within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Exists.header"/>
+            <xs:group ref="lrml:Exists-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reExists.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Negation-const-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Neg-const.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Neg-const.Node.def">
+    <xs:sequence>
+      <xs:element name="Neg">
+        <xs:annotation>
+          <xs:documentation>logical negation within a Constitutive Statement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="lrml:Neg.header"/>
+            <xs:group ref="lrml:Neg-const.main"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="lrml:reNeg.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="PrescriptiveRule-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:PrescriptiveRule.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PrescriptiveRule.Node.def">
+    <xs:sequence>
+      <xs:element name="Rule" type="ruleml:PrescriptiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>a RuleML Rule encoding a Prescriptive Statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrescriptiveRule.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:PrescriptiveRule.header"/>
+      <xs:group ref="lrml:PrescriptiveRule.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:rePrescriptiveRule.attlist"/>
+  </xs:complexType>
+  <xs:group name="Node.header">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+        <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reConstitutiveRule.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:reRule.attlist"/>
+    <xs:attributeGroup ref="lrml:strength.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:group name="ConstitutiveRule.header">
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="lrml:hasStrength.edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    Note: to enable different levels of RuleML expressivity, split into fo and dis modules.
+    fo
+  -->
+  <xs:group name="And-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:And-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Negation-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Negation-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implication-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Implication-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Forall-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-const-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Exists-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    dis
+  -->
+  <xs:group name="Or-const-dis-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Or-const-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="PrescriptiveRule.header">
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="lrml:hasStrength.edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="rePrescriptiveRule.attlist">
+    <xs:attributeGroup ref="ruleml:reRule.attlist"/>
+    <xs:attributeGroup ref="lrml:strength.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

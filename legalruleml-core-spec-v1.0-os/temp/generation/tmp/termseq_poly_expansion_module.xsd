@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module extends the following RuleML choice pattern:
+               * termsForAtoms.nonemptysequence.choice
+               * termsForExpressions.nonemptysequence.choice
+  -->
+  <xs:group name="termsForAtoms.nonemptysequence.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="termsForExpressions.nonemptysequence.choice">
+    <xs:sequence>
+      <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

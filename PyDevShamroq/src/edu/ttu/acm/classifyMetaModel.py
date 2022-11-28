@@ -94,20 +94,20 @@ A list of dependency labels listed here
 '''
 
 
-def getDepData(text):
+def printDepData(text):
     doc = nlp(text)
-    SN = 10; TOKEN = 15; TAG = 10; EXPLAIN = 20; HEAD = 15; DEP = 10; CHILD = 15; ANCESTORS = 30; TREE = 20;
+    SN = 8; TOKEN = 15; POS = 8; TAG = 8; EXPLAIN = 20; HEAD = 15; DEP = 8; CHILD = 15; ANCESTORS = 28; TREE = 20;
     table = BeautifulTable(maxwidth=165)
-    table.columns.header = ['SN', 'Text', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
+    table.columns.header = ['SN', 'Text', 'POS', 'TAG', 'Expln Tag', 'HEAD', 'Dep', 'Expln Dep', 'Child', 'Ancestors', 'Subtree']
     table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
-    table.columns.width = [SN, TOKEN, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
+    table.columns.width = [SN, TOKEN, POS, TAG, EXPLAIN, HEAD, DEP, EXPLAIN, CHILD, ANCESTORS, TREE]
 
     for token in doc:
         ancestors = [t.text for t in token.ancestors]
         children = [child for child in token.children]
-        table.rows.append([token.i, token.text, token.tag_, spacy.explain(token.tag_), token.head.text,
+        table.rows.append([token.i, token.text, token.pos_, token.tag_, spacy.explain(token.tag_), token.head.text,
                            token.dep_, spacy.explain(token.dep_), children, ancestors, list(token.subtree)])
-    # print(table)
+    print(table)
     time.sleep(0)
     return doc
 
@@ -395,7 +395,7 @@ def getPredicates(label, text):
         print("Subject Verb [iobj] Object as dictionary ", predicates)
         time.sleep(3)
     elif prepMatch:
-        predicates = getPredicatePredication(text)
+        # predicates = getPredicatePredication(text)
         print("Predicates as dictionary ", predicates)
     else:
         pass
@@ -445,7 +445,7 @@ def processEachProvision(params):
                         print("|   Evaluate Statement  |")
                         print("|                       |")
                         print(text)
-                        # printDepData(text)
+                        printDepData(text)
                         classifySpan(text)
                         print("<<<<------------------------------------>>>>>\n\n")
                         time.sleep(0)

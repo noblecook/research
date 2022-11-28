@@ -1,0 +1,17 @@
+<pur:PurchaseOrder OrderDate="2008-09-28" xmlns:pur="http://tempuri.org/PurchaseOrderSchema.xsd">
+  <!--1 to 2 repetitions:-->
+  <pur:ShipTo country="US">
+    <pur:name>string</pur:name>
+    <pur:street>string</pur:street>
+    <pur:city>string</pur:city>
+    <pur:state>string</pur:state>
+    <pur:zip>100</pur:zip>
+  </pur:ShipTo>
+  <pur:BillTo country="US">
+    <pur:name>string</pur:name>
+    <pur:street>string</pur:street>
+    <pur:city>string</pur:city>
+    <pur:state>string</pur:state>
+    <pur:zip>100</pur:zip>
+  </pur:BillTo>
+</pur:PurchaseOrder>
