@@ -1,0 +1,34 @@
+{
+    "Violation": {
+        "hasComment": {
+            "Comment": {
+                "Content": [
+                    "b",
+                    "LXsKHafgqkywZDhLg",
+                    "tnOdvZeSnwWURfsVLp"
+                ],
+                "key": "YXFKixjDJxmsWZBnCQQ",
+                "keyref": "http://example.com/resource?foo=bar#fragment",
+                "type": "RzBP",
+                "iri": "TXGay"
+            }
+        },
+        "hasParaphrase": {
+            "Paraphrase": {
+                "Content": [
+                    "dDyZffLZIBntLSrZ",
+                    "jptadARLPu",
+                    "cLfKMik",
+                    "zeaN"
+                ],
+                "key": "hOdcgeLIAForlbdyhR",
+                "keyref": "http://example.com/resource?foo=bar#fragment",
+                "type": "FnpMLVHwHdcZLKelaEth",
+                "iri": "dAYRMdeBmAjEKSQLPP"
+            }
+        },
+        "key": "l",
+        "keyref": "http://example.com/resource?foo=bar#fragment",
+        "type": "tkLIMdPQ"
+    }
+}
