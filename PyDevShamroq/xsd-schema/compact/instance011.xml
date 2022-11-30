@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:ruleml="http://ruleml.org/spec"
+ xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+
+    
+    <!-- Metadata  -->    
+    <LegalSources>
+        <LegalSource key="lsref01" 
+            sameAs="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.5">
+        </LegalSource>
+    </LegalSources>
+    <References>
+        <Reference refersTo="lsref02" 
+            refID="/us/USCODE/eng@/main#title16-sec312.5" 
+            refIDSystemName="AkomaNtoso2.0.2012-10">
+        </Reference>
+    </References>
+        
+    
+    <!-- Context  -->
+    <Context>
+        
+    </Context>
+    
+    <!-- Provisons  -->
+    
+    <!-- Prescriptive Statement 1 -->
+    <Statements>
+        <PrescriptiveStatement key="ps1">
+            <ruleml:Rule> 
+                <ruleml:if>
+                    <ruleml:And>
+                        <Permission>
+                            
+                        </Permission>
+                        
+                    </ruleml:And>
+                </ruleml:if>
+            
+            </ruleml:Rule>
+       
+        </PrescriptiveStatement>
+    </Statements>
+ 
+      
+
+</LegalRuleML>
