@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:ruleml="http://ruleml.org/spec"
+ xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ 
+ file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+
+    <!-- #################  -->
+    <!-- Category 1 PreFix  -->   
+    <!-- #################  -->
+    
+    
+    <Prefix refID="pre100">
+        
+    </Prefix>
+    
+    
+    
+    <!-- ###################  -->
+    <!-- Category 2 Metadata  -->   
+    <!-- ###################  -->
+    
+    <!-- 
+        LegalSources capture IRI based sources.  The attribute refID annotates x
+        and refIDSystemName annotates the naming convention 
+    -->   
+    <LegalSources>
+        <LegalSource key="lsref01cfr312.5" 
+            sameAs="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.5">
+        </LegalSource>
+    </LegalSources>
+    
+    <!--
+        References capture non-IRI based sources.  The attribute refID annotates x
+        and attribute refIDSystemName annotates the naming convention 
+    -->   
+    <References>
+        <Reference refersTo="lsref02" 
+            refID="/us/USCODE/eng@/main#title16-sec312.5" 
+            refIDSystemName="AkomaNtoso2.0.2012-10">
+        </Reference>
+    </References>
+    
+    <!-- 
+        An Agent is an entity that acts or has the capability to act. An Agent could be a 
+        physical person, a database, or a bot; for this reason we have the sub-element <lrml:hasType> 
+        that expresses the category of agent.  In general, the agent is usually the AUTHOR of the 
+        rule model and can act in a particular function (e.g. congresswoman or senator)
+    -->       
+    <Agents>
+        <Agent key="aut1" sameAs="Richard Bryan (D-NV)"></Agent>
+    </Agents>
+    
+    <!--
+        Authorities qualiﬁes the rules with respect to the authenticity of the provenance 
+        of the formal model. Authority is a person or organization with the power to create, 
+        endorse, or enforce Legal Norms.
+    -->   
+    <Authorities>
+        <Authority key="Senate" sameAs="https://www.senate.gov/"/>
+    </Authorities>
+    
+    <Jurisdictions>
+        <Jurisdiction key="US" sameAs="https://www.whitehouse.gov/"/>
+    </Jurisdictions>
+    
+    
+        
+    <!-- #######################  -->
+    <!-- Category 3 Associations  -->
+    <!-- #######################  -->
+    
+    <!-- Here we link the regulatory sources/references to the rules, thus implementing the N:M  relationship. 
+         For one source to many rules, we have 1 source and 7 rules: -->
+    <Associations key="assoc01">
+        <Association>
+            <appliesSource keyref="#lsref01.cfr312.5"/>
+            <toTarget keyref="#rule1"/>
+            <toTarget keyref="#rule2"/>
+            <toTarget keyref="#rule3"/>
+            <toTarget keyref="#rule4"/>
+            <toTarget keyref="#rule5"/>
+            <toTarget keyref="#rule6"/>
+            <toTarget keyref="#rule7"/>
+        </Association>
+    </Associations>
+    
+    <Associations key="assoc02">
+        <Association>
+            <appliesSource keyref="#lsref02.Ako.2012-10" />
+        </Association>
+    </Associations>
+    
+    
+    
+    <!-- #####################  -->
+    <!-- Category 4 Statements  -->
+    <!-- #####################  -->
+    
+    <Context key="Context1">
+ 
+    </Context>
+    
+    <!-- Prescriptive Statement 1 -->
+    <Statements>
+        <PrescriptiveStatement key="ps1">
+            <ruleml:Rule> 
+                <ruleml:if>
+                    <ruleml:And>
+                        <Permission>
+                            
+                        </Permission>
+                        
+                    </ruleml:And>
+                </ruleml:if>
+            
+            </ruleml:Rule>
+       
+        </PrescriptiveStatement>
+    </Statements>
+ 
+      
+
+</LegalRuleML>
