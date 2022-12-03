@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <repo>
+  -->
+  <xs:group name="restOfPositionalArguments-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the positional rest tag name. 
+Stripe-skipping is not allowed for positional rest variables.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:repo"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="repo" type="ruleml:repo.type.def">
+    <xs:annotation>
+      <xs:documentation>A positional rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s. 
+Note that &lt;Plex&gt;s are generated, so &lt;repo&gt;s are only available above the Datalog sublanguage.
+       See http://www.ruleml.org/0.9/glossary/#gloss-repo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="repo.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:repo.content">
+        <xs:attributeGroup ref="ruleml:repo.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="repo.content">
+    <xs:annotation>
+      <xs:documentation>The content model of a positional rest variable is a single term.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:repoTerm.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="repoTerm.choice">
+    <xs:annotation>
+      <xs:documentation>terms allowed in positional rest variables include sequence markers. </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SequenceMarker.choice"/>
+      <xs:group ref="ruleml:Plex_repo-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- For the declaration of generalized lists (plexes), see the generalized list module (plex-module). -->
+  <xs:group name="SequenceMarker.choice">
+    <xs:annotation>
+      <xs:documentation>Sequence markers are represented as ordinary variables.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Variable-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of variables, see the quantification module (quantifier-module). -->
+</xs:schema>

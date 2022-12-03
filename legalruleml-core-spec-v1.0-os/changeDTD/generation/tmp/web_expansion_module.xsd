@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- For definition of the regular expression language used to define these patterns, see http://www.w3.org/TR/xmlschema-2/#charcter-classes -->
+  <xs:simpleType name="AbsIRI.datatype">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PrefixedCURIE.datatype">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

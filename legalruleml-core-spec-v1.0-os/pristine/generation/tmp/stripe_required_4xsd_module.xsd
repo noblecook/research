@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    
+    The following required stripes can only occur in (have obligatory) leaf form.
+  -->
+  <xs:element name="appliesAssociations">
+    <xs:annotation>
+      <xs:documentation>a collection of Associations applied by the Context.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesAssociationCollection.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesAssociationCollection.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesAssociationCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesAssociation">
+    <xs:annotation>
+      <xs:documentation>an Association applied by the Context.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesAssociation.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesAssociation.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesAssociation.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="atTime">
+    <xs:annotation>
+      <xs:documentation>the Time of the qualification of a TemporalCharacteristic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:atTime.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="atTime.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:atTime.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="atTime.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="fromLegalSources">
+    <xs:annotation>
+      <xs:documentation>the LegalSources from which the Alternatives are derived.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:fromLegalSources.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="fromLegalSources.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:fromLegalSources.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesAlternatives">
+    <xs:annotation>
+      <xs:documentation>a collection of Alternatives applied by the Context.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesAlternativeCollection.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesAlternativeCollection.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesAlternativeCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesAuthority">
+    <xs:annotation>
+      <xs:documentation>an Authority applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesAuthority.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesAuthority.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesAuthority.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesJurisdiction">
+    <xs:annotation>
+      <xs:documentation>a Jurisdiction applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesJurisdiction.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesJurisdiction.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesJurisdiction.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesModality">
+    <xs:annotation>
+      <xs:documentation>the deontic mode that applies to a Deontic Specification in a Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesModality.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesModality.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesModality.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesModality.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesPenalty">
+    <xs:annotation>
+      <xs:documentation>the PenaltyStatement that is linked to a LegalRule in a Reparation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesPenalty.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesPenalty.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesPenalty.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesSource">
+    <xs:annotation>
+      <xs:documentation>a LegalSource or Reference applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesSource.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesSource.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesSource.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesSource.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesTemporalCharacteristics">
+    <xs:annotation>
+      <xs:documentation>a collection of TemporalCharacteristics applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesTemporalCharacteristics.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesTemporalCharacteristics.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesTemporalCharacteristics.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesTemporalCharacteristic">
+    <xs:annotation>
+      <xs:documentation>a TemporalCharacteristic applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:appliesTemporalCharacteristic.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="appliesTemporalCharacteristic.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:appliesTemporalCharacteristic.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="forExpression">
+    <xs:annotation>
+      <xs:documentation>a LegalRuleML expression for which the Role is responsible e.g., the expression was created or endorsed by the role.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:forExpression.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="forExpression.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:forExpression.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="forExpression.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="forStatus">
+    <xs:annotation>
+      <xs:documentation>the Legal Status of the qualification in a TemporalCharacteristic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:forStatus.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="forStatus.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:forStatus.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="forStatus.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasAlternative">
+    <xs:annotation>
+      <xs:documentation>a member of a collection of Alternatives.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasAlternative.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasAlternative.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasAlternative.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasAlternative.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasFunction">
+    <xs:annotation>
+      <xs:documentation>the function of a Figure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasFunction.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasFunction.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasFunction.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasStatusDevelopment">
+    <xs:annotation>
+      <xs:documentation>the Status Development of the qualification in a TemporalCharacteristic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasStatusDevelopment.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasStatusDevelopment.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasStatusDevelopment.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasStatusDevelopment.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasMemberType">
+    <xs:annotation>
+      <xs:documentation> the type or class of members of the collection.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasMemberType.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasMemberType.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasMemberType.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasMemberType.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasType">
+    <xs:annotation>
+      <xs:documentation> the type or class of the parent Node Element.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasType.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasType.type.def">
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasType.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasType.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="toTarget">
+    <xs:annotation>
+      <xs:documentation>the target to which properties are applied by the Association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:toTarget.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="toTarget.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:toTarget.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="toTarget.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="toPrescriptiveStatement">
+    <xs:annotation>
+      <xs:documentation>the PrescriptiveStatement that is linked to a PenaltyStatement in a Reparation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:toPrescriptiveStatement.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="toPrescriptiveStatement.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:toPrescriptiveStatement.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="toPrescriptiveStatement.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="inScope">
+    <xs:annotation>
+      <xs:documentation>the Statement or (collection of) Statements that the Context is applied to.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:inScope.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="inScope.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:inScope.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="inScope.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="filledBy">
+    <xs:annotation>
+      <xs:documentation>an Actor that fills the Role.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:filledBy.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="filledBy.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:filledBy.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="filledBy.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasActor">
+    <xs:annotation>
+      <xs:documentation>an Actor that has the responsibility to fulfill the function of a Figure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:hasActor.type.def"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hasActor.type.def">
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:hasActor.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasStrength" type="lrml:hasStrength.type.def">
+    <xs:annotation>
+      <xs:documentation>the (defeasible) Strength of the Legal Rule.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasStrength.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasStrength.content">
+        <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+        <xs:attributeGroup ref="lrml:hasStrength.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="hasStrength.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="appliesStrength" type="lrml:appliesStrength.type.def">
+    <xs:annotation>
+      <xs:documentation>a (defeasible) Strength applied by the Context or Association.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="appliesStrength.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:appliesStrength.content">
+        <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+        <xs:attributeGroup ref="lrml:appliesStrength.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="hasTemplate-Factual.edge.def">
+    <xs:sequence>
+      <xs:element name="hasTemplate" type="lrml:hasTemplate-Factual.type.def">
+        <xs:annotation>
+          <xs:documentation>the template of a FactualStatement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="hasTemplate-Factual.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasTemplate-Factual.content">
+        <xs:attributeGroup ref="lrml:NodeReference.attrib.opt.choice"/>
+        <xs:attributeGroup ref="lrml:hasTemplate-Factual.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="hasTemplate-Factual.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:element name="hasQualification" type="lrml:hasQualification.type.def">
+    <xs:annotation>
+      <xs:documentation>a qualification (e.g. an Override) of the Statements.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="hasQualification.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:hasQualification.content">
+        <xs:attributeGroup ref="lrml:NodeReference.attrib.opt.choice"/>
+        <xs:attributeGroup ref="lrml:hasQualification.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="hasQualification.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

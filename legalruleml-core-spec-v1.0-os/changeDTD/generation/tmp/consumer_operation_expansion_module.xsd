@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following Consumer RuleML elements:
+               * Operation		generic polymorphic formula
+    This module also declares the following Consumer RuleML choice pattern:
+    OperationFormula.choice
+  -->
+  <xs:group name="Operation-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for the generic operation category.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Operation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Operation" type="ruleml:Operation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Operation&gt;: a generic polymorphic Operation, which is interpreted by the intended semantics (i.e. semantic profile). See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Operation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Operation.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Operation.content">
+        <xs:attributeGroup ref="ruleml:Operation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Operation.attlist">
+    <xs:annotation>
+      <xs:documentation>the Operation attribute list follows the generic pattern</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:generic-Formula.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Operation.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Node.header"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula-Operation-edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="formula-Operation-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula-Operation.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula-Operation.edge.def">
+    <xs:annotation>
+      <xs:documentation>The formula role of a generic operation (&lt;Operation&gt;) expression, 
+Within Operation ...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula-Operation.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula-Operation.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula_Operation.content">
+        <xs:attributeGroup ref="ruleml:formula_Operation-datt.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="formula_Operation-datt.choice">
+    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="OperationFormula.choice">
+    <xs:annotation>
+      <xs:documentation>formulas allowed to participate in generic operations include all formulas allowed in conjunctions. Typically, this will be all logical formulas. </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AndFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

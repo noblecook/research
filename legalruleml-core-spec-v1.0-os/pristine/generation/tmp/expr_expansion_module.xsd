@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    
+    This module declares the following RuleML elements and attributes:
+               * <Expr>
+               * <op>
+               * <Fun>
+  -->
+  <xs:group name="Expression-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the expression tag name. </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="ruleml:Expr"/>
+      <xs:group ref="ruleml:spatial_temporal_algebra_group.content"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="Expr" type="ruleml:Expr.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Expr&gt;: a functional expression. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Expr</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Expr.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Expr.header"/>
+      <xs:group ref="ruleml:Expr.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
+  </xs:complexType>
+  <xs:attributeGroup name="reExpr.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="operatorForExpressions-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the operator tag name in expressions. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:op_Expr.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="op_Expr.edge.def">
+    <xs:annotation>
+      <xs:documentation>(context sensitive: see Also atom_backbone_module and holog_module)
+An operator expression including a function name (&lt;Fun&gt;) of a (&lt;Expr&gt;).
+http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="op" type="ruleml:op_Expr.type.def">
+        <xs:annotation>
+          <xs:documentation>Also an operator in functional expressions.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="op_Expr.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:op_Expr.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="op_Expr.content">
+    <xs:annotation>
+      <xs:documentation>The operator role of an expression is filled by a functor.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:Function-node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Function-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the function operator tag name. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Fun"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fun" type="ruleml:Fun.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Fun&gt;: a type of name for functional operators. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Fun</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Fun.type.def">
+    <xs:simpleContent>
+      <xs:extension base="ruleml:Fun.value">
+        <xs:attributeGroup ref="ruleml:reFun.attlist"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:attributeGroup name="reFun.attlist">
+    <xs:annotation>
+      <xs:documentation>functors accept the resource attribute list</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <!-- Fun.attlist = interpretation-att.option & singlevalued-att.option & Resource.attlist? -->
+  <xs:simpleType name="Fun.value">
+    <xs:annotation>
+      <xs:documentation>A functor contains the XSD datatype token.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+</xs:schema>

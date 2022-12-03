@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following Consumer RuleML elements:
+                * Negation generic polymorphic negation
+                * formula
+  -->
+  <xs:element name="Negation" type="ruleml:Negation.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Negation&gt;: a generic polymorphic negation, which is interpreted by the intended semantics (i.e. semantic profile). See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Negation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Negation.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Negation.content">
+        <xs:attributeGroup ref="ruleml:Negation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Negation.attlist">
+    <xs:attributeGroup ref="ruleml:generic-Formula.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Negation.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Node.header"/>
+      <xs:group ref="ruleml:formula-negation-edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="formula-negation-edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula-negation.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula-negation.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula-negation.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula-negation.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula-negation.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

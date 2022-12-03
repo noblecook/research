@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:attributeGroup name="commonCollection.attlist">
+    <xs:annotation>
+      <xs:documentation>attribute group for LegalRuleML Collections</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:memberType.attrib.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="memberType.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="memberType" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation> the type or class of members of the collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="memberType.attrib.def">
+    <xs:attribute name="memberType" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation> the type or class of members of the collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="DummyCollection">
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

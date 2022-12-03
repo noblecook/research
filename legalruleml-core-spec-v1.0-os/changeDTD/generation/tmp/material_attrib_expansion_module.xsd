@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML attributes:
+       * @material
+  -->
+  <xs:attributeGroup name="material-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the material implication attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="material" type="ruleml:material.value">
+      <xs:annotation>
+        <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;). Allowed values are "yes" (the default) and "no".
+See http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="material.attrib.def">
+    <xs:attribute name="material" use="required" type="ruleml:material.value">
+      <xs:annotation>
+        <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;). Allowed values are "yes" (the default) and "no".
+See http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="material.value">
+    <xs:union memberTypes="ruleml:material_default.value ruleml:material_non-default.value"/>
+  </xs:simpleType>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="DummyMaterial">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:material-att.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

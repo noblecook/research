@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    include "init_type_def_module.rnc"
+    
+    attrib.choice |=
+    
+  -->
+  <!--
+    
+    attrib.opt.choice |=
+    
+  -->
+  <!--
+    
+    edge.choice |=
+  -->
+  <!--
+    
+    stripe_optional_leaf
+  -->
+  <xs:group name="atTime.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:atTime"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="filledBy.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:filledBy"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasActor.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasActor"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasLegalSourceCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasLegalSources"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasLegalSource.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasLegalSource"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasSourceCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasSources"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasSource.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasSource"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasStrength.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasStrength"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Constitutive.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Constitutive.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Factual.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Factual.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Override.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Override.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Penalty.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Penalty.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Prescriptive.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Prescriptive.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemplate-Reparation.edge.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:hasTemplate-Reparation.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemporalCharacteristics.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasTemporalCharacteristics"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTemporalCharacteristic.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasTemporalCharacteristic"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="inScope.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:inScope"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    stripe_optional
+  -->
+  <xs:group name="hasAgentCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAgents"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAgent.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAgent"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAlternativeCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAlternatives"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAssociationCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAssociations"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAssociation.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAssociation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAuthorityCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAuthorities"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAuthority.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAuthority"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasContext.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasContext"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasFigureCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasFigures"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasFigure.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasFigure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasJurisdictionCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasJurisdictions"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasJurisdiction.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasJurisdiction"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasPrefix.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasPrefix"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasLegalReferenceCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasLegalReferences"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasLegalReference.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasLegalReference"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasReferenceCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasReferences"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasReference.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasReference"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasRoleCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasRoles"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasRole.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasRole"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasStatementCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasStatements"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasStatement.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTimeCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasTimes"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasTime.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasTime"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    stripe_required
+    
+        no leaf form
+  -->
+  <xs:group name="hasQualification.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasQualification"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+        optional leaf form
+  -->
+  <xs:group name="appliesAlternativeCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesAlternatives"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesAssociationCollection.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesAssociations"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesAssociation.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesAssociation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesAuthority.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesAuthority"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesJurisdiction.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesJurisdiction"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesPenalty.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesPenalty"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesStrength.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesStrength"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesTemporalCharacteristics.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesTemporalCharacteristics"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesTemporalCharacteristic.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesTemporalCharacteristic"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="fromLegalSources.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:fromLegalSources"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+       obligatory leaf form
+  -->
+  <xs:group name="appliesModality.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesModality"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="appliesSource.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:appliesSource"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="forExpression.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:forExpression"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="forStatus.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:forStatus"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasAlternative.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasAlternative"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasComment.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasComment"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasParaphrase.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasParaphrase"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasFunction.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasFunction"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasStatusDevelopment.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasStatusDevelopment"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasMemberType.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasMemberType"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="hasType.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:hasType"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="toPrescriptiveStatement.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:toPrescriptiveStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="toTarget.edge.choice">
+    <xs:sequence>
+      <xs:element ref="lrml:toTarget"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    .content |=
+    
+       stripe_content (skippable stripes only)
+    
+          no leaf form
+  -->
+  <!--
+    
+    also have leaf form
+  -->
+  <!---->
+  <!--
+    
+    not necessary to declare required stripes in init
+    
+    Node.choice |=
+  -->
+  <!--
+    
+    .main |=  
+    
+      in individual modules, is empty or just a comment
+  -->
+  <!--
+    
+     ordered
+  -->
+  <!--
+    
+    Formula.choice  (ordered according to stripe_content, then stripe_required)
+    
+    
+    stripe_content
+  -->
+  <!--
+    
+    
+    
+    from RuleML
+  -->
+  <xs:group name="AnyTerm.choice">
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleConstantTerm.choice"/>
+      <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+      <xs:group ref="ruleml:CompoundTerm.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="boundVariables.choice">
+    <xs:sequence>
+      <xs:group maxOccurs="unbounded" ref="ruleml:declare-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="anyElement.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:anyElement.def"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    done to here
+    
+    .datatype |=
+  -->
+  <xs:simpleType name="id.datatype">
+    <xs:restriction base="xs:NCName"/>
+  </xs:simpleType>
+  <!-- .type.choice |= -->
+  <!--
+    
+    = (,*?).attlist
+  -->
+  <xs:attributeGroup name="appliesAlternativeCollection.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesAssociationCollection.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesAssociation.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesAuthority.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasActor.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasFunction.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesJurisdiction.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesPenalty.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesStrength.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesTemporalCharacteristics.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="appliesTemporalCharacteristic.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="fromLegalSources.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
+  </xs:attributeGroup>
+  <!--
+    
+    common
+  -->
+  <!--
+    
+    
+  -->
+  <xs:attributeGroup name="reImplies.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Implies.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reEquivalent.attlist">
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Equivalent.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reForall.attlist">
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Forall.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reExists.attlist">
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Exists.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reNeg.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Neg.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reOr.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Or.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="reAnd.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="And.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    
+    
+    XML namespace
+  -->
+  <!--
+    
+    XSI namespace
+  -->
+  <xs:element name="DummyLRMLInit">
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>

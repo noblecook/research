@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:attributeGroup name="commonNode.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+    <xs:attribute name="key" type="ruleml:key.value"/>
+    <xs:attribute name="keyref" type="ruleml:keyref.value"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="repo.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="resl.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="time_anycontent.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="spatial_anycontent.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="if_Rule.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="then_Rule.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:group name="DummyTopElement.def">
+    <xs:sequence>
+      <xs:element name="Dummy" type="xs:string"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

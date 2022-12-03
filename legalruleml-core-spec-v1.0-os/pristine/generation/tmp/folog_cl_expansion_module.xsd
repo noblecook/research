@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- This module extends the nesting of formulas from Horn Logic to First-Order Logic -->
+  <xs:group name="And-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:And-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Or-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Negation-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Negation-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implication-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Implication-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Forall-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-fo-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Exists-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

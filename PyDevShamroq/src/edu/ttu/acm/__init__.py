@@ -115,13 +115,16 @@ def shamroq(listOfRegulations):
     return requirements
 
 
+
 def main():
     print("Number of regulations -->", len(regList))
     print("/------------------------------------------/")
     print("... starting main()")
     print("/------------------------------------------/")
     print("\n")
+
     shamroq(regList)
+
     print("\n")
     print("/------------------------------------------/")
     print("... completing main()")

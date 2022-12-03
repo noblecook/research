@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="QualificationFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-node.choice"/>
+        <xs:group ref="ruleml:Or-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:Implication-node.choice"/>
+        <xs:group ref="ruleml:Forall-node.choice"/>
+        <xs:group ref="ruleml:Exists-node.choice"/>
+      </xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Atom-node.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Override.Node.choice"/>
+      <xs:element ref="ruleml:Atom"/>
+      <xs:group ref="ruleml:Interval_formula-node.choice"/>
+      <xs:group ref="ruleml:Spatial_formula-node.choice"/>
+      <xs:group ref="ruleml:interval_algebra_group.content"/>
+      <xs:group ref="ruleml:Time_formula.Node.def"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Override.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Override"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Override" type="lrml:Override.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that a Legal Rule takes precedence over another Legal Rule. The ordered pair of Legal Rules is an instance in a defeasible priority relation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Override.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Override.main">
+        <xs:attributeGroup ref="lrml:over.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:under.attrib.choice"/>
+        <xs:attributeGroup ref="lrml:Override.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Override.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Override.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:attributeGroup name="over.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="over" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the Legal Rule with higher priority.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="over.attrib.def">
+    <xs:attribute name="over" use="required" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the Legal Rule with higher priority.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="under.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="under" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the Legal Rule with lower priority.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="under.attrib.def">
+    <xs:attribute name="under" use="required" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the Legal Rule with lower priority.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="strength.attrib.opt.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="strength" type="lrml:strength.datatype">
+      <xs:annotation>
+        <xs:documentation>the (defeasible) Strength of the Legal Rule.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="strength.attrib.def">
+    <xs:attribute name="strength" use="required" type="lrml:strength.datatype">
+      <xs:annotation>
+        <xs:documentation>the (defeasible) Strength of the Legal Rule.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="strength.datatype">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="StrictStrength"/>
+      <xs:enumeration value="defeasible"/>
+      <xs:enumeration value="defeater"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:group name="Strength.Node.choice">
+    <xs:annotation>
+      <xs:documentation>Strength: the quality of a Legal Rule to resist or not to resist a rebuttal.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:DefeasibleStrength.Node.choice"/>
+      <xs:group ref="lrml:StrictStrength.Node.choice"/>
+      <xs:group ref="lrml:Defeater.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="DefeasibleStrength.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:DefeasibleStrength"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="DefeasibleStrength" type="lrml:DefeasibleStrength.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that, in the absence of information to the contrary, where the premises of a Legal Rule hold, the conclusion of the Legal Rule holds.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="DefeasibleStrength.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:DefeasibleStrength.main">
+        <xs:attributeGroup ref="lrml:DefeasibleStrength.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="DefeasibleStrength.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="DefeasibleStrength.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:group name="StrictStrength.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:StrictStrength"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="StrictStrength" type="lrml:StrictStrength.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that where the premises of a Legal Rule are indisputable, the conclusion of the Legal Rule is indisputable.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="StrictStrength.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:StrictStrength.main">
+        <xs:attributeGroup ref="lrml:StrictStrength.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="StrictStrength.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="StrictStrength.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:group name="Defeater.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Defeater"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Defeater" type="lrml:Defeater.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that, in the absence of information to the contrary, where the premises of a Legal Rule hold, the opposite of the conclusion of the Legal Rule does not hold.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Defeater.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Defeater.main">
+        <xs:attributeGroup ref="lrml:Defeater.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Defeater.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Defeater.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+</xs:schema>

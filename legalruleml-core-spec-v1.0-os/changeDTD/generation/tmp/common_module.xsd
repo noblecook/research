@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- Common Patterns -->
+  <xs:attributeGroup name="commonLRMLNodeInit.attlist">
+    <xs:annotation>
+      <xs:documentation>common attribute group for LegalRuleML Nodes</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:NodeLabel.attrib.choice"/>
+    <xs:attributeGroup ref="lrml:NodeReference.attrib.opt.choice"/>
+    <xs:attributeGroup ref="lrml:type.lrml.attrib.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="commonLRMLEdgeInit.attlist">
+    <xs:annotation>
+      <xs:documentation>common attribute group for LegalRuleML edges</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="xml:xml-id.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="iri.lrml.attrib.opt.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="iri" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>an IRI providing details regarding the parent Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="iri.lrml.attrib.choice">
+    <xs:attribute name="iri" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>an IRI providing details regarding the parent Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="iri.lrml.attrib.def">
+    <xs:attribute name="iri" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>an IRI providing details regarding the parent Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="type.lrml.attrib.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="type" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the type or class of the parent Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="type.lrml.attrib.def">
+    <xs:attribute name="type" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the type or class of the parent Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="DummyCommon">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="lrml:iri.lrml.datatype">
+          <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+          <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

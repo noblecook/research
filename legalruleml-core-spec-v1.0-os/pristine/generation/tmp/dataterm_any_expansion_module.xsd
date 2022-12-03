@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module extends the following RuleML elements, attributes and patterns:
+               DataTerm.choice
+  -->
+  <xs:group name="DataTerm.choice">
+    <xs:annotation>
+      <xs:documentation>Data terms may have mixed content from any namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Data_any-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
+<!-- For the declaration of mixed-any data terms, see the mixed-any data modules (data_any_content_expansion_module). -->

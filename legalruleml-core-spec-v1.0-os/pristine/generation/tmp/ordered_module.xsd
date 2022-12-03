@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="LegalRuleMLDocument.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasPrefix.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasLegalReferenceCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasLegalSourceCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasReferenceCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasSourceCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasTimeCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasTemporalCharacteristics.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAgentCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasFigureCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasRoleCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAuthorityCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasJurisdictionCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAssociationCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAlternativeCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasContext.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasStatementCollection.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasReference.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LegalReferenceCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasLegalReference.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="commonCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasMemberType.edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="commonCollectionItem.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasType.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LegalSourceCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="lrml:hasLegalSource.edge.choice"/>
+        <xs:group ref="lrml:hasLegalSourceCollection.edge.choice"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SourceCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="lrml:hasSource.edge.choice"/>
+        <xs:group ref="lrml:hasSourceCollection.edge.choice"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Source.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasTime.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristicCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasTemporalCharacteristic.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristic.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:sequence>
+          <xs:group minOccurs="0" ref="lrml:forStatus.edge.choice"/>
+          <xs:group minOccurs="0" ref="lrml:hasStatusDevelopment.edge.choice"/>
+          <xs:group minOccurs="0" ref="lrml:atTime.edge.choice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AgentCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAgent.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Agent.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FigureCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasFigure.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Figure.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:sequence>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasFunction.edge.choice"/>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasActor.edge.choice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RoleCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasRole.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Role.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:sequence>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:filledBy.edge.choice"/>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:forExpression.edge.choice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AuthorityCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAuthority.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Authority.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="JurisdictionCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasJurisdiction.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Jurisdiction.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AssociationCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAssociation.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlternativeCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" ref="lrml:fromLegalSources.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasAlternative.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Association.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="lrml:appliesSource.edge.choice"/>
+            <xs:group ref="lrml:appliesTemporalCharacteristics.edge.choice"/>
+            <xs:group ref="lrml:appliesTemporalCharacteristic.edge.choice"/>
+            <xs:group ref="lrml:appliesStrength.edge.choice"/>
+            <xs:group ref="lrml:appliesModality.edge.choice"/>
+            <xs:group ref="lrml:appliesAuthority.edge.choice"/>
+            <xs:group ref="lrml:appliesJurisdiction.edge.choice"/>
+          </xs:choice>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:toTarget.edge.choice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Context.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="lrml:appliesSource.edge.choice"/>
+        <xs:group ref="lrml:appliesTemporalCharacteristics.edge.choice"/>
+        <xs:group ref="lrml:appliesTemporalCharacteristic.edge.choice"/>
+        <xs:group ref="lrml:appliesStrength.edge.choice"/>
+        <xs:group ref="lrml:appliesModality.edge.choice"/>
+        <xs:group ref="lrml:appliesAuthority.edge.choice"/>
+        <xs:group ref="lrml:appliesJurisdiction.edge.choice"/>
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="lrml:appliesAssociationCollection.edge.choice"/>
+        <xs:group ref="lrml:appliesAssociation.edge.choice"/>
+      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:appliesAlternativeCollection.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:inScope.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatementCollection.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:commonCollection.main"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:hasQualification.edge.choice"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="lrml:hasStatement.edge.choice"/>
+        <xs:group ref="lrml:hasStatementCollection.edge.choice"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConstitutiveStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Constitutive.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PrescriptiveStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Prescriptive.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FactualStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Factual.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OverrideStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Override.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PenaltyStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Penalty.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReparationStatement.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="lrml:hasTemplate-Reparation.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Obligation.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slotDeontic.edge.choice"/>
+      <xs:group minOccurs="0" ref="ruleml:formula_Deontic.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Permission.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slotDeontic.edge.choice"/>
+      <xs:group minOccurs="0" ref="ruleml:formula_Deontic.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prefix.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:complexType name="Prohibition.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slotDeontic.edge.choice"/>
+      <xs:group minOccurs="0" ref="ruleml:formula_Deontic.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Reparation.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:appliesPenalty.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="lrml:toPrescriptiveStatement.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Right.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:slotDeontic.edge.choice"/>
+      <xs:group minOccurs="0" ref="ruleml:formula_Deontic.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SuborderList.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_Suborder.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--
+    LegalRuleML main patterns for element in the RuleML namespace
+    
+  -->
+  <xs:group name="ConstitutiveRule.main">
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:body_ConstitutiveRule.edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:head_ConstitutiveRule.edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implies-const.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_Implies-const.name.choice"/>
+      <xs:group ref="ruleml:head_Implies-const.name.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="And-const.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_And-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-const.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_Or-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equivalent-const.main">
+    <xs:sequence>
+      <xs:group ref="ruleml:torso-const-edge.choice"/>
+      <xs:group ref="ruleml:torso-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-const.main">
+    <xs:sequence>
+      <xs:group ref="lrml:boundVariables.choice"/>
+      <xs:group ref="ruleml:formula_Forall-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-const.main">
+    <xs:sequence>
+      <xs:group ref="lrml:boundVariables.choice"/>
+      <xs:group ref="ruleml:formula_Exists-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Neg-const.main">
+    <xs:sequence>
+      <xs:group ref="ruleml:strong-const-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="PrescriptiveRule.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:body_PrescriptiveRule.edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:head_PrescriptiveRule.edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Time.main">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:commonCollectionItem.main">
+        <xs:group minOccurs="0" ref="ruleml:argTimeData.edge.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

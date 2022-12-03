@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <oid>
+  -->
+  <xs:group name="objectIdentifier-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the object identifier tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:oid"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="oid" type="ruleml:oid.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;oid&gt;: a label for Node elements. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-oid</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="oid.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:oid.content">
+        <xs:attributeGroup ref="ruleml:oid.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="oid.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="oid.content">
+    <xs:annotation>
+      <xs:documentation>The object descriptor content model consists of any single term.
+Note: this corrects an error in the oid content model of RuleML 1.0,
+where Var is allowed in oid in bindatagroundlog and bindatagroundfact.</xs:documentation>
+    </xs:annotation>
+    <xs:group ref="lrml:AnyTerm.choice"/>
+  </xs:complexType>
+</xs:schema>
+<!--
+  For the declaration of the term patterns, see the term module (individual_expansion_module)
+  
+-->

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML attributes:
+               * @type
+  -->
+  <xs:attributeGroup name="Type.attlist">
+    <xs:annotation>
+      <xs:documentation>attribute list for objects that can have user-defined types, includes an optional type attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="type-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the oriented equation attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="type" type="ruleml:type.value">
+      <xs:annotation>
+        <xs:documentation>A role for optionally specifying a term's (user-defined) type.
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="type.attrib.def">
+    <xs:attribute name="type" use="required" type="ruleml:type.value">
+      <xs:annotation>
+        <xs:documentation>A role for optionally specifying a term's (user-defined) type.
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="type.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+  </xs:simpleType>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="DummyType">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

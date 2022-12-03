@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "$id": "http://ruleml.org/spec#",
+    "title": "Compound Comments Map",
+    "description": "This file describes the model for Legal Rule ML as JSON", 
+    "anyOf": [
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"hasComment": {"$ref": "#/$defs/hasCommenttypedef"}
+			}
+		},
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"hasString": {"type": "string"}
+			}
+		},
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"hasArrayList": {"type": "array"}
+			}
+		}
+	],
+	"$defs": {
+        "anytypechoice": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Content": {
+                    "type": "array",
+                    "additionalItems": false,
+                    "items": {
+                        "anyOf": [
+                            {"type": "string"},
+                            {"type": "object"}
+                        ]
+                    }
+                }
+            }
+        },
+		"Commentmain": {
+            "allOf": [
+                {"$ref": "#/$defs/anytypechoice"}
+            ]
+        },
+		"Commenttypedef": {
+            "allOf": [
+                {"$ref": "#/$defs/Commentmain"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "iri": {"type": "string"},
+                        "keyref": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "type": {"type": "string"},
+                        "key": {"type": "string"}
+                    }
+                }
+            ]
+        },
+		"CommentNodedef": {
+            "type": "object",
+            "required": ["Comment"],
+            "additionalProperties": false,
+            "properties": {
+                "Comment": {"$ref": "#/$defs/Commenttypedef"}
+            }
+        },
+		"CommentNodechoice": {
+            "allOf": [
+                {"$ref": "#/$defs/CommentNodedef"}
+                
+            ]
+        },
+		"hasCommentcontent": {
+            "allOf": [
+                {"$ref": "#/$defs/CommentNodechoice"}
+            ]
+        },
+		"hasCommenttypedef": {
+            "allOf": [
+                {"$ref": "#/$defs/hasCommentcontent"}
+            ]
+        }
+    }
+}

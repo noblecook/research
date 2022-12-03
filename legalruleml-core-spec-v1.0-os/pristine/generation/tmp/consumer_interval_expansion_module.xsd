@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following Consumer RuleML elements:
+    * Interval
+    
+  -->
+  <xs:group name="Interval_term-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Interval_term.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Interval_term.Node.def">
+    <xs:sequence>
+      <xs:element name="Interval" type="ruleml:Interval_term.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Interval&gt;: generic Interval element. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Interval</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Interval_term.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Interval_term.content">
+        <xs:attributeGroup ref="ruleml:Interval_term.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Interval_term.attlist">
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Interval_term.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Expr.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Interval_formula-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Interval_formula.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Interval_formula.Node.def">
+    <xs:sequence>
+      <xs:element name="Interval" type="ruleml:Interval_formula.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Interval_formula.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Interval_formula.content">
+        <xs:attributeGroup ref="ruleml:Interval_formula.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Interval_formula.attlist">
+    <xs:attributeGroup ref="ruleml:formula-interface.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Interval_formula.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Interval_formula.header"/>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:arg_interval_formula-edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:arg_interval_formula-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Interval_formula.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Atom.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="arg_interval_term.edge.def">
+    <xs:sequence>
+      <xs:element name="arg" type="ruleml:arg_interval_term.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="arg_interval_term.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg_interval_term.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="arg_interval_formula.edge.def">
+    <xs:sequence>
+      <xs:element name="arg" type="ruleml:arg_interval_formula.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="arg_interval_formula.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg_interval_formula.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

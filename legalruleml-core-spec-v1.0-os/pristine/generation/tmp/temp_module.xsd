@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="TemporalCharacteristicCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristicCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristicCollection.Node.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:TemporalCharacteristics"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TemporalCharacteristics" type="lrml:TemporalCharacteristicCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Temporal Characteristic.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="TemporalCharacteristicCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristicCollection.main">
+        <xs:attributeGroup ref="lrml:TemporalCharacteristicCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="TemporalCharacteristicCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="TemporalCharacteristic.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristic.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TemporalCharacteristic.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:TemporalCharacteristic"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TemporalCharacteristic" type="lrml:TemporalCharacteristic.type.def">
+    <xs:annotation>
+      <xs:documentation>a pair of Time with a qualification (consisting of a Legal Status and a Status Development) that holds at the Time.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="TemporalCharacteristic.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:TemporalCharacteristic.main">
+        <xs:attributeGroup ref="lrml:TemporalCharacteristic.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="TemporalCharacteristic.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

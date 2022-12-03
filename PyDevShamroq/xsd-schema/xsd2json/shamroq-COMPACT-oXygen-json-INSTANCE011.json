@@ -1,0 +1,13 @@
+{
+    "$schema": "file:/C:/Users/patri/PycharmProjects/research/PyDevShamroq/xsd-schema/xsd2json/shamroq-COMPACT-oXygen-json-schema.json",
+    "Violation": {
+        "Comment": {
+            "Content": [""],
+            "key": "",
+            "type": "",
+            "keyref": "",
+            "iri": ""
+        },
+        "key": "hello world"
+    }
+}

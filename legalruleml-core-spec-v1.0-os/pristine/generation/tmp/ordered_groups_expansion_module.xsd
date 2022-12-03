@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="argumentsForAtoms.sequence">
+    <xs:annotation>
+      <xs:documentation>Slotted arguments follow positional arguments in atomic formulas
+in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
+      <xs:group ref="ruleml:slotsForAtoms.sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="positionalArgumentsForAtoms.sequence">
+    <xs:annotation>
+      <xs:documentation>Positional rest arguments follow the ordinary positional arguments
+in atomic formulas in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:termsForAtoms.sequence"/>
+      <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="slotsForAtoms.sequence">
+    <xs:annotation>
+      <xs:documentation>Slotted rest arguments follow the ordinary slots
+in atomic formulas in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
+      <xs:group minOccurs="0" ref="ruleml:restOfSlots-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Expr.main">
+    <xs:annotation>
+      <xs:documentation>Pre-fix operator notation for expressions is required in the normal-form serialization.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:group ref="ruleml:operatorForExpressions-edge.choice"/>
+        <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
+      </xs:sequence>
+      <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="argumentsForExpressions.sequence">
+    <xs:annotation>
+      <xs:documentation>Slotted arguments follow positional arguments in expressions
+in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:positionalArgumentsForExpressions.sequence"/>
+        <xs:group ref="ruleml:slotsForExpressions.sequence"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="positionalArgumentsForExpressions.sequence">
+    <xs:annotation>
+      <xs:documentation>Positional rest arguments follow the ordinary positional arguments
+in expressions in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:termsForExpressions.sequence"/>
+        <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="slotsForExpressions.sequence">
+    <xs:annotation>
+      <xs:documentation>Slotted rest arguments follow the ordinary slots
+in expressions in the normal-form serialization. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
+        <xs:group minOccurs="0" ref="ruleml:restOfSlots-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implies.main">
+    <xs:annotation>
+      <xs:documentation>In the normal-form serialization, the if and then of an implication must occur in canonical order.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_Implies.name.choice"/>
+      <xs:group ref="ruleml:head_Implies.name.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="TruthValuedConnective.header">
+    <xs:annotation>
+      <xs:documentation>In the normal-form serialization, the order of header elements is:
+an optional header element sequence as defined in Node.header, followed by optional
+object identifier and degree</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Atom.header">
+    <xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="ruleml:objectIdentifier-edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Expr.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

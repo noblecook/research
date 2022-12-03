@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- attribute -->
+  <xs:attributeGroup name="formula-interface.attlist">
+    <xs:attributeGroup ref="ruleml:formula-interface-ext.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="operator-interface.attlist">
+    <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  <!-- ordered_groups -->
+  <xs:group name="arg_spatial-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:arg_spatial.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="arg_time-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:arg_time.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- optional_op -->
+  <!-- rule -->
+  <!-- spatial -->
+  <!-- time -->
+  <!-- stripe-skipping -->
+  <xs:complexType name="formula_Operation.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:OperationFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula-negation.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:NegFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="if_Rule.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:PremiseFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="if_Rule-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:if_Rule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="then_Rule.content">
+    <xs:complexContent>
+      <xs:extension base="lrml:PrescriptiveConclusionFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="then_Rule-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:then_Rule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="spatial_primitives.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="time_primitives.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Interval_term.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Interval_term.header"/>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:arg_interval_term-edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:arg_interval_term-edge.choice"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arg_interval_term.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="arg_interval_formula.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- algebra -->
+  <xs:group name="arg_interval_formula-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:arg_interval_formula.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="arg_interval_term-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:arg_interval_term.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- negation -->
+  <xs:attributeGroup name="generic-Node.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="generic-Formula.attlist">
+    <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="Init" type="xs:string"/>
+</xs:schema>

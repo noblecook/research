@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    
+    This module declares the following RuleML elements and attributes:
+              * <Equivalent>
+              * <torso>
+  -->
+  <xs:group name="Equivalent-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the equivalence tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Equivalent.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equivalent.Node.def">
+    <xs:annotation>
+      <xs:documentation>An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (&lt;Implies&gt;). 
+It consists of a pair of (optionally skipped) &lt;torso&gt; roles. 
+For example, "A person owning an object is equivalent to an object belonging to a person":
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Equivalent" type="ruleml:Equivalent.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Equivalent&gt;: Syntactic sugar for two implications. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Equivalent.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Equivalent.header"/>
+      <xs:group ref="ruleml:Equivalent.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reEquivalent.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module) -->
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Equivalent.main">
+    <xs:annotation>
+      <xs:documentation>the main content model of equivalances consists of two "torso" formulas</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:torso-edge.choice"/>
+      <xs:group ref="ruleml:torso-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="torso-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the torso tag name in equivalences.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:torso.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="torso.edge.def">
+    <xs:annotation>
+      <xs:documentation> A symmetric role used in an equivalence expression (&lt;Equivalent&gt;) combining the asymmetric &lt;then&gt; and &lt;if&gt;.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="torso" type="ruleml:torso.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;torso&gt;: contains one formula within an equivalence. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-torso </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="torso.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:torso.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="torso.content">
+    <xs:annotation>
+      <xs:documentation>An equivalance is syntactic sugar for two implications.
+In all RuleML languages, formulas allowed as premises are the same or more general than those allowed as conclusions,
+because this is a requirement for the statement "P implies P" to be syntactically valid whenever P is a valid conclusion.
+Therefore, formulas allowed in equivalences are the same as those allowed in conclusions.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConclusionFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- For the declaration of the conclusion pattern, see the implication module (implication_expansion_module). -->
+</xs:schema>

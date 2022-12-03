@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "$id": "http://ruleml.org/spec#",
+    "title": "Compound Comments Map",
+    "description": "This file describes the model for Legal Rule ML as JSON", 
+    "anyOf": [
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"hasComment": {"$ref": "#/$defs/hasCommenttypedef"}
+			}
+		},
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"hasExample": {"type": "string"}
+			}
+		}
+	],
+	"$defs": {
+        "anytypechoice": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Content": {
+                    "type": "array",
+                    "additionalItems": false,
+                    "items": {
+                        "anyOf": [
+                            {"type": "string"},
+                            {"type": "object"}
+                        ]
+                    }
+                }
+            }
+        },
+		"Commentmain": {
+            "allOf": [
+                {"$ref": "#/$defs/anytypechoice"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {}
+                }
+            ]
+        },
+		"Commenttypedef": {
+            "allOf": [
+                {"$ref": "#/$defs/Commentmain"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "iri": {"type": "string"},
+                        "keyref": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "type": {"type": "string"},
+                        "key": {"type": "string"}
+                    }
+                }
+            ]
+        },
+		"CommentNodedef": {
+            "type": "object",
+            "required": ["Comment"],
+            "additionalProperties": false,
+            "properties": {
+                "Comment": {"$ref": "#/$defs/Commenttypedef"}
+            }
+        },
+		"CommentNodechoice": {
+            "allOf": [
+                {"$ref": "#/$defs/CommentNodedef"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {}
+                }
+            ]
+        },
+		"hasCommentcontent": {
+            "allOf": [
+                {"$ref": "#/$defs/CommentNodechoice"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {}
+                }
+            ]
+        },
+		"hasCommenttypedef": {
+            "allOf": [
+                {"$ref": "#/$defs/hasCommentcontent"},
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {}
+                }
+            ]
+        }
+    }
+}

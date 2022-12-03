@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="Scope.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:StatementCollection.Node.choice"/>
+      <xs:group ref="lrml:Statement.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="StatementCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Statements"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Statements" type="lrml:StatementCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Legal Statement or a FactualStatement.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="StatementCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:StatementCollection.main">
+        <xs:attributeGroup ref="lrml:StatementCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="StatementCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Statement.Node.choice">
+    <xs:choice>
+      <xs:group ref="lrml:LegalStatement.Node.choice"/>
+      <xs:group ref="lrml:FactualStatement.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="LegalStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation>Legal Statement : a LegalRuleML expression of a Legal Rule or a part of a Legal Rule.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:ConstitutiveStatement.Node.choice"/>
+      <xs:group ref="lrml:PrescriptiveStatement.Node.choice"/>
+      <xs:group ref="lrml:OverrideStatement.Node.choice"/>
+      <xs:group ref="lrml:PenaltyStatement.Node.choice"/>
+      <xs:group ref="lrml:ReparationStatement.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="ConstitutiveStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:ConstitutiveStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="ConstitutiveStatement" type="lrml:ConstitutiveStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement which defines concepts and does not prescribe behaviours.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ConstitutiveStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:ConstitutiveStatement.main">
+        <xs:attributeGroup ref="lrml:ConstitutiveStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="ConstitutiveStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="PrescriptiveStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:PrescriptiveStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="PrescriptiveStatement" type="lrml:PrescriptiveStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement which prescribes behaviours, e.g. with Permissions, Obligations, or Prohibitions on states, actions, or courses of actions.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="PrescriptiveStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:PrescriptiveStatement.main">
+        <xs:attributeGroup ref="lrml:PrescriptiveStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="PrescriptiveStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="FactualStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:FactualStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="FactualStatement" type="lrml:FactualStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>an expression of fact.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="FactualStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:FactualStatement.main">
+        <xs:attributeGroup ref="lrml:FactualStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="FactualStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="OverrideStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:OverrideStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="OverrideStatement" type="lrml:OverrideStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement of an Override.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="OverrideStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:OverrideStatement.main">
+        <xs:attributeGroup ref="lrml:OverrideStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="OverrideStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="PenaltyStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:PenaltyStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="PenaltyStatement" type="lrml:PenaltyStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement of a sanction (e.g. a punishment or a correction).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="PenaltyStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:PenaltyStatement.main">
+        <xs:attributeGroup ref="lrml:PenaltyStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="PenaltyStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="ReparationStatement.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:ReparationStatement"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="ReparationStatement" type="lrml:ReparationStatement.type.def">
+    <xs:annotation>
+      <xs:documentation>a Legal Statement of a Reparation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ReparationStatement.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:ReparationStatement.main">
+        <xs:attributeGroup ref="lrml:ReparationStatement.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="ReparationStatement.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="ConstitutiveStatementFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:ConstitutiveRule-node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="FactualStatementFormula.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:ConstitutiveConclusionFormula.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="OverrideStatementFormula.choice">
+    <xs:group ref="lrml:Override.Node.choice"/>
+  </xs:complexType>
+  <xs:complexType name="PenaltyStatementFormula.choice">
+    <xs:complexContent>
+      <xs:extension base="lrml:PrescriptiveConclusionFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PrescriptiveStatementFormula.choice">
+    <xs:complexContent>
+      <xs:extension base="ruleml:PrescriptiveRule-node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReparationStatementFormula.choice">
+    <xs:group ref="lrml:Reparation.Node.choice"/>
+  </xs:complexType>
+</xs:schema>

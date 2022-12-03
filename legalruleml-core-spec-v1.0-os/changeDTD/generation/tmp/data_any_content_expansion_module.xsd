@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <Data>
+  -->
+  <xs:group name="Data_any-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the data tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Data_any.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Data_any.Node.def">
+    <xs:annotation>
+      <xs:documentation>A fixed argument like RDF literals.
+Data may have mixed content with any elements interleaved with text.
+Explicit datatyping of xs:anyType is implemented in the explicit datatyping module.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Data" type="ruleml:Data_any.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Data&gt;: May contain arbitrary simple or complex content. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Data</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Data_any.type.def" mixed="true">
+    <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:anyElement.def"/>
+    <xs:attributeGroup ref="ruleml:reData.attlist"/>
+  </xs:complexType>
+  <xs:attributeGroup name="reData.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="anyElement.def">
+    <xs:sequence>
+      <xs:any processContents="lax"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

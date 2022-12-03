@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="AgentCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AgentCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AgentCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Agents"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Agents" type="lrml:AgentCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is an Agent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AgentCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:AgentCollection.main">
+        <xs:attributeGroup ref="lrml:AgentCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="AgentCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Agent.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Agent"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Agent" type="lrml:Agent.type.def">
+    <xs:annotation>
+      <xs:documentation>an entity that acts or has the capability to act.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Agent.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Agent.main">
+        <xs:attributeGroup ref="lrml:Agent.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Agent.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:sameAs.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="FigureCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:FigureCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FigureCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Figures"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Figures" type="lrml:FigureCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Figure.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="FigureCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:FigureCollection.main">
+        <xs:attributeGroup ref="lrml:FigureCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="FigureCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Figure.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Figure"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Figure" type="lrml:Figure.type.def">
+    <xs:annotation>
+      <xs:documentation>an instantiation of a function by an Actor.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Figure.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Figure.main">
+        <xs:attributeGroup ref="lrml:Figure.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Figure.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Actor.Node.choice">
+    <xs:annotation>
+      <xs:documentation>Actor: an Agent or a Figure.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:Agent.Node.choice"/>
+      <xs:group ref="lrml:Figure.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="RoleCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:RoleCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RoleCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Roles"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Roles" type="lrml:RoleCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Role.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="RoleCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:RoleCollection.main">
+        <xs:attributeGroup ref="lrml:RoleCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="RoleCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Role.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Role.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Role.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Role"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Role" type="lrml:Role.type.def">
+    <xs:annotation>
+      <xs:documentation>a function of or part played by an Actor relative to a LegalRuleML expression.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Role.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Role.main">
+        <xs:attributeGroup ref="lrml:Role.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Role.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

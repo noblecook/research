@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="TimeCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:TimeCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeCollection.Node.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Times"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Times" type="lrml:TimeCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Time.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="TimeCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:TimeCollection.main">
+        <xs:attributeGroup ref="lrml:TimeCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="TimeCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasCreationDate.attrib.opt.choice">
+    <xs:attribute name="hasCreationDate" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the creation date of the Context or LegalRuleML document.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="hasCreationDate.attrib.def">
+    <xs:attribute name="hasCreationDate" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>the creation date of the Context or LegalRuleML document.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

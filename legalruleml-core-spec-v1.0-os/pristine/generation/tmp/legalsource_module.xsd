@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="LegalSourceCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalSourceCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LegalSourceCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:LegalSources"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LegalSources" type="lrml:LegalSourceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a LegalSource.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LegalSourceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalSourceCollection.main">
+        <xs:attributeGroup ref="lrml:SourceCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SourceCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:SourceCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SourceCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Sources"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sources" type="lrml:SourceCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is a Source.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="SourceCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:SourceCollection.main">
+        <xs:attributeGroup ref="lrml:SourceCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="SourceCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="LegalSource.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:LegalSource.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LegalSource.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:LegalSource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LegalSource" type="lrml:LegalSource.type.def">
+    <xs:annotation>
+      <xs:documentation>a source of one or more Legal Norms formulated in any format and endorsed by an Authority.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LegalSource.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Source.main">
+        <xs:attributeGroup ref="lrml:Source.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Source.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Source.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Source.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Source"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Source" type="lrml:Source.type.def">
+    <xs:annotation>
+      <xs:documentation>a source of information formulated in any format.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Source.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Source.main">
+        <xs:attributeGroup ref="lrml:Source.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Source.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:sameAs.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

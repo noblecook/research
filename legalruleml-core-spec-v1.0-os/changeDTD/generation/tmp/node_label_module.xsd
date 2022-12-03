@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!-- the LegalRuleML version of @key -->
+  <xs:attributeGroup name="NodeLabel.attrib.choice">
+    <xs:attribute name="key" type="lrml:id.datatype">
+      <xs:annotation>
+        <xs:documentation>a Node Element label.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="key.lrml.attrib.def">
+    <xs:attribute name="key" use="required" type="lrml:id.datatype">
+      <xs:annotation>
+        <xs:documentation>a Node Element label.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!--
+    
+    the LegalRuleML version of @keyref
+  -->
+  <xs:attributeGroup name="NodeReference.attrib.opt.choice">
+    <xs:attribute name="keyref" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>a Node Element reference.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="NodeReference.attrib.choice">
+    <xs:attribute name="keyref" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>a Node Element reference.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="keyref.lrml.attrib.def">
+    <xs:attribute name="keyref" use="required" type="lrml:keyref.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>a Node Element reference.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="keyref.lrml.datatype">
+    <xs:annotation>
+      <xs:documentation>refinement of xsd:anyURI that is a same-document relative IRI reference
+with fragment identifier that belongs to the xsd:NCName lexical space</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI">
+      <xs:pattern value="#[\i-[:]][\c-[:]]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="iri.lrml.datatype">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:restriction base="lrml:curieOrIRI.datatype"/>
+  </xs:simpleType>
+  <xs:simpleType name="curieOrIRI.datatype">
+    <xs:annotation>
+      <xs:documentation>CURIE or IRI reference</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="lrml:curie.datatype xs:anyURI"/>
+  </xs:simpleType>
+  <xs:simpleType name="curieOrAbsIRI.datatype">
+    <xs:annotation>
+      <xs:documentation>CURIE or (absolute) IRI</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="lrml:curie.datatype lrml:absIRI.datatype"/>
+  </xs:simpleType>
+  <xs:simpleType name="absIRI.datatype">
+    <xs:annotation>
+      <xs:documentation>(absolute) IRI</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI">
+      <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="curie.datatype">
+    <xs:annotation>
+      <xs:documentation>CURIE</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)?(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DummykeyElementLRML">
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:NodeLabel.attrib.choice"/>
+      <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

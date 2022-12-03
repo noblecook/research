@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="AssociationCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AssociationCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AssociationCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Associations"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Associations" type="lrml:AssociationCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is an Association.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AssociationCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:AssociationCollection.main">
+        <xs:attributeGroup ref="lrml:AssociationCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="AssociationCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Association.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Association.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Association.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Association"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Association" type="lrml:Association.type.def">
+    <xs:annotation>
+      <xs:documentation>a partial description of the extension of some relations where each non-target entity is paired with every target entity. </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Association.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Association.main">
+        <xs:attributeGroup ref="lrml:Association.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Association.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

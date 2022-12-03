@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Implies>
+               * <if>
+               * <then>
+    This module also declares the following RuleML choice pattern:
+    PremiseFormula.choice
+    ConclusionFormula.choice
+  -->
+  <xs:group name="Implication-node.choice">
+    <xs:annotation>
+      <xs:documentation>a convenience pattern that unifies implications and equivalences
+because equivalence is allowed wherever implication is allowed.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Implies-node.choice"/>
+      <xs:group ref="ruleml:Equivalent-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!-- For the declaration of equivalences, see the equivalance module (equivalence_expansion_module) -->
+  <xs:group name="Implies-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point to allow alternate names and internationalization of uni-directional implication tag name.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Implies.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implies.Node.def">
+    <xs:annotation>
+      <xs:documentation>An implication rule. It consists of a conclusion role (&lt;then&gt;) followed by a Premise role (&lt;if&gt;), or, equivalently (since roles constitute unordered elements), a Premise role followed by a conclusion role.
+Alternatively, the roles may be skipped, in which case the Premise comes first followed by the conclusion as suggested by the element name 'Implies'.
+The children of the implication element are divided into two sections, a header section for modifiers, and a main section for the premises and conclusion. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Implies" type="ruleml:Implies.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Implies&gt;: an implication between two formulas, a premise and a conclusion. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Implies.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Implies.header"/>
+      <xs:group ref="ruleml:Implies.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:Implies-datt.choice"/>
+    <xs:attributeGroup ref="lrml:reImplies.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module) -->
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <!--
+    
+    Implies.main |= notAllowed is declared in the initialization module.
+    This pattern must be over-ridden to allow the Implies element to be used.
+    The pattern of the main content of an implication is serialization dependent,
+    but it will contain exactly one if and one then.
+    For the declaration of the main content of implications, see the serialization modules (orderstrict_module or orderlax_module)
+  -->
+  <xs:group name="body_Implies.name.choice">
+    <xs:annotation>
+      <xs:documentation>
+an extension point for stripe skipping as well as specializations of the if tag name in implications.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_Implies.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="body_Implies.edge.def">
+    <xs:annotation>
+      <xs:documentation>The if of an implication rule (&lt;Implies&gt;) containing the Premise(s), also known as the "antecedent" part of the rule. 
+Also used as the "antecedent" part of an entailment (&lt;Entails&gt;).
+Within Implies...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="if" type="ruleml:body_Implies.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;if&gt;: contains the premise of the implication. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-if</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="body_Implies.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:body_Implies.content">
+        <xs:attributeGroup ref="ruleml:body_Implies.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="body_Implies.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="body_Implies.content">
+    <xs:annotation>
+      <xs:documentation>The premise of an implication consists of a single formula</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:PremiseFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--
+    For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+    For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+    For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+    For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+    For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+    For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+  -->
+  <xs:group name="head_Implies.name.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the then tag name in implications.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:head_Implies.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="head_Implies.edge.def">
+    <xs:annotation>
+      <xs:documentation>The then of an implication rule (&lt;Implies&gt;) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
+Also used as the "consequent" part of an entailment (&lt;Entails&gt;).
+Within Implies...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="then" type="ruleml:head_Implies.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;then&gt;: contains the conclusion of the implication. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="head_Implies.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:head_Implies.content">
+        <xs:attributeGroup ref="ruleml:head_Implies.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="head_Implies.attlist">
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="head_Implies.content">
+    <xs:annotation>
+      <xs:documentation>The conclusion of an implication consists of a single formula.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ConclusionFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="Atom-head-node.choice">
+    <xs:annotation>
+      <xs:documentation>backbone patterns    </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:Atom-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Equal-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Equal-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="And-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:And-fo-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Or-fo-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Negation-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Negation-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Implication-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Implication-fo-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Forall-fo-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-head-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Exists-fo-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
+<!--
+  For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+  For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+  For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+  For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+  For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+-->

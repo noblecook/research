@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Equal>
+               * <left>
+               * <right>
+                leftTerm.choice
+                rightTerm.choice
+  -->
+  <xs:group name="Equal-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the equation tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Equal"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Equal" type="ruleml:Equal.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Equal&gt;: an equation between two terms. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Equal</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Equal.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Equal.header"/>
+      <xs:group ref="lrml:Equal.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:reEqual.attlist"/>
+  </xs:complexType>
+  <xs:attributeGroup name="reEqual.attlist">
+    <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <xs:group name="Equal.header">
+    <xs:annotation>
+      <xs:documentation>Equations accept the header of truth-valued connectives</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="leftSide-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the left-hand side tag name in equations.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:left"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="left" type="ruleml:left.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;left&gt;: The left-hand side of an equation. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-left</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="left.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:left.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="left.content">
+    <xs:annotation>
+      <xs:documentation>The left-hand side role in an equation is filled by a term.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:leftTerm.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="rightSide-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the right-hand side tag name in equations.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:right"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="right" type="ruleml:right.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;right&gt;: The right-hand side of an equation. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-right</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="right.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:right.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="right.content">
+    <xs:annotation>
+      <xs:documentation>The right-hand side role in an equation is filled by a term.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:rightTerm.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="leftTerm.choice">
+    <xs:annotation>
+      <xs:documentation>terms allowed in the left-hand side of an equation </xs:documentation>
+    </xs:annotation>
+    <xs:group ref="lrml:AnyTerm.choice"/>
+  </xs:complexType>
+  <xs:complexType name="rightTerm.choice">
+    <xs:annotation>
+      <xs:documentation>terms allowed in the right-hand side of an equation </xs:documentation>
+    </xs:annotation>
+    <xs:group ref="lrml:AnyTerm.choice"/>
+  </xs:complexType>
+</xs:schema>

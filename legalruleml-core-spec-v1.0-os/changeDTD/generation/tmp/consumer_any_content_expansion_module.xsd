@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    *** content ***
+    
+    
+  -->
+  <xs:group name="time_anycontent-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:time_anycontent.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="time_anycontent.edge.def">
+    <xs:sequence>
+      <xs:element name="content" type="ruleml:time_anycontent.type"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="time_anycontent.type">
+    <xs:complexContent>
+      <xs:extension base="ruleml:time_anycontent.content">
+        <xs:attributeGroup ref="ruleml:time_anycontent.attlist"/>
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="time_anycontent.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:anycontent.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!---->
+  <xs:group name="spatial_anycontent-edge.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:spatial_anycontent.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="spatial_anycontent.edge.def">
+    <xs:sequence>
+      <xs:element name="content" type="ruleml:spatial_anycontent.type"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="spatial_anycontent.type">
+    <xs:complexContent>
+      <xs:extension base="ruleml:spatial_anycontent.content">
+        <xs:attributeGroup ref="ruleml:spatial_anycontent.attlist"/>
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="spatial_anycontent.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:anycontent.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!---->
+  <!---->
+  <!---->
+  <xs:group name="foreign-element">
+    <xs:choice>
+      <xs:any namespace="##other" processContents="lax"/>
+      <xs:any namespace="##local" processContents="lax"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="anything">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="anything">
+    <xs:anyAttribute processContents="skip"/>
+  </xs:attributeGroup>
+</xs:schema>

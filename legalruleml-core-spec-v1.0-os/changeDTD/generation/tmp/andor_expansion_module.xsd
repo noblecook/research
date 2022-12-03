@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <And>
+               * <Or>
+               * <formula>
+    This module also declares the following RuleML choice pattern:
+               * AndFormula.choice
+               * OrFormula.choice
+    
+    Schema Design Pattern Key
+    .choice : choice pattern that must be defined using choice combine (|=)
+    .def : definition of element or attribute using no-combine assignment (=)
+    .defs : choice pattern for more than one .def pattern
+    -datt.choice : choice pattern for attributes of Node elements that are given default values in the XSD
+    re ... .attlist : interleave pattern for optional attributes of Node elements, must be defined using interleave combine (&=)
+    .header : modifying elements that precede the main content of Node elements, defined using interleave combine
+    .main : the main content of a Node element, defined using choice combine
+    -node.choice : an extension point for specializations of the conjunction tag name
+    -fo.choice : a pattern that is notAllowed for all languages except those with full first-order expressive power
+    -edge.choice : a pattern that matches an edge (role) element, and may match the content of that element (stripe-skipping) 
+    .content : content of an edge element
+    Formula.choice : a choice pattern of zero to many patterns matching formulas 
+    .edge.def : definition of dummy elements for workaround to bug in translation to XSD of modules with only attributes
+  -->
+  <xs:group name="And-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:And.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="And.Node.def">
+    <xs:annotation>
+      <xs:documentation>A polyadic conjunctive expression, 
+Within anything other than Query...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="And" type="ruleml:And.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;And&gt;: polyadic conjunction where &lt;And/&gt; is true. See
+http://deliberation.ruleml.org/1.02/glossary/#gloss-And</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="And.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:And.header"/>
+      <xs:group ref="ruleml:And.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reAnd.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="And.main">
+    <xs:annotation>
+      <xs:documentation>The main section of the conjunction content model contains zero or more formulas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_And-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_And-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the formula tag name in conjunctions.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_And.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_And.edge.def">
+    <xs:annotation>
+      <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) expression, 
+Within And ...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_And.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;formula&gt;: contains a single formula. See  
+http://deliberation.ruleml.org/1.02/glossary/#gloss-formula</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_And.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula_And.content">
+        <xs:attributeGroup ref="ruleml:formula_And-datt.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="formula_And-datt.choice">
+    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="formula_And.content">
+    <xs:annotation>
+      <xs:documentation>Formulas within conjunctions consist of a single formula</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AndFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--
+    For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+    For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+    For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+    For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+    For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+  -->
+  <xs:group name="Or-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the disjunction tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Or.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or.Node.def">
+    <xs:annotation>
+      <xs:documentation>A polyadic disjunctive expression, </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Or" type="ruleml:Or.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Or&gt;: polyadic disjunction where &lt;Or/&gt; is false. See
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Or</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Or.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Or.header"/>
+      <xs:group ref="ruleml:Or.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reOr.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Or.main">
+    <xs:annotation>
+      <xs:documentation>The main section of the disjunction content model contains zero or more formulas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_Or-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Or-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the formula tag name in disjunctions.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Or.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Or.edge.def">
+    <xs:annotation>
+      <xs:documentation>The formula role of a disjunctive (&lt;Or&gt;) expression, </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Or.type.def">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Or.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula_Or.content">
+        <xs:attributeGroup ref="ruleml:formula_Or-datt.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="formula_Or-datt.choice">
+    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="formula_Or.content">
+    <xs:annotation>
+      <xs:documentation>Formulas within disjunctions consist of a single formula</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:OrFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+<!--
+  For the declaration of the simple formula pattern, see the atomic formula and equation modules ( atom_expansion_module) 
+  For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+  For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+  For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+-->

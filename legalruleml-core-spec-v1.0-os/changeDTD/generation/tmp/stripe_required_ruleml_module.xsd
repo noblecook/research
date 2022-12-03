@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following LegalRuleML elements and attributes:
+    The following required stripes have no leaf form
+               * <if>
+               * <then>
+    
+    This module extends the following RuleML choice patterns:
+      body_Implies-const.name.choice
+      body_Implies-const.content
+      head_Implies-const.name.choice
+      head_Implies-const.content
+      body_ConstitutiveRule.edge.choice 
+      body_ConstitutiveRule.content 
+      head_ConstitutiveRule.edge.choice 
+      head_ConstitutiveRule.content 
+      body_PrescriptiveRule.edge.choice 
+      body_PrescriptiveRule.content 
+      head_PrescriptiveRule.edge.choice 
+      head_PrescriptiveRule.content 
+  -->
+  <xs:group name="slotDeontic.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:slotDeontic.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="slotDeontic.edge.def">
+    <xs:sequence>
+      <xs:element name="slot" type="ruleml:slotDeontic.type.def">
+        <xs:annotation>
+          <xs:documentation>a role of the deontic operator and its filler.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="slotDeontic.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:slotDeontic.content">
+        <xs:attributeGroup ref="ruleml:slotDeontic.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="body_Implies-const.name.choice">
+    <xs:annotation>
+      <xs:documentation>These edges could be made skippable, since if-then order is required.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_Implies-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="body_Implies-const.edge.def">
+    <xs:sequence>
+      <xs:element name="if" type="ruleml:body_Implies-const.type.def">
+        <xs:annotation>
+          <xs:documentation>the premise (antecedent) of a Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="body_Implies-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:body_Implies-const.content">
+        <xs:attributeGroup ref="ruleml:body_Implies.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="head_Implies-const.name.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:head_Implies-const.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="head_Implies-const.edge.def">
+    <xs:sequence>
+      <xs:element name="then" type="ruleml:head_Implies-const.type.def">
+        <xs:annotation>
+          <xs:documentation>the conclusion (consequent) of a Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="head_Implies-const.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:head_Implies-const.content">
+        <xs:attributeGroup ref="ruleml:head_Implies.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="body_ConstitutiveRule.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_ConstitutiveRule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="body_ConstitutiveRule.edge.def">
+    <xs:sequence>
+      <xs:element name="if" type="ruleml:body_ConstitutiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>the premise (antecedent) of a constitutive statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="body_ConstitutiveRule.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:body_ConstitutiveRule.content">
+        <xs:attributeGroup ref="ruleml:body_ConstitutiveRule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="head_ConstitutiveRule.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:head_ConstitutiveRule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="head_ConstitutiveRule.edge.def">
+    <xs:sequence>
+      <xs:element name="then" type="ruleml:head_ConstitutiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>the conclusion (consequent) of a constitutive statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="head_ConstitutiveRule.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:head_ConstitutiveRule.content">
+        <xs:attributeGroup ref="ruleml:head_ConstitutiveRule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="body_PrescriptiveRule.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:body_PrescriptiveRule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="body_PrescriptiveRule.edge.def">
+    <xs:sequence>
+      <xs:element name="if" type="ruleml:body_PrescriptiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>the premise (antecedent) of a prescriptive statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="body_PrescriptiveRule.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:body_PrescriptiveRule.content">
+        <xs:attributeGroup ref="ruleml:body_PrescriptiveRule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="head_PrescriptiveRule.edge.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:head_PrescriptiveRule.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="head_PrescriptiveRule.edge.def">
+    <xs:sequence>
+      <xs:element name="then" type="ruleml:head_PrescriptiveRule.type.def">
+        <xs:annotation>
+          <xs:documentation>the conclusion (consequent) of a prescriptive statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="head_PrescriptiveRule.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:head_PrescriptiveRule.content">
+        <xs:attributeGroup ref="ruleml:head_PrescriptiveRule.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="body_PrescriptiveRule.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:if_Rule.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="head_PrescriptiveRule.attlist">
+    <xs:attributeGroup ref="ruleml:then_Rule.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body_ConstitutiveRule.attlist">
+    <xs:attributeGroup ref="ruleml:if_Rule.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="head_ConstitutiveRule.attlist">
+    <xs:attributeGroup ref="ruleml:then_Rule.attlist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="slotDeontic.attlist">
+    <xs:attributeGroup ref="ruleml:reslot.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

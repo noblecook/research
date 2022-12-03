@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="AlternativeCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AlternativeCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlternativeCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Alternatives"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Alternatives" type="lrml:AlternativeCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a mutually exclusive collection where every member is a LegalRuleML rendering of one or more Legal Norms.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AlternativeCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:AlternativeCollection.main">
+        <xs:attributeGroup ref="lrml:AlternativeCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="AlternativeCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

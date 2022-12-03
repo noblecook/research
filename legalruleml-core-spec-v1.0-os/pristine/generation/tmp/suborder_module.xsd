@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="SuborderList.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:SuborderList"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="SuborderList" type="lrml:SuborderList.type.def">
+    <xs:annotation>
+      <xs:documentation>a Deontic Specification consisting of a sequence of Deontic Specifications other than SuborderLists (at any depth).  When a SuborderList holds, a Deontic Specification in the SuborderList holds if all Deontic Specifications that precede it in the SuborderList have been violated.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="SuborderList.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:SuborderList.main">
+        <xs:attributeGroup ref="lrml:SuborderList.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="SuborderList.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="SuborderFormula.choice">
+    <xs:sequence>
+      <xs:group ref="lrml:DeonticFormula.choice"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

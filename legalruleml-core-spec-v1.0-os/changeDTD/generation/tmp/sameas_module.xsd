@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:attributeGroup name="sameAs.attrib.opt.choice">
+    <xs:attribute name="sameAs" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>an IRI that denotes the same thing as the Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="sameAs.attrib.def">
+    <xs:attribute name="sameAs" use="required" type="lrml:iri.lrml.datatype">
+      <xs:annotation>
+        <xs:documentation>an IRI that denotes the same thing as the Node Element.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="DummysameAsElement">
+    <xs:complexType>
+      <xs:attributeGroup ref="lrml:sameAs.attrib.opt.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

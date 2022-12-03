@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:complexType name="AuthorityCollection.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:AuthorityCollection.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AuthorityCollection.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Authorities"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Authorities" type="lrml:AuthorityCollection.type.def">
+    <xs:annotation>
+      <xs:documentation>a collection where every member is an Authority.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AuthorityCollection.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:AuthorityCollection.main">
+        <xs:attributeGroup ref="lrml:AuthorityCollection.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="AuthorityCollection.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonCollection.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Authority.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:Authority.Node.def"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Authority.Node.def">
+    <xs:sequence>
+      <xs:element ref="lrml:Authority"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Authority" type="lrml:Authority.type.def">
+    <xs:annotation>
+      <xs:documentation>a person or organization with the power to create, endorse, or enforce Legal Norms.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Authority.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Authority.main">
+        <xs:attributeGroup ref="lrml:Authority.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Authority.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:sameAs.attrib.opt.choice"/>
+  </xs:attributeGroup>
+</xs:schema>

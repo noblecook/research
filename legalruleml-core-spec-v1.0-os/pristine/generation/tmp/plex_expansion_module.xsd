@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Plex>
+  -->
+  <xs:group name="Plex_Any-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the generalized list tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex_Any.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Plex_Any.Node.def">
+    <xs:sequence>
+      <xs:element name="Plex" type="ruleml:Plex_Any.type.def">
+        <xs:annotation>
+          <xs:documentation>A collection of (ordered) arguments (optionally enclosed by &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;), 
+identical to an uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified function name (equivalent 
+to having a system-specified constructor 'Plex'). Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.
+       See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+within Atom</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Plex_Any.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex.header"/>
+      <xs:group ref="ruleml:Plex_Any.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
+  </xs:complexType>
+  <xs:attributeGroup name="rePlex.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="Plex.header">
+    <xs:annotation>
+      <xs:documentation>Generalized lists accept the header pattern common to Nodes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- For the declaration of the Node header, see the modules meta_expansion_module). -->
+  <xs:group name="Plex_Any.main">
+    <xs:annotation>
+      <xs:documentation>A generalized list contains a generalized term sequence, which may be empty.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    The pattern for argument sequences is serialization-dependent, 
+    see the serialization modules (orderlax_module, orderstrict_module, ordermix_module).
+  -->
+  <xs:group name="Plex_repo-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the generalized list tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex_repo.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Plex_repo.Node.def">
+    <xs:sequence>
+      <xs:element name="Plex" type="ruleml:Plex_repo.type.def">
+        <xs:annotation>
+          <xs:documentation>A collection of (ordered) arguments (optionally enclosed by &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;), 
+identical to an uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified function name (equivalent 
+to having a system-specified constructor 'Plex'). Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.
+       See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+within repo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Plex_repo.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex.header"/>
+      <xs:group ref="ruleml:Plex_repo.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
+  </xs:complexType>
+  <xs:group name="Plex_repo.main">
+    <xs:annotation>
+      <xs:documentation>A generalized list within a positional rest variable contains a positional argument sequence</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:positionalArgumentsForExpressions.sequence"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    The pattern for positional argument sequences is arity-dependent,
+    see the arity modules (posseq_bin_module, posseq_module).
+  -->
+  <xs:group name="Plex_resl-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the generalized list tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex_resl.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Plex_resl.Node.def">
+    <xs:sequence>
+      <xs:element name="Plex" type="ruleml:Plex_resl.type.def">
+        <xs:annotation>
+          <xs:documentation>A collection of (ordered) arguments (optionally enclosed by &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;), 
+identical to an uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified function name (equivalent 
+to having a system-specified constructor 'Plex'). Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.
+       See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+within resl</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Plex_resl.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Plex.header"/>
+      <xs:group ref="ruleml:Plex_resl.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
+  </xs:complexType>
+  <xs:group name="Plex_resl.main">
+    <xs:annotation>
+      <xs:documentation>A generalized list within a slotted rest variable contains a slotted argument sequence</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:slotsForExpressions.sequence"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
+<!-- For the declaration of slot sequences, see the slot module (slot_module). -->

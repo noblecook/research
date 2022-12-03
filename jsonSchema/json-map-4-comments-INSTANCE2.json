@@ -1,0 +1,19 @@
+{
+        "hasComment": {
+            "Comment": {
+                "Content": [
+                    "keDPRMMvI",
+                    "tSSdBkBXPoOqOdyl"
+                ],
+            "iri": "HJrMhMLwgLtxagFeLfm",
+            "keyref": "http://example.com/resource?foo=bar#fragment",
+            "type": "FDotWaDVAN",
+            "key": "DDDeLPAqNMyzGZgpI"
+        }
+         },
+        "hasString": "Hello World!",
+        "hasArrayList": ["apple", 1, "banana", "grapes"]
+
+}
+
+    

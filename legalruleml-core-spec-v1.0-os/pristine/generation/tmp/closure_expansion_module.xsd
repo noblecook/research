@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML attribute:
+       * @closure
+  -->
+  <xs:attributeGroup name="closure-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the implicit closure attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="closure" type="ruleml:closure.value">
+      <xs:annotation>
+        <xs:documentation>An attribute indicating how the contained free variables are quantified. 
+Allowed values are "universal" and "existential".
+See http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="closure.attrib.def">
+    <xs:attribute name="closure" use="required" type="ruleml:closure.value">
+      <xs:annotation>
+        <xs:documentation>An attribute indicating how the contained free variables are quantified. 
+Allowed values are "universal" and "existential".
+See http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="closure.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="universal"/>
+          <xs:enumeration value="existential"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <!--
+    
+    a dummy element to assist in XSD conversion
+    
+  -->
+  <xs:element name="DummyClosure">
+    <xs:complexType>
+      <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

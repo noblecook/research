@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Forall> !
+               * <Exists> !
+               * <declare>
+               * <formula>
+    This module also declares the following RuleML choice patterns:
+               * ForallFormula.choice
+               * ExistsFormula.choice
+  -->
+  <xs:group name="Forall-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point to allow alternate names and internationalization of universal quantifiers</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Forall.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Forall.Node.def">
+    <xs:sequence>
+      <xs:element name="Forall" type="ruleml:Forall.type.def">
+        <xs:annotation>
+          <xs:documentation>Explicit universal quantifier. It consists of a sequence of one or more 
+variables (&lt;Var&gt;), each optionally surrounded by a &lt;declare&gt; role, and a
+logical formula (optionally surrounded by a &lt;formula&gt; role).
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Forall.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Forall.header"/>
+      <xs:group ref="ruleml:Forall.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reForall.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Forall.main">
+    <xs:annotation>
+      <xs:documentation>Universally qualified formulas contain a sequence of bound variables and one formula.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:boundVariables.choice"/>
+      <xs:group ref="ruleml:formula_Forall-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point to allow alternate names and internationalization for existential quantifiers</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Exists.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists.Node.def">
+    <xs:sequence>
+      <xs:element name="Exists" type="ruleml:Exists.type.def">
+        <xs:annotation>
+          <xs:documentation>Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;),
+each optionally surrounded by a &lt;declare&gt; role, followed by a logical formula 
+(optionally surrounded by a &lt;formula&gt; role).
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Exists.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Exists.header"/>
+      <xs:group ref="ruleml:Exists.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reExists.attlist"/>
+  </xs:complexType>
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Exists.main">
+    <xs:annotation>
+      <xs:documentation>Existentially qualified formulas contain a sequence of bound variables and one formula.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="lrml:boundVariables.choice"/>
+      <xs:group ref="ruleml:formula_Exists-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="declare-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the declare tag name in quantified formulas.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:declare"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="declare" type="ruleml:declare.type.def">
+    <xs:annotation>
+      <xs:documentation>A role used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or &lt;Exists&gt;).
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-declare</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="declare.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:declare.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="declare.content">
+    <xs:annotation>
+      <xs:documentation>a declaration element contains a single quantifiable term</xs:documentation>
+    </xs:annotation>
+    <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+  </xs:complexType>
+  <xs:group name="formula_Forall-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the formula tag name in universal quantifications. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Forall.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Forall.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Forall.type.def">
+        <xs:annotation>
+          <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, 
+quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;).
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+within Forall...</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Forall.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula_Forall.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Forall.content">
+    <xs:annotation>
+      <xs:documentation>The formula role of universal quantifications contains a single formula. </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ForallFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--
+    For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+    For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+    For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+    For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+    For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  -->
+  <xs:group name="formula_Exists-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the formula tag name in existential quantifications. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:formula_Exists.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_Exists.edge.def">
+    <xs:sequence>
+      <xs:element name="formula" type="ruleml:formula_Exists.type.def">
+        <xs:annotation>
+          <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, 
+quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;).
+See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+Within Exists...</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="formula_Exists.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:formula_Exists.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="formula_Exists.content">
+    <xs:annotation>
+      <xs:documentation>The formula role of existential quantifications contains a single formula.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:ExistsFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!--
+    For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+    For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+    For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
+    For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+    For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  -->
+</xs:schema>

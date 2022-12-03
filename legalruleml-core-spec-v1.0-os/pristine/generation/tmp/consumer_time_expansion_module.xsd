@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following Consumer RuleML elements:
+      * arg
+      * Time
+  -->
+  <!---->
+  <xs:group name="Time_term-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Time_term.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Time_term.Node.def">
+    <xs:sequence>
+      <xs:element name="Time" type="ruleml:Time_term.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Time&gt;: generic Time element. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Time</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Time_term.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Time_term.content">
+        <xs:attributeGroup ref="ruleml:Time_term.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Time_term.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Time_term.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Time_term.header"/>
+      <xs:group ref="ruleml:argumentsForTime.sequence"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Time_term.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Expr.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!---->
+  <xs:group name="Time_formula-node.choice">
+    <xs:sequence>
+      <xs:group ref="ruleml:Time_formula.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Time_formula.Node.def">
+    <xs:sequence>
+      <xs:element name="Time" type="ruleml:Time_formula.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Time_formula.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Time_formula.content">
+        <xs:attributeGroup ref="ruleml:Time_formula.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Time_formula.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:formula-interface.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <!---->
+  <xs:complexType name="Time_formula.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Time_formula.header"/>
+      <xs:group ref="ruleml:argumentsForTime.sequence"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Time_formula.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Atom.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="arg_time.edge.def">
+    <xs:sequence>
+      <xs:element name="arg" type="ruleml:arg_time.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="arg_time.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg_time.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="arg_time.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:time_primitives.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -135,9 +135,20 @@ def modelRegulatoryFacts(TreeStructure):
         print("line 135 of model.py -  in the modelRegulatoryFacts(TreeStructure) method")
 
 
+def testXML():
+    import xmlschema
+    from pprint import pprint
+    BASE_FILE = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/"
+    xsdFileLRML = BASE_FILE + "lrml-compact.xsd"
+    instance = BASE_FILE + "lrml-compact.xsd"
+    xmlschema.limits.MAX_MODEL_DEPTH = 1000
+    schema = xmlschema.XMLSchema(xsdFileLRML)
+    schema.is_valid(instance)
+
+
 def init(metaDataDictionary, classificationResults):
     print("... starting Model")
-    
+    testXML()
     '''
     -- Given the meta data, create the NEW class and add the
     base set of attributes (properties) to the Regulation

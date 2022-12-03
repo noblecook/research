@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="Node.choice">
+    <xs:choice>
+      <xs:choice>
+        <xs:element ref="ruleml:Atom"/>
+        <xs:element ref="ruleml:Rel"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:group ref="ruleml:And.Node.def"/>
+        <xs:group ref="ruleml:Or.Node.def"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Implies.Node.def"/>
+      <xs:choice>
+        <xs:group ref="ruleml:Forall.Node.def"/>
+        <xs:group ref="ruleml:Exists.Node.def"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:element ref="ruleml:Expr"/>
+        <xs:element ref="ruleml:Fun"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Neg.Node.def"/>
+      <xs:element ref="ruleml:Naf"/>
+      <xs:group ref="ruleml:Equivalent.Node.def"/>
+      <xs:element ref="ruleml:Equal"/>
+      <xs:group ref="ruleml:Data_any.Node.def"/>
+      <xs:element ref="ruleml:Skolem"/>
+      <xs:element ref="ruleml:Ind"/>
+      <xs:element ref="ruleml:Var"/>
+      <xs:group ref="ruleml:Plex_Any.Node.def"/>
+      <xs:group ref="ruleml:Interval_formula.Node.def"/>
+      <xs:group ref="ruleml:Interval_term.Node.def"/>
+      <xs:element ref="ruleml:Negation"/>
+      <xs:element ref="ruleml:Operation"/>
+      <xs:group ref="ruleml:Rule.Node.def"/>
+      <xs:group ref="ruleml:Spatial_term.Node.def"/>
+      <xs:group ref="ruleml:Spatial_formula.Node.def"/>
+      <xs:element ref="ruleml:After"/>
+      <xs:element ref="ruleml:Before"/>
+      <xs:element ref="ruleml:Every"/>
+      <xs:element ref="ruleml:Any"/>
+      <xs:element ref="ruleml:Timer"/>
+      <xs:element ref="ruleml:During"/>
+      <xs:element ref="ruleml:Overlaps"/>
+      <xs:element ref="ruleml:Starts"/>
+      <xs:element ref="ruleml:Precedes"/>
+      <xs:element ref="ruleml:Succeeds"/>
+      <xs:element ref="ruleml:Meets"/>
+      <xs:element ref="ruleml:Finishes"/>
+      <xs:group ref="ruleml:Time_formula.Node.def"/>
+      <xs:group ref="ruleml:Time_term.Node.def"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="edge.choice">
+    <xs:choice>
+      <xs:group ref="ruleml:op_Atom.edge.def"/>
+      <xs:choice>
+        <xs:group ref="ruleml:formula_And.edge.def"/>
+        <xs:group ref="ruleml:formula_Or.edge.def"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:group ref="ruleml:head_Implies.edge.def"/>
+        <xs:group ref="ruleml:body_Implies.edge.def"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:element ref="ruleml:declare"/>
+        <xs:group ref="ruleml:formula_Forall.edge.def"/>
+        <xs:group ref="ruleml:formula_Exists.edge.def"/>
+      </xs:choice>
+      <xs:group ref="ruleml:op_Expr.edge.def"/>
+      <xs:element ref="ruleml:degree"/>
+      <xs:group ref="ruleml:strong.edge.def"/>
+      <xs:element ref="ruleml:weak"/>
+      <xs:group ref="ruleml:torso.edge.def"/>
+      <xs:element ref="ruleml:oid"/>
+      <xs:group ref="ruleml:slot.edge.def"/>
+      <xs:choice>
+        <xs:element ref="ruleml:left"/>
+        <xs:element ref="ruleml:right"/>
+      </xs:choice>
+      <xs:group ref="ruleml:arg.edge.def"/>
+      <xs:element ref="ruleml:resl"/>
+      <xs:element ref="ruleml:repo"/>
+      <xs:group ref="ruleml:time_anycontent.edge.def"/>
+      <xs:group ref="ruleml:spatial_anycontent.edge.def"/>
+      <xs:group ref="ruleml:arg_interval_formula.edge.def"/>
+      <xs:group ref="ruleml:arg_interval_term.edge.def"/>
+      <xs:group ref="ruleml:formula-negation.edge.def"/>
+      <xs:group ref="ruleml:formula-Operation.edge.def"/>
+      <xs:group ref="ruleml:if_Rule.edge.def"/>
+      <xs:group ref="ruleml:then_Rule.edge.def"/>
+      <xs:group ref="ruleml:arg_spatial.edge.def"/>
+      <xs:group ref="ruleml:arg_time.edge.def"/>
+    </xs:choice>
+  </xs:group>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Atom>
+               * <Rel>
+               * <op>
+    This module also declares the following RuleML choice pattern:
+               * SimpleFormula-node.choice
+  -->
+  <xs:group name="SimpleFormula-node.choice">
+    <xs:annotation>
+      <xs:documentation>atomic formulas are a kind of simple formula</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:Atom-node.choice"/>
+      <xs:group ref="ruleml:Equal-node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="Atom" type="ruleml:Atom.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Atom&gt;: a predicate applied to arguments. See
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Atom.type.def">
+    <xs:sequence>
+      <xs:group ref="ruleml:Atom.header"/>
+      <xs:group ref="lrml:Atom.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
+  </xs:complexType>
+  <xs:attributeGroup name="reAtom.attlist">
+    <xs:annotation>
+      <xs:documentation>Atomic formulas may have an optional closure attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module) -->
+  <xs:group name="operatorForAtoms-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the operator tag name in atomic formulas.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:op_Atom.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="op_Atom.edge.def">
+    <xs:annotation>
+      <xs:documentation>(context sensitive: see also expr_module and holog_module)
+An operator expression including a relation (&lt;Rel&gt;) of an atom (&lt;Atom&gt;).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="op" type="ruleml:op.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;op&gt;: edge (role) element for the predicate of an atomic formula. See
+http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="op.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:op_Atom.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="op_Atom.content">
+    <xs:annotation>
+      <xs:documentation>The operator role in the context of an atomic formula is filled by a predicate.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:Relation-node.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Relation-node.choice">
+    <xs:annotation>
+      <xs:documentation>  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Rel"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rel" type="ruleml:Rel.type.def">
+    <xs:annotation>
+      <xs:documentation>&lt;Rel&gt;: a category of name used as the predicate of an atomic formula. See 
+http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Rel.type.def">
+    <xs:simpleContent>
+      <xs:extension base="ruleml:Rel.value">
+        <xs:attributeGroup ref="ruleml:reRel.attlist"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:attributeGroup name="reRel.attlist">
+    <xs:annotation>
+      <xs:documentation>Relations accept the optional attribute pattern of resources.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="Rel.value">
+    <xs:annotation>
+      <xs:documentation>The content model for relations is the XSD datatype token.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+</xs:schema>

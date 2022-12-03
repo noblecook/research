@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <xs:group name="Violation.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Violation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Violation" type="lrml:Violation.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that an Obligation or Prohibition has been violated.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Violation.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Violation.main">
+        <xs:attributeGroup ref="lrml:Violation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Violation.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Violation.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Compliance.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Compliance"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Compliance" type="lrml:Compliance.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that an Obligation has been fulfilled or a Prohibition has not been violated.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Compliance.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Compliance.main">
+        <xs:attributeGroup ref="lrml:Compliance.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Compliance.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Compliance.main">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+      <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="DeonticRole.Node.choice">
+    <xs:annotation>
+      <xs:documentation>a role in a Deontic Specification.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:AuxiliaryParty.Node.choice"/>
+      <xs:group ref="lrml:Bearer.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Bearer.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Bearer"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Bearer" type="lrml:Bearer.type.def">
+    <xs:annotation>
+      <xs:documentation>a role in a Deontic Specification to which the Deontic Specification is primarily directed.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Bearer.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Bearer.main">
+        <xs:attributeGroup ref="lrml:Bearer.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Bearer.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Bearer.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:group name="AuxiliaryParty.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:AuxiliaryParty"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="AuxiliaryParty" type="lrml:AuxiliaryParty.type.def">
+    <xs:annotation>
+      <xs:documentation>a role in a Deontic Specification to which the Deontic Specification is related, but not primarily directed.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="AuxiliaryParty.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:AuxiliaryParty.main">
+        <xs:attributeGroup ref="lrml:AuxiliaryParty.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="AuxiliaryParty.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="lrml:iri.lrml.attrib.opt.choice"/>
+  </xs:attributeGroup>
+  <xs:complexType name="AuxiliaryParty.main">
+    <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
+  </xs:complexType>
+  <xs:group name="Deontic.Node.choice">
+    <xs:annotation>
+      <xs:documentation>Deontic Specification: an indication of what states are legal or illegal. Deontic Specifications include Obligation, Permission, Prohibition, SuborderLIst, … or a Boolean combination of Deontic Specifications other than SuborderLists (at any depth).</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:choice>
+        <xs:group ref="lrml:Obligation.Node.choice"/>
+        <xs:group ref="lrml:Permission.Node.choice"/>
+        <xs:group ref="lrml:Prohibition.Node.choice"/>
+        <xs:group ref="lrml:Right.Node.choice"/>
+        <xs:group ref="lrml:Violation.Node.choice"/>
+        <xs:group ref="lrml:Compliance.Node.choice"/>
+      </xs:choice>
+      <xs:group ref="lrml:Reparation.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Obligation.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Obligation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Obligation" type="lrml:Obligation.type.def">
+    <xs:annotation>
+      <xs:documentation>a Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and if it is not achieved or performed results in a Violation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Obligation.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Obligation.main">
+        <xs:attributeGroup ref="lrml:Obligation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Obligation.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Permission.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Permission"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Permission" type="lrml:Permission.type.def">
+    <xs:annotation>
+      <xs:documentation>a Deontic Specification for a state, an act, or a course of action where the Bearer has no Obligation or Prohibition to the contrary. A weak Permission is the absence of the Obligation or Prohibition to the contrary; a strong Permission is an exception or derogation of the Obligation or Prohibition to the contrary.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Permission.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Permission.main">
+        <xs:attributeGroup ref="lrml:Permission.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Permission.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Prohibition.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Prohibition"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Prohibition" type="lrml:Prohibition.type.def">
+    <xs:annotation>
+      <xs:documentation>a Deontic Specification for a state, an act, or a course of action to which a Bearer is legally bound, and if it is achieved or performed results in a Violation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Prohibition.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Prohibition.main">
+        <xs:attributeGroup ref="lrml:Prohibition.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Prohibition.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Reparation.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Reparation"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Reparation" type="lrml:Reparation.type.def">
+    <xs:annotation>
+      <xs:documentation>an indication that a PenaltyStatement is linked with a PrescriptiveStatement, meaning that a sanction may apply when the PrescriptiveStatement entails a Deontic Specification, and there is a Violation of the Deontic Specification.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Reparation.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Reparation.main">
+        <xs:attributeGroup ref="lrml:Reparation.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Reparation.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="Right.Node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="lrml:Right"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Right" type="lrml:Right.type.def">
+    <xs:annotation>
+      <xs:documentation>(see also Permission) a Deontic Specification that gives a Permission to a party (the Bearer) and implies there are Obligations or Prohibitions on other parties (the AuxiliaryParty) such that the Bearer can (eventually) exercise the Right.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Right.type.def">
+    <xs:complexContent>
+      <xs:extension base="lrml:Right.main">
+        <xs:attributeGroup ref="lrml:Right.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Right.attlist">
+    <xs:attributeGroup ref="lrml:commonLRMLNodeInit.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="DeonticFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+      <xs:group ref="ruleml:And-fo-node.choice"/>
+      <xs:group ref="ruleml:Or-fo-node.choice"/>
+      <xs:group ref="ruleml:Negation-node.choice"/>
+      <xs:group ref="ruleml:Implication-fo-node.choice"/>
+      <xs:group ref="ruleml:Forall-fo-node.choice"/>
+      <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="AndFormula.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-node.choice"/>
+        <xs:group ref="ruleml:Or-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="OrFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-node.choice"/>
+        <xs:group ref="ruleml:Or-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="NegFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-fo-node.choice"/>
+        <xs:group ref="ruleml:Or-fo-node.choice"/>
+        <xs:group ref="ruleml:Negation-fo-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PremiseFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-node.choice"/>
+        <xs:group ref="ruleml:Or-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ConclusionFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:Atom-head-node.choice"/>
+        <xs:group ref="ruleml:Equal-head-node.choice"/>
+        <xs:group ref="ruleml:And-head-node.choice"/>
+        <xs:group ref="ruleml:Or-head-node.choice"/>
+        <xs:group ref="ruleml:Negation-head-node.choice"/>
+        <xs:group ref="ruleml:Implication-head-node.choice"/>
+        <xs:group ref="ruleml:Forall-head-node.choice"/>
+        <xs:group ref="ruleml:Exists-head-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ExistsFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-node.choice"/>
+        <xs:group ref="ruleml:Or-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        <xs:group ref="ruleml:Exists-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ForallFormula.choice">
+    <xs:choice>
+      <xs:group ref="lrml:Deontic.Node.choice"/>
+      <xs:choice>
+        <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+        <xs:group ref="ruleml:And-fo-node.choice"/>
+        <xs:group ref="ruleml:Or-fo-node.choice"/>
+        <xs:group ref="ruleml:Negation-node.choice"/>
+        <xs:group ref="ruleml:Implication-node.choice"/>
+        <xs:group ref="ruleml:Forall-node.choice"/>
+        <xs:group ref="ruleml:Exists-fo-node.choice"/>
+      </xs:choice>
+      <xs:group ref="ruleml:Operation-node.choice"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

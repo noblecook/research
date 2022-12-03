@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Neg>
+               * <strong>
+    This module also declares the following RuleML choice patterns:
+               * Negation-node.choice
+               * NegFormula.choice
+  -->
+  <xs:group name="Negation-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for specializations of the strong negation tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Neg.Node.def"/>
+      <xs:element ref="ruleml:Negation"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Neg.Node.def">
+    <xs:sequence>
+      <xs:element name="Neg" type="ruleml:Neg.type.def">
+        <xs:annotation>
+          <xs:documentation>A classical negation of a logical atom (&lt;Atom&gt;) (i.e. classical or "strong" negation). 
+The negated atom may be optionally surrounded by a &lt;strong&gt; role.
+       See http://deliberation.ruleml.org/1.02/glossary/#gloss-Neg</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Neg.type.def">
+    <xs:sequence>
+      <xs:group ref="lrml:Neg.header"/>
+      <xs:group ref="ruleml:Neg.main"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="lrml:reNeg.attlist"/>
+  </xs:complexType>
+  <!-- The attribute list of the strong negation element will accept a scoped closure attribute at full first-order logic. -->
+  <!-- For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module). -->
+  <xs:group name="Neg.main">
+    <xs:annotation>
+      <xs:documentation>Negation formulas contain a single role.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:strong-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="strong-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as specializations of the strong tag name in strong negations. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:strong.edge.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="strong.edge.def">
+    <xs:sequence>
+      <xs:element name="strong" type="ruleml:strong.type.def">
+        <xs:annotation>
+          <xs:documentation>A role used for logical negation (&lt;Neg&gt;).
+       See http://deliberation.ruleml.org/1.02/glossary/#gloss-strong</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="strong.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:strong.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="strong.content">
+    <xs:annotation>
+      <xs:documentation>The negation role contains a single formula. </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="lrml:NegFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+<!--
+  For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
+  For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
+  For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
+  For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+  For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+-->

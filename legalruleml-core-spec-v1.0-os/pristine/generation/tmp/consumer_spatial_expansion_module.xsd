@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:ruleml="http://ruleml.org/spec" xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+  <xs:import namespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/" schemaLocation="lrml-normal.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  <!---->
+  <xs:group name="Spatial_term-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Spatial_term.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Spatial_term.Node.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Spatial" type="ruleml:Spatial_term.type.def">
+        <xs:annotation>
+          <xs:documentation>&lt;Spatial&gt;: generic Spatial element. See
+http://consumer.ruleml.org/1.02/glossary/#gloss-Spatial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Spatial_term.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Spatial_term.content">
+        <xs:attributeGroup ref="ruleml:Spatial_term.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Spatial_term.attlist">
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Spatial_term.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Spatial_term.header"/>
+      <xs:group ref="ruleml:argumentsForSpatial.sequence"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Spatial_term.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Expr.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Spatial_formula-node.choice">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Spatial_formula.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Spatial_formula.Node.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Spatial" type="ruleml:Spatial_formula.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="Spatial_formula.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:Spatial_formula.content">
+        <xs:attributeGroup ref="ruleml:Spatial_formula.attlist"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:attributeGroup name="Spatial_formula.attlist">
+    <xs:attributeGroup ref="ruleml:formula-interface.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Spatial_formula.content">
+    <xs:sequence>
+      <xs:group ref="ruleml:Spatial_formula.header"/>
+      <xs:group ref="ruleml:argumentsForSpatial.sequence"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="Spatial_formula.header">
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Atom.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="arg_spatial.edge.def">
+    <xs:sequence>
+      <xs:element name="arg" type="ruleml:arg_spatial.type.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="arg_spatial.type.def">
+    <xs:complexContent>
+      <xs:extension base="ruleml:arg_spatial.content">
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="arg_spatial.content">
+    <xs:complexContent>
+      <xs:extension base="ruleml:spatial_primitives.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
