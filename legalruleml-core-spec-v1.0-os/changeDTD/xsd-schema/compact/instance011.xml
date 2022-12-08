@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
- xmlns:ruleml="http://ruleml.org/spec"
- xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ 
- file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
-
+    xmlns:ruleml="http://ruleml.org/spec"
+    xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ 
+    file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+    
     <!-- #################  -->
     <!-- Category 1 PreFix  -->   
     <!-- #################  -->
@@ -15,8 +15,7 @@
         
     </Prefix>
     
-    
-    
+
     <!-- ###################  -->
     <!-- Category 2 Metadata  -->   
     <!-- ###################  -->
@@ -52,11 +51,11 @@
         that are the content of the textual provision (e.g., when a person is to present 
         a tax application).
     -->
-   <Times>
-       <ruleml:Time key=":t1">
-           <ruleml:Data xsi:type="xm:dateTime">1998-10-21T00:00:00</ruleml:Data>
-       </ruleml:Time>
-   </Times>
+    <Times>
+        <ruleml:Time key=":t1">
+            <ruleml:Data xsi:type="xm:dateTime">1998-10-21T00:00:00</ruleml:Data>
+        </ruleml:Time>
+    </Times>
     
     <TemporalCharacteristics>
         <TemporalCharacteristic>
@@ -95,7 +94,7 @@
         <Jurisdiction key="US" sameAs="https://www.whitehouse.gov/"/>
     </Jurisdictions>
     
-        
+    
     <!-- #######################  -->
     <!-- Category 3 Associations  -->
     <!-- #######################  -->
@@ -142,20 +141,20 @@
         </Association>
     </Associations>
     
-
-
-
-
-
+    
+    
+    
+    
+    
     
     <!-- ##################### ##################### ###################  -->
     <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  -->
     <!-- Category 4 Statement-Related (Alternatives, Context, Statements  -->
     <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  -->
     <!-- ##################### ##################### ###################  -->
-
-
-
+    
+    
+    
     <!-- 
         A rule may be differently interpreted according to a variety of parameters associated with 
         a particular situation. For instance, sometimes an alternative interpretation of a textual 
@@ -197,24 +196,59 @@
         <inScope keyref="#rule4"/>
     </Context>
     
+    
+    <!-- 
+        In the following subsections, we present several components for modelling norms. 
+        First, we take it that normative conditionals are  defeasible [Sartor, 2005], 
+        so we present our approach to defeasibility.  
+        
+        Second, norms may also be modelled using deontic concepts, which themselves have 
+        associated notions of penalty and reparation.  
+        
+        Finally, in contrast to normative conditionals and for use in the example, 
+        we have a representation of facts.   -->
+    
     <!-- Prescriptive Statement 1 -->
     <Statements>
+        
+        <hasQualification>
+            <Override over="#ps2" under="#ps1" />
+        </hasQualification>
+        
         <PrescriptiveStatement key="ps1">
-            <ruleml:Rule> 
+            <ruleml:Rule key=":rule1" closure="universal">
+                <hasStrength>
+                    <DefeasibleStrength/>
+                </hasStrength>
+                
                 <ruleml:if>
-                    <ruleml:And>
-                        <Permission>
-                            
-                        </Permission>
-                        
-                    </ruleml:And>
+                    <ruleml:Atom>
+                        <ruleml:Rel iri=":SOME_INDIVIDUAL"/>
+                        <ruleml:Var> X </ruleml:Var>               
+                    </ruleml:Atom>                    
                 </ruleml:if>
-            
+                
+                <ruleml:then>
+                    <SuborderList>
+                        <Obligation>
+                            <ruleml:Atom>
+                                <ruleml:Rel iri=":SOME_PREDICATIION"></ruleml:Rel>
+                                <ruleml:Var> x </ruleml:Var>
+                                <ruleml:Ind> Y </ruleml:Ind>
+                                <ruleml:Ind> z </ruleml:Ind>
+                            </ruleml:Atom>
+                        </Obligation>
+                    </SuborderList>
+                </ruleml:then>               
             </ruleml:Rule>
-       
         </PrescriptiveStatement>
+        
+        
     </Statements>
- 
-      
-
+    
+    
+    
+    
+    
+    
 </LegalRuleML>
