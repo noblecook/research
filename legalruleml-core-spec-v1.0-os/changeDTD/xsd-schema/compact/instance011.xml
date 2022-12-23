@@ -221,21 +221,31 @@
                     <DefeasibleStrength/>
                 </hasStrength>
                 
+                <!-- The Antecedent operator(x) AND verifiableParentalConsent(y) -->
+                
                 <ruleml:if>
-                    <ruleml:Atom>
-                        <ruleml:Rel iri=":SOME_INDIVIDUAL"/>
-                        <ruleml:Var> X </ruleml:Var>               
-                    </ruleml:Atom>                    
+                    <ruleml:And key=":and1">
+                        <ruleml:Atom key=":atom1">
+                            <ruleml:Rel iri=":operator"/>
+                            <ruleml:Var>x</ruleml:Var>               
+                        </ruleml:Atom>
+                        <ruleml:Atom key=":atom2">
+                            <ruleml:Rel iri=":verifiableParentalConsent"/>
+                            <ruleml:Var>y</ruleml:Var>               
+                        </ruleml:Atom>
+                    </ruleml:And>
                 </ruleml:if>
+                
+                <!-- Modal Verb "MUST" = Obligation  -->
+                <!-- The Concequence => [OBL] obtain(x, y)  1 -->
                 
                 <ruleml:then>
                     <SuborderList>
                         <Obligation>
                             <ruleml:Atom>
-                                <ruleml:Rel iri=":SOME_PREDICATIION"></ruleml:Rel>
+                                <ruleml:Rel iri=":obtain"></ruleml:Rel>
                                 <ruleml:Var> x </ruleml:Var>
-                                <ruleml:Ind> Y </ruleml:Ind>
-                                <ruleml:Ind> z </ruleml:Ind>
+                                <ruleml:Var> y </ruleml:Var>                                
                             </ruleml:Atom>
                         </Obligation>
                     </SuborderList>
