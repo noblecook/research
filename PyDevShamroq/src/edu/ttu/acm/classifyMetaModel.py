@@ -1,10 +1,19 @@
 import time
+
+import pandas
 import spacy
 import pandas as pd
+import hashlib
 import srsly
 from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
 import re
+import openai
+OPENAI_API_ORGANIZATION = "org-LoXrXAuJvjt0NRH6zbtHn6kb"
+OPENAI_API_KEY = "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"
+MODEL_LOCATION = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/shamroq.training-TRAINING.jsonl"
+
+
 
 linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 df = pd.DataFrame(columns=linguisticFeatures)
@@ -92,7 +101,20 @@ def listGroundingPatterns():
 A list of dependency labels listed here 
 - https://github.com/clir/clearnlp-guidelines/blob/master/md/specifications/dependency_labels.md
 '''
+def printShortDepData(text):
+    doc = nlp(text)
+    SN = 8; TOKEN = 15; POS = 8; TAG = 8; EXPLAIN = 20; HEAD = 15; DEP = 8; CHILD = 15; ANCESTORS = 28; TREE = 20;
+    table = BeautifulTable(maxwidth=80)
+    table.columns.header = ['SN', 'Text', 'POS', 'TAG', 'HEAD', 'Dep']
+    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
+    table.columns.width = [SN, TOKEN, POS, TAG, HEAD, DEP]
 
+    for token in doc:
+        table.rows.append([token.i, token.text, token.pos_, token.tag_, token.head.text,
+                           token.dep_])
+    print(table)
+    time.sleep(0)
+    return doc
 
 def printDepData(text):
     doc = nlp(text)
@@ -308,38 +330,55 @@ def processMatches(text, foundSpanOfText, spanOfPattern):
     return df
 
 
-def getPredicatePredication(text):
-    predicate_dictionary = None
-    subject = "EMPTY"; modality = "EMPTY"; root = "EMPTY"; indirectObj = "EMTPY"; directObject = "EMPTY";  result = None
-    doc = nlp(text)
-    for token in doc:
-        if token.dep_ == "nsubj" and token.head.dep_ == "ROOT":
-            role = "location"
-            predicate_dictionary["role"] = role
+def getPP01(nlpDoc):
+    ppDictionary = None
+    for token in nlpDoc:
+        if token.text == "before" and token.head.dep_ == "ROOT":
+            subject = token.text
+            ppDictionary["subject"] = subject
         elif token.dep_ == "nsubj" and token.head.dep_ == "pcomp":
             subject = token.text
-            predicate_dictionary["subject"] = subject
+            ppDictionary["subject"] = subject
         elif token.dep_ == "nsubjpass" and token.head.dep_ == "ROOT":
             subject = token.text
-            predicate_dictionary["subject"] = subject
+            ppDictionary["subject"] = subject
         elif token.pos_ == "VERB" and token.dep_ == "ROOT":
             root = token.text
-            predicate_dictionary["root"] = root
+            ppDictionary["root"] = root
         elif token.tag_ == "MD" and token.head.dep_ == "ROOT" and token.text == "must":
             modality = token.text
-            predicate_dictionary["modality"] = modality
+            ppDictionary["modality"] = modality
         elif token.dep_ == "dative":
             indirectObj = token.text
-            predicate_dictionary["indirectObj"] = indirectObj
+            ppDictionary["indirectObj"] = indirectObj
         elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
-            directObject = token.text
-            predicate_dictionary["directObject"] = directObject
+            # directObject = token.text
+            directObject = list(token.subtree)
+            ppDictionary["directObject"] = directObject
         elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
-            directObject = token.text
-            predicate_dictionary["directObject"] = directObject
+            # directObject = token.text
+            directObject = list(token.subtree)
+            ppDictionary["directObject"] = directObject
         else:
             pass
-    return predicate_dictionary;
+
+
+    return ppDictionary
+
+
+def getPrepositionPredication(label, text):
+    predicate_dictionary = None
+    doc = nlp(text)
+    if label == "preposition_01":
+        pass
+        # predicate_dictionary = getPP01(doc)
+    elif label == "preposition_02":
+        pass
+        #predicate_dictionary = getPP01(doc)
+    elif label == "preposition_03":
+        pass
+
+    return predicate_dictionary
 
 
 def getSVOPredication(text):
@@ -366,10 +405,12 @@ def getSVOPredication(text):
             indirectObj = token.text
             svo_dictionary["indirectObj"] = indirectObj
         elif token.dep_ == "dobj" and token.head.dep_ == "ROOT":
-            directObject = token.text
+            # directObject = token.text
+            directObject = list(token.subtree)
             svo_dictionary["directObject"] = directObject
         elif token.dep_ == "dobj" and token.head.dep_ == "xcomp":
-            directObject = token.text
+            # directObject = token.text
+            directObject = list(token.subtree)
             svo_dictionary["directObject"] = directObject
         else:
             pass
@@ -379,30 +420,39 @@ def getSVOPredication(text):
 
     if indirectObj != "EMTPY":
         print("\n---------GROUNDING-------------(1)")
-        print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)" "---> [OBL: ", modality, "]", root, "(x, y, z)")
+        print("if ", subject, "(x)", indirectObj, "(y)", directObject, "(z)" "=> [OBL: ", modality, "]", root, "(x, y, z)")
     else:
         print("\n---------GROUNDING-------------(2)")
-        print("if ", subject, "(x)", directObject, "(y)", "---> [OBL: ", modality, "]",  root, "(x, y)")
+        print("if ", subject, "(x)", directObject, "(y)", "=> [OBL: ", modality, "]",  root, "(x, y)")
 
     return svo_dictionary
 
-def getPredicates(label, text):
+
+def getPredicates(label, spanText, origText):
     svoMatch = re.search(r'subj_verb_obj_\d\d', label)
     prepMatch = re.search(r'preposition_\d\d', label)
     predicates = None
     if svoMatch:
-        predicates = getSVOPredication(text)
-        print("Subject Verb [iobj] Object as dictionary ", predicates)
-        time.sleep(3)
+        print("Subject Verb [iobj] Object as LABEL <><><>--> ", label)
+        print("Subject Verb [iobj] Object as TEXT <><><>--> ", spanText)
+        print("Original Text <><><>--> ", origText)
+        # predicates = getSVOPredication(text)
+        # print("Subject Verb [iobj] Object as dictionary <><><>--> ", predicates)
+        time.sleep(1)
     elif prepMatch:
-        # predicates = getPredicatePredication(text)
-        print("Predicates as dictionary ", predicates)
+        predicates = getPrepositionPredication(label, spanText)
+        # print("Predicates as dictionary ", predicates)
+        print("Prepositional Phrases as LABEL <><><>--> ", label)
+        print("Prepositional Phrases as TEXT <><><>--> ", spanText)
+        print("Original Text <><><>--> ", origText)
+        #printDepData(spanText)
+        time.sleep(1)
     else:
         pass
     return predicates
 
 
-def classifySpan(text):
+def classifySpan(oaim, text):
     doc = nlp(text)
     my_dictionary = {}
     predication = None
@@ -412,7 +462,10 @@ def classifySpan(text):
         # y = processMatches(text, span.text, span.label_)
         # my_dictionary[span.label_] = span.text
         # print("Match Found (Label) ", span.label_, "Text: ", span.text, "Predication ", predication)
-        predication = getPredicates(span.label_, span.text)
+        print("Match Found (Label) ", span.label_, "Text: ", span.text)
+        # print(text)
+        getOpenAIResponse(oaim, text)
+        # predication = getPredicates(span.label_, span.text, text)
         time.sleep(0)
 
     # print("DONE.... ")
@@ -423,7 +476,94 @@ def classifySpan(text):
     return predication
 
 
-def processEachProvision(params):
+def initializeModel():
+    openai.organization = OPENAI_API_ORGANIZATION
+    openai.api_key = OPENAI_API_KEY
+    # prints the list of models
+    # print("openai.Model.list() Type --> ", type(openai.Model.list()))
+    # print(openai.Model.list())
+    return openai
+
+
+def getOpenAIResponse(oaim, text):
+    # print("getOpenAIResponse(oaim, regPrompt): ", "\n")
+    context = "I want you to act as an attorney. I will give you a section of a regulation."
+    openaigoal = "You will split and rephrase each regulation into multiple shorter if/then statements that express one idea."
+    supplementalInfo = "You will express each if/then statement in the simple present tense."
+    inputTag = "Regulation: "
+    regPrompt = context + openaigoal + supplementalInfo + inputTag + text
+
+    response = oaim.Completion.create(
+        model="text-davinci-003",
+        prompt=regPrompt,
+        temperature=.8,
+        max_tokens=1024,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+    # Extract the generated text from the response
+    responseText = response["choices"][0]["text"]
+    lines = responseText.strip().split("\n")
+
+    # Remove leading and trailing whitespace from each line
+    lines = [line.strip() for line in lines]
+
+    # print("PROMPT: ", regPrompt, "\n")
+    # print("RESPONSE :", response["choices"][0]["text"])
+    # print("<<<<------------------------------------>>>>>\n\n")
+    time.sleep(0)
+    return lines
+
+
+def printJSONL(oaiModel, text):
+    prefix = "{\"prompt\": "
+    quotationMark = "\""
+    completionQuotationMark = "\" "
+    promptCompletion = "\\n\\n###\\n\\n"
+    separator = ","
+    completionKeyword = "\"completion\": "
+    openaiOutputList = getOpenAIResponse(oaiModel, text)
+    openaiOutputString = " ".join(openaiOutputList)
+    endKeyWord = " END\"}"
+
+    print(prefix + quotationMark + text + promptCompletion + quotationMark + separator +
+          completionKeyword + completionQuotationMark + openaiOutputString + endKeyWord)
+
+    return openaiOutputString
+
+
+def getHashOfText(inputText):
+    # Create a hash object
+    hash_object = hashlib.md5()
+    # Hash the string
+    hash_object.update(inputText.encode())
+    # Get the hexadecimal representation of the hash
+    hash_value = hash_object.hexdigest()
+    return hash_value
+
+
+def loadDataFrame(hashValue, text, openAIResult, dfs):
+    data = [{'promptID': hashValue,
+             'promptText': text,
+             'completion': openAIResult,
+             'changes': None,
+             'comments': None,
+             'open1': None,
+             'open2': None
+             }]
+    dfObject = pd.DataFrame(data)
+    # Remove the empty string
+    dfObject = dfObject[dfObject.completion != ""]
+    dfs = pd.concat([dfs, dfObject], ignore_index=True)
+
+    print(dfs[["promptID", "promptText", "completion"]])
+    time.sleep(0)
+    return dfs
+
+
+def processEachProvision(openAIModel, params, dfStore):
+
     for key, value in params.items():
         if key == "Metadata":
             print("key---------->", key)
@@ -441,24 +581,55 @@ def processEachProvision(params):
                         '''
                          ---> Process the Grounding
                         '''
-                        print("|                       |")
-                        print("|   Evaluate Statement  |")
-                        print("|                       |")
-                        print(text)
-                        printDepData(text)
-                        classifySpan(text)
-                        print("<<<<------------------------------------>>>>>\n\n")
+                        # print("|                       |")
+                        # print("|   Evaluate Statement  |")
+                        # print("|                       |")
+
+                        # print(text)
+                        # printShortDepData(text)
+                        # printJSONL(openAIModel, text)
+                        openAIResult = printJSONL(openAIModel, text)
+                        hashValue = getHashOfText(text)
+                        dfStore = loadDataFrame(hashValue, text, openAIResult, dfStore)
+                        # classifySpan(openAIModel, text)
+                        # printShortDepData(text)
+                        # print("<<<<------------------------------------>>>>>\n\n")
                         time.sleep(0)
 
                         '''
                         ---> Process the MetaModel
                         '''
-                        #classifyMetaModel(text)
-                        #print("Text... classifyMetaModel", text)
+                        # classifyMetaModel(text)
+                        # print("Text... classifyMetaModel", text)
+
+    return dfStore
+
+
+def initializeDataFrame():
+    # Define the column names
+    column_names = ["promptID", "promptText", "completion", "changes", "comments", "open1", "open2"]
+    # Load the list of lines into a DataFrame
+    iDF = pd.DataFrame(columns=column_names)
+
+    # Change the display options to show more text
+    pd.set_option('max_colwidth', 80)
+    print(" <><><><> INIT dataframe <><><><>")
+    print(iDF)
+    time.sleep(0)
+    return iDF
+
+
 
 
 def init(inputDict):
     regulation = inputDict
-    processEachProvision(regulation)
-    #prepareModel()
+    myOpenai = initializeModel()
+    dfReg = initializeDataFrame()
+    outputDF = processEachProvision(myOpenai, regulation, dfReg)
+
+    # Define the file name and path
+    file_name = "data.csv"
+
+    # Write the DataFrame to a CSV file
+    outputDF.to_csv(file_name, index=False)
     return regulation

@@ -1,0 +1,5 @@
+{"prompt":"The new iPhone has a better camera and faster processor ->","completion":" iphone, camera,  ['technology', ['product review', 'smartphone']]"}
+{"prompt":"The play was well-acted but the story was predictable ->","completion":" ['theater', ['review', 'entertainment']]"}
+{"prompt":"I had a great time hiking in the mountains ->","completion":" hike, mountains,  ['outdoor', ['personal experience', 'adventure']]"}
+{"prompt":"The stock market fell sharply today due to economic concerns ->","completion":"stock market, economy, ['finance', ['news', 'business']]"}
+{"prompt":"The recipe for lasagna is easy to follow and delicious ->","completion":" lasangna, delicious, ['food', ['recipe', 'italian cuisine']]"}

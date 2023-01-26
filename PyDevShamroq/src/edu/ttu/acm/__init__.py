@@ -1,4 +1,3 @@
-import time
 import xmlschema
 
 import analyze
@@ -115,7 +114,6 @@ def shamroq(listOfRegulations):
     return requirements
 
 
-
 def main():
     print("Number of regulations -->", len(regList))
     print("/------------------------------------------/")
@@ -133,35 +131,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-'''
-
-
-classificationResults = classify.init(cleanedResults)
-        for line in classificationResults:
-            print(line)
-            time.sleep(5)
-            
-            
-            
- for key, value in preProcessedResults.items():
-            print(key)
-            time.sleep(3)
-            print(value)
-            time.sleep(3)
-            
-            #validating LRML
-    test = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/lrml/compact/lrml-compact.xsd"
-
-    try:
-        schema = xmlschema.XMLSchema11(test)
-        print(schema.is_valid(test));
-    except:
-        print("Failed - please try again")
-
-        for key, value in cleanedResults.items():
-            print("key---------->", key)
-            print("value-------->", value, "\n\n")
-'''

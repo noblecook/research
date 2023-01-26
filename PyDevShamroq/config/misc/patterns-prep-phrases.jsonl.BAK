@@ -1,0 +1,13 @@
+{"label":"subj_verb_obj_01","pattern":[{"DEP": "det"},{"DEP": "nsubj"},{"TAG": "MD"},{"DEP": "ROOT"},{"DEP": "amod", "OP": "*"},{"DEP": "dobj"}]}
+{"label":"subj_verb_obj_02","pattern":[{"DEP": "det"},{"TAG": "JJ", "OP": "*"},{"DEP": "nsubj"},{"TAG": "MD"}, {"DEP": "ROOT"},{"DEP": "det", "OP": "+"},{"DEP": "dative"},{"DEP": "det", "OP": "+"},{"DEP": "dobj"},{"TAG": "TO"},{"DEP": "acl"}]}
+{"label":"subj_verb_obj_03","pattern":[{"DEP": "det"},{"DEP": "nsubjpass"},{"TAG": "TO"},{"DEP": "acl"},{"DEP": "amod", "OP": "*"},{"DEP": "dobj"},{"TAG": "MD"},{"DEP": "auxpass"},{"DEP": "advmod"},{"DEP": "ROOT"}]}
+{"label":"subj_verb_obj_04","pattern":[{"DEP": "det"},{"DEP": "nsubj"},{"TAG": "WDT"},{"TAG": "VBZ"},{"DEP": "det"},{"DEP": "dobj"},{"TAG": "MD"},{"DEP": "ROOT"},{"DEP": "dobj"}]}
+{"label":"preposition_01","pattern":[{"DEP": "prep"},{"DEP": "det", "OP": "*"},{"DEP": "pobj"},{"IS_PUNCT": true},{"DEP": "conj"},{"IS_PUNCT": true},{"DEP": "cc"},{"DEP": "conj"},{"DEP": "prep"},{"DEP": "amod", "OP": "*"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "pobj"}]}
+{"label":"preposition_02","pattern":[{"DEP": "advcl"},{"DEP": "prep"},{"DEP": "pobj"},{"TAG": "JJ", "OP": "*"},{"DEP": "dobj"}]}
+{"label":"preposition_03","pattern":[{"TAG": "VBG"},{"DEP": "pobj"},{"TAG": "IN"},{"DEP": "det"},{"TAG": "JJ", "OP": "*"},{"DEP": "pobj"},{"TAG": "IN"},{"DEP": "det"},{"DEP": "pobj"},{"IS_PUNCT": true},{"DEP": "conj"},{"IS_PUNCT": true},{"TAG": "CC"},{"DEP": "compound"},{"DEP": "conj"}]}
+{"label":"preposition_04","pattern":[{"DEP": "prep"},{"DEP": "pobj"},{"DEP": "det"},{"DEP": "nsubj"},{"TAG": "VBZ"},{"DEP": "advmod"},{"DEP": "relcl"}]}
+{"label":"preposition_05","pattern":[{"DEP": "prep"},{"DEP": "det"},{"DEP": "pobj"},{"DEP": "cc"},{"DEP": "conj"},{"DEP": "prep"},{"DEP": "det"},{"TAG": "NN"},{"TAG": "POS"},{"DEP": "amod"},{"DEP": "pobj"}]}
+{"label":"preposition_06","pattern":[{"DEP": "prep"},{"DEP": "pcomp"},{"DEP": "prep"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "poss"},{"DEP": "cc"},{"DEP": "poss"},{"DEP": "amod"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "amod"},{"DEP": "pobj"}]}
+{"label":"preposition_07","pattern":[{"TAG": "TO"},{"TAG": "VB"},{"TAG": "JJ"},{"TAG": "JJ"},{"DEP": "dobj"},{"IS_PUNCT": true}]}
+{"label":"preposition_08","pattern":[{"TAG": "IN"},{"DEP": "pobj"},{"DEP": "prep"},{"DEP": "amod"},{"DEP": "pobj"},{"IS_PUNCT": true}]}
+{"label":"preposition_09","pattern":[{"TAG": "TO"},{"DEP": "advcl"},{"DEP": "mark"},{"DEP": "det"},{"DEP": "nsubj"}, {"DEP": "acl"},{"DEP": "dobj"},{"DEP": "ccomp"},{"DEP": "det"},{"DEP": "poss"},{"DEP": "case"},{"DEP": "attr"}]}

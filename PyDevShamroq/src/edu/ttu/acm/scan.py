@@ -1,4 +1,4 @@
-
+import time
 import xml.etree.ElementTree as eTree
 
 
@@ -15,6 +15,26 @@ def readInText(textFile):
 def readInXML(xmlFile):
     tree = eTree.parse(xmlFile)
     rootNode = tree.getroot()
+    ''' 
+    # rootNode.findall(".") returns the top most element: CFRGRANULE
+    # rootNode.findall("./") returns the two main elements:  (1) FDSYS; (2) SECTION
+    # rootNode.findall(".//") returns everything (elements and sub elements) under CFRGRANULE
+    # rootNode.findall("./SECTION//P/*") returns the "E" sublements
+    # rootNode.findall("./SECTION//*") returns the "P" and "E" tags - but skips the text after "E"
+
+    for paragraph in rootNode.findall("./SECTION//*"):
+        if paragraph.tag == 'P':
+            innerText = ''.join(paragraph.itertext())
+            print(innerText)
+        elif paragraph.tag == 'E':
+            pass
+        else:
+            print(paragraph.text)
+        time.sleep(0)
+    time.sleep(0)
+    '''
+
+
     return rootNode
 
 '''
