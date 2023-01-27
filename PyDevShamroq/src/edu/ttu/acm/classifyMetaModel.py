@@ -1,5 +1,5 @@
 import time
-
+import os
 import pandas
 import spacy
 import pandas as pd
@@ -9,8 +9,7 @@ from spacy.matcher import Matcher
 from beautifultable import BeautifulTable
 import re
 import openai
-OPENAI_API_ORGANIZATION = "org-LoXrXAuJvjt0NRH6zbtHn6kb"
-OPENAI_API_KEY = "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"
+
 MODEL_LOCATION = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/shamroq.training-TRAINING.jsonl"
 
 
@@ -477,16 +476,12 @@ def classifySpan(oaim, text):
 
 
 def initializeModel():
-    openai.organization = OPENAI_API_ORGANIZATION
-    openai.api_key = OPENAI_API_KEY
-    # prints the list of models
-    # print("openai.Model.list() Type --> ", type(openai.Model.list()))
-    # print(openai.Model.list())
+    openai.api_key = os.environ["OPENAI_API_KEY"]
+    openai.organization = os.environ["OPENAI_API_ORGANIZATION"]
     return openai
 
 
 def getOpenAIResponse(oaim, text):
-    # print("getOpenAIResponse(oaim, regPrompt): ", "\n")
     context = "I want you to act as an attorney. I will give you a section of a regulation."
     openaigoal = "You will split and rephrase each regulation into multiple shorter if/then statements that express one idea."
     supplementalInfo = "You will express each if/then statement in the simple present tense."
@@ -505,14 +500,6 @@ def getOpenAIResponse(oaim, text):
     # Extract the generated text from the response
     responseText = response["choices"][0]["text"]
     lines = responseText.strip().split("\n")
-
-    # Remove leading and trailing whitespace from each line
-    lines = [line.strip() for line in lines]
-
-    # print("PROMPT: ", regPrompt, "\n")
-    # print("RESPONSE :", response["choices"][0]["text"])
-    # print("<<<<------------------------------------>>>>>\n\n")
-    time.sleep(0)
     return lines
 
 
@@ -527,10 +514,12 @@ def printJSONL(oaiModel, text):
     openaiOutputString = " ".join(openaiOutputList)
     endKeyWord = " END\"}"
 
+    '''
     print(prefix + quotationMark + text + promptCompletion + quotationMark + separator +
           completionKeyword + completionQuotationMark + openaiOutputString + endKeyWord)
+    '''
 
-    return openaiOutputString
+    return openaiOutputList
 
 
 def getHashOfText(inputText):
@@ -544,21 +533,20 @@ def getHashOfText(inputText):
 
 
 def loadDataFrame(hashValue, text, openAIResult, dfs):
-    data = [{'promptID': hashValue,
-             'promptText': text,
-             'completion': openAIResult,
-             'changes': None,
-             'comments': None,
-             'open1': None,
-             'open2': None
-             }]
-    dfObject = pd.DataFrame(data)
-    # Remove the empty string
-    dfObject = dfObject[dfObject.completion != ""]
-    dfs = pd.concat([dfs, dfObject], ignore_index=True)
-
-    print(dfs[["promptID", "promptText", "completion"]])
-    time.sleep(0)
+    for lineItem in openAIResult:
+        new_row_data = [{
+            'promptID': hashValue,
+            'promptText': text,
+            'completion': lineItem,
+            'changes': None,
+            'comments': None,
+            'open1': None,
+            'open2': None
+        }]
+        temp = pd.DataFrame(new_row_data)
+        dfs = pd.concat([dfs, temp], ignore_index=True)
+        # Remove the empty string
+        dfs = dfs[dfs.completion != ""]
     return dfs
 
 
@@ -591,6 +579,8 @@ def processEachProvision(openAIModel, params, dfStore):
                         openAIResult = printJSONL(openAIModel, text)
                         hashValue = getHashOfText(text)
                         dfStore = loadDataFrame(hashValue, text, openAIResult, dfStore)
+                        print(dfStore[["promptID", "promptText", "completion"]])
+
                         # classifySpan(openAIModel, text)
                         # printShortDepData(text)
                         # print("<<<<------------------------------------>>>>>\n\n")
@@ -610,15 +600,10 @@ def initializeDataFrame():
     column_names = ["promptID", "promptText", "completion", "changes", "comments", "open1", "open2"]
     # Load the list of lines into a DataFrame
     iDF = pd.DataFrame(columns=column_names)
-
     # Change the display options to show more text
     pd.set_option('max_colwidth', 80)
-    print(" <><><><> INIT dataframe <><><><>")
-    print(iDF)
     time.sleep(0)
     return iDF
-
-
 
 
 def init(inputDict):
@@ -626,10 +611,14 @@ def init(inputDict):
     myOpenai = initializeModel()
     dfReg = initializeDataFrame()
     outputDF = processEachProvision(myOpenai, regulation, dfReg)
+    dataset = "dataset-"
+    reg_name = "cfr_45_164_510"
+    fileExt = ".csv"
 
     # Define the file name and path
-    file_name = "data.csv"
+    file_name = dataset + reg_name + fileExt
 
     # Write the DataFrame to a CSV file
     outputDF.to_csv(file_name, index=False)
+
     return regulation
