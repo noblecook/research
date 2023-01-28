@@ -90,33 +90,98 @@ def setTemporalCharacteristics(seed, statsValue, developValue, atTimeValue):
     return temporalCharacteristicsPlural
 
 
-def setAgents(seed):
-    agentElement = etree.SubElement(seed, "Agents")
-    return agentElement
+def setAgents(seed, agentKey, agentSameAs):
+    agentsPlural = etree.SubElement(seed, "Agents")
+    agent = etree.SubElement(agentsPlural, "Agent")
+    agent.set("key", agentKey)
+    agent.set("sameAs", agentSameAs)
+    return agentsPlural
 
 
-def setAuthorities(seed):
-    authorityElement = etree.SubElement(seed, "Authorities")
-    return authorityElement
+def setAuthorities(seed, authKey, authSameAs):
+    authorityPlural = etree.SubElement(seed, "Authorities")
+    authority = etree.SubElement(authorityPlural, "Authority")
+    authority.set("key", authKey)
+    authority.set("sameAs", authSameAs)
+    return authorityPlural
 
 
-def setJurisdictions(seed):
-    jurisdictionElement = etree.SubElement(seed, "Jurisdictions")
-    return jurisdictionElement
+def setJurisdictions(seed, jurKey, jurSameAs):
+    jurisdictionPlural = etree.SubElement(seed, "Jurisdictions")
+    jurisdiction = etree.SubElement(jurisdictionPlural, "Jurisdiction")
+    jurisdiction.set("key", jurKey)
+    jurisdiction.set("sameAs", jurSameAs)
+    return jurisdictionPlural
 
 
-def setAssociations(seed):
-    associationElement = etree.SubElement(seed, "Associations")
-    return associationElement
+def setAssociationsSource(seed, assocKey, appSourceValue, keyRefRule):
+    associationPlural = etree.SubElement(seed, "Associations")
+    associationPlural.set("key", assocKey)
+    association = etree.SubElement(associationPlural, "Association")
+    appSource = etree.SubElement(association, "appliesSource")
+    appSource.set("keyref", appSourceValue)
+    toTarget = etree.SubElement(association, "toTarget")
+    toTarget.set("keyref", keyRefRule)
+    return associationPlural
 
 
-def setContext(seed):
+def setContext(seed, contextKey, appAssocKeyRef, appAltKeyRef, inScopeKeyRef):
     contextElement = etree.SubElement(seed, "Context")
+    contextElement.set("key", contextKey)
+    appAssociation = etree.SubElement(contextElement, "appliesAssociations")
+    appAssociation.set("keyref", appAssocKeyRef)
+    appAlternatives = etree.SubElement(contextElement, "appliesAlternatives")
+    appAlternatives.set("keyref", appAltKeyRef)
+    inScope = etree.SubElement(contextElement, "inScope")
+    inScope.set("keyref", inScopeKeyRef)
     return contextElement
 
 
-def setStatements(seed):
+def setStatements(seed, overRideOver, overRideUnder, ruleKey, ruleClosure,
+                  andKey, atomicKey1, relPredicate, relVar, consequentPredicate,
+                  subj, obj):
     statementElement = etree.SubElement(seed, "Statements")
+    hasQualification = etree.SubElement(statementElement, "hasQualification")
+    overRide = etree.SubElement(hasQualification, "Override")
+    overRide.set("over", overRideOver)
+    overRide.set("under", overRideUnder)
+
+    prescriptiveStmt = etree.SubElement(statementElement, "PrescriptiveStatement")
+
+    lrmlRule = etree.SubElement(prescriptiveStmt, "{http://ruleml.org/spec}Rule")
+    lrmlRule.set("key", ruleKey)
+    lrmlRule.set("closure", ruleClosure)
+    strength = etree.SubElement(lrmlRule, "hasStrength")
+    etree.SubElement(strength, "DefeasibleStrength")
+
+    ifStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}if")
+    ifStatement.append(etree.Comment("##########################"))
+    ifStatement.append(etree.Comment("The Conditional Statements"))
+    ifStatement.append(etree.Comment("##########################"))
+
+    conjAnd = etree.SubElement(ifStatement, "{http://ruleml.org/spec}And")
+    conjAnd.set("key", andKey)
+
+    atom = etree.SubElement(conjAnd, "{http://ruleml.org/spec}Atom")
+    atom.set("key", atomicKey1)
+
+    antecedentRel = etree.SubElement(atom, "{http://ruleml.org/spec}Rel")
+    antecedentRel.set("iri", relPredicate)
+
+    antecedentVar = etree.SubElement(atom, "{http://ruleml.org/spec}Var")
+    antecedentVar.text = relVar
+
+    thenStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}then")
+    subOrderedList = etree.SubElement(thenStatement, "SuborderList")
+    obligation = etree.SubElement(subOrderedList, "Obligation")
+    oblAtom = etree.SubElement(obligation, "{http://ruleml.org/spec}Atom")
+
+    oblRel = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Rel")
+    oblRel.set("iri", consequentPredicate)
+    oblVarSubj = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Var")
+    oblVarSubj.text = subj
+    oblVarObj = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Var")
+    oblVarObj.text = obj
     return statementElement
 
 
@@ -126,6 +191,7 @@ def validateSchema(lrmlCompactXsd, lrmlCompactXml):
         # Validate the XML file
         schema.validate(lrmlCompactXml)
         print("Valid!!!")
+        time.sleep(3)
         validBool = True
     except Exception as e:
         validBool = False
@@ -168,8 +234,6 @@ def initializeLRML():
     timeKeyValue = "xm:dateTime"
     regTime = "1998-10-21T00:00:00"
 
-
-
     root = setRootElement()
     setPrefix(root, "pre100")
     setLegalSources(root, legalKey, legalSameAs)
@@ -187,14 +251,51 @@ def initializeLRML():
     tempAtTime = "#t2"
     setTemporalCharacteristics(root, statIRI, statsDev, tempAtTime)
 
+    agentKey = "aut1"
+    agentSameAs = "Richard Bryan (D-NV)"
+    setAgents(root, agentKey, agentSameAs)
+
+    authKey = "Senate"
+    authSameAs = "https://www.senate.gov/"
+
+    setAuthorities(root, authKey, authSameAs)
+
+    jKey = "US"
+    jSameAs = "https://www.whitehouse.gov/"
+
+    setJurisdictions(root, jKey, jSameAs)
+
+    assocKey = "assoc01"
+    appSourceValue = "#lsref01.cfr312.5"
+    keyRefRule = "#rule1"
+
+    setAssociationsSource(root, assocKey, appSourceValue, keyRefRule)
+
+    contextKey = "Context1"
+    appAssocKeyRef = "#assoc1"
+    appAltKeyRef = "#alt2"
+    inScopeKeyRef = "#ps1"
+
+    setContext(root, contextKey, appAssocKeyRef, appAltKeyRef, inScopeKeyRef)
+
+    ruleKey = ":rule1"
+    ruleClosure = "universal"
+    overRideOver = "#ps2"
+    overRideUnder = "#ps1"
+    andKey = ":and1"
+    atomicKey1 = ":atom1"
+    realPredicate = ":operator"
+    relVar = "x"
+    conPred = ":obtain"
+    nsubject = "x"
+    obj = "y"
+
+    setStatements(root, overRideOver, overRideUnder, ruleKey, ruleClosure,
+                  andKey, atomicKey1, realPredicate, relVar,
+                  conPred, nsubject, obj)
 
 
-    setAgents(root)
-    setAuthorities(root)
-    setJurisdictions(root)
-    setAssociations(root)
-    setContext(root)
-    setStatements(root)
+
     generateXMLFile(example, root)
     validateSchema(xsd, example)
     validateSchema(xsd, xml1)

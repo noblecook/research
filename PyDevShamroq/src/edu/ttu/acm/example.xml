@@ -25,10 +25,58 @@
       <atTime keyref="#t2"/>
     </TemporalCharacteristic>
   </TemporalCharacteristics>
-  <Agents/>
-  <Authorities/>
-  <Jurisdictions/>
-  <Associations/>
-  <Context/>
-  <Statements/>
+  <Agents>
+    <Agent key="aut1" sameAs="Richard Bryan (D-NV)"/>
+  </Agents>
+  <Authorities>
+    <Authority key="Senate" sameAs="https://www.senate.gov/"/>
+  </Authorities>
+  <Jurisdictions>
+    <Jurisdiction key="US" sameAs="https://www.whitehouse.gov/"/>
+  </Jurisdictions>
+  <Associations key="assoc01">
+    <Association>
+      <appliesSource keyref="#lsref01.cfr312.5"/>
+      <toTarget keyref="#rule1"/>
+    </Association>
+  </Associations>
+  <Context key="Context1">
+    <appliesAssociations keyref="#assoc1"/>
+    <appliesAlternatives keyref="#alt2"/>
+    <inScope keyref="#ps1"/>
+  </Context>
+  <Statements>
+    <hasQualification>
+      <Override over="#ps2" under="#ps1"/>
+    </hasQualification>
+    <PrescriptiveStatement>
+      <ruleml:Rule key=":rule1" closure="universal">
+        <hasStrength>
+          <DefeasibleStrength/>
+        </hasStrength>
+        <ruleml:if>
+          <!--##########################-->
+          <!--The Conditional Statements-->
+          <!--##########################-->
+          <ruleml:And key=":and1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <SuborderList>
+            <Obligation>
+              <ruleml:Atom>
+                <ruleml:Rel iri=":obtain"/>
+                <ruleml:Var>x</ruleml:Var>
+                <ruleml:Var>y</ruleml:Var>
+              </ruleml:Atom>
+            </Obligation>
+          </SuborderList>
+        </ruleml:then>
+      </ruleml:Rule>
+    </PrescriptiveStatement>
+  </Statements>
 </LegalRuleML>
