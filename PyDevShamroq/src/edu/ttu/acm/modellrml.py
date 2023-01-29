@@ -16,35 +16,6 @@ xmlnsSchemaLocation = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"
 xmlnsXSDCompact = "file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd"
 
 
-def leopard():
-    '''
-    # Define the regulation
-    regulation = "If an operator collects personal information from a child, then it must obtain verifiable parental consent. If an operator uses personal information from a child, then it must obtain verifiable parental consent. If an operator discloses personal information from a child, then it must obtain verifiable parental consent."
-
-    # Process the regulation text with spaCy
-    doc = nlp(regulation)
-
-    # Extract the "if" and "then" clauses
-    for sent in doc.sents:
-        if "if" in sent.text:
-            # Create a PrescriptiveCondition element
-            prescriptive_condition = etree.SubElement(root, "PrescriptiveCondition")
-            # Create a condition element
-            condition = etree.SubElement(prescriptive_condition, "condition")
-            condition.text = sent.text
-
-        if "then" in sent.text:
-            # Create a consequence element
-            consequence = etree.SubElement(prescriptive_condition, "consequence")
-            consequence.text = sent.text
-
-    def setup():
-        # Load the spaCy model
-        nlp = spacy.load("en_core_web_sm")
-        return nlp
-    '''
-
-
 def setPrefix(seed, redIDValue):
     prefixElement = etree.SubElement(seed, "Prefix")
     prefixElement.set("refID", redIDValue)
@@ -136,6 +107,8 @@ def setContext(seed, contextKey, appAssocKeyRef, appAltKeyRef, inScopeKeyRef):
     inScope.set("keyref", inScopeKeyRef)
     return contextElement
 
+# consider passing in a dictionary of key/value pairs vs. 10+ parameters
+
 
 def setStatements(seed, overRideOver, overRideUnder, ruleKey, ruleClosure,
                   andKey, atomicKey1, relPredicate, relVar, consequentPredicate,
@@ -147,18 +120,28 @@ def setStatements(seed, overRideOver, overRideUnder, ruleKey, ruleClosure,
     overRide.set("under", overRideUnder)
 
     prescriptiveStmt = etree.SubElement(statementElement, "PrescriptiveStatement")
-
     lrmlRule = etree.SubElement(prescriptiveStmt, "{http://ruleml.org/spec}Rule")
     lrmlRule.set("key", ruleKey)
     lrmlRule.set("closure", ruleClosure)
+
+    '''
+    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&,,,,,,,,,,,
+    '''
+    #  Two things:
+    #  (1) Create a dictionary for the parameters
+    #  (2) Create Methods for each element under the Rule
+    '''
+    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&,,,,,,,,,,,
+    '''
+
     strength = etree.SubElement(lrmlRule, "hasStrength")
     etree.SubElement(strength, "DefeasibleStrength")
 
-    ifStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}if")
-    ifStatement.append(etree.Comment("##########################"))
-    ifStatement.append(etree.Comment("The Conditional Statements"))
-    ifStatement.append(etree.Comment("##########################"))
+    lrmlRule.append(etree.Comment("##########################"))
+    lrmlRule.append(etree.Comment("The Conditional Statements"))
+    lrmlRule.append(etree.Comment("##########################"))
 
+    ifStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}if")
     conjAnd = etree.SubElement(ifStatement, "{http://ruleml.org/spec}And")
     conjAnd.set("key", andKey)
 
@@ -218,10 +201,10 @@ def setRootElement():
         'ruleml': xmlnsRuleML,
         'xm': xmlnsSchemaDataTypes,
         'xsi': xmlnsSchemaInstance})
-
     return rootElement
 
 # ToDo:  Set Values in initializeLRML via a "config" file
+# ToDo:  Refactor
 
 
 def initializeLRML():
@@ -312,8 +295,9 @@ def init():
     processProvisions(regRoot)
 
 
-# ToDo: (1) add the schema validation (2) complete the "Statement" element (3) Process if/then
+# ToDo: (3) Process if/then
 # ToDo: (4) add the attributes to the other elements (5) Run the end-to-end test
+# ToDo: (5) the input consist of three things:  (a) a config; (b) metadata (3) the provision
 
 def main():
     init()

@@ -54,10 +54,10 @@
         <hasStrength>
           <DefeasibleStrength/>
         </hasStrength>
+        <!--##########################-->
+        <!--The Conditional Statements-->
+        <!--##########################-->
         <ruleml:if>
-          <!--##########################-->
-          <!--The Conditional Statements-->
-          <!--##########################-->
           <ruleml:And key=":and1">
             <ruleml:Atom key=":atom1">
               <ruleml:Rel iri=":operator"/>

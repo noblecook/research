@@ -1,4 +1,6 @@
 import time
+from datetime import datetime
+
 import os
 import pandas
 import spacy
@@ -482,16 +484,17 @@ def initializeModel():
 
 
 def getOpenAIResponse(oaim, text):
-    context = "I want you to act as an attorney. I will give you a section of a regulation."
-    openaigoal = "You will split and rephrase each regulation into multiple shorter if/then statements that express one idea."
-    supplementalInfo = "You will express each if/then statement in the simple present tense."
+    context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
+    openaigoalxxx = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
+    openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
+    supplementalInfo = "Each if/then statement shall address each action separately."
     inputTag = "Regulation: "
     regPrompt = context + openaigoal + supplementalInfo + inputTag + text
 
     response = oaim.Completion.create(
         model="text-davinci-003",
         prompt=regPrompt,
-        temperature=.8,
+        temperature=.1,
         max_tokens=1024,
         top_p=1,
         frequency_penalty=0,
@@ -611,12 +614,15 @@ def init(inputDict):
     myOpenai = initializeModel()
     dfReg = initializeDataFrame()
     outputDF = processEachProvision(myOpenai, regulation, dfReg)
-    dataset = "dataset-"
-    reg_name = "cfr_45_164_510"
+
+    # Get the current date and time
+    now = datetime.now()
+    dataset = "dataset-TEMP-"
+    coppa = "cfr_16_312_005"
     fileExt = ".csv"
 
     # Define the file name and path
-    file_name = dataset + reg_name + fileExt
+    file_name = dataset + coppa + fileExt
 
     # Write the DataFrame to a CSV file
     outputDF.to_csv(file_name, index=False)
