@@ -1,13 +1,13 @@
 import time
 import xmlschema
-import spacy
+from lxml import etree
+
 BASE_FILE = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/"
 BASE_FILE_EXAMPLES = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/examples/"
 xsdFileExperimentsCompactLRML = "C:/Users/patri/OneDrive/Documents/20 PhD/experiments/lrml-compact.xsd"
 xsd = BASE_FILE+"lrml-compact.xsd"
 xml1 = BASE_FILE+"instance011.xml"
 xmlschema.limits.MAX_MODEL_DEPTH = 1000
-from lxml import etree
 xmlnsLRML = "http://docs.oasis-open.org/legalruleml/ns/v1.0/"
 xmlnsRuleML = "http://ruleml.org/spec"
 xmlnsSchemaDataTypes = "http://www.w3.org/2001/XMLSchema-datatypes"
@@ -141,31 +141,52 @@ def setStatements(seed, overRideOver, overRideUnder, ruleKey, ruleClosure,
     lrmlRule.append(etree.Comment("The Conditional Statements"))
     lrmlRule.append(etree.Comment("##########################"))
 
-    ifStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}if")
-    conjAnd = etree.SubElement(ifStatement, "{http://ruleml.org/spec}And")
-    conjAnd.set("key", andKey)
+    set_If_Statement(lrmlRule, andKey)
+    set_Then_Statement(lrmlRule, consequentPredicate, subj, obj)
 
-    atom = etree.SubElement(conjAnd, "{http://ruleml.org/spec}Atom")
-    atom.set("key", atomicKey1)
+    return statementElement
 
-    antecedentRel = etree.SubElement(atom, "{http://ruleml.org/spec}Rel")
-    antecedentRel.set("iri", relPredicate)
 
-    antecedentVar = etree.SubElement(atom, "{http://ruleml.org/spec}Var")
-    antecedentVar.text = relVar
-
-    thenStatement = etree.SubElement(lrmlRule, "{http://ruleml.org/spec}then")
+def set_Then_Statement(parentLrmlRule, consequentPredicate, subj, obj):
+    print("set_Then_Statement")
+    thenStatement = etree.SubElement(parentLrmlRule, "{http://ruleml.org/spec}then")
     subOrderedList = etree.SubElement(thenStatement, "SuborderList")
     obligation = etree.SubElement(subOrderedList, "Obligation")
-    oblAtom = etree.SubElement(obligation, "{http://ruleml.org/spec}Atom")
 
+    oblAtom = etree.SubElement(obligation, "{http://ruleml.org/spec}Atom")
     oblRel = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Rel")
     oblRel.set("iri", consequentPredicate)
+
     oblVarSubj = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Var")
     oblVarSubj.text = subj
     oblVarObj = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Var")
     oblVarObj.text = obj
-    return statementElement
+
+    return thenStatement
+
+
+def set_If_Statement(parentLrmlRule, andOrValue):
+    print("set_If_Statement")
+    ifStatement = etree.SubElement(parentLrmlRule, "{http://ruleml.org/spec}if")
+    print(andOrValue)
+    time.sleep(10)
+    if andOrValue == "And":
+        andOrKey = etree.SubElement(ifStatement, "{http://ruleml.org/spec}And")
+        andOrKey.set("key", ":and1")
+    else:
+        andOrKey = etree.SubElement(ifStatement, "{http://ruleml.org/spec}Or")
+        andOrKey.set("key", ":or1")
+
+    atom = etree.SubElement(andOrKey, "{http://ruleml.org/spec}Atom")
+    atom.set("key", ":atom1")
+
+    antecedentRel = etree.SubElement(atom, "{http://ruleml.org/spec}Rel")
+    antecedentRel.set("iri", ":operator")
+
+    antecedentVar = etree.SubElement(atom, "{http://ruleml.org/spec}Var")
+    antecedentVar.text = "x"
+
+    return ifStatement
 
 
 def validateSchema(lrmlCompactXsd, lrmlCompactXml):
@@ -203,7 +224,7 @@ def setRootElement():
         'xsi': xmlnsSchemaInstance})
     return rootElement
 
-# ToDo:  Set Values in initializeLRML via a "config" file
+# ToDo:  Set Values in initializeLRML via a "config"  (or json) file
 # ToDo:  Refactor
 
 
@@ -265,7 +286,7 @@ def initializeLRML():
     ruleClosure = "universal"
     overRideOver = "#ps2"
     overRideUnder = "#ps1"
-    andKey = ":and1"
+    andKey = "And"
     atomicKey1 = ":atom1"
     realPredicate = ":operator"
     relVar = "x"
@@ -273,10 +294,10 @@ def initializeLRML():
     nsubject = "x"
     obj = "y"
 
+    # for multiple parameters like this, use a key/value pair
     setStatements(root, overRideOver, overRideUnder, ruleKey, ruleClosure,
                   andKey, atomicKey1, realPredicate, relVar,
                   conPred, nsubject, obj)
-
 
 
     generateXMLFile(example, root)
