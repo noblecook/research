@@ -65,6 +65,22 @@
             </ruleml:Atom>
           </ruleml:And>
         </ruleml:if>
+        <ruleml:if>
+          <ruleml:Or key=":or1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:Or>
+        </ruleml:if>
+        <ruleml:if>
+          <ruleml:And key=":and1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
         <ruleml:then>
           <SuborderList>
             <Obligation>

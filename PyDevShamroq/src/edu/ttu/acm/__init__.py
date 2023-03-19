@@ -1,4 +1,19 @@
-import xmlschema
+import numpy as np
+import random
+import pandas as pdd
+from sympy import symbols, And
+from datetime import datetime
+
+import nltk
+from nltk.sem.logic import LogicParser
+
+import os
+import openai
+from sympy import *
+
+
+from sympy.parsing.sympy_parser import parse_expr
+
 
 import analyze
 import classify
@@ -7,37 +22,37 @@ import relationExtractor
 import scan
 import preprocessor
 import clean
-import requests
 
 from PyDevShamroq.src.edu.ttu.acm import classifyMetaModel
+from PyDevShamroq.src.edu.ttu.acm import parseConditionals
+from PyDevShamroq.src.edu.ttu.acm import modellrml
+
+
 from relationExtractor import *
+import time
 from spacy import displacy
 from spacy.matcher import Matcher
 from spacy.matcher import PhraseMatcher
+import requests
+import xmlschema
 nlp = spacy.load("en_core_web_sm")
 encoding = 'utf-8'
 
-
-
-
+DATA_FILE_PREFIX = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/src/edu/ttu/acm/'
 FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
 FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
 FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
 
-# parent site for the regulations - https://www.govinfo.gov/
-
-
+csv_data_312_005 = DATA_FILE_PREFIX + 'dataset-TEMPx-cfr_16_312_0051.csv'
 xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
 xml_45_164_510 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-510.xml'
-
 xml_16_312_002 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-2.xml'
 xml_16_312_004 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-4.xml'
 xml_16_312_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
 xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
-
 xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2022-title16-vol1-sec313-9.xml'
 
 
@@ -56,6 +71,43 @@ def getTimeNow():
     return t
 
 
+def processConditionals(inputDF):
+    # iterate through each row of the dataframe
+    # print(inputDF.iloc[:10, :3])
+    listOfDict = []
+    prev_promptID = inputDF.loc[0, 'promptID']
+    for index, row in inputDF.iterrows():
+        if row['promptID'] == prev_promptID:
+            # print('prompt ID = ', row['promptID'])
+            # print('\t --> If/then = ', row['completion'])
+            conditional = row['completion']
+            json_file_with_conditionals = doSomethingLess(conditional)
+            listOfDict.append(json_file_with_conditionals)
+        else:
+            # print('prompt ID = ', row['promptID'])
+            # print('\t --> (NEW first row) If/then = ', row['completion'])
+            conditional = row['completion']
+            json_file_with_conditionals = doSomethingLess(conditional)
+            listOfDict.append(json_file_with_conditionals)
+        prev_promptID = row['promptID']
+    return listOfDict
+
+
+def doSomethingLess(if_then_stmt):
+    return parseConditionals.init(if_then_stmt)
+
+
+def printDataFrame(df_to_print):
+    pdd.set_option('display.max_colwidth', 70)
+    pdd.set_option('display.max_columns', None)
+    pdd.set_option('display.width', None)
+    pdd.set_option('display.colheader_justify', 'center')
+    print(df_to_print[["promptID", "completion"]])
+    print(df_to_print.iloc[:40, [0, 2]])
+    print(df_to_print.iloc[:40, :2])
+    print(df_to_print.iloc[:40, :3])
+
+
 def shamroq(listOfRegulations):
     requirements = []
     getTimeNow()
@@ -66,7 +118,8 @@ def shamroq(listOfRegulations):
         # ------>  10/5/22 add a debug flag to dynamically print portions if true
         # print("scannedResults is of type ", type(scannedResults));
         # time.sleep(100)
-        scannedResults = scan.init(regulation)
+
+        # (UNCOMMENT)  scannedResults = scan.init(regulation)
 
         # preprocessor.init()
         # input 1 = "scannedResults", an xml.etree.ElementTree.Element dataType
@@ -75,15 +128,13 @@ def shamroq(listOfRegulations):
         # print("preProcessedResults is of type ", python Dictionary );
         # print("regulation is of type ", String);
 
-        preProcessedResults = preprocessor.init(scannedResults, regulation)
+        # (UNCOMMENT)  preProcessedResults = preprocessor.init(scannedResults, regulation)
 
         # clean.init() returns a structured dictionary
         # input = "preProcessedResults", a dictionary of the CFR regulation
         # output = "cleanedResults" a dictionary of the CFR regulation with metadata
 
-        cleanedResults = clean.init(preProcessedResults)
-
-
+        # (UNCOMMENT)  cleanedResults = clean.init(preProcessedResults)
 
         # classify.init()
         # Todo:  Must classify "Grounding" - Permission, Obligation, Prohibition
@@ -97,18 +148,24 @@ def shamroq(listOfRegulations):
         # ----- THIS IS REALLY ANALYZE ------
         # ----- Build another class to use Spacy and Textacy ------
 
-        classificationResults = classifyMetaModel.init(cleanedResults)
+        # (UNCOMMENT)   classificationResults = classifyMetaModel.init(cleanedResults)
 
+        # ----------- Reading the file for now ------------
+        dff = pdd.read_csv(csv_data_312_005)
+        # Initialize Rules
+        listOfDictionaries = processConditionals(dff)
 
-        # ----- HERE WE WILL USE OWLREADY2 ------
+        # ----- HERE WE WILL USE OWLReady2 ------
         # ----- Build another class to use Spacy and Textacy ------
         # model.init() input = list of x; output = list
         # model.init(cleanedResults, classificationResults)
 
+        modellrml.init(listOfDictionaries)
+
         print("-------------------------------///////////////------------------")
         print("-------------------------------///////////////------------------")
         print("-------------------------------///////////////------------------")
-        time.sleep(1)
+        time.sleep(0)
 
     getTimeNow()
     return requirements

@@ -142,6 +142,13 @@ def setStatements(seed, overRideOver, overRideUnder, ruleKey, ruleClosure,
     lrmlRule.append(etree.Comment("##########################"))
 
     set_If_Statement(lrmlRule, andKey)
+    andKey = "Or"
+    set_If_Statement(lrmlRule, andKey)
+
+    andKey = "And"
+    set_If_Statement(lrmlRule, andKey)
+
+
     set_Then_Statement(lrmlRule, consequentPredicate, subj, obj)
 
     return statementElement
@@ -299,7 +306,6 @@ def initializeLRML():
                   andKey, atomicKey1, realPredicate, relVar,
                   conPred, nsubject, obj)
 
-
     generateXMLFile(example, root)
     validateSchema(xsd, example)
     validateSchema(xsd, xml1)
@@ -311,7 +317,11 @@ def processProvisions(r):
     print(etree.tostring(r, pretty_print=True).decode())
 
 
-def init():
+# pass the json element here in initializeLRML()
+def init(iFile):
+    print(iFile)
+    print("STOP at modeling LegalRuleML")
+    time.sleep(1000)
     regRoot = initializeLRML()
     processProvisions(regRoot)
 
@@ -320,10 +330,5 @@ def init():
 # ToDo: (4) add the attributes to the other elements (5) Run the end-to-end test
 # ToDo: (5) the input consist of three things:  (a) a config; (b) metadata (3) the provision
 
-def main():
-    init()
 
-
-if __name__ == '__main__':
-    main()
 

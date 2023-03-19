@@ -6,14 +6,15 @@
     xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ 
     file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
     
+    <!-- Use Jupyter Notebook File:  exp41-LegalRuleML-UNICORN -->
+    
     <!-- #################  -->
-    <!-- Category 1 PreFix  -->   
+    <!-- Category 1 PreFix  -->  
     <!-- #################  -->
     
     
-    <Prefix refID="pre100">
-        
-    </Prefix>
+    <Prefix refID="pre100"/>
+            
     
 
     <!-- ###################  -->

@@ -447,7 +447,7 @@ def getPredicates(label, spanText, origText):
         print("Prepositional Phrases as TEXT <><><>--> ", spanText)
         print("Original Text <><><>--> ", origText)
         #printDepData(spanText)
-        time.sleep(1)
+        time.sleep(0)
     else:
         pass
     return predicates
@@ -484,6 +484,7 @@ def initializeModel():
 
 
 def getOpenAIResponse(oaim, text):
+    print("entering getOpenAIResponse")
     context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
     openaigoalxxx = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
     openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
@@ -503,10 +504,12 @@ def getOpenAIResponse(oaim, text):
     # Extract the generated text from the response
     responseText = response["choices"][0]["text"]
     lines = responseText.strip().split("\n")
+    print("done with getOpenAIResponse")
     return lines
 
 
 def printJSONL(oaiModel, text):
+    print("entering printJSONL")
     prefix = "{\"prompt\": "
     quotationMark = "\""
     completionQuotationMark = "\" "
@@ -536,6 +539,7 @@ def getHashOfText(inputText):
 
 
 def loadDataFrame(hashValue, text, openAIResult, dfs):
+    print("entering loadDataFrame")
     for lineItem in openAIResult:
         new_row_data = [{
             'promptID': hashValue,
@@ -582,7 +586,7 @@ def processEachProvision(openAIModel, params, dfStore):
                         openAIResult = printJSONL(openAIModel, text)
                         hashValue = getHashOfText(text)
                         dfStore = loadDataFrame(hashValue, text, openAIResult, dfStore)
-                        print(dfStore[["promptID", "promptText", "completion"]])
+                        #print(dfStore[["promptID", "promptText", "completion"]])
 
                         # classifySpan(openAIModel, text)
                         # printShortDepData(text)
@@ -617,7 +621,7 @@ def init(inputDict):
 
     # Get the current date and time
     now = datetime.now()
-    dataset = "dataset-TEMP-"
+    dataset = "dataset-TEMPx-"
     coppa = "cfr_16_312_005"
     fileExt = ".csv"
 
@@ -627,4 +631,4 @@ def init(inputDict):
     # Write the DataFrame to a CSV file
     outputDF.to_csv(file_name, index=False)
 
-    return regulation
+    return outputDF
