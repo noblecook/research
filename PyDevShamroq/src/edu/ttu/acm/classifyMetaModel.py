@@ -13,6 +13,8 @@ import re
 import openai
 
 MODEL_LOCATION = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/shamroq.training-TRAINING.jsonl"
+OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
+
 
 
 
@@ -483,48 +485,65 @@ def initializeModel():
     return openai
 
 
+# https://help.openai.com/en/articles/6897213-openai-library-error-types-guidance
 def getOpenAIResponse(oaim, text):
-    print("entering getOpenAIResponse")
+    _openApi = initializeModel()
     context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
-    openaigoalxxx = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
     openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
     supplementalInfo = "Each if/then statement shall address each action separately."
     inputTag = "Regulation: "
     regPrompt = context + openaigoal + supplementalInfo + inputTag + text
+    response = None
+    try:
+        # Attempt to connect
+        # response = oaim.Completion.create(
 
-    response = oaim.Completion.create(
-        model="text-davinci-003",
-        prompt=regPrompt,
-        temperature=.1,
-        max_tokens=1024,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0
-    )
+        response = _openApi.Completion.create(
+            model="text-davinci-003",
+            prompt=regPrompt,
+            temperature=0.1,
+            max_tokens=2048,
+            top_p=1.0,
+            frequency_penalty=0,
+            presence_penalty=0
+        )
+    except _openApi.error.Timeout as e:
+        # Handle timeout error, e.g. retry or log
+        print(f"OpenAI API request timed out: {e}")
+        pass
+    except _openApi.error.APIError as e:
+        # Handle API error, e.g. retry or log
+        print(f"OpenAI API returned an API Error: {e}")
+        pass
+    except _openApi.error.APIConnectionError as e:
+        # Handle connection error, e.g. check network or log
+        print(f"OpenAI API request failed to connect: {e}")
+        pass
+    except _openApi.error.InvalidRequestError as e:
+        # Handle invalid request error, e.g. validate parameters or log
+        print(f"OpenAI API request was invalid: {e}")
+        pass
+    except _openApi.error.AuthenticationError as e:
+        # Handle authentication error, e.g. check credentials or log
+        print(f"OpenAI API request was not authorized: {e}")
+        pass
+    except _openApi.error.PermissionError as e:
+        # Handle permission error, e.g. check scope or log
+        print(f"OpenAI API request was not permitted: {e}")
+        pass
+    except _openApi.error.RateLimitError as e:
+        # Handle rate limit error, e.g. wait or log
+        print(f"OpenAI API request exceeded rate limit: {e}")
+        pass
+
     # Extract the generated text from the response
     responseText = response["choices"][0]["text"]
     lines = responseText.strip().split("\n")
-    print("done with getOpenAIResponse")
     return lines
 
 
 def printJSONL(oaiModel, text):
-    print("entering printJSONL")
-    prefix = "{\"prompt\": "
-    quotationMark = "\""
-    completionQuotationMark = "\" "
-    promptCompletion = "\\n\\n###\\n\\n"
-    separator = ","
-    completionKeyword = "\"completion\": "
     openaiOutputList = getOpenAIResponse(oaiModel, text)
-    openaiOutputString = " ".join(openaiOutputList)
-    endKeyWord = " END\"}"
-
-    '''
-    print(prefix + quotationMark + text + promptCompletion + quotationMark + separator +
-          completionKeyword + completionQuotationMark + openaiOutputString + endKeyWord)
-    '''
-
     return openaiOutputList
 
 
@@ -539,7 +558,6 @@ def getHashOfText(inputText):
 
 
 def loadDataFrame(hashValue, text, openAIResult, dfs):
-    print("entering loadDataFrame")
     for lineItem in openAIResult:
         new_row_data = [{
             'promptID': hashValue,
@@ -586,8 +604,8 @@ def processEachProvision(openAIModel, params, dfStore):
                         openAIResult = printJSONL(openAIModel, text)
                         hashValue = getHashOfText(text)
                         dfStore = loadDataFrame(hashValue, text, openAIResult, dfStore)
-                        #print(dfStore[["promptID", "promptText", "completion"]])
 
+                        # print(dfStore[["promptID", "promptText", "completion"]])
                         # classifySpan(openAIModel, text)
                         # printShortDepData(text)
                         # print("<<<<------------------------------------>>>>>\n\n")
@@ -620,13 +638,14 @@ def init(inputDict):
     outputDF = processEachProvision(myOpenai, regulation, dfReg)
 
     # Get the current date and time
-    now = datetime.now()
-    dataset = "dataset-TEMPx-"
+
+    dataset = "dataset-"
     coppa = "cfr_16_312_005"
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
 
     # Define the file name and path
-    file_name = dataset + coppa + fileExt
+    file_name = OUTPUT + dataset + coppa + now + fileExt
 
     # Write the DataFrame to a CSV file
     outputDF.to_csv(file_name, index=False)

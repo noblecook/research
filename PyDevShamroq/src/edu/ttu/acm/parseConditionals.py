@@ -151,6 +151,7 @@ def processConditional(if_then_statement):
     return ruleList
 
 
+# THIS CAN BE REMOVED
 def processStatement(stmt):
     rule = processConditional(stmt)
     return rule

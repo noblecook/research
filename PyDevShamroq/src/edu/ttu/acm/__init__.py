@@ -38,12 +38,12 @@ import xmlschema
 nlp = spacy.load("en_core_web_sm")
 encoding = 'utf-8'
 
-DATA_FILE_PREFIX = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/src/edu/ttu/acm/'
+OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
 FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
 FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
 FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
 
-csv_data_312_005 = DATA_FILE_PREFIX + 'dataset-TEMPx-cfr_16_312_0051.csv'
+csv_data_312_005 = OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
 xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
@@ -108,9 +108,18 @@ def printDataFrame(df_to_print):
     print(df_to_print.iloc[:40, :3])
 
 
-def shamroq(listOfRegulations):
-    requirements = []
-    getTimeNow()
+def getStatusUpdateForGPO():
+    # call GPO website via Api
+    pass
+    # get current data stored in metadata file
+
+    # compare the two dates
+
+    # return boolean
+
+
+def getUpdateProvision(listOfRegulations):
+    classificationResults = None
     for regulation in listOfRegulations:
         # scan.init()
         # input  = "regulation", a string of the xml file location;
@@ -119,7 +128,7 @@ def shamroq(listOfRegulations):
         # print("scannedResults is of type ", type(scannedResults));
         # time.sleep(100)
 
-        # (UNCOMMENT)  scannedResults = scan.init(regulation)
+        scannedResults = scan.init(regulation)
 
         # preprocessor.init()
         # input 1 = "scannedResults", an xml.etree.ElementTree.Element dataType
@@ -128,13 +137,13 @@ def shamroq(listOfRegulations):
         # print("preProcessedResults is of type ", python Dictionary );
         # print("regulation is of type ", String);
 
-        # (UNCOMMENT)  preProcessedResults = preprocessor.init(scannedResults, regulation)
+        preProcessedResults = preprocessor.init(scannedResults, regulation)
 
         # clean.init() returns a structured dictionary
         # input = "preProcessedResults", a dictionary of the CFR regulation
         # output = "cleanedResults" a dictionary of the CFR regulation with metadata
 
-        # (UNCOMMENT)  cleanedResults = clean.init(preProcessedResults)
+        cleanedResults = clean.init(preProcessedResults)
 
         # classify.init()
         # Todo:  Must classify "Grounding" - Permission, Obligation, Prohibition
@@ -143,32 +152,52 @@ def shamroq(listOfRegulations):
         # input => dictionary of x;
         # output => list
         # Option 1) use nltk, work tokenized, POS tagging, and chunking [ CURRENT ]
-        # Option 2) use spacy and textacy 
+        # Option 2) use spacy and textacy
         # List the pros and cons of each; then what I used and why
         # ----- THIS IS REALLY ANALYZE ------
         # ----- Build another class to use Spacy and Textacy ------
 
-        # (UNCOMMENT)   classificationResults = classifyMetaModel.init(cleanedResults)
+        classificationResults = classifyMetaModel.init(cleanedResults)
 
-        # ----------- Reading the file for now ------------
-        dff = pdd.read_csv(csv_data_312_005)
-        # Initialize Rules
-        listOfDictionaries = processConditionals(dff)
+    return classificationResults
 
-        # ----- HERE WE WILL USE OWLReady2 ------
-        # ----- Build another class to use Spacy and Textacy ------
-        # model.init() input = list of x; output = list
-        # model.init(cleanedResults, classificationResults)
 
-        modellrml.init(listOfDictionaries)
+def processRegulations():
+    print("HOLD UP")
+    time.sleep(100)
 
-        print("-------------------------------///////////////------------------")
-        print("-------------------------------///////////////------------------")
-        print("-------------------------------///////////////------------------")
-        time.sleep(0)
+    # ----------- Reading the file for now ------------
 
+    dff = pdd.read_csv(csv_data_312_005)
+    # Initialize Rules
+    # input => a dataframe of values that contain if/then statements
+    # output -> a list of dictionaries that contain antecedent/consequent
+    # corresponding to the input if/then statements to be used in the
+    # creation of the Legal Rule ML file
+    listOfDictionaries = processConditionals(dff)
+
+    # ----- HERE WE WILL USE OWLReady2 ------
+    # ----- Build another class to use Spacy and Textacy ------
+    # model.init() input = list of x; output = list
+    # model.init(cleanedResults, classificationResults)
+
+    return listOfDictionaries
+
+
+def is_Provision_Up_to_Date():
+    return False
+
+
+def shamroq(listOfRegulations):
     getTimeNow()
-    return requirements
+    if is_Provision_Up_to_Date():
+        listOfConditionals = getUpdateProvision(listOfRegulations)
+    else:
+        listOfConditionals = processRegulations()
+
+    modellrml.init(listOfConditionals)
+    getTimeNow()
+    return listOfConditionals
 
 
 def main():
