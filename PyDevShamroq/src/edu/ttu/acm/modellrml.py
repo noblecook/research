@@ -6,7 +6,6 @@ from datetime import datetime
 from PyDevShamroq.src.edu.ttu.acm import metadata_association_elements
 
 
-
 OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
 BASE_FILE = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/"
 BASE_FILE_EXAMPLES = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/examples/"

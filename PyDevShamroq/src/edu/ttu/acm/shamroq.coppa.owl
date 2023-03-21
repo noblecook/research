@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://shamroq.phd.edu.ttu/shamroq.owl"
+         xmlns="http://shamroq.phd.edu.ttu/shamroq.owl#">
+
+<owl:Ontology rdf:about="http://shamroq.phd.edu.ttu/shamroq.owl"/>
+
+<owl:ObjectProperty rdf:about="#collects">
+  <rdfs:domain rdf:resource="#Operator"/>
+  <rdfs:range rdf:resource="#PersonalInformation"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#obtains">
+  <rdfs:domain rdf:resource="#Operator"/>
+  <rdfs:range rdf:resource="#VerifiableParentalConsent"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Operator">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PersonalInformation">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Child">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#VerifiableParentalConsent">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+
+</rdf:RDF>
