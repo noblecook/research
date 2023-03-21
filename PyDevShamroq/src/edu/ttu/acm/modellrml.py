@@ -1,8 +1,10 @@
 import time
 import xmlschema
+import pprint
 from lxml import etree
 from datetime import datetime
 from PyDevShamroq.src.edu.ttu.acm import metadata_association_elements
+
 
 
 OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
@@ -54,11 +56,11 @@ def setTimes(rootOfXML, timeKeyValue, regTime):
     return timesPlural
 
 
-def setTemporalCharacteristics(rootOfXML, statsValue, developValue, atTimeValue):
+def setTemporalCharacteristics(rootOfXML, statsDev, developValue, atTimeValue):
     temporalCharacteristicsPlural = etree.SubElement(rootOfXML, "TemporalCharacteristics")
     temporalCharacteristic = etree.SubElement(temporalCharacteristicsPlural, "TemporalCharacteristic")
     status = etree.SubElement(temporalCharacteristic, "forStatus")
-    status.set("iri", statsValue)
+    status.set("iri", statsDev)
     statusDevelopment = etree.SubElement(temporalCharacteristic, "hasStatusDevelopment")
     statusDevelopment.set("iri", developValue)
     atTime = etree.SubElement(temporalCharacteristic, "atTime")
@@ -159,7 +161,7 @@ def setStatements(rootOfXML, overRideOver, overRideUnder, ruleKey, ruleClosure,
 
 
 def set_Then_Statement(parentLrmlRule, consequentPredicate, subj, obj):
-    print("set_Then_Statement")
+
     thenStatement = etree.SubElement(parentLrmlRule, "{http://ruleml.org/spec}then")
     subOrderedList = etree.SubElement(thenStatement, "SuborderList")
     obligation = etree.SubElement(subOrderedList, "Obligation")
@@ -177,10 +179,8 @@ def set_Then_Statement(parentLrmlRule, consequentPredicate, subj, obj):
 
 
 def set_If_Statement(parentLrmlRule, andOrValue):
-    print("set_If_Statement")
+
     ifStatement = etree.SubElement(parentLrmlRule, "{http://ruleml.org/spec}if")
-    print(andOrValue)
-    time.sleep(10)
     if andOrValue == "And":
         andOrKey = etree.SubElement(ifStatement, "{http://ruleml.org/spec}And")
         andOrKey.set("key", ":and1")
@@ -229,17 +229,6 @@ def generateXMLFile(tree):
     return xmlOutput
 
 
-def setRootElement():
-    nice = xmlnsSchemaLocation + " " + xmlnsXSDCompact
-    attr_qname = etree.QName("http://www.w3.org/2001/XMLSchema-instance", "schemaLocation")
-    rootElement = etree.Element("LegalRuleML", {attr_qname: nice}, nsmap={
-        None: xmlnsLRML,
-        'ruleml': xmlnsRuleML,
-        'xm': xmlnsSchemaDataTypes,
-        'xsi': xmlnsSchemaInstance})
-    return rootElement
-
-
 def set_RootElement_with_Namespaces():
     nice = xmlnsSchemaLocation + " " + xmlnsXSDCompact
     attr_qname = etree.QName("http://www.w3.org/2001/XMLSchema-instance", "schemaLocation")
@@ -250,210 +239,84 @@ def set_RootElement_with_Namespaces():
         'xsi': xmlnsSchemaInstance})
     return rootElement
 
-# ToDo:  Set Values in initializeLRML via a "config"  (or json) file
-# ToDo:  Refactor
-
-
-def initializeLRML():
-    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    example = OUTPUT + xmlExampleLRML + now
-
-    legalKey = "lsref01cfr312.5"
-    legalSameAs = "www.patrick.cook.com"
-    rt = "lsref02"
-    rID = "/us/USCODE/eng@/main#title16-sec312.5"
-    rIDSystem = "AkomaNtoso2.0.2012-10"
-    timeKeyValue = "xm:dateTime"
-    regTime = "1998-10-21T00:00:00"
-
-    root = setRootElement()
-    setPrefix(root, "pre100")
-
-
-    setLegalSources(root, legalKey, legalSameAs)
-    setReferences(root, rt, rID, rIDSystem)
-    setTimes(root, timeKeyValue, regTime)
-
-    statIRI = "&amp;lrmlv;#Efficacious"
-    statsDev = "&amp;lrmlv;#Starts"
-    tempAtTime = "#t1"
-
-    setTemporalCharacteristics(root, statIRI, statsDev, tempAtTime)
-
-    statIRI = "&amp;lrmlv;#Efficacious"
-    statsDev = "&amp;lrmlv;#End"
-    tempAtTime = "#t2"
-    setTemporalCharacteristics(root, statIRI, statsDev, tempAtTime)
-
-    agentKey = "aut1"
-    agentSameAs = "Richard Bryan (D-NV)"
-    setAgents(root, agentKey, agentSameAs)
-
-    authKey = "Senate"
-    authSameAs = "https://www.senate.gov/"
-
-    setAuthorities(root, authKey, authSameAs)
-
-    jKey = "US"
-    jSameAs = "https://www.whitehouse.gov/"
-
-    setJurisdictions(root, jKey, jSameAs)
-
-    assocKey = "assoc01"
-    appSourceValue = "#lsref01.cfr312.5"
-    keyRefRule = "#rule1"
-
-    setAssociationsSource(root, assocKey, appSourceValue, keyRefRule)
-
-    contextKey = "Context1"
-    appAssocKeyRef = "#assoc1"
-    appAltKeyRef = "#alt2"
-    inScopeKeyRef = "#ps1"
-
-    setContext(root, contextKey, appAssocKeyRef, appAltKeyRef, inScopeKeyRef)
-
-    ruleKey = ":rule1"
-    ruleClosure = "universal"
-    overRideOver = "#ps2"
-    overRideUnder = "#ps1"
-    andKey = "And"
-    atomicKey1 = ":atom1"
-    realPredicate = ":operator"
-    relVar = "x"
-    conPred = ":obtain"
-    nsubject = "x"
-    obj = "y"
-
-    # for multiple parameters like this, use a key/value pair
-    setStatements(root, overRideOver, overRideUnder, ruleKey, ruleClosure,
-                  andKey, atomicKey1, realPredicate, relVar,
-                  conPred, nsubject, obj)
-
-    generateXMLFile(example, root)
-    validateSchema(xsd, example)
-    validateSchema(xsd, xml1)
-    return root
-
 
 def set_MetaData(rootElement, keyValueAsParams):
     setPrefix(rootElement, "pre100")
 
-    setLegalSources(rootElement, keyValueAsParams['legalSources']['legalKey'],
+    setLegalSources(rootElement,
+                    keyValueAsParams['legalSources']['legalKey'],
                     keyValueAsParams['legalSources']['legalSameAs'])
-    # setLegalSources(rootElement, legalKey, legalSameAs)
 
-    setReferences(rootElement, keyValueAsParams['references']['rt'],
-                  keyValueAsParams['references']['rID'], keyValueAsParams['references']['rIDSystem'])
-    # setReferences(rootElement, rt, rID, rIDSystem)
+    setReferences(rootElement,
+                  keyValueAsParams['references']['rt'],
+                  keyValueAsParams['references']['rID'],
+                  keyValueAsParams['references']['rIDSystem'])
 
-    setTimes(rootElement, keyValueAsParams['times']['timeKeyValue'], keyValueAsParams['times']['regTime'])
-    # setTimes(rootElement, timeKeyValue, regTime)
+    setTimes(rootElement,
+             keyValueAsParams['times']['timeKeyValue'],
+             keyValueAsParams['times']['regTime'])
 
-    setTemporalCharacteristics(rootElement, keyValueAsParams['statIRI']['&amp;lrmlv;#Efficacious'],
-                               keyValueAsParams['statsDev']['&amp;lrmlv;#Starts'],
-                               keyValueAsParams['endingDev']['&amp;lrmlv;#End'],
-                               keyValueAsParams['tempAtTime1']['#t1'],
-                               keyValueAsParams['tempAtTime2']['#t2'])
-    # setTemporalCharacteristics(rootOfXML, statsValue, developValue, atTimeValue)
+    setTemporalCharacteristics(rootElement,
+                               keyValueAsParams['temporalCharacter']['statsDev'],
+                               keyValueAsParams['temporalCharacter']['endingDev'],
+                               keyValueAsParams['temporalCharacter']['tempAtTime1'])
+    setAgents(rootElement,
+              keyValueAsParams['agent']['agentKey'],
+              keyValueAsParams['agent']['agentSameAs'])
 
-    setAgents(rootElement, keyValueAsParams['agentKey']['aut1'], keyValueAsParams['agentSameAs']['Richard Bryan (D-NV)'])
-    # setAgents(rootElement, agentKey, agentSameAs)
+    setAuthorities(rootElement,
+                   keyValueAsParams['authorities']['authoritiesKey'],
+                   keyValueAsParams['authorities']['authoritiesSameAs'])
 
-    setAuthorities(rootElement, keyValueAsParams['authoritiesKey']['Senate'],
-                   keyValueAsParams['authoritiesSameAs']['https://www.senate.gov/'])
-    # setAuthorities(rootElement, authKey, authSameAs)
-
-    setJurisdictions(rootElement, keyValueAsParams['jKey']['US'], keyValueAsParams['jSameAs']['https://www.whitehouse.gov/'])
-    # setJurisdictions(rootElement, jKey, jSameAs)
+    setJurisdictions(rootElement,
+                     keyValueAsParams['jurisdiction']['jKey'],
+                     keyValueAsParams['jurisdiction']['jSameAs'])
 
 
 def set_Associations(rootElement, keyValueAsParams):
-    assocKey = "assoc01"
-    appSourceValue = "#lsref01.cfr312.5"
-    keyRefRule = "#rule1"
-    setAssociationsSource(rootElement, keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                          keyValueAsParams['a']['ab'])
-    setAssociationsSource(rootElement, assocKey, appSourceValue, keyRefRule)
+    setAssociationsSource(rootElement,
+                          keyValueAsParams['assocSource']['assocKey'],
+                          keyValueAsParams['assocSource']['appSourceValue'],
+                          keyValueAsParams['assocSource']['keyRefRule'])
 
 
-def set_Statements_Related_Elements(rootElement, keyValueAsParams):
-    setContext(rootElement, keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-               keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'])
-    setContext(rootElement, contextKey, appAssocKeyRef, appAltKeyRef, inScopeKeyRef)
+def set_Statements_Related_Elements(rootElement, stmtKVP):
+    context = metadata_association_elements.getContextMetaData()
+    stmtMetadata = metadata_association_elements.getStatementMetaData()
+
+    setContext(rootElement, context['context']['contextKey'], context['context']['appAssocKeyRef'],
+               context['context']['appAltKeyRef'], context['context']['inScopeKeyRef'])
 
     # for multiple parameters like this, use a key/value pair
-    setStatements(rootElement, keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                  keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                  keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                  keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                  keyValueAsParams['a']['ab'], keyValueAsParams['a']['ab'],
-                  keyValueAsParams['a']['ab'])
+    setStatements(rootElement,
+                  stmtMetadata['properties']['overRideOver'], stmtMetadata['properties']['overRideUnder'],
+                  stmtMetadata['properties']['ruleKey'], stmtMetadata['properties']['ruleClosure'],
+                  stmtMetadata['properties']['andKey'], stmtMetadata['properties']['atomicKey1'],
+                  stmtMetadata['antecedent']['subject'],
+                  stmtMetadata['antecedent']['predicate'],  # relVar maps to "x" (maybe enumerated x1, x2, ..., xn)
+                  stmtMetadata['antecedent']['dobj'],  # conPred maps to "ROOT"
+                  stmtMetadata['consequent']['subject'],  # nsubject maps to x
+                  stmtMetadata['consequent']['root'])  # obj maps to x
 
-    setStatements(rootElement, overRideOver, overRideUnder, ruleKey, ruleClosure,
-                  andKey, atomicKey1, realPredicate, relVar,
-                  conPred, nsubject, obj)
 
-
-def setLegalRuleML(conditional_params):
+def setLegalRuleML(metadata, assoc, stmts):
     root = set_RootElement_with_Namespaces()
-
-    metadata = metadata_association_elements.getMetaData()
     set_MetaData(root, metadata)
-
-    associations = metadata_association_elements.getAssociations()
-    set_Associations(root, associations)
-
-    statements = conditional_params
-    set_Statements_Related_Elements(statements)
-
-    output = generateXMLFile(root)
-    validateSchema(xsd, output)
-    validateSchema(xsd, xml1)
+    set_Associations(root, assoc)
+    set_Statements_Related_Elements(root, stmts)
     return root
 
 
-# pass the json element here in initializeLRML()
-def getDictValue():
-    dict_LRML_ELEMENTS = {}
-    dict_Legal_Sources = {}
-    dict_References = {}
-    dict_Times = {}
-    dict_Temporal_Chars = {}
-    dict_Agents = {}
-    dict_Authorities = {}
-    dict_Jurisdictions = {}
-    dict_Association_Source = {}
-    dict_Context = {}
-    dict_Statements = {}
-
-    legalKey = "lsref01cfr312.5"
-    legalSameAs = "www.patrick.cook.com"
-    rt = "lsref02"
-    rID = "/us/USCODE/eng@/main#title16-sec312.5"
-    rIDSystem = "AkomaNtoso2.0.2012-10"
-    timeKeyValue = "xm:dateTime"
-    regTime = "1998-10-21T00:00:00"
-    dictKeyValues = {}
-    if dictKeyValues != None:
-        loadDictionary()
-    else:
-        dictKeyValues['x'] = "y"
-
-
 def init(input_dict_conditional_params):
-    # metadata = getMetaData()
-    # associations = getAssociations()
-    # statements = getStatements(input_dict_conditional_params)
-    setLegalRuleML(input_dict_conditional_params)
-    # regRoot = initializeLRML()
-    # regDict = getDictValue(iFile)
+    metadata = metadata_association_elements.getMetaData()
+    associations = metadata_association_elements.getAssociations()
 
+    # Todo: This is a list of dictionaries, you must take ths
+    # Todo: Take out the dictionaries and create each provision in a loop
+    statements = input_dict_conditional_params
+    regRoot = setLegalRuleML(metadata, associations, statements)
+    output = generateXMLFile(regRoot)
+    validateSchema(xsd, output)
+    validateSchema(xsd, xml1)
     print(etree.tostring(regRoot, pretty_print=True).decode())
-
-
-# ToDo: (3) Process if/then
-# ToDo: (4) add the attributes to the other elements (5) Run the end-to-end test
-# ToDo: (5) the input consist of three things:  (a) a config; (b) metadata (3) the provision
-
-
 

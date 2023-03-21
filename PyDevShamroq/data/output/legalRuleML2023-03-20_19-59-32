@@ -1,0 +1,91 @@
+<LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+  <Prefix refID="pre100"/>
+  <LegalSources>
+    <LegalSource key="lsref01cfr312.5" sameAs="www.patrick.cook.com"/>
+  </LegalSources>
+  <References>
+    <Reference refersTo="lsref02" refID="/us/USCODE/eng@/main#title16-sec312.5" refIDSystemName="AkomaNtoso2.0.2012-10"/>
+  </References>
+  <Times>
+    <ruleml:Time key="xm:dateTime">
+      <ruleml:Data xsi:type="xm:dateTime">1998-10-21T00:00:00</ruleml:Data>
+    </ruleml:Time>
+  </Times>
+  <TemporalCharacteristics>
+    <TemporalCharacteristic>
+      <forStatus iri="&amp;amp;lrmlv;#Starts"/>
+      <hasStatusDevelopment iri="&amp;amp;lrmlv;#End"/>
+      <atTime keyref="#t1"/>
+    </TemporalCharacteristic>
+  </TemporalCharacteristics>
+  <Agents>
+    <Agent key="aut1" sameAs="Richard Bryan (D-NV)"/>
+  </Agents>
+  <Authorities>
+    <Authority key="Senate" sameAs="https://www.senate.gov/"/>
+  </Authorities>
+  <Jurisdictions>
+    <Jurisdiction key="US" sameAs="https://www.whitehouse.gov/"/>
+  </Jurisdictions>
+  <Associations key="assoc01">
+    <Association>
+      <appliesSource keyref="#lsref01.cfr312.5"/>
+      <toTarget keyref="#rule1"/>
+    </Association>
+  </Associations>
+  <Context key="Context1">
+    <appliesAssociations keyref="#assoc1"/>
+    <appliesAlternatives keyref="#alt2"/>
+    <inScope keyref="#ps1"/>
+  </Context>
+  <Statements>
+    <hasQualification>
+      <Override over="#ps2" under="#ps1"/>
+    </hasQualification>
+    <PrescriptiveStatement>
+      <ruleml:Rule key=":rule1" closure="universal">
+        <hasStrength>
+          <DefeasibleStrength/>
+        </hasStrength>
+        <!--##########################-->
+        <!--The Conditional Statements-->
+        <!--##########################-->
+        <ruleml:if>
+          <ruleml:And key=":and1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:if>
+          <ruleml:Or key=":or1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:Or>
+        </ruleml:if>
+        <ruleml:if>
+          <ruleml:And key=":and1">
+            <ruleml:Atom key=":atom1">
+              <ruleml:Rel iri=":operator"/>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <SuborderList>
+            <Obligation>
+              <ruleml:Atom>
+                <ruleml:Rel iri="personalInformation"/>
+                <ruleml:Var>they</ruleml:Var>
+                <ruleml:Var>obtain</ruleml:Var>
+              </ruleml:Atom>
+            </Obligation>
+          </SuborderList>
+        </ruleml:then>
+      </ruleml:Rule>
+    </PrescriptiveStatement>
+  </Statements>
+</LegalRuleML>

@@ -54,3 +54,46 @@ def getAssociations():
     }
     return metadata
 
+
+def getContextMetaData():
+    metadata = {
+        'context': {
+            'contextKey': "Context1",
+            'appAssocKeyRef': "#assoc1",
+            'appAltKeyRef': "#alt2",
+            'inScopeKeyRef': "#ps1"
+        }
+    }
+    return metadata
+
+
+def getStatementMetaData():
+    ruleList = {
+        'properties': {
+            'legalProvision': ':rule1',
+            'section': "#assoc1",
+            'ruleKey': ':rule1',
+            'ruleClosure': 'universal',
+            'overRideOver': '#ps2',
+            'overRideUnder': '#ps1',
+            'andKey': 'And',
+            'atomicKey1': ':atom1'
+        },
+        'antecedent': {
+            'dobj': 'x',
+            'pObj': 'from children',
+            'predicate': 'collects',
+            'subject': 'an operator'
+        },
+        'consequent': {
+            'dobj': 'verifiable parental consent',
+            'modality': 'must',
+            'root': 'obtain',
+            'subject': 'they'
+        }
+
+    }
+    return ruleList
+
+
+

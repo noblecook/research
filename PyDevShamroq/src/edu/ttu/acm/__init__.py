@@ -163,9 +163,6 @@ def getUpdateProvision(listOfRegulations):
 
 
 def processRegulations():
-    print("HOLD UP")
-    time.sleep(100)
-
     # ----------- Reading the file for now ------------
 
     dff = pdd.read_csv(csv_data_312_005)

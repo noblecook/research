@@ -148,6 +148,7 @@ def processConditional(if_then_statement):
 
     # print("\n")
     # print(ruleList)
+    # time.sleep(10)
     return ruleList
 
 
