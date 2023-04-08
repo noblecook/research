@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleml:After xmlns:ruleml="http://ruleml.org/spec"
+ xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+ xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://ruleml.org/spec file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+</ruleml:After>

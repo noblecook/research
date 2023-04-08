@@ -34,7 +34,6 @@ def readInXML(xmlFile):
     time.sleep(0)
     '''
 
-
     return rootNode
 
 '''

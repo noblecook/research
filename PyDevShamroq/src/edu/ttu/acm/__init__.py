@@ -1,5 +1,3 @@
-import urllib.request
-
 import pandas as pdd
 import analyze
 import classify
@@ -10,7 +8,7 @@ import preprocessor
 import clean
 import os
 import requests
-
+import xml.etree.ElementTree as eTree
 from PyDevShamroq.src.edu.ttu.acm import classifyMetaModel
 from PyDevShamroq.src.edu.ttu.acm import parseConditionals
 from PyDevShamroq.src.edu.ttu.acm import modellrml
@@ -166,8 +164,21 @@ def processRegulations(csv_file_location):
 def getCFRMetaData(reg_xml_file_location):
     # use XSLT to get only two important elements
     # store the results and return
+    tree = eTree.parse(reg_xml_file_location)
+    root = tree.getroot()
 
-    pass
+    cfrMetaData = {
+        'CFRTITLE': root.find('FDSYS/CFRTITLE').text,
+        'CFRTITLETEXT': root.find('FDSYS/CFRTITLETEXT').text,
+        'VOL': root.find('FDSYS/VOL').text,
+        'DATE': root.find('FDSYS/DATE').text,
+        'ORIGINALDATE': root.find('FDSYS/ORIGINALDATE').text,
+        'COVERONLY': root.find('FDSYS/COVERONLY').text,
+        'TITLE': root.find('FDSYS/TITLE').text,
+        'GRANULENUM': root.find('FDSYS/GRANULENUM').text,
+        'HEADING': root.find('FDSYS/HEADING').text
+    }
+    return cfrMetaData
 
 
 def queryGovInfoApi():
@@ -190,7 +201,7 @@ def queryGovInfoApi():
     return data
 
 
-def getCurrentCFRDate(pName, pDate):
+def getCurrentCFRDateFromGPO(pName, pDate):
     # make an api call to govinfo.gov/api - get provision number and date
     # compare the two, if same, return True, else False
     queryGovInfoApi()
@@ -203,7 +214,7 @@ def is_Provision_Up_to_Date(reg_xml_file_location):
 
     # get the provision number and date from the passed in file
     getCFRMetaData(reg_xml_file_location)
-    getCurrentCFRDate(pName, pDate)
+    getCurrentCFRDateFromGPO(pName, pDate)
         
     return updateToDate
 
@@ -227,8 +238,11 @@ def main():
     print("/------------------------------------------/")
     print("\n")
 
-    # shamroq(regList)
-    queryGovInfoApi()
+    # input is a list datatype which contains 1 or more xml file locations
+    # of the regulation
+    for regulation in regList:
+        # shamroq(regList)
+        getCFRMetaData(regulation)
 
     print("\n")
     print("/------------------------------------------/")

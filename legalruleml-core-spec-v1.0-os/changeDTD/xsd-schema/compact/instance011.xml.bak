@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+    xmlns:ruleml="http://ruleml.org/spec"
+    xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ 
+    file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+    
+    <!-- Use Jupyter Notebook File:  exp41-LegalRuleML-UNICORN -->
+    
+    <!-- #################  -->
+    <!-- Category 1 PreFix  -->  
+    <!-- #################  -->
+    
+    
+    <Prefix refID="pre100"/>
+            
+    
+
+    <!-- ###################  -->
+    <!-- Category 2 Metadata  -->   
+    <!-- ###################  -->
+    
+    <!-- 
+        LegalSources capture IRI based sources.  The attribute refID annotates x
+        and refIDSystemName annotates the naming convention 
+    -->   
+    <LegalSources>
+        <LegalSource key="lsref01cfr312.5" 
+            sameAs="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.5">
+        </LegalSource>
+    </LegalSources>
+    
+    <!--
+        References capture non-IRI based sources.  The attribute refID annotates x
+        and attribute refIDSystemName annotates the naming convention 
+    -->   
+    <References>
+        <Reference refersTo="lsref02" 
+            refID="/us/USCODE/eng@/main#title16-sec312.5" 
+            refIDSystemName="AkomaNtoso2.0.2012-10">
+        </Reference>
+    </References>
+    
+    <!-- 
+        Legal texts are often amended as a society or judicial system evolves. 
+        Norms and rules are valid in a particular interval of time and with respect 
+        to three main legal axes: when they come into force (entry), when they 
+        effect the intended or desired result (efﬁcacy), and when they apply (applicability). 
+        In this section, we model the external temporal dimensions of the norms 
+        (e.g., when the norm is valid) and not the temporal dimensions of the complex events 
+        that are the content of the textual provision (e.g., when a person is to present 
+        a tax application).
+    -->
+    <Times>
+        <ruleml:Time key=":t1">
+            <ruleml:Data xsi:type="xm:dateTime">1998-10-21T00:00:00</ruleml:Data>
+        </ruleml:Time>
+    </Times>
+    
+    <TemporalCharacteristics>
+        <TemporalCharacteristic>
+            <forStatus iri="&amp;lrmlv;#Efficacious"/>
+            <hasStatusDevelopment iri="&amp;lrmlv;#Starts"/>
+            <atTime keyref="#t1"/>
+        </TemporalCharacteristic>
+        <TemporalCharacteristic>
+            <forStatus iri="&amp;lrmlv;#Efficacious"/>
+            <hasStatusDevelopment iri="&amp;lrmlv;#End"/>
+            <atTime keyref="#t2"/> 
+            
+        </TemporalCharacteristic>
+    </TemporalCharacteristics>
+    
+    <!-- 
+        An Agent is an entity that acts or has the capability to act. An Agent could be a 
+        physical person, a database, or a bot; for this reason we have the sub-element <lrml:hasType> 
+        that expresses the category of agent.  In general, the agent is usually the AUTHOR of the 
+        rule model and can act in a particular function (e.g. congresswoman or senator)
+    -->       
+    <Agents>
+        <Agent key="aut1" sameAs="Richard Bryan (D-NV)"></Agent>
+    </Agents>
+    
+    <!--
+        Authorities qualiﬁes the rules with respect to the authenticity of the provenance 
+        of the formal model. Authority is a person or organization with the power to create, 
+        endorse, or enforce Legal Norms.
+    -->   
+    <Authorities>
+        <Authority key="Senate" sameAs="https://www.senate.gov/"/>
+    </Authorities>
+    
+    <Jurisdictions>
+        <Jurisdiction key="US" sameAs="https://www.whitehouse.gov/"/>
+    </Jurisdictions>
+    
+    
+    <!-- #######################  -->
+    <!-- Category 3 Associations  -->
+    <!-- #######################  -->
+    
+    <!-- 
+        To avoid redundancy, we have the element <lrml:Association>, which can be used to group
+        meta information referred to several rules or portions of them. In the following example, 
+        we have two associations inside of the element <lrml:Associations>.Here we link the regulatory 
+        sources/references to the rules, thus implementing the N:M  relationship.  For one source to 
+        many rules, we have 1 source and 7 rules: 
+    -->
+    <Associations key="assoc01">
+        <Association>
+            <appliesSource keyref="#lsref01.cfr312.5"/>
+            <toTarget keyref="#rule1"/>
+            <toTarget keyref="#rule2"/>
+            <toTarget keyref="#rule3"/>
+            <toTarget keyref="#rule4"/>
+            <toTarget keyref="#rule5"/>
+            <toTarget keyref="#rule6"/>
+            <toTarget keyref="#rule7"/>
+        </Association>
+        <Association>
+            <appliesTemporalCharacteristic keyref="#tblock1"/>
+            <toTarget keyref="#ps1"/>
+            <toTarget keyref="#ps2"/>
+        </Association>
+        <Association>
+            <appliesAuthority keyref="#congress"/>
+            <appliesJurisdiction keyref="#us"/>
+            <toTarget keyref="#ps1"/>
+            <toTarget keyref="#ps2"/>
+        </Association>
+        <Association>
+            <appliesModality iri="/ontology/deontic"/>
+            <appliesSource keyref="#section-312.5"/>
+            <appliesStrength iri="/ontology/defeasible"></appliesStrength>
+        </Association>
+    </Associations>
+    
+    <Associations key="assoc02">
+        <Association>
+            <appliesSource keyref="#lsref02.Ako.2012-10" />
+        </Association>
+    </Associations>
+    
+    
+    
+    
+    
+    
+    
+    <!-- ##################### ##################### ###################  -->
+    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  -->
+    <!-- Category 4 Statement-Related (Alternatives, Context, Statements  -->
+    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  -->
+    <!-- ##################### ##################### ###################  -->
+    
+    
+    
+    <!-- 
+        A rule may be differently interpreted according to a variety of parameters associated with 
+        a particular situation. For instance, sometimes an alternative interpretation of a textual 
+        source of a rule (and its associated formalisation) is associated with a jurisdiction, e.g., 
+        regional, national, or international levels, meaning that in one jurisdiction, the rule is 
+        interpreted one way, while in another jurisdiction, it is interpreted in another way. 
+        Similarly, temporal parameters (e.g., efﬁcacy, enforceability) can change over time due to 
+        the normative modiﬁcations, and these changes can also affect thestrength of the norms.
+        
+        To represent such parameters, we introduce the <lrml:Context> element, which permits the 
+        description of all the characteristics that are linked to a particular rule (e.g., rule1) 
+        using the operator <lrml:applies*>, substituting the * with different relationships. 
+        In addition to the previous relationships, we also have the following.    
+    -->
+    <Context key="Context1">
+        <appliesAssociations keyref="#assoc1"/>
+        <appliesAlternatives keyref="#alt2"/>
+        <inScope keyref="#ps1"/> 
+    </Context>
+    
+    
+    <!-- 
+        The mechanism combines the relationships and the target rules, and it acts as a bridge 
+        between metadata and rules or fragments of them. The following example shows rules rule1 
+        and rule3 connected with a LegalSource section 504, point 2, under the authority of 
+        Congress, valid in the jurisdiction of the USA, associated with the block #assoc1 and 
+        connected to the alternatives represented in #alt2.  .    
+    -->
+    
+    <Context key="ruleInfo4" hasCreationDate="#t1">
+        <appliesSource keyref="#sec504-clsc-pnt2"/>
+        <appliesTemporalCharacteristics keyref="#tblock1"/>
+        <appliesStrength iri="/ontology/defeater"/>
+        <appliesAuthority keyref="#congress"/>
+        <appliesJurisdiction keyref="#us"/>
+        <appliesAssociations keyref="#assoc1"/>
+        <appliesAlternatives keyref="#alt2"/>
+        <inScope keyref="#rule1"/>
+        <inScope keyref="#rule4"/>
+    </Context>
+    
+    
+    <!-- 
+        In the following subsections, we present several components for modelling norms. 
+        First, we take it that normative conditionals are  defeasible [Sartor, 2005], 
+        so we present our approach to defeasibility.  
+        
+        Second, norms may also be modelled using deontic concepts, which themselves have 
+        associated notions of penalty and reparation.  
+        
+        Finally, in contrast to normative conditionals and for use in the example, 
+        we have a representation of facts.   -->
+    
+    <!-- Prescriptive Statement 1 -->
+    <Statements>
+        
+        <hasQualification>
+            <Override over="#ps2" under="#ps1" />
+        </hasQualification>
+        
+        <PrescriptiveStatement key="ps1">
+            <ruleml:Rule key=":rule1" closure="universal">
+                <hasStrength>
+                    <DefeasibleStrength/>
+                </hasStrength>
+                
+                <!-- The Antecedent operator(x) AND verifiableParentalConsent(y) -->
+                
+                <ruleml:if>
+                    <ruleml:And key=":and1">
+                        <ruleml:Atom key=":atom1">
+                            <ruleml:Rel iri=":operator"/>
+                            <ruleml:Var>x</ruleml:Var>               
+                        </ruleml:Atom>
+                        <ruleml:Atom key=":atom2">
+                            <ruleml:Rel iri=":verifiableParentalConsent"/>
+                            <ruleml:Var>y</ruleml:Var>               
+                        </ruleml:Atom>
+                    </ruleml:And>
+                </ruleml:if>
+                
+                <!-- Modal Verb "MUST" = Obligation  -->
+                <!-- The Concequence => [OBL] obtain(x, y)  1 -->
+                
+                <ruleml:then>
+                    <SuborderList>
+                        <Obligation>
+                            <ruleml:Atom>
+                                <ruleml:Rel iri=":obtain"></ruleml:Rel>
+                                <ruleml:Var> x </ruleml:Var>
+                                <ruleml:Var> y </ruleml:Var>                                
+                            </ruleml:Atom>
+                        </Obligation>
+                    </SuborderList>
+                </ruleml:then>               
+            </ruleml:Rule>
+        </PrescriptiveStatement>
+        
+        
+    </Statements>
+    
+    
+    
+    
+    
+    
+</LegalRuleML>
