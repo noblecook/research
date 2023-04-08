@@ -22,7 +22,6 @@
         <maximumRecursivityLevel>3</maximumRecursivityLevel>
         <alternativeStrategy>FIRST</alternativeStrategy>
         <choicesAndSubstitutions strategy="FIRST" generateOthersAsComments="false"/>
-        <attribute namespace="&lt;ANY>" name="&lt;ANY>">
-        </attribute>
+        <attribute namespace="&lt;ANY>" name="&lt;ANY>"> </attribute>
     </element>
 </settings>

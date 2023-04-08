@@ -1,20 +1,6 @@
-import numpy as np
-import random
+import urllib.request
+
 import pandas as pdd
-from sympy import symbols, And
-from datetime import datetime
-
-import nltk
-from nltk.sem.logic import LogicParser
-
-import os
-import openai
-from sympy import *
-
-
-from sympy.parsing.sympy_parser import parse_expr
-
-
 import analyze
 import classify
 import model
@@ -22,19 +8,15 @@ import relationExtractor
 import scan
 import preprocessor
 import clean
+import os
+import requests
 
 from PyDevShamroq.src.edu.ttu.acm import classifyMetaModel
 from PyDevShamroq.src.edu.ttu.acm import parseConditionals
 from PyDevShamroq.src.edu.ttu.acm import modellrml
-
-
 from relationExtractor import *
 import time
-from spacy import displacy
-from spacy.matcher import Matcher
-from spacy.matcher import PhraseMatcher
-import requests
-import xmlschema
+
 nlp = spacy.load("en_core_web_sm")
 encoding = 'utf-8'
 
@@ -55,13 +37,11 @@ xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
 xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2022-title16-vol1-sec313-9.xml'
 
-
+# regList = [xml_16_312_ALL]
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-
 # regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 # regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
 regList = [xml_16_312_005]
-# regList = [xml_16_312_ALL]
 
 
 def getTimeNow():
@@ -162,10 +142,12 @@ def getUpdateProvision(listOfRegulations):
     return classificationResults
 
 
-def processRegulations():
-    # ----------- Reading the file for now ------------
+# input is a string datatype of the regulation file location
+def processRegulations(csv_file_location):
 
-    dff = pdd.read_csv(csv_data_312_005)
+    # ----------- Reads the file for now ------------
+    dff = pdd.read_csv(csv_file_location)
+
     # Initialize Rules
     # input => a dataframe of values that contain if/then statements
     # output -> a list of dictionaries that contain antecedent/consequent
@@ -181,20 +163,61 @@ def processRegulations():
     return listOfDictionaries
 
 
-def is_Provision_Up_to_Date():
-    return False
+def getCFRMetaData(reg_xml_file_location):
+    # use XSLT to get only two important elements
+    # store the results and return
+
+    pass
 
 
-def shamroq(listOfRegulations):
-    getTimeNow()
-    if is_Provision_Up_to_Date():
-        listOfConditionals = getUpdateProvision(listOfRegulations)
+def queryGovInfoApi():
+    data = None
+    govinfo_api_key = os.environ["GOVINFO_API_KEY"]
+    govinfo_api_account = os.environ["GOVINFO_ACCT_ID"]
+    govinfo_api_package_id = "CFR-2022-title16-vol1"
+    govinfo_api_granule_id = "CFR-2022-title16-vol1-sec312-5"
+    govinfo_api_endpoint = f"https://api.govinfo.gov/packages/" \
+                           f"{govinfo_api_package_id}/granules/" \
+                           f"{govinfo_api_granule_id}/summary?api_key=" \
+                           f"{govinfo_api_key}"
+
+    response = requests.get(govinfo_api_endpoint)
+    if response.status_code == 200:
+        data = response.json()
     else:
-        listOfConditionals = processRegulations()
+        print('Message in account ', govinfo_api_account)
+        print('Error:', response.status_code)
+    return data
 
-    modellrml.init(listOfConditionals)
+
+def getCurrentCFRDate(pName, pDate):
+    # make an api call to govinfo.gov/api - get provision number and date
+    # compare the two, if same, return True, else False
+    queryGovInfoApi()
+
+    pass
+
+
+def is_Provision_Up_to_Date(reg_xml_file_location):
+    updateToDate = True
+
+    # get the provision number and date from the passed in file
+    getCFRMetaData(reg_xml_file_location)
+    getCurrentCFRDate(pName, pDate)
+        
+    return updateToDate
+
+
+def shamroq(reg_xml_file_location):
     getTimeNow()
-    return listOfConditionals
+    if is_Provision_Up_to_Date(reg_xml_file_location):
+        list_Of_Conditionals = processRegulations(csv_data_312_005)
+    else:
+        list_Of_Conditionals = getUpdateProvision(reg_xml_file_location)
+
+    modellrml.init(list_Of_Conditionals)
+    getTimeNow()
+    return list_Of_Conditionals
 
 
 def main():
@@ -204,7 +227,8 @@ def main():
     print("/------------------------------------------/")
     print("\n")
 
-    shamroq(regList)
+    # shamroq(regList)
+    queryGovInfoApi()
 
     print("\n")
     print("/------------------------------------------/")

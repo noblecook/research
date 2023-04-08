@@ -9,7 +9,7 @@ from PyDevShamroq.src.edu.ttu.acm import metadata_association_elements
 OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
 BASE_FILE = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/"
 BASE_FILE_EXAMPLES = "C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/examples/"
-xmlExampleLRML = "legalRuleML"
+xmlExampleLRML = "LegalRuleML_"
 xsdFileExperimentsCompactLRML = "C:/Users/patri/OneDrive/Documents/20 PhD/experiments/lrml-compact.xsd"
 xsd = BASE_FILE+"lrml-compact.xsd"
 xml1 = BASE_FILE+"instance011.xml"
@@ -220,7 +220,8 @@ def validateSchema(lrmlCompactXsd, lrmlCompactXml):
 
 def generateXMLFile(tree):
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    xmlOutput = OUTPUT + xmlExampleLRML + now
+    ext =".xml"
+    xmlOutput = OUTPUT + xmlExampleLRML + now + ext
     # Write the tree to an XML file
     with open(xmlOutput, "wb") as f:
         f.write(etree.tostring(tree, pretty_print=True))
@@ -299,7 +300,9 @@ def set_Statements_Related_Elements(rootElement, stmtKVP):
 
 
 def setLegalRuleML(metadata, assoc, stmts):
+    # root should be done dynamically
     root = set_RootElement_with_Namespaces()
+
     set_MetaData(root, metadata)
     set_Associations(root, assoc)
     set_Statements_Related_Elements(root, stmts)
@@ -307,11 +310,11 @@ def setLegalRuleML(metadata, assoc, stmts):
 
 
 def init(input_dict_conditional_params):
+    # Todo: The input is a list of dictionaries.  Iterate, take out
+    # Todo: ... the dictionaries and create each provision in a loop
+
     metadata = metadata_association_elements.getMetaData()
     associations = metadata_association_elements.getAssociations()
-
-    # Todo: This is a list of dictionaries, you must take ths
-    # Todo: Take out the dictionaries and create each provision in a loop
     statements = input_dict_conditional_params
     regRoot = setLegalRuleML(metadata, associations, statements)
     output = generateXMLFile(regRoot)

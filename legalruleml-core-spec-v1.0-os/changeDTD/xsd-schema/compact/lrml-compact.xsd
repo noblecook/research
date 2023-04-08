@@ -9,22 +9,20 @@
      TC IPR Statement: https://www.oasis-open.org/committees/legalruleml/ipr.php
 -->
 <xs:schema xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
-           xmlns:ruleml="http://ruleml.org/spec"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified"
-           targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
+   xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/legalruleml/ns/v1.0/">
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-              schemaLocation="http://www.w3.org/2009/01/xml.xsd"/>
+      schemaLocation="http://www.w3.org/2009/01/xml.xsd"/>
    <xs:import namespace="http://ruleml.org/spec" schemaLocation="ruleml.xsd"/>
    <xs:element name="LegalRuleML" type="lrml:LegalRuleML.type.def">
       <xs:annotation>
-         <xs:documentation>a formal representation of one or more LegalSources using the
-                LegalRuleML Specifications.</xs:documentation>
+         <xs:documentation>a formal representation of one or more LegalSources using the LegalRuleML
+            Specifications.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="LegalRuleML.type.def">
       <xs:annotation>
-         <xs:documentation>type of the LegalRuleML element  </xs:documentation>
+         <xs:documentation>type of the LegalRuleML element </xs:documentation>
       </xs:annotation>
       <xs:complexContent>
          <xs:extension base="lrml:LegalRuleMLDocument.main">
@@ -42,9 +40,7 @@
    </xs:attributeGroup>
    <xs:complexType name="LegalRuleMLDocument.main">
       <xs:sequence>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasComment.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:sequence minOccurs="0">
             <xs:group ref="lrml:hasPrefix.edge.choice"/>
             <xs:choice maxOccurs="unbounded" minOccurs="0">
@@ -248,7 +244,7 @@
    <xs:element name="Role" type="lrml:Role.type.def">
       <xs:annotation>
          <xs:documentation>a function of or part played by an Actor relative to a LegalRuleML
-                expression.</xs:documentation>
+            expression.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Role.type.def">
@@ -273,7 +269,7 @@
    <xs:element name="Alternatives" type="lrml:AlternativeCollection.type.def">
       <xs:annotation>
          <xs:documentation>a mutually exclusive collection where every member is a LegalRuleML
-                rendering of one or more Legal Norms.</xs:documentation>
+            rendering of one or more Legal Norms.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="AlternativeCollection.type.def">
@@ -326,7 +322,7 @@
    <xs:element name="Association" type="lrml:Association.type.def">
       <xs:annotation>
          <xs:documentation>a partial description of the extension of some relations where each
-                non-target entity is paired with every target entity. </xs:documentation>
+            non-target entity is paired with every target entity. </xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Association.type.def">
@@ -379,7 +375,7 @@
    <xs:element name="Authority" type="lrml:Authority.type.def">
       <xs:annotation>
          <xs:documentation>a person or organization with the power to create, endorse, or enforce
-                Legal Norms.</xs:documentation>
+            Legal Norms.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Authority.type.def">
@@ -409,8 +405,7 @@
       </xs:annotation>
       <xs:attribute name="memberType" type="lrml:iri.lrml.datatype">
          <xs:annotation>
-            <xs:documentation> the type or class of members of the
-                    collection.</xs:documentation>
+            <xs:documentation> the type or class of members of the collection.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -456,8 +451,8 @@
    </xs:group>
    <xs:element name="Paraphrase" type="lrml:Paraphrase.type.def">
       <xs:annotation>
-         <xs:documentation>a natural language rendering of a Legal  Rule or fragment of it that
-                is an alternative to its Legal Source(s).</xs:documentation>
+         <xs:documentation>a natural language rendering of a Legal Rule or fragment of it that is an
+            alternative to its Legal Source(s).</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Paraphrase.type.def">
@@ -506,7 +501,7 @@
       <xs:attribute name="iri" type="lrml:iri.lrml.datatype">
          <xs:annotation>
             <xs:documentation>an IRI providing details regarding the parent Node
-                    Element.</xs:documentation>
+               Element.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -514,7 +509,7 @@
       <xs:attribute name="iri" type="lrml:iri.lrml.datatype">
          <xs:annotation>
             <xs:documentation>an IRI providing details regarding the parent Node
-                    Element.</xs:documentation>
+               Element.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -539,7 +534,7 @@
    <xs:element name="Context" type="lrml:Context.type.def">
       <xs:annotation>
          <xs:documentation>an application of Associations to their target entities within a
-                Scope.</xs:documentation>
+            Scope.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Context.type.def">
@@ -593,9 +588,9 @@
    </xs:group>
    <xs:element name="Override" type="lrml:Override.type.def">
       <xs:annotation>
-         <xs:documentation>an indication that a Legal Rule takes precedence over another Legal
-                Rule. The ordered pair of Legal Rules is an instance in a defeasible priority
-                relation.</xs:documentation>
+         <xs:documentation>an indication that a Legal Rule takes precedence over another Legal Rule.
+            The ordered pair of Legal Rules is an instance in a defeasible priority
+            relation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Override.type.def">
@@ -659,7 +654,7 @@
    <xs:group name="Strength.Node.choice">
       <xs:annotation>
          <xs:documentation>Strength: the quality of a Legal Rule to resist or not to resist a
-                rebuttal.</xs:documentation>
+            rebuttal.</xs:documentation>
       </xs:annotation>
       <xs:choice>
          <xs:group ref="lrml:DefeasibleStrength.Node.choice"/>
@@ -677,9 +672,9 @@
    </xs:group>
    <xs:element name="DefeasibleStrength" type="lrml:DefeasibleStrength.type.def">
       <xs:annotation>
-         <xs:documentation>an indication that, in the absence of information to the contrary,
-                where the premises of a Legal Rule hold, the conclusion of the Legal Rule
-                holds.</xs:documentation>
+         <xs:documentation>an indication that, in the absence of information to the contrary, where
+            the premises of a Legal Rule hold, the conclusion of the Legal Rule
+            holds.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="DefeasibleStrength.type.def">
@@ -706,8 +701,8 @@
    </xs:group>
    <xs:element name="StrictStrength" type="lrml:StrictStrength.type.def">
       <xs:annotation>
-         <xs:documentation>an indication that where the premises of a Legal Rule are
-                indisputable, the conclusion of the Legal Rule is indisputable.</xs:documentation>
+         <xs:documentation>an indication that where the premises of a Legal Rule are indisputable,
+            the conclusion of the Legal Rule is indisputable.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="StrictStrength.type.def">
@@ -734,9 +729,9 @@
    </xs:group>
    <xs:element name="Defeater" type="lrml:Defeater.type.def">
       <xs:annotation>
-         <xs:documentation>an indication that, in the absence of information to the contrary,
-                where the premises of a Legal Rule hold, the opposite of the conclusion of the Legal
-                Rule does not hold.</xs:documentation>
+         <xs:documentation>an indication that, in the absence of information to the contrary, where
+            the premises of a Legal Rule hold, the opposite of the conclusion of the Legal Rule does
+            not hold.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Defeater.type.def">
@@ -764,7 +759,7 @@
    <xs:element name="Violation" type="lrml:Violation.type.def">
       <xs:annotation>
          <xs:documentation>an indication that an Obligation or Prohibition has been
-                violated.</xs:documentation>
+            violated.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Violation.type.def">
@@ -793,8 +788,8 @@
    </xs:group>
    <xs:element name="Compliance" type="lrml:Compliance.type.def">
       <xs:annotation>
-         <xs:documentation>an indication that an Obligation has been fulfilled or a Prohibition
-                has not been violated.</xs:documentation>
+         <xs:documentation>an indication that an Obligation has been fulfilled or a Prohibition has
+            not been violated.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Compliance.type.def">
@@ -832,8 +827,8 @@
    </xs:group>
    <xs:element name="Bearer" type="lrml:Bearer.type.def">
       <xs:annotation>
-         <xs:documentation>a role in a Deontic Specification to which the Deontic Specification
-                is primarily directed.</xs:documentation>
+         <xs:documentation>a role in a Deontic Specification to which the Deontic Specification is
+            primarily directed.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Bearer.type.def">
@@ -860,8 +855,8 @@
    </xs:group>
    <xs:element name="AuxiliaryParty" type="lrml:AuxiliaryParty.type.def">
       <xs:annotation>
-         <xs:documentation>a role in a Deontic Specification to which the Deontic Specification
-                is related, but not primarily directed.</xs:documentation>
+         <xs:documentation>a role in a Deontic Specification to which the Deontic Specification is
+            related, but not primarily directed.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="AuxiliaryParty.type.def">
@@ -880,10 +875,10 @@
    </xs:complexType>
    <xs:group name="Deontic.Node.choice">
       <xs:annotation>
-         <xs:documentation>Deontic Specification: an indication of what states are legal or
-                illegal. Deontic Specifications include Obligation, Permission, Prohibition,
-                SuborderLIst, … or a Boolean combination of Deontic Specifications other than
-                SuborderLists (at any depth).</xs:documentation>
+         <xs:documentation>Deontic Specification: an indication of what states are legal or illegal.
+            Deontic Specifications include Obligation, Permission, Prohibition, SuborderLIst, … or a
+            Boolean combination of Deontic Specifications other than SuborderLists (at any
+            depth).</xs:documentation>
       </xs:annotation>
       <xs:choice>
          <xs:choice>
@@ -908,8 +903,8 @@
    <xs:element name="Obligation" type="lrml:Obligation.type.def">
       <xs:annotation>
          <xs:documentation>a Deontic Specification for a state, an act, or a course of action to
-                which a Bearer is legally bound, and if it is not achieved or performed results in a
-                Violation.</xs:documentation>
+            which a Bearer is legally bound, and if it is not achieved or performed results in a
+            Violation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Obligation.type.def">
@@ -933,11 +928,11 @@
    </xs:group>
    <xs:element name="Permission" type="lrml:Permission.type.def">
       <xs:annotation>
-         <xs:documentation>a Deontic Specification for a state, an act, or a course of action
-                where the Bearer has no Obligation or Prohibition to the contrary. A weak Permission
-                is the absence of the Obligation or Prohibition to the contrary; a strong Permission
-                is an exception or derogation of the Obligation or Prohibition to the
-                contrary.</xs:documentation>
+         <xs:documentation>a Deontic Specification for a state, an act, or a course of action where
+            the Bearer has no Obligation or Prohibition to the contrary. A weak Permission is the
+            absence of the Obligation or Prohibition to the contrary; a strong Permission is an
+            exception or derogation of the Obligation or Prohibition to the
+            contrary.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Permission.type.def">
@@ -962,8 +957,8 @@
    <xs:element name="Prohibition" type="lrml:Prohibition.type.def">
       <xs:annotation>
          <xs:documentation>a Deontic Specification for a state, an act, or a course of action to
-                which a Bearer is legally bound, and if it is achieved or performed results in a
-                Violation.</xs:documentation>
+            which a Bearer is legally bound, and if it is achieved or performed results in a
+            Violation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Prohibition.type.def">
@@ -987,9 +982,9 @@
    <xs:element name="Reparation" type="lrml:Reparation.type.def">
       <xs:annotation>
          <xs:documentation>an indication that a PenaltyStatement is linked with a
-                PrescriptiveStatement, meaning that a sanction may apply when the
-                PrescriptiveStatement entails a Deontic Specification, and there is a Violation of
-                the Deontic Specification.</xs:documentation>
+            PrescriptiveStatement, meaning that a sanction may apply when the PrescriptiveStatement
+            entails a Deontic Specification, and there is a Violation of the Deontic
+            Specification.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Reparation.type.def">
@@ -1012,10 +1007,10 @@
    </xs:group>
    <xs:element name="Right" type="lrml:Right.type.def">
       <xs:annotation>
-         <xs:documentation>(see also Permission) a Deontic Specification that gives a Permission
-                to a party (the Bearer) and implies there are Obligations or Prohibitions on other
-                parties (the AuxiliaryParty) such that the Bearer can (eventually) exercise the
-                Right.</xs:documentation>
+         <xs:documentation>(see also Permission) a Deontic Specification that gives a Permission to
+            a party (the Bearer) and implies there are Obligations or Prohibitions on other parties
+            (the AuxiliaryParty) such that the Bearer can (eventually) exercise the
+            Right.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Right.type.def">
@@ -1192,8 +1187,8 @@
    </xs:group>
    <xs:element name="Jurisdiction" type="lrml:Jurisdiction.type.def">
       <xs:annotation>
-         <xs:documentation>a geographic area or subject-matter over which an Authority applies
-                its legal power.</xs:documentation>
+         <xs:documentation>a geographic area or subject-matter over which an Authority applies its
+            legal power.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Jurisdiction.type.def">
@@ -1266,8 +1261,8 @@
    </xs:group>
    <xs:element name="LegalSource" type="lrml:LegalSource.type.def">
       <xs:annotation>
-         <xs:documentation>a source of one or more Legal Norms formulated in any format and
-                endorsed by an Authority.</xs:documentation>
+         <xs:documentation>a source of one or more Legal Norms formulated in any format and endorsed
+            by an Authority.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="LegalSource.type.def">
@@ -1327,9 +1322,8 @@
    </xs:attributeGroup>
    <xs:simpleType name="keyref.lrml.datatype">
       <xs:annotation>
-         <xs:documentation>refinement of xsd:anyURI that is a same-document relative IRI
-                reference with fragment identifier that belongs to the xsd:NCName lexical
-                space</xs:documentation>
+         <xs:documentation>refinement of xsd:anyURI that is a same-document relative IRI reference
+            with fragment identifier that belongs to the xsd:NCName lexical space</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyURI">
          <xs:pattern value="#[\i-[:]][\c-[:]]*"/>
@@ -1376,9 +1370,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasReference.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasReference.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="LegalReferenceCollection.main">
@@ -1387,9 +1379,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasLegalReference.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasLegalReference.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:group name="commonCollection.main">
@@ -1398,9 +1388,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasMemberType.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasMemberType.edge.choice"/>
       </xs:sequence>
    </xs:group>
    <xs:complexType name="commonCollectionItem.main">
@@ -1456,9 +1444,8 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasTemporalCharacteristic.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0"
+            ref="lrml:hasTemporalCharacteristic.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="TemporalCharacteristic.main">
@@ -1498,9 +1485,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasFigure.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasFigure.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="Figure.main">
@@ -1510,9 +1495,7 @@
       <xs:complexContent>
          <xs:extension base="lrml:commonCollectionItem.main">
             <xs:sequence>
-               <xs:group maxOccurs="unbounded"
-                         minOccurs="0"
-                         ref="lrml:hasFunction.edge.choice"/>
+               <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasFunction.edge.choice"/>
                <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasActor.edge.choice"/>
             </xs:sequence>
          </xs:extension>
@@ -1535,9 +1518,7 @@
          <xs:extension base="lrml:commonCollectionItem.main">
             <xs:sequence>
                <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:filledBy.edge.choice"/>
-               <xs:group maxOccurs="unbounded"
-                         minOccurs="0"
-                         ref="lrml:forExpression.edge.choice"/>
+               <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:forExpression.edge.choice"/>
             </xs:sequence>
          </xs:extension>
       </xs:complexContent>
@@ -1548,9 +1529,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasAuthority.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasAuthority.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="Authority.main">
@@ -1567,9 +1546,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasJurisdiction.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasJurisdiction.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="Jurisdiction.main">
@@ -1586,9 +1563,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasAssociation.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasAssociation.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="AlternativeCollection.main">
@@ -1598,9 +1573,7 @@
       <xs:sequence>
          <xs:group ref="lrml:commonCollection.main"/>
          <xs:group minOccurs="0" ref="lrml:fromLegalSources.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:hasAlternative.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:hasAlternative.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="Association.main">
@@ -1643,9 +1616,8 @@
             <xs:group ref="lrml:appliesAssociationCollection.edge.choice"/>
             <xs:group ref="lrml:appliesAssociation.edge.choice"/>
          </xs:choice>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:appliesAlternativeCollection.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0"
+            ref="lrml:appliesAlternativeCollection.edge.choice"/>
          <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:inScope.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
@@ -1729,9 +1701,7 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="ruleml:slotDeontic.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotDeontic.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:formula_Deontic.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
@@ -1742,9 +1712,7 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="ruleml:slotDeontic.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotDeontic.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:formula_Deontic.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
@@ -1761,9 +1729,7 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="ruleml:slotDeontic.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotDeontic.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:formula_Deontic.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
@@ -1774,12 +1740,9 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:appliesPenalty.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:toPrescriptiveStatement.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:appliesPenalty.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0"
+            ref="lrml:toPrescriptiveStatement.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="Right.main">
@@ -1789,9 +1752,7 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="ruleml:slotDeontic.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotDeontic.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:formula_Deontic.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
@@ -1802,9 +1763,7 @@
       <xs:sequence>
          <xs:group minOccurs="0" ref="lrml:hasComment.edge.choice"/>
          <xs:group minOccurs="0" ref="lrml:hasParaphrase.edge.choice"/>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:formula_Suborder.edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:formula_Suborder.edge.choice"/>
       </xs:sequence>
    </xs:complexType>
    <xs:group name="ConstitutiveRule.main">
@@ -1826,16 +1785,12 @@
    </xs:group>
    <xs:group name="And-const.main">
       <xs:sequence>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:formula_And-const-edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:formula_And-const-edge.choice"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="Or-const.main">
       <xs:sequence>
-         <xs:group maxOccurs="unbounded"
-                   minOccurs="0"
-                   ref="lrml:formula_Or-const-edge.choice"/>
+         <xs:group maxOccurs="unbounded" minOccurs="0" ref="lrml:formula_Or-const-edge.choice"/>
       </xs:sequence>
    </xs:group>
    <xs:group name="Equivalent-const.main">
@@ -1893,7 +1848,7 @@
    <xs:element name="Prefix" type="lrml:Prefix.type.def">
       <xs:annotation>
          <xs:documentation>a non-empty prefix declaration in a LegalRuleML
-                document.</xs:documentation>
+            document.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Prefix.type.def">
@@ -1918,7 +1873,7 @@
       <xs:attribute name="pre">
          <xs:annotation>
             <xs:documentation>the (non-empty) prefix in a Prefix declaration, following CURIE
-                    conventions.</xs:documentation>
+               conventions.</xs:documentation>
          </xs:annotation>
          <xs:simpleType>
             <xs:restriction base="xs:string">
@@ -1955,8 +1910,7 @@
    </xs:group>
    <xs:element name="LegalReferences" type="lrml:LegalReferenceCollection.type.def">
       <xs:annotation>
-         <xs:documentation>a collection where every member is a
-                LegalReference.</xs:documentation>
+         <xs:documentation>a collection where every member is a LegalReference.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="LegalReferenceCollection.type.def">
@@ -2005,9 +1959,9 @@
    </xs:group>
    <xs:element name="LegalReference" type="lrml:LegalReference.type.def">
       <xs:annotation>
-         <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI
-                identifier, where the non-IRI is paired with some additional information that is
-                sufficient to disambiguate the non-IRI to a unique LegalSource.</xs:documentation>
+         <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI identifier,
+            where the non-IRI is paired with some additional information that is sufficient to
+            disambiguate the non-IRI to a unique LegalSource.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="LegalReference.type.def">
@@ -2029,9 +1983,9 @@
    </xs:group>
    <xs:element name="Reference" type="lrml:Reference.type.def">
       <xs:annotation>
-         <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI
-                identifier, where the non-IRI is paired with some additional information that is
-                sufficient to disambiguate the non-IRI to a unique Source.</xs:documentation>
+         <xs:documentation>a pair consisting of an internal ID and an enriched non-IRI identifier,
+            where the non-IRI is paired with some additional information that is sufficient to
+            disambiguate the non-IRI to a unique Source.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="Reference.type.def">
@@ -2057,8 +2011,8 @@
       </xs:annotation>
       <xs:attribute name="refType" type="lrml:iri.lrml.datatype">
          <xs:annotation>
-            <xs:documentation>the conceptual type of the Reference (or of references contained
-                    by the References collection).</xs:documentation>
+            <xs:documentation>the conceptual type of the Reference (or of references contained by
+               the References collection).</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -2068,8 +2022,8 @@
       </xs:annotation>
       <xs:attribute name="refIDSystemName" type="xs:string">
          <xs:annotation>
-            <xs:documentation>the name of the ID system of the Reference (or of References
-                    contained by the References collection).</xs:documentation>
+            <xs:documentation>the name of the ID system of the Reference (or of References contained
+               by the References collection).</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -2080,7 +2034,7 @@
       <xs:attribute name="refIDSystemSource" type="lrml:iri.lrml.datatype">
          <xs:annotation>
             <xs:documentation>the IRI source of the ID system of the Reference (or of References
-                    contained by the References collection). </xs:documentation>
+               contained by the References collection). </xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -2237,7 +2191,7 @@
       <xs:attribute name="sameAs" type="lrml:iri.lrml.datatype">
          <xs:annotation>
             <xs:documentation>an IRI that denotes the same thing as the Node
-                    Element.</xs:documentation>
+               Element.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -2261,7 +2215,7 @@
    <xs:element name="Statements" type="lrml:StatementCollection.type.def">
       <xs:annotation>
          <xs:documentation>a collection where every member is a Legal Statement or a
-                FactualStatement.</xs:documentation>
+            FactualStatement.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="StatementCollection.type.def">
@@ -2285,8 +2239,8 @@
    </xs:group>
    <xs:group name="LegalStatement.Node.choice">
       <xs:annotation>
-         <xs:documentation>Legal Statement : a LegalRuleML expression of a Legal Rule or a part
-                of a Legal Rule.</xs:documentation>
+         <xs:documentation>Legal Statement : a LegalRuleML expression of a Legal Rule or a part of a
+            Legal Rule.</xs:documentation>
       </xs:annotation>
       <xs:choice>
          <xs:group ref="lrml:ConstitutiveStatement.Node.choice"/>
@@ -2307,7 +2261,7 @@
    <xs:element name="ConstitutiveStatement" type="lrml:ConstitutiveStatement.type.def">
       <xs:annotation>
          <xs:documentation>a Legal Statement which defines concepts and does not prescribe
-                behaviours.</xs:documentation>
+            behaviours.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="ConstitutiveStatement.type.def">
@@ -2334,8 +2288,8 @@
    <xs:element name="PrescriptiveStatement" type="lrml:PrescriptiveStatement.type.def">
       <xs:annotation>
          <xs:documentation>a Legal Statement which prescribes behaviours, e.g. with Permissions,
-                Obligations, or Prohibitions on states, actions, or courses of
-                actions.</xs:documentation>
+            Obligations, or Prohibitions on states, actions, or courses of
+            actions.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="PrescriptiveStatement.type.def">
@@ -2414,7 +2368,7 @@
    <xs:element name="PenaltyStatement" type="lrml:PenaltyStatement.type.def">
       <xs:annotation>
          <xs:documentation>a Legal Statement of a sanction (e.g. a punishment or a
-                correction).</xs:documentation>
+            correction).</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="PenaltyStatement.type.def">
@@ -2917,9 +2871,9 @@
    <xs:element name="SuborderList" type="lrml:SuborderList.type.def">
       <xs:annotation>
          <xs:documentation>a Deontic Specification consisting of a sequence of Deontic
-                Specifications other than SuborderLists (at any depth).  When a SuborderList holds,
-                a Deontic Specification in the SuborderList holds if all Deontic Specifications that
-                precede it in the SuborderList have been violated.</xs:documentation>
+            Specifications other than SuborderLists (at any depth). When a SuborderList holds, a
+            Deontic Specification in the SuborderList holds if all Deontic Specifications that
+            precede it in the SuborderList have been violated.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="SuborderList.type.def">
@@ -2948,11 +2902,10 @@
          <xs:element ref="lrml:TemporalCharacteristics"/>
       </xs:sequence>
    </xs:group>
-   <xs:element name="TemporalCharacteristics"
-               type="lrml:TemporalCharacteristicCollection.type.def">
+   <xs:element name="TemporalCharacteristics" type="lrml:TemporalCharacteristicCollection.type.def">
       <xs:annotation>
          <xs:documentation>a collection where every member is a Temporal
-                Characteristic.</xs:documentation>
+            Characteristic.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="TemporalCharacteristicCollection.type.def">
@@ -2976,11 +2929,10 @@
          <xs:element ref="lrml:TemporalCharacteristic"/>
       </xs:sequence>
    </xs:group>
-   <xs:element name="TemporalCharacteristic"
-               type="lrml:TemporalCharacteristic.type.def">
+   <xs:element name="TemporalCharacteristic" type="lrml:TemporalCharacteristic.type.def">
       <xs:annotation>
-         <xs:documentation>a pair of Time with a qualification (consisting of a Legal Status and
-                a Status Development) that holds at the Time.</xs:documentation>
+         <xs:documentation>a pair of Time with a qualification (consisting of a Legal Status and a
+            Status Development) that holds at the Time.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="TemporalCharacteristic.type.def">
@@ -3023,7 +2975,7 @@
       <xs:attribute name="hasCreationDate" type="lrml:iri.lrml.datatype">
          <xs:annotation>
             <xs:documentation>the creation date of the Context or LegalRuleML
-                    document.</xs:documentation>
+               document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3409,7 +3361,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3424,7 +3376,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3439,7 +3391,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3454,7 +3406,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3469,7 +3421,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3484,7 +3436,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3499,7 +3451,7 @@
       <xs:attribute name="style" type="ruleml:style.value">
          <xs:annotation>
             <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+               http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:attributeGroup>
@@ -3580,11 +3532,9 @@
          <xs:group ref="lrml:argTimeData.content"/>
       </xs:sequence>
    </xs:group>
-   <xs:element name="appliesAssociations"
-               type="lrml:appliesAssociationCollection.type.def">
+   <xs:element name="appliesAssociations" type="lrml:appliesAssociationCollection.type.def">
       <xs:annotation>
-         <xs:documentation>a collection of Associations applied by the
-                Context.</xs:documentation>
+         <xs:documentation>a collection of Associations applied by the Context.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesAssociationCollection.type.def">
@@ -3603,7 +3553,7 @@
    <xs:element name="atTime" type="lrml:atTime.type.def">
       <xs:annotation>
          <xs:documentation>the Time of the qualification of a
-                TemporalCharacteristic.</xs:documentation>
+            TemporalCharacteristic.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="atTime.type.def">
@@ -3616,18 +3566,16 @@
    <xs:element name="fromLegalSources" type="lrml:fromLegalSources.type.def">
       <xs:annotation>
          <xs:documentation>the LegalSources from which the Alternatives are
-                derived.</xs:documentation>
+            derived.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="fromLegalSources.type.def">
       <xs:attributeGroup ref="lrml:NodeReference.attrib.choice"/>
       <xs:attributeGroup ref="lrml:fromLegalSources.attlist"/>
    </xs:complexType>
-   <xs:element name="appliesAlternatives"
-               type="lrml:appliesAlternativeCollection.type.def">
+   <xs:element name="appliesAlternatives" type="lrml:appliesAlternativeCollection.type.def">
       <xs:annotation>
-         <xs:documentation>a collection of Alternatives applied by the
-                Context.</xs:documentation>
+         <xs:documentation>a collection of Alternatives applied by the Context.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesAlternativeCollection.type.def">
@@ -3645,8 +3593,7 @@
    </xs:complexType>
    <xs:element name="appliesJurisdiction" type="lrml:appliesJurisdiction.type.def">
       <xs:annotation>
-         <xs:documentation>a Jurisdiction applied by the Context or
-                Association.</xs:documentation>
+         <xs:documentation>a Jurisdiction applied by the Context or Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesJurisdiction.type.def">
@@ -3655,8 +3602,8 @@
    </xs:complexType>
    <xs:element name="appliesModality" type="lrml:appliesModality.type.def">
       <xs:annotation>
-         <xs:documentation>the deontic mode that applies to a Deontic Specification in a Context
-                or Association.</xs:documentation>
+         <xs:documentation>the deontic mode that applies to a Deontic Specification in a Context or
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesModality.type.def">
@@ -3669,7 +3616,7 @@
    <xs:element name="appliesPenalty" type="lrml:appliesPenalty.type.def">
       <xs:annotation>
          <xs:documentation>the PenaltyStatement that is linked to a LegalRule in a
-                Reparation.</xs:documentation>
+            Reparation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesPenalty.type.def">
@@ -3679,7 +3626,7 @@
    <xs:element name="appliesSource" type="lrml:appliesSource.type.def">
       <xs:annotation>
          <xs:documentation>a LegalSource or Reference applied by the Context or
-                Association.</xs:documentation>
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesSource.type.def">
@@ -3690,10 +3637,10 @@
       <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
    </xs:attributeGroup>
    <xs:element name="appliesTemporalCharacteristics"
-               type="lrml:appliesTemporalCharacteristics.type.def">
+      type="lrml:appliesTemporalCharacteristics.type.def">
       <xs:annotation>
          <xs:documentation>a collection of TemporalCharacteristics applied by the Context or
-                Association.</xs:documentation>
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesTemporalCharacteristics.type.def">
@@ -3701,10 +3648,10 @@
       <xs:attributeGroup ref="lrml:appliesTemporalCharacteristics.attlist"/>
    </xs:complexType>
    <xs:element name="appliesTemporalCharacteristic"
-               type="lrml:appliesTemporalCharacteristic.type.def">
+      type="lrml:appliesTemporalCharacteristic.type.def">
       <xs:annotation>
          <xs:documentation>a TemporalCharacteristic applied by the Context or
-                Association.</xs:documentation>
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesTemporalCharacteristic.type.def">
@@ -3714,7 +3661,7 @@
    <xs:element name="forExpression" type="lrml:forExpression.type.def">
       <xs:annotation>
          <xs:documentation>a LegalRuleML expression for which the Role is responsible e.g., the
-                expression was created or endorsed by the role.</xs:documentation>
+            expression was created or endorsed by the role.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="forExpression.type.def">
@@ -3727,7 +3674,7 @@
    <xs:element name="forStatus" type="lrml:forStatus.type.def">
       <xs:annotation>
          <xs:documentation>the Legal Status of the qualification in a
-                TemporalCharacteristic.</xs:documentation>
+            TemporalCharacteristic.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="forStatus.type.def">
@@ -3761,7 +3708,7 @@
    <xs:element name="hasStatusDevelopment" type="lrml:hasStatusDevelopment.type.def">
       <xs:annotation>
          <xs:documentation>the Status Development of the qualification in a
-                TemporalCharacteristic.</xs:documentation>
+            TemporalCharacteristic.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="hasStatusDevelopment.type.def">
@@ -3798,7 +3745,7 @@
    <xs:element name="toTarget" type="lrml:toTarget.type.def">
       <xs:annotation>
          <xs:documentation>the target to which properties are applied by the
-                Association.</xs:documentation>
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="toTarget.type.def">
@@ -3808,11 +3755,10 @@
    <xs:attributeGroup name="toTarget.attlist">
       <xs:attributeGroup ref="lrml:commonLRMLEdgeInit.attlist"/>
    </xs:attributeGroup>
-   <xs:element name="toPrescriptiveStatement"
-               type="lrml:toPrescriptiveStatement.type.def">
+   <xs:element name="toPrescriptiveStatement" type="lrml:toPrescriptiveStatement.type.def">
       <xs:annotation>
          <xs:documentation>the PrescriptiveStatement that is linked to a PenaltyStatement in a
-                Reparation.</xs:documentation>
+            Reparation.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="toPrescriptiveStatement.type.def">
@@ -3824,8 +3770,8 @@
    </xs:attributeGroup>
    <xs:element name="inScope" type="lrml:inScope.type.def">
       <xs:annotation>
-         <xs:documentation>the Statement or (collection of) Statements that the Context is
-                applied to.</xs:documentation>
+         <xs:documentation>the Statement or (collection of) Statements that the Context is applied
+            to.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="inScope.type.def">
@@ -3850,7 +3796,7 @@
    <xs:element name="hasActor" type="lrml:hasActor.type.def">
       <xs:annotation>
          <xs:documentation>an Actor that has the responsibility to fulfill the function of a
-                Figure.</xs:documentation>
+            Figure.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="hasActor.type.def">
@@ -3876,7 +3822,7 @@
    <xs:element name="appliesStrength" type="lrml:appliesStrength.type.def">
       <xs:annotation>
          <xs:documentation>a (defeasible) Strength applied by the Context or
-                Association.</xs:documentation>
+            Association.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="appliesStrength.type.def">
@@ -3905,8 +3851,7 @@
    </xs:attributeGroup>
    <xs:element name="hasQualification" type="lrml:hasQualification.type.def">
       <xs:annotation>
-         <xs:documentation>a qualification (e.g. an Override) of the
-                Statements.</xs:documentation>
+         <xs:documentation>a qualification (e.g. an Override) of the Statements.</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:complexType name="hasQualification.type.def">
