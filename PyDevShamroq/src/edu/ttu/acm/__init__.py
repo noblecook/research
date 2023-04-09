@@ -19,13 +19,14 @@ import time
 nlp = spacy.load("en_core_web_sm")
 encoding = 'utf-8'
 
-OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
+LRML_OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/lrml"
+CSV_DATASET_OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/datasets"
 FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
 FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
 FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
 FILE_PREFIX_SEKE = 'C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines'
 
-csv_data_312_005 = OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
+csv_data_312_005 = CSV_DATASET_OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
 xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
@@ -43,7 +44,8 @@ xml_16_312_005_22 = FILE_PREFIX_SEKE + '/2023-IJSEKE-manuscript/govinfo.gov.16CF
 # regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 # regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
 regList_DIFFERENT = [xml_16_312_005]
-regList_SAME = [xml_16_312_005_22]
+regList_OLD = [xml_16_312_005]
+regList_NEW = [xml_16_312_005_22]
 
 
 
@@ -262,29 +264,69 @@ def getCurrentCFRDateFromGPO(pName, pDate):
 def is_Provision_Up_to_Date(file_1, file_2):
     updateToDate = False
     print(file_1, file_2)
-    time.sleep(3)
+    time.sleep(0)
     if file_1.lower() == file_2.lower():
         updateToDate = True
     return updateToDate
 
 
-def shamroq(meta_data, reg_xml_file_location, gov_info_status):
-    getTimeNow()
+def does_data_frame_exist(reg_xml_file_location):
+    print(reg_xml_file_location)
+    # goto CSV_DATASET_OUTPUT location
+    # from the file name, you need to check the dataset
+    # search folder for name "dataset - cfr_16_312_005.csv"
+    # if name exist return true, else false
+    return True
+
+
+def get_regulation_data_frame():
+    return csv_data_312_005
+
+
+def create_data_frame(reg_xml_file_location):
+    print(reg_xml_file_location)
+    new_dff = "Process get info, and create dff"
+    return new_dff
+
+
+def evaluate(meta_data, reg_xml_file_location, gov_info_status):
+    csv_file = "return csv file"
     currentFileDate = meta_data["DATE"]
     gov_info_Date = gov_info_status["dateIssued"]
     if is_Provision_Up_to_Date(currentFileDate, gov_info_Date):
-        print("Wooooohooooo THE SAME!!!")
-        list_Of_Conditionals = processRegulations(csv_data_312_005)
+        print("File Up to Date!!!")
+        if does_data_frame_exist(reg_xml_file_location):
+            reg_csv_file = get_regulation_data_frame()
+            list_of_conditionals = processRegulations(reg_csv_file)
+        else:
+            reg_csv_file = create_data_frame(reg_xml_file_location)
+            list_of_conditionals = processRegulations(reg_csv_file)
     else:
-        print("Wait a min, We are DIFFERENT!  Here I am to save the day!!!")
-        list_Of_Conditionals = getUpdateProvision(reg_xml_file_location)
+        print("File NOT Up to Date!!!")
+        new_reg_xml_file = getUpdateProvision(reg_xml_file_location)
+        reg_csv_file = create_data_frame(new_reg_xml_file)
+        list_of_conditionals = processRegulations(reg_csv_file)
 
-    modellrml.init(list_Of_Conditionals)
+    time.sleep(1000)
+    modellrml.init(list_of_conditionals)
+    return csv_file
+
+
+def shamroq():
     getTimeNow()
+    getTimeNow()
+    pass
 
+
+def print_df_for_validation(my_dff):
+    for key, value in my_dff.items():
+        print(f'{key} {value}')
+
+
+# print(f'{colKey}: {colValue}')
 
 def main():
-    print("Number of regulations -->", len(regList_SAME))
+    print("Number of regulations -->", len(regList_NEW))
     print("/------------------------------------------/")
     print("... starting main()")
     print("/------------------------------------------/")
@@ -294,11 +336,14 @@ def main():
     # of the regulation
     # regList_DIFFERENT
     # regList_SAME
-    for regulation in regList_SAME:
+    for regulation in regList_NEW:
         metadata = getCFRMetaData(regulation)
+        print_df_for_validation(metadata)
         gpoStatus = govInfoCollections.init(metadata["CFRTITLETEXT"], metadata["TITLE"], metadata["DATE"])
-        shamroq(metadata, regulation, gpoStatus)
-
+        print_df_for_validation(gpoStatus)
+        time.sleep(5)
+        evaluate(metadata, regulation, gpoStatus)
+        shamroq()
 
     print("\n")
     print("/------------------------------------------/")
