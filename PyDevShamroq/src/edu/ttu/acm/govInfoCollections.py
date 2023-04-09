@@ -1,30 +1,6 @@
-import os
-import time
-from datetime import datetime
 import requests
-
-OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
-FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
-FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
-FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
-
-csv_data_312_005 = OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
-xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
-xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
-xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
-xml_45_164_510 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-510.xml'
-xml_16_312_002 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-2.xml'
-xml_16_312_004 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-4.xml'
-xml_16_312_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
-xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
-xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
-xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2022-title16-vol1-sec313-9.xml'
-
-# regList = [xml_16_312_ALL]
-# regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-# regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
-# regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
-regList = [xml_16_312_005]
+import os
+from datetime import datetime
 
 
 def getCFRMetaData(reg_xml_file_location):
@@ -207,53 +183,16 @@ def convertDateStringToZulu(cfrXmlTimeString):
     return output_str
 
 
-def getCurrentCFRDateFromGPO(pName, pDate):
-    # make an api call to govinfo.gov/api - get provision number and date
-    # compare the two, if same, return True, else False
-    # first get the collections - https://api.govinfo.gov/collections/CFR?offset=0&pageSize=100&api_key=XscpbIdvZDJpCuXJ985qn3TN8ELoav5gdTSw3ryH
-    # getCollectionsInfo()
-    queryGovInfoApi()
-
-    pass
-
-
-def main():
-    print("Number of regulations -->", len(regList))
-    print("/------------------------------------------/")
-    print("... starting main()")
-    print("/------------------------------------------/")
-    print("\n")
-    cfrXMLTextTitle = "Commercial Practices"
-    cfrXMLTitle = "Parental consent."
-    cfrXMLDate = "2020-01-01"
+def init(cfrXMLTextTitle, cfrXMLTitle, cfrXMLDate):
     zuluDate = convertDateStringToZulu(cfrXMLDate)
     queryDate = zuluDate
+    collections = getCollectionsLastModifiedStartDate(queryDate)
+    filterCollections = getFilterCollectionsData(collections, cfrXMLTextTitle)
+    packageID = getPackageID(filterCollections)
+    granules = getPackageIDGranules(packageID)
+    granuleID = filterPackageIDGranules(granules, cfrXMLTitle)
+    gid = granuleID[0]['granuleId']
+    gpoResult = getPackageIDGranulesIDSummary(packageID, gid)
+    return gpoResult
 
-    # input is a list datatype which contains 1 or more xml file locations
-    # of the regulation
-    for regulation in regList:
-        # shamroq(regList)
-        # getCFRMetaData(regulation)
-        # filterCollections =
-        collections = getCollectionsLastModifiedStartDate(queryDate)
-        filterCollections = getFilterCollectionsData(collections, cfrXMLTextTitle)
-        packageID = getPackageID(filterCollections)
-        granules = getPackageIDGranules(packageID)
-        granuleID = filterPackageIDGranules(granules, cfrXMLTitle)
-        gid = granuleID[0]['granuleId']
-        gpoResult = getPackageIDGranulesIDSummary(packageID, gid)
-
-        for colKey, colValue in gpoResult.items():
-            print(f'{colKey}: {colValue}')
-            time.sleep(2)
-
-
-    print("\n")
-    print("/------------------------------------------/")
-    print("... completing main()")
-    print("/------------------------------------------/")
-
-
-if __name__ == '__main__':
-    main()
 

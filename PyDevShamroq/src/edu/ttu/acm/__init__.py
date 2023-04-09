@@ -12,6 +12,7 @@ import xml.etree.ElementTree as eTree
 from PyDevShamroq.src.edu.ttu.acm import classifyMetaModel
 from PyDevShamroq.src.edu.ttu.acm import parseConditionals
 from PyDevShamroq.src.edu.ttu.acm import modellrml
+from PyDevShamroq.src.edu.ttu.acm import govInfoCollections
 from relationExtractor import *
 import time
 
@@ -22,6 +23,7 @@ OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/"
 FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
 FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
 FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
+FILE_PREFIX_SEKE = 'C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines'
 
 csv_data_312_005 = OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
 xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
@@ -34,12 +36,15 @@ xml_16_312_005 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-5.xml'
 xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
 xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2022-title16-vol1-sec313-9.xml'
+xml_16_312_005_22 = FILE_PREFIX_SEKE + '/2023-IJSEKE-manuscript/govinfo.gov.16CFR.xml/CFR-2022-title16-vol1-sec312-5.xml'
 
 # regList = [xml_16_312_ALL]
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 # regList = [xml_16_312_002, xml_16_132_004, xml_16_132_005, xml_16_132_011, xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
 # regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
-regList = [xml_16_312_005]
+regList_DIFFERENT = [xml_16_312_005]
+regList_SAME = [xml_16_312_005_22]
+
 
 
 def getTimeNow():
@@ -254,30 +259,32 @@ def getCurrentCFRDateFromGPO(pName, pDate):
     pass
 
 
-def is_Provision_Up_to_Date(reg_xml_file_location):
-    updateToDate = True
-
-    # get the provision number and date from the passed in file
-    getCFRMetaData(reg_xml_file_location)
-    # getCurrentCFRDateFromGPO(pName, pDate)
-        
+def is_Provision_Up_to_Date(file_1, file_2):
+    updateToDate = False
+    print(file_1, file_2)
+    time.sleep(3)
+    if file_1.lower() == file_2.lower():
+        updateToDate = True
     return updateToDate
 
 
-def shamroq(reg_xml_file_location):
+def shamroq(meta_data, reg_xml_file_location, gov_info_status):
     getTimeNow()
-    if is_Provision_Up_to_Date(reg_xml_file_location):
+    currentFileDate = meta_data["DATE"]
+    gov_info_Date = gov_info_status["dateIssued"]
+    if is_Provision_Up_to_Date(currentFileDate, gov_info_Date):
+        print("Wooooohooooo THE SAME!!!")
         list_Of_Conditionals = processRegulations(csv_data_312_005)
     else:
+        print("Wait a min, We are DIFFERENT!  Here I am to save the day!!!")
         list_Of_Conditionals = getUpdateProvision(reg_xml_file_location)
 
     modellrml.init(list_Of_Conditionals)
     getTimeNow()
-    return list_Of_Conditionals
 
 
 def main():
-    print("Number of regulations -->", len(regList))
+    print("Number of regulations -->", len(regList_SAME))
     print("/------------------------------------------/")
     print("... starting main()")
     print("/------------------------------------------/")
@@ -285,10 +292,13 @@ def main():
 
     # input is a list datatype which contains 1 or more xml file locations
     # of the regulation
-    for regulation in regList:
-        shamroq(regulation)
-        # getCFRMetaData(regulation)
-        # getCollectionsInfo()
+    # regList_DIFFERENT
+    # regList_SAME
+    for regulation in regList_SAME:
+        metadata = getCFRMetaData(regulation)
+        gpoStatus = govInfoCollections.init(metadata["CFRTITLETEXT"], metadata["TITLE"], metadata["DATE"])
+        shamroq(metadata, regulation, gpoStatus)
+
 
     print("\n")
     print("/------------------------------------------/")
