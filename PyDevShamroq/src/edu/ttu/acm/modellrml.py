@@ -147,13 +147,8 @@ def setStatements(rootOfXML, overRideOver, overRideUnder, ruleKey, ruleClosure,
     lrmlRule.append(etree.Comment("The Conditional Statements"))
     lrmlRule.append(etree.Comment("##########################"))
 
-    set_If_Statement(lrmlRule, andKey)
-    andKey = "Or"
-    set_If_Statement(lrmlRule, andKey)
-
     andKey = "And"
     set_If_Statement(lrmlRule, andKey)
-
     set_Then_Statement(lrmlRule, consequentPredicate, subj, obj)
 
     return statementElement
@@ -167,7 +162,8 @@ def set_Then_Statement(parentLrmlRule, consequentPredicate, subj, obj):
 
     oblAtom = etree.SubElement(obligation, "{http://ruleml.org/spec}Atom")
     oblRel = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Rel")
-    oblRel.set("iri", consequentPredicate)
+    # oblRel.set("iri", consequentPredicate)
+    oblRel.set("iri", ":HelloWorld")
 
     oblVarSubj = etree.SubElement(oblAtom, "{http://ruleml.org/spec}Var")
     oblVarSubj.text = subj
@@ -194,7 +190,7 @@ def set_If_Statement(parentLrmlRule, andOrValue):
     antecedentRel.set("iri", ":operator")
 
     antecedentVar = etree.SubElement(atom, "{http://ruleml.org/spec}Var")
-    antecedentVar.text = "x"
+    antecedentVar.text = "900x"
 
     return ifStatement
 
@@ -302,7 +298,6 @@ def set_Statements_Related_Elements(rootElement, stmtKVP):
 def setLegalRuleML(metadata, assoc, stmts):
     # root should be done dynamically
     root = set_RootElement_with_Namespaces()
-
     set_MetaData(root, metadata)
     set_Associations(root, assoc)
     set_Statements_Related_Elements(root, stmts)
