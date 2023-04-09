@@ -201,9 +201,54 @@ def queryGovInfoApi():
     return data
 
 
+def getCollectionsLastModifiedDate():
+    pass
+
+
+def getPackageIDSummary():
+    pass
+
+
+def getPackageIDGranules():
+    pass
+
+
+def getPackageIDGranulesIDSummary():
+    # Set the API endpoint and parameters
+    fr_endpoint = "https://api.govinfo.gov/collections/FR"
+    cfr_collection = "CFR"
+    api_key = os.environ["GOVINFO_API_KEY"]
+
+    # Send the API request to retrieve the most recent Federal Register document containing the COPPA regulations
+    params = {
+        "offset": 0,
+        "pageSize": 1,
+        "fields": "lastModified",
+        "sort": "lastModifiedDate:desc",
+        "q": "Children's Online Privacy Protection Act",
+        "api_key": api_key
+    }
+    response = requests.get(fr_endpoint, params=params)
+
+    # Check the status code of the response
+    if response.status_code == 200:
+        # Parse the response as JSON
+        data = response.json()
+
+        # Extract the last modified start date for the CFR collection
+        last_modified_start_date = data["collection"]["lastModified"]
+        cfr_endpoint = f"https://api.govinfo.gov/collections/{cfr_collection}/{last_modified_start_date}"
+        print("Last Modified Start Date:", last_modified_start_date)
+        print("CFR Endpoint:", cfr_endpoint)
+    else:
+        print(f"Error: {response.status_code} - {response.reason}")
+
+
 def getCurrentCFRDateFromGPO(pName, pDate):
     # make an api call to govinfo.gov/api - get provision number and date
     # compare the two, if same, return True, else False
+    # first get the collections - https://api.govinfo.gov/collections/CFR?offset=0&pageSize=100&api_key=XscpbIdvZDJpCuXJ985qn3TN8ELoav5gdTSw3ryH
+    # getCollectionsInfo()
     queryGovInfoApi()
 
     pass
@@ -214,7 +259,7 @@ def is_Provision_Up_to_Date(reg_xml_file_location):
 
     # get the provision number and date from the passed in file
     getCFRMetaData(reg_xml_file_location)
-    getCurrentCFRDateFromGPO(pName, pDate)
+    # getCurrentCFRDateFromGPO(pName, pDate)
         
     return updateToDate
 
@@ -241,8 +286,9 @@ def main():
     # input is a list datatype which contains 1 or more xml file locations
     # of the regulation
     for regulation in regList:
-        # shamroq(regList)
-        getCFRMetaData(regulation)
+        shamroq(regulation)
+        # getCFRMetaData(regulation)
+        # getCollectionsInfo()
 
     print("\n")
     print("/------------------------------------------/")
