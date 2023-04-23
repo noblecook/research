@@ -1,8 +1,16 @@
 import time
+import re
 import xml.etree.ElementTree as eTree
-HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
-CFR_VOLUME_01 = "CFR-2021-title48-vol1.xml"
-eCFR_DATASET = HOME_BASE + CFR_VOLUME_01
+CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
+CFR_48_VOLUME_01 = "CFR-2021-title48-vol1.xml"
+eCFR_48_DATASET_VOL_01 = CFR_48_HOME_BASE + CFR_48_VOLUME_01
+
+
+CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
+CFR_16_VOLUME_01 = "CFR-2022-title16-vol1.xml"
+CFR_16_VOLUME_02 = "CFR-2022-title16-vol2.xml"
+eCFR_16_DATASET_VOL_01 = CFR_16_HOME_BASE + CFR_16_VOLUME_01
+eCFR_16_DATASET_VOL_02 = CFR_16_HOME_BASE + CFR_16_VOLUME_01
 
 
 def print_dict_of_provisions(my_dict):
@@ -17,7 +25,7 @@ def print_list_of_provisions(cfr_metadata_list):
     for subpart in cfr_metadata_list:
         for key, value in subpart.items():
             print(f'{key} {value}')
-        time.sleep(3)
+        print('------------------\n')
 
 
 def getCFRMetaData(reg_xml_file_location):
@@ -27,7 +35,7 @@ def getCFRMetaData(reg_xml_file_location):
     root = tree.getroot()
     cfrMetaDataList = []
 
-    for subpart_element in root.findall('.//SUBPART/SECTION'):
+    for subpart_element in root.findall('.//SECTION'):
         subpart_meta_data = {
             'SECTNO': '',
             'SUBJECT': '',
@@ -57,7 +65,7 @@ def getCFRMetaData(reg_xml_file_location):
 
 
 def main():
-    regList_NEW = [eCFR_DATASET]
+    regList_NEW = [eCFR_48_DATASET_VOL_01]
     for regulation in regList_NEW:
         metadata = getCFRMetaData(regulation)
         print_list_of_provisions(metadata)
