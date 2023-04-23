@@ -20,13 +20,13 @@ nlp = spacy.load("en_core_web_sm")
 encoding = 'utf-8'
 
 LRML_OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/lrml"
-CSV_DATASET_OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/datasets"
+CSV_DATASET_OUTPUT = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/output/datasets/"
 FILE_PREFIX_COPPA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/coppa/'
 FILE_PREFIX_HIPAA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/hipaa/'
 FILE_PREFIX_GLBA = 'C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/glba/'
 FILE_PREFIX_SEKE = 'C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines'
 
-csv_data_312_005 = CSV_DATASET_OUTPUT + 'dataset-TEMPx-cfr_16_312_0051.csv'
+csv_data_312_005 = CSV_DATASET_OUTPUT + 'TEMPx-cfr_16_312_0051.csv'
 xml_45_164_306 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-306.xml'
 xml_45_164_310 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-310.xml'
 xml_45_164_312 = FILE_PREFIX_HIPAA + 'CFR-2019-title45-vol2-sec164-312.xml'
@@ -288,7 +288,12 @@ def create_data_frame(reg_xml_file_location):
     new_dff = "Process get info, and create dff"
     return new_dff
 
-
+# this captures the notion of "PRE COMPUTATION"
+# that is since the files are updated at some periodicity
+# we can precompute all of the if/then statements now
+# afterwards, we can offline, go out and check and update the
+# "store" with the latest and greatest... send notifications
+# once the update happens for validation and awareness.
 def evaluate(meta_data, reg_xml_file_location, gov_info_status):
     csv_file = "return csv file"
     currentFileDate = meta_data["DATE"]
@@ -307,7 +312,7 @@ def evaluate(meta_data, reg_xml_file_location, gov_info_status):
         reg_csv_file = create_data_frame(new_reg_xml_file)
         list_of_conditionals = processRegulations(reg_csv_file)
 
-    time.sleep(1000)
+    time.sleep(0)
     modellrml.init(list_of_conditionals)
     return csv_file
 
@@ -339,8 +344,10 @@ def main():
     for regulation in regList_NEW:
         metadata = getCFRMetaData(regulation)
         print_df_for_validation(metadata)
+        print("-------------------------------\n")
         gpoStatus = govInfoCollections.init(metadata["CFRTITLETEXT"], metadata["TITLE"], metadata["DATE"])
         print_df_for_validation(gpoStatus)
+        print("-------------------------------\n")
         time.sleep(5)
         evaluate(metadata, regulation, gpoStatus)
         shamroq()

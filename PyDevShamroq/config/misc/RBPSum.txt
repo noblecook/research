@@ -1,0 +1,204 @@
+The goal of supervised automatic text summarization in
+the discipline of NLP (Natural Language Processing) is to
+analyze the meaning of the document and convert the long
+text into a summary that incorporates the original document’s
+significant information. The text summary is becoming more
+significant in the creation of reference-worthy material, such
+as news headlines, literature reports, e-commerce marketing
+introduction content, and a variety of other applications.
+Many researchers are working on the task of text summarization,
+the most well-studied two approaches among them
+are the extractive approach and the abstractive approach.
+Extractive approaches generate summaries by extracting parts
+of the source document (sentences and sub-sentence [1] are
+most concerned), while abstractive methods generate summaries
+token-by-token and can generate new words or phrases
+which do not occur in the source document. Abstractive
+summarization is a reconstruction problem that is mainly based
+on sequence-to-sequence (seq2seq) models [2], in which the
+first step is to encode the document and then connect with a
+decoder to reconstruct the summary step-by-step. Extractive
+summarization is typically represented as a sentence ranking
+issue in which the Oracle sentences are first labeled, and then
+the top-k sentences predicted with higher scores by the model
+are selected [3], [12].
+Rich labeled data could help supervised learning models
+achieve better results. However, getting labeled data is time
+consuming and labor-intensive. To the best of our knowledge,
+most works of automatic summary generation focus only on
+improving the accuracy of the model [4], while few of them
+pay attention to the robustness of the model. Therefore, how
+to train robust and high-quality models is the concern of this
+work. The following are our contributions:
+• We propose the RBPSum(RoBERTa-based model with
+Bi-Stream Attention and Position Residual Connection
+for Extractive Summarization) extractive summarization
+model, which outperforms previous state-of-the-art extractive
+and abstractive methods in the CNN/DailyMail
+dataset using the ROUGE F1 metric, and with about a
+third of the training set, the performance is comparable
+to strong baselines.
+• A new objective function, Bi-Stream Attention, and Position
+Residual Connection mechanism are three methods
+we suggest to increase model performance, particularly
+in small-scale data. Experiments show that the preceding
+methods are effective, especially when dealing with
+small-scale data. At the same time, the proposed methods
+also ensure the robustness of the system so that it does
+not deteriorate significantly when the amount of training
+data is reduced significantly.
+
+Extractive summarization necessitates the model’s great
+ability to interpret natural language in order to fully comprehend
+the meaning of the material and select more representative
+sentences as summaries. Pre-trained models (PTMs)
+as a crucial part of the NLP issue, which aims to study the
+universal knowledge hidden in the large-scale corpus, and then
+utilize the saved knowledge to fine-tune the model for solving
+specific downstream tasks with a better performance and faster
+convergence speed [5]. Compared with other networks, such
+as MLP (Multilayer Perceptron), LSTM, and CNN, the largescale
+training data and sophisticated model structure make
+the PTMs have the powerful ability of text understanding
+and achieve great success in various downstream tasks of
+NLP [6]. As a large-scale pre-trained model with powerful
+natural language understanding capabilities, RoBERTa [7] uses
+more training data based on BERT [8] and incorporates the
+dynamic mask mechanism to train the model, achieving stateof-the-art
+results on most NLP downstream tasks of natural
+language understanding, such as text classification and named
+entity recognition. Currently, the most powerful models for
+automatic text summarization are based on large-scale PTMs
+which demonstrate the effectiveness of large-scale PTMs. To
+obtain high-quality sentence representations, most extractive
+models rely on Transformer-encoders [9]. Although it is
+efficient, there is no distinction between each sentence(i.e.
+without considering the impact caused by the formerly selected
+sentences when calculating each sentence representation). We
+argue that while evaluating whether a sentence should be
+included in a summary, the selected sentences before the
+present step should also be considered, and this approach
+suits human reading instincts. We achieve this concept by
+introducing a new Bi-StreamAttention mechanism which
+differs from that proposed by Zhou et al. [10] and Zhang et
+al. [11], who finished with an autoregressive decoder. Previous
+studies mainly take classification loss as the objective function
+for training [12], however, we argue that the semantics
+between a document and its summary should be similar, and
+the salient sentences should include different information in
+the document. Therefore, we offer a new objective function
+to narrow the semantic distance between a document and its
+summary, while pushing the distance between each Oracle
+sentence.
+
+III. PROPOSED APPROACH
+A. Problem Definition
+Let D denote the input document, which consists of n sentences [S1, S2, S3, ..., Sn], and the Oracle (i.e. summary)
+consist of m sentences [S1, S2, ..., Sm], where Si is the i-th
+sentence in the document D. Extractive summarization can be
+modeled as the task of assigning a sentence label li ∈ {0, 1}
+to each Si, judging whether the sentence could be selected as
+
+a part of the summary. It is assumed that summary sentences
+represent the salient content of the document.
+
+
+B. Model Architecture
+RBPSum can be separated into three sections: 1)Sentence Encoder for obtaining sentence representations(Sect. III-B1);
+2)Contextual Encoder for strengthening the link between
+sentences and getting context representations at documentlevel(Sect.
+III-B2); 3)Output layer for predicting probabilities(Sect.
+III-B3).
+1) Sentence Representation with RoBERTa: The [CLS]
+vector is used in RoBERTa to aggregate features from a
+single sentence or a pair of sentences, depending on the task
+purpose, and the [ESP ] vector is used to mark the end of the
+sentence. We use the special symbols [CLS] and [ESP ] to
+distinguish different sentences because the original RoBERTa
+was trained to generate representation vectors at the token
+level. For example, there are three sentences S1, S2 and S3. To
+make the final format, we append the symbols at the beginning
+and end of each sentence ”[CLS] S1 [ESP ] [CLS] S2 [ESP ]
+[CLS] S3 [ESP ]”.
+We feed the processed input sequence to RoBERTa,
+and choose the output vectors at the position of
+[CLS] in the last layer as sentence representations E:n,
+E:n=E0, E1, E2, .., En(cf. Fig. 1), where n is the number of
+sentences in the document.
+2) Contextual Representation with Transformer: After obtaining
+the sentence representations from RoBERTa, we build
+several sentence-reinforcement layers stacked on top of the
+RoBERTa outputs to capture contextual information at the
+document level.
+Sentence-Reinforcement Layer. Due to the output vectors
+of RoBERTa mainly focusing on token-level information, the
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

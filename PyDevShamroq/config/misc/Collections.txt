@@ -1,0 +1,18 @@
+Collections
+Identify new and updated documents based on lastModified value
+
+
+
+GET
+/collections
+Request list of collections. Response includes collectionCode,collectionName, package and granule counts
+
+
+GET
+/collections/{collection}/{lastModifiedStartDate}
+Retrieve new or updated packages for a collection given a start date and time
+
+
+GET
+/collections/{collection}/{lastModifiedStartDate}/{lastModifiedEndDate}
+Retri

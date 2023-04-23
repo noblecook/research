@@ -1,0 +1,14 @@
+<LegalRuleML xmlns="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec" xmlns:xm="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ file:/C:/Users/patri/PycharmProjects/research/legalruleml-core-spec-v1.0-os/changeDTD/xsd-schema/compact/lrml-compact.xsd">
+  <Prefix refID="pre100"/>
+  <LegalSources>
+    <LegalSource key="lsref01cfr312.5" sameAs="www.patrick.cook.com"/>
+  </LegalSources>
+  <References>
+    <Reference refersTo="lsref02" refID="/us/USCODE/eng@/main#title16-sec312.5" refIDSystemName="AkomaNtoso2.0.2012-10"/>
+  </References>
+  <Times>
+    <ruleml:Time key="xm:dateTime">
+      <ruleml:Data xsi:type="xm:dateTime">1998-10-21T00:00:00</ruleml:Data>
+    </ruleml:Time>
+  </Times>
+</LegalRuleML>
