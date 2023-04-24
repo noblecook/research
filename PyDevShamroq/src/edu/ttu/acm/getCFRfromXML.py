@@ -1,31 +1,149 @@
 import time
 import re
 import xml.etree.ElementTree as eTree
+import spacy
+from spacy.pipeline import EntityRuler
+
+
+
+
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
 CFR_48_VOLUME_01 = "CFR-2021-title48-vol1.xml"
+CFR_48_VOLUME_02 = "CFR-2021-title48-vol2.xml"
+CFR_48_VOLUME_03 = "CFR-2021-title48-vol3.xml"
+CFR_48_VOLUME_04 = "CFR-2021-title48-vol4.xml"
+CFR_48_VOLUME_05 = "CFR-2021-title48-vol5.xml"
+CFR_48_VOLUME_06 = "CFR-2021-title48-vol6.xml"
+CFR_48_VOLUME_07 = "CFR-2021-title48-vol7.xml"
 eCFR_48_DATASET_VOL_01 = CFR_48_HOME_BASE + CFR_48_VOLUME_01
+eCFR_48_DATASET_VOL_02 = CFR_48_HOME_BASE + CFR_48_VOLUME_02
+eCFR_48_DATASET_VOL_03 = CFR_48_HOME_BASE + CFR_48_VOLUME_03
+eCFR_48_DATASET_VOL_04 = CFR_48_HOME_BASE + CFR_48_VOLUME_04
+eCFR_48_DATASET_VOL_05 = CFR_48_HOME_BASE + CFR_48_VOLUME_05
+eCFR_48_DATASET_VOL_06 = CFR_48_HOME_BASE + CFR_48_VOLUME_06
+eCFR_48_DATASET_VOL_07 = CFR_48_HOME_BASE + CFR_48_VOLUME_07
 
+eCFR_48_ALL = [eCFR_48_DATASET_VOL_01, eCFR_48_DATASET_VOL_02, eCFR_48_DATASET_VOL_03, eCFR_48_DATASET_VOL_04,
+               eCFR_48_DATASET_VOL_05, eCFR_48_DATASET_VOL_06, eCFR_48_DATASET_VOL_07]
 
 CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
 CFR_16_VOLUME_01 = "CFR-2022-title16-vol1.xml"
 CFR_16_VOLUME_02 = "CFR-2022-title16-vol2.xml"
 eCFR_16_DATASET_VOL_01 = CFR_16_HOME_BASE + CFR_16_VOLUME_01
-eCFR_16_DATASET_VOL_02 = CFR_16_HOME_BASE + CFR_16_VOLUME_01
+eCFR_16_DATASET_VOL_02 = CFR_16_HOME_BASE + CFR_16_VOLUME_02
+
+eCFR_16_ALL = [eCFR_16_DATASET_VOL_01, eCFR_16_DATASET_VOL_02]
+
+from spacy.matcher import Matcher
 
 
-def print_dict_of_provisions(my_dict):
-    item = 0
-    for key, value in my_dict.items():
-        print(f'{key} {value}')
-        print(" ITEM ==> ", item)
-        item = item + 1
+def extract_text(text):
+    nlp = spacy.load("en_core_web_lg")
+    doc = nlp(text)
+    matcher = Matcher(nlp.vocab)
+
+    # Define the pattern for subparts like (a)
+    pattern_alpha = [
+        {"TEXT": "(", "OP": "+", "IS_SENT_START": True},
+        {"IS_ALPHA": True, "LENGTH": 1},
+        {"TEXT": ")", "OP": "+"},
+        {"IS_TITLE": True}
+    ]
+
+    # Define the pattern for subparts like (1)
+    pattern_numeric = [
+        {"TEXT": "(", "OP": "+", "IS_SENT_START": True},
+        {"IS_DIGIT": True},
+        {"TEXT": ")", "OP": "+"},
+        {"IS_TITLE": True}
+    ]
+
+    # Add the patterns to the matcher
+    matcher.add("subpart_pattern_alpha", [pattern_alpha])
+    matcher.add("subpart_pattern_numeric", [pattern_numeric])
+    matches = matcher(doc)
+
+    results = []
+    for i in range(len(matches)):
+        match_id, start, end = matches[i]
+
+        # Get the start of the next match or the end of the document
+        next_start = matches[i + 1][1] if i + 1 < len(matches) else len(doc)
+
+        # Get the subpart and the corresponding text
+        subpart = doc[start:end].text
+        text_after_subpart = doc[end:next_start].text.strip()
+
+        # Store the result as a complete sentence in the list
+        results.append(f"{subpart} {text_after_subpart}")
+
+    return results
+
+
+
+
+
+
+def print_sub_sections_in_section(text):
+    # define patterns for subpart labels
+    nlp = spacy.load("en_core_web_lg")
+    # create a new EntityRuler object and add patterns to it
+    ruler = EntityRuler(nlp, overwrite_ents=True)
+    patterns1 = [
+        {"label": "SUBPART_LABEL", "pattern": [{"TEXT": {"REGEX": r"^\([a-zA-Z0-9]+\)$"}}]}
+    ]
+
+    patterns = [
+        {"label": "SUBPART_LABEL", "pattern": [{"TEXT": {"REGEX": r"\([a-z]\)"}}]}
+    ]
+    ruler.add_patterns(patterns)
+    # add the EntityRuler object to the pipeline
+    #text = "(a) Purpose. The Federal Acquisition Regulations System is established for the codification and publication of uniform policies and procedures for acquisition by all executive agencies."
+
+    doc = nlp(text)
+    # extract entities
+    for ent in doc.ents:
+        print(ent.text, ent.label_)
+
+    subparts = []
+
+    # loop through the entities in the document
+    for ent in doc.ents:
+
+
+        # check if the entity label is 'SUBPART_LABEL'
+        if ent.label_ == 'SUBPART_LABEL':
+            # extract the subpart label and corresponding text block
+            subpart_label = ent.text.strip()
+            subpart_text = ent.sent.text.strip()
+
+            # append the subpart label and text block to the subparts list
+            subparts.append((subpart_label, subpart_text))
+    return subparts
+
+
+
+
+
+
 
 
 def print_list_of_provisions(cfr_metadata_list):
     for subpart in cfr_metadata_list:
         for key, value in subpart.items():
-            print(f'{key} {value}')
-        print('------------------\n')
+            if key == "TEXT":
+                subparts = extract_text(value)
+                if subparts:
+                    print(f'{key}: {value}')
+                    print(".\n.\n.\n")
+                    for sent in subparts:
+                        print(sent)
+                else:
+                    print(f'{key}: {value}')
+            else:
+                print(f'{key}: {value}')
+        print('------------------\n\n')
+        time.sleep(2)
 
 
 def getCFRMetaData(reg_xml_file_location):
@@ -65,8 +183,7 @@ def getCFRMetaData(reg_xml_file_location):
 
 
 def main():
-    regList_NEW = [eCFR_48_DATASET_VOL_01]
-    for regulation in regList_NEW:
+    for regulation in eCFR_16_ALL:
         metadata = getCFRMetaData(regulation)
         print_list_of_provisions(metadata)
 
