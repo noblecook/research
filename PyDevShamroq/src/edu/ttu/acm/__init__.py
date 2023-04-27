@@ -348,7 +348,7 @@ def main():
         gpoStatus = govInfoCollections.init(metadata["CFRTITLETEXT"], metadata["TITLE"], metadata["DATE"])
         print_df_for_validation(gpoStatus)
         print("-------------------------------\n")
-        time.sleep(5)
+        time.sleep(0)
         evaluate(metadata, regulation, gpoStatus)
         shamroq()
 

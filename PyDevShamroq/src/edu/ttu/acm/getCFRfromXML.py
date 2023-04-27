@@ -1,5 +1,7 @@
 import time
+from datetime import datetime
 import re
+import pandas as pd
 import xml.etree.ElementTree as eTree
 import spacy
 from spacy.pipeline import EntityRuler
@@ -15,6 +17,7 @@ CFR_48_VOLUME_04 = "CFR-2021-title48-vol4.xml"
 CFR_48_VOLUME_05 = "CFR-2021-title48-vol5.xml"
 CFR_48_VOLUME_06 = "CFR-2021-title48-vol6.xml"
 CFR_48_VOLUME_07 = "CFR-2021-title48-vol7.xml"
+
 eCFR_48_DATASET_VOL_01 = CFR_48_HOME_BASE + CFR_48_VOLUME_01
 eCFR_48_DATASET_VOL_02 = CFR_48_HOME_BASE + CFR_48_VOLUME_02
 eCFR_48_DATASET_VOL_03 = CFR_48_HOME_BASE + CFR_48_VOLUME_03
@@ -80,70 +83,56 @@ def extract_text(text):
     return results
 
 
-
-
-
-
-def print_sub_sections_in_section(text):
-    # define patterns for subpart labels
-    nlp = spacy.load("en_core_web_lg")
-    # create a new EntityRuler object and add patterns to it
-    ruler = EntityRuler(nlp, overwrite_ents=True)
-    patterns1 = [
-        {"label": "SUBPART_LABEL", "pattern": [{"TEXT": {"REGEX": r"^\([a-zA-Z0-9]+\)$"}}]}
-    ]
-
-    patterns = [
-        {"label": "SUBPART_LABEL", "pattern": [{"TEXT": {"REGEX": r"\([a-z]\)"}}]}
-    ]
-    ruler.add_patterns(patterns)
-    # add the EntityRuler object to the pipeline
-    #text = "(a) Purpose. The Federal Acquisition Regulations System is established for the codification and publication of uniform policies and procedures for acquisition by all executive agencies."
-
-    doc = nlp(text)
-    # extract entities
-    for ent in doc.ents:
-        print(ent.text, ent.label_)
-
-    subparts = []
-
-    # loop through the entities in the document
-    for ent in doc.ents:
-
-
-        # check if the entity label is 'SUBPART_LABEL'
-        if ent.label_ == 'SUBPART_LABEL':
-            # extract the subpart label and corresponding text block
-            subpart_label = ent.text.strip()
-            subpart_text = ent.sent.text.strip()
-
-            # append the subpart label and text block to the subparts list
-            subparts.append((subpart_label, subpart_text))
-    return subparts
-
-
-
-
-
-
+def initializeDataFrame():
+    # Define the column names
+    column_names = ["section_no", "subject", "text", "modal_verb", "deontic_operator", "antecedent", "consequent"]
+    # Load the list of lines into a DataFrame
+    iDF = pd.DataFrame(columns=column_names)
+    # Change the display options to show more text
+    pd.set_option('max_colwidth', 80)
+    return iDF
 
 
 def print_list_of_provisions(cfr_metadata_list):
+    df = initializeDataFrame()
+    my_provision_list = []
     for subpart in cfr_metadata_list:
+        row_data = {}
+        for key, value in subpart.items():
+            row_data[key] = value
+        my_provision_list.append(row_data)
+        df = pd.DataFrame(my_provision_list)
+    return df
+
+
+def print_list_of_provisions_BACKUP(cfr_metadata_list):
+    df = initializeDataFrame()
+    my_provision_list = []
+
+    for subpart in cfr_metadata_list:
+        row_data = {}
         for key, value in subpart.items():
             if key == "TEXT":
                 subparts = extract_text(value)
                 if subparts:
                     print(f'{key}: {value}')
-                    print(".\n.\n.\n")
+                    row_data[key] = value
+                    # print(".\n.\n.\n")
                     for sent in subparts:
-                        print(sent)
+                        pass
+                        # print(sent)
                 else:
+                    pass
                     print(f'{key}: {value}')
+                    row_data[key] = value
             else:
+                pass
                 print(f'{key}: {value}')
-        print('------------------\n\n')
-        time.sleep(2)
+                row_data[key] = value
+
+        my_provision_list.append(row_data)
+        df = pd.DataFrame(my_provision_list)
+    return df
 
 
 def getCFRMetaData(reg_xml_file_location):
@@ -162,11 +151,13 @@ def getCFRMetaData(reg_xml_file_location):
 
         sectno_elements = subpart_element.findall('.//SECTNO')
         if len(sectno_elements) > 0:
-            subpart_meta_data['SECTNO'] = ", ".join([element.text for element in sectno_elements])
+            subpart_meta_data['SECTNO'] = ", ".join(
+                [element.text for element in sectno_elements if element.text is not None])
 
         subject_elements = subpart_element.findall('.//SUBJECT')
         if len(subject_elements) > 0:
-            subpart_meta_data['SUBJECT'] = ", ".join([element.text for element in subject_elements])
+            subpart_meta_data['SUBJECT'] = ", ".join(
+                [element.text for element in subject_elements if element.text is not None])
 
         text_elements = subpart_element.findall('.//P')
         if len(text_elements) > 0:
@@ -182,10 +173,36 @@ def getCFRMetaData(reg_xml_file_location):
     return cfrMetaDataList
 
 
+def createCSV(dff, dataSetName):
+    coppa = "-eCFR_48_ALL"
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    fileExt = ".csv"
+
+    # Define the file name and path
+    file_name = CFR_16_HOME_BASE + dataSetName + coppa + now + fileExt
+
+    # Write the DataFrame to a CSV file
+    dff.to_csv(file_name, index=False)
+
+
+def getTimeNow():
+    t = time.localtime()
+    current_time = time.strftime("%c", t)
+    print("Current Time =", current_time)
+    return t
+
+
 def main():
-    for regulation in eCFR_16_ALL:
+    getTimeNow()
+    df_all_regulations = pd.DataFrame()
+    for regulation in eCFR_48_ALL:
         metadata = getCFRMetaData(regulation)
-        print_list_of_provisions(metadata)
+        df_regulation = print_list_of_provisions(metadata)
+        df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
+
+    print(df_all_regulations)
+    createCSV(df_all_regulations, "eCFR_48_ALL")
+    getTimeNow()
 
 
 if __name__ == '__main__':

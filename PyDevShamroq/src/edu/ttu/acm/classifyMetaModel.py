@@ -576,7 +576,6 @@ def loadDataFrame(hashValue, text, openAIResult, dfs):
 
 
 def processEachProvision(openAIModel, params, dfStore):
-
     for key, value in params.items():
         if key == "Metadata":
             print("key---------->", key)
