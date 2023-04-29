@@ -174,7 +174,7 @@ def getCFRMetaData(reg_xml_file_location):
 
 
 def createCSV(dff, dataSetName):
-    coppa = "-eCFR_48_ALL"
+    coppa = "_eCFR_48_ALL"
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
 
@@ -183,6 +183,7 @@ def createCSV(dff, dataSetName):
 
     # Write the DataFrame to a CSV file
     dff.to_csv(file_name, index=False)
+    return file_name
 
 
 def getTimeNow():
@@ -200,8 +201,9 @@ def main():
         df_regulation = print_list_of_provisions(metadata)
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
 
-    print(df_all_regulations)
-    createCSV(df_all_regulations, "eCFR_48_ALL")
+    # print(df_all_regulations)
+    cfr_extracted_csv_file = createCSV(df_all_regulations, "eCFR_48_ALL")
+    print(cfr_extracted_csv_file)
     getTimeNow()
 
 
