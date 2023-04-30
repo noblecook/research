@@ -11,6 +11,7 @@ CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/"
 CFR_SEKE_FOLDER = "IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
 CSV_FILE = "eCFR_48_ALL-eCFR_48_ALL2023-04-27_00-16-30.csv"
 csv_file_path = CFR_16_HOME_BASE + CFR_SEKE_FOLDER + CSV_FILE
+result_csv_folder = CFR_16_HOME_BASE + CFR_SEKE_FOLDER
 
 
 # I've used this concept more than once, time to break out
@@ -237,6 +238,39 @@ def is_legal_norm(modality):
     return modality in prescriptive_modals
 
 
+def get_deontic_operator(modality):
+    deontic_operation = None
+
+    # Deontic operations
+    if modality:
+        # Permissions
+        if any(phrase in modality for phrase in {"permits", "does not restrict", "does not require"}):
+            deontic_operation = "permission"
+        elif modality in {"should", "may", "can", "could"}:
+            deontic_operation = "permission"
+
+        # Obligations
+        if any(phrase in modality for phrase in {"is required to", "may not", "is prohibited to", "is subject to"}):
+            deontic_operation = "obligation"
+        elif modality in {"must", "shall"}:
+            deontic_operation = "obligation"
+
+        # Privileges
+        if any(phrase in modality for phrase in {"may elect not to", "is not required to", "requirements do not apply", "is permitted to", "at the election of", "is not subject to"}):
+            deontic_operation = "privilege"
+        elif modality in {"may"}:
+            deontic_operation = "privilege"
+
+        # No right
+        if "does not have a right to" in modality:
+            deontic_operation = "no right"
+
+        # Powers
+        if any(phrase in modality for phrase in {"authorize termination of", "must obtain an authorization", "may revoke", "may terminate"}):
+            deontic_operation = "power"
+    return deontic_operation
+
+
 def extract_modality_with_meta_model(sentence):
     sent = sentence
     subject = None
@@ -246,12 +280,15 @@ def extract_modality_with_meta_model(sentence):
     target = None
     instrument = None
     purpose = None
+    deontic_operator = None
 
     for token in sentence:
         if token.dep_ == "nsubj":
             subject = token
         elif token.dep_ in {"aux", "auxpass"}:
             modality = token.text.lower()
+            if modality:
+                deontic_operator = get_deontic_operator(modality)
         elif token.pos_ == "VERB" and token.dep_ != "aux":
             action_verb = token
         elif token.dep_ == "dobj":
@@ -262,13 +299,12 @@ def extract_modality_with_meta_model(sentence):
             if token.text.lower() in {"by", "with", "using"}:
                 # instrument = token.children.__next__()
                 instrument = token.children
-
             elif token.text.lower() in {"for", "to", "in order to"}:
                 # purpose = token.children.__next__()
                 purpose = token.children
 
     if is_legal_norm(modality):
-        return sent, subject, modality, action_verb, obj, target, instrument, purpose
+        return sent, subject, modality, action_verb, obj, target, instrument, purpose, deontic_operator
 
     return None
 
@@ -280,64 +316,58 @@ def main():
     # read the csv file into a "dataframe"
     df_of_regulations = pd.read_csv(csv_file_path)
 
-    results = []
+    list_of_results = []
+    result_df = pd.DataFrame(columns=["Original_sentence", "Subject", "Modality", "Action_verb", "Object",
+                                      "Target", "Instrument", "Purpose", "Hohfeldian_Incident"])
 
     # Iterate through each row of the DataFrame
     for index, row in df_of_regulations.iterrows():
         # print(f"Processing row {index}:")
         for col_name in df_of_regulations.columns:
-            print(f"\t{col_name}: {row[col_name]}")
-
-            # ------------------------------------------- #
-            # Here we need to process the information
-            # Then reload into a data structure - df or json
-            # or stored as a csv with results
-            # ------------------------------------------- #
-
             if col_name == "TEXT":
-
-                # ------------------------------------------ #
-                # Here we need to get the right sentence
-                # otherwise the subjects are arbitrary
-                # -------------------------------------------#
-
-                # (1) extractMetaModel(row[col_name])
-                # Extract information for each sentence in the document
                 paragraph = row[col_name]
-                doc = nlp(paragraph)
-                for sent in doc.sents:
-                    #subject, modality, action_verb, deontic_operator = extract_modality_with_meta_model(sent)
-                    components = extract_modality_with_meta_model(sent)
-                    if components:
-                        # print(f"\tSentence: {sent.text}")
-                        results.append(components)
-                        # print("------------------------------------------")
-                    '''
-                    print(f"\tSentence: {sent.text}")
-                    print(f"  \t\tSubject: {subject}")
-                    print(f"  \t\tModal Verb: {modality}")
-                    print(f"  \t\tAction Verb: {action_verb}")
-                    print(f"  \t\tDeontic Operator: {deontic_operator}")
-                    print()
-                    '''
+                if isinstance(paragraph, str):
+                    doc = nlp(paragraph)
+                    # print(f"\t{col_name}: {row[col_name]}")
+                    for sent in doc.sents:
+                        components = extract_modality_with_meta_model(sent)
+                        if components:
+                            new_row = {
+                                "Original_sentence": sent,
+                                "Subject": components[1],
+                                "Modality": components[2],
+                                "Action_verb": components[3],
+                                "Object": components[4],
+                                "Target": components[5],
+                                "Instrument": components[6],
+                                "Purpose": components[7],
+                                "Hohfeldian_Incident": components[8]
+                            }
+                            new_row_df = pd.DataFrame([new_row], columns=result_df.columns)
+                            result_df = pd.concat([result_df, new_row_df], ignore_index=True)
+                            list_of_results.append(result_df)
 
-        print("------------------------------------------")
-        for elements in results:
-            sent, subject, modality, action_verb, obj, target, instrument, purpose = elements
-            print(f"Original sentence: {sent}")
-            print(f"Subject: {subject}")
-            print(f"Modality: {modality}")
-            print(f"Action verb: {action_verb}")
-            print(f"Object: {obj}")
-            print(f"Target: {target}")
-            print(f"Instrument: {instrument}")
-            print(f"Purpose: {purpose}")
-            print()
-            time.sleep(2)
+                else:
+                    pass
+                    # print(f"\t{col_name}: Invalid value (not a string)")
+            else:
+                pass
+                # print(f"\t{col_name}: {row[col_name]}")
+    CSV_FILE = "SHAMROQ"
+    eCFR_48 = "_eCFR_48_RESULTS_"
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    fileExt = ".csv"
+    result_csv_file = result_csv_folder + CSV_FILE+ eCFR_48 + now + fileExt
+    result_df.to_csv(result_csv_file, index=False)
+    print(result_csv_file)
 
 
-    print(df_of_regulations.shape)
-    print(df_of_regulations.info())
+    '''
+    for row in list_of_results:
+        print(row)
+        time.sleep(5)
+        # print(list_of_results)
+    '''
     getTimeNow()
 
 
@@ -351,5 +381,23 @@ if __name__ == '__main__':
         print("&&&&&&&&&&&&&&&&&&&&&&&")
         print()
         print()
+        
+        print(df_of_regulations.shape)
+        print(df_of_regulations.info())
+        
+               
+            
+            print(f"Subject: {subject}")
+            print(f"Modality: {modality}")
+            print(f"Action verb: {action_verb}")
+            print(f"Object: {obj}")
+            print(f"Target: {target}")
+            print(f"Instrument: {instrument}")
+            print(f"Purpose: {purpose}")
+            print(f"Hohfeldian Incident: {deontic_operator}")
+            print()
+            time.sleep(0)
+            
+            
 
 '''
