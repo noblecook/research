@@ -171,9 +171,17 @@ def extract_modality_and_deontic_operators(sentence):
                 break
 
     return modality, deontic_operator
+'''
+    "subjects": subjects,
+    "objects": objects,
+    "targets": targets,
+    "purposes": purposes,
+    "instruments": instruments,
+    "places": places,
+'''
 
 
-def extract_modality_with_meta_model(sentence):
+def extract_modality_with_meta_model2(sentence):
     subject = None
     modality = None
     action_verb = None
@@ -223,11 +231,57 @@ def extract_modality_with_meta_model(sentence):
     return subject, modality, action_verb, deontic_operator
 
 
+def is_legal_norm(modality):
+    prescriptive_modals = {"can", "could", "may", "might", "must", "shall", "should", "will", "would", "is required to",
+                           "may not", "is prohibited to", "is subject to"}
+    return modality in prescriptive_modals
+
+
+def extract_modality_with_meta_model(sentence):
+    sent = sentence
+    subject = None
+    modality = None
+    action_verb = None
+    obj = None
+    target = None
+    instrument = None
+    purpose = None
+
+    for token in sentence:
+        if token.dep_ == "nsubj":
+            subject = token
+        elif token.dep_ in {"aux", "auxpass"}:
+            modality = token.text.lower()
+        elif token.pos_ == "VERB" and token.dep_ != "aux":
+            action_verb = token
+        elif token.dep_ == "dobj":
+            obj = token
+        elif token.dep_ == "attr":
+            target = token
+        elif token.dep_ == "prep":
+            if token.text.lower() in {"by", "with", "using"}:
+                # instrument = token.children.__next__()
+                instrument = token.children
+
+            elif token.text.lower() in {"for", "to", "in order to"}:
+                # purpose = token.children.__next__()
+                purpose = token.children
+
+    if is_legal_norm(modality):
+        return sent, subject, modality, action_verb, obj, target, instrument, purpose
+
+    return None
+
+
 def main():
     getTimeNow()
     nlp = spacy.load("en_core_web_lg")
+
     # read the csv file into a "dataframe"
     df_of_regulations = pd.read_csv(csv_file_path)
+
+    results = []
+
     # Iterate through each row of the DataFrame
     for index, row in df_of_regulations.iterrows():
         # print(f"Processing row {index}:")
@@ -249,17 +303,37 @@ def main():
 
                 # (1) extractMetaModel(row[col_name])
                 # Extract information for each sentence in the document
-                doc = nlp(row[col_name])
+                paragraph = row[col_name]
+                doc = nlp(paragraph)
                 for sent in doc.sents:
-                    subject, modality, action_verb, deontic_operator = extract_modality_with_meta_model(sent)
-                    print("------------------------------------------")
+                    #subject, modality, action_verb, deontic_operator = extract_modality_with_meta_model(sent)
+                    components = extract_modality_with_meta_model(sent)
+                    if components:
+                        # print(f"\tSentence: {sent.text}")
+                        results.append(components)
+                        # print("------------------------------------------")
+                    '''
                     print(f"\tSentence: {sent.text}")
-                    print(f"  \tSubject: {subject}")
-                    print(f"  \tModal Verb: {modality}")
-                    print(f"  \tAction Verb: {action_verb}")
-                    print(f"  \tDeontic Operator: {deontic_operator}")
+                    print(f"  \t\tSubject: {subject}")
+                    print(f"  \t\tModal Verb: {modality}")
+                    print(f"  \t\tAction Verb: {action_verb}")
+                    print(f"  \t\tDeontic Operator: {deontic_operator}")
                     print()
+                    '''
 
+        print("------------------------------------------")
+        for elements in results:
+            sent, subject, modality, action_verb, obj, target, instrument, purpose = elements
+            print(f"Original sentence: {sent}")
+            print(f"Subject: {subject}")
+            print(f"Modality: {modality}")
+            print(f"Action verb: {action_verb}")
+            print(f"Object: {obj}")
+            print(f"Target: {target}")
+            print(f"Instrument: {instrument}")
+            print(f"Purpose: {purpose}")
+            print()
+            time.sleep(2)
 
 
     print(df_of_regulations.shape)
@@ -269,3 +343,13 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+'''
+        print("&&&&&&&&&&&&&&&&&&&&&&&")
+        print("       DONE            ")
+        print("&&&&&&&&&&&&&&&&&&&&&&&")
+        print()
+        print()
+
+'''
