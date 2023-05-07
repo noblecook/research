@@ -1,22 +1,18 @@
 import time
 from datetime import datetime
-import re
 import pandas as pd
 import xml.etree.ElementTree as eTree
 import spacy
-from spacy.pipeline import EntityRuler
-
-
-
+from spacy.matcher import Matcher
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
-CFR_48_VOLUME_01 = "CFR-2021-title48-vol1.xml"
-CFR_48_VOLUME_02 = "CFR-2021-title48-vol2.xml"
-CFR_48_VOLUME_03 = "CFR-2021-title48-vol3.xml"
-CFR_48_VOLUME_04 = "CFR-2021-title48-vol4.xml"
-CFR_48_VOLUME_05 = "CFR-2021-title48-vol5.xml"
-CFR_48_VOLUME_06 = "CFR-2021-title48-vol6.xml"
-CFR_48_VOLUME_07 = "CFR-2021-title48-vol7.xml"
+CFR_48_VOLUME_01 = "CFR-2020-title48-vol1.xml"
+CFR_48_VOLUME_02 = "CFR-2020-title48-vol2.xml"
+CFR_48_VOLUME_03 = "CFR-2020-title48-vol3.xml"
+CFR_48_VOLUME_04 = "CFR-2020-title48-vol4.xml"
+CFR_48_VOLUME_05 = "CFR-2020-title48-vol5.xml"
+CFR_48_VOLUME_06 = "CFR-2020-title48-vol6.xml"
+CFR_48_VOLUME_07 = "CFR-2020-title48-vol7.xml"
 
 eCFR_48_DATASET_VOL_01 = CFR_48_HOME_BASE + CFR_48_VOLUME_01
 eCFR_48_DATASET_VOL_02 = CFR_48_HOME_BASE + CFR_48_VOLUME_02
@@ -36,8 +32,6 @@ eCFR_16_DATASET_VOL_01 = CFR_16_HOME_BASE + CFR_16_VOLUME_01
 eCFR_16_DATASET_VOL_02 = CFR_16_HOME_BASE + CFR_16_VOLUME_02
 
 eCFR_16_ALL = [eCFR_16_DATASET_VOL_01, eCFR_16_DATASET_VOL_02]
-
-from spacy.matcher import Matcher
 
 
 def extract_text(text):
@@ -174,12 +168,11 @@ def getCFRMetaData(reg_xml_file_location):
 
 
 def createCSV(dff, dataSetName):
-    coppa = "_eCFR_48_ALL"
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
 
     # Define the file name and path
-    file_name = CFR_16_HOME_BASE + dataSetName + coppa + now + fileExt
+    file_name = CFR_48_HOME_BASE + dataSetName + now + fileExt
 
     # Write the DataFrame to a CSV file
     dff.to_csv(file_name, index=False)
@@ -202,7 +195,7 @@ def main():
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
 
     # print(df_all_regulations)
-    cfr_extracted_csv_file = createCSV(df_all_regulations, "eCFR_48_ALL")
+    cfr_extracted_csv_file = createCSV(df_all_regulations, "eCFR_48_ALL_")
     print(cfr_extracted_csv_file)
     getTimeNow()
 

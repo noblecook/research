@@ -1,17 +1,18 @@
 import time
 import pandas as pd
 import spacy
-
 from datetime import datetime
-import re
-import xml.etree.ElementTree as eTree
 
-from spacy.pipeline import EntityRuler
+
 CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/"
 CFR_SEKE_FOLDER = "IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
 CSV_FILE = "eCFR_48_ALL-eCFR_48_ALL2023-04-27_00-16-30.csv"
-csv_file_path = CFR_16_HOME_BASE + CFR_SEKE_FOLDER + CSV_FILE
 result_csv_folder = CFR_16_HOME_BASE + CFR_SEKE_FOLDER
+
+CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
+TITLE_48_CSV_FILE = "eCFR_48_ALL_2023-05-06_21-39-14.csv"
+csv_file_path = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
+
 
 
 # I've used this concept more than once, time to break out
@@ -353,11 +354,11 @@ def main():
             else:
                 pass
                 # print(f"\t{col_name}: {row[col_name]}")
-    CSV_FILE = "SHAMROQ"
+    SHAMROQ_PREFIX = "SHAMROQ"
     eCFR_48 = "_eCFR_48_RESULTS_"
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
-    result_csv_file = result_csv_folder + CSV_FILE+ eCFR_48 + now + fileExt
+    result_csv_file = CFR_48_HOME_BASE + SHAMROQ_PREFIX + eCFR_48 + now + fileExt
     result_df.to_csv(result_csv_file, index=False)
     print(result_csv_file)
 
@@ -373,31 +374,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-'''
-        print("&&&&&&&&&&&&&&&&&&&&&&&")
-        print("       DONE            ")
-        print("&&&&&&&&&&&&&&&&&&&&&&&")
-        print()
-        print()
-        
-        print(df_of_regulations.shape)
-        print(df_of_regulations.info())
-        
-               
-            
-            print(f"Subject: {subject}")
-            print(f"Modality: {modality}")
-            print(f"Action verb: {action_verb}")
-            print(f"Object: {obj}")
-            print(f"Target: {target}")
-            print(f"Instrument: {instrument}")
-            print(f"Purpose: {purpose}")
-            print(f"Hohfeldian Incident: {deontic_operator}")
-            print()
-            time.sleep(0)
-            
-            
-
-'''
