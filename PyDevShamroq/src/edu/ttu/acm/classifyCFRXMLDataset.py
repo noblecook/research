@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import spacy
+from spacy.matcher import PhraseMatcher
 from datetime import datetime
 
 
@@ -10,10 +11,14 @@ CSV_FILE = "eCFR_48_ALL-eCFR_48_ALL2023-04-27_00-16-30.csv"
 result_csv_folder = CFR_16_HOME_BASE + CFR_SEKE_FOLDER
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
-TITLE_48_CSV_FILE = "eCFR_48_ALL_2023-05-06_21-39-14.csv"
-csv_file_path = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
-
-
+TITLE_48_CSV_FILE_BEFORE = "eCFR_48_ALL_2023-05-06_21-39-14_BACKUP.csv"
+TITLE_48_CSV_FILE_TEMP = "eCFR_48_ALL_2023-05-06_21-39-14.csv"
+TITLE_48_CSV_FILE = "eCFR_48_ALL_2023.csv"
+TITLE_48_CSV_FILE_VOL_01 = "eCFR_48_VOL_01_2023-05-13_12-17-55.csv"
+csv_file_path1 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_BEFORE
+csv_file_path2 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_TEMP
+csv_file_path3 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
+csv_file_path4 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_VOL_01
 
 # I've used this concept more than once, time to break out
 # Then use a json or xml file to create the column names dynamically
@@ -97,7 +102,7 @@ def extractMetaModel(paragraph):
             for key, value in info.items():
                 print(f"  {key.capitalize()}: {value}")
             print()
-    time.sleep(1)
+
 
 
 def extract_modality(sentence):
@@ -108,21 +113,27 @@ def extract_modality(sentence):
         if token.dep_ in {"aux", "auxpass"}:
             if token.text.lower() in {"can", "could", "may", "might", "must", "shall", "should", "will", "would"}:
                 modality = token.text.lower()
-                # pattern for rights
-                if modality in {"should", "may", "can", "could", "permits", "does not restrict", "does not require"}:
-                    deontic_operator = "has a right to", "has the right to"
-                if modality in {"must", "is required to", "shall", "may not", "is prohibited to", "is subject to"}:
+                # -------------------
+                # pattern for rights #
+                # -------------------
+                if modality in {"can", "may", "could", "might"}:
+                    deontic_operator = "right"
+                # -------------------
+                # pattern for obligations
+                # -------------------
+                if modality in {"should", "must", "shall"}:
                     deontic_operator = "obligation"
-                if modality in {"ma", "may elect not to ", "is not required to", "requirements does not apply", "is permitted to", "at the election of", "is not subject to"}:
+                # -------------------
+                # pattern for privilege
+                # -------------------
+                if modality in {"can not", "may not", "could not", "might not"}:
                     deontic_operator = "privilege"
-                if modality in {"does not have a right to"}:
+                # -------------------
+                # pattern for no-rights
+                # -------------------
+                if modality in {"should not", "must not", "shall not"}:
                     deontic_operator = "no right"
-                if modality in {"authorize termination of", "must obtain an authorization", "may revoke", "may terminate"}:
-                    deontic_operator = "power"
-                '''
-                if modality in {"must", "shall", "should"}:
-                    deontic_operator = modality
-                '''
+
                 break
 
     return modality, deontic_operator
@@ -242,33 +253,39 @@ def is_legal_norm(modality):
 def get_deontic_operator(modality):
     deontic_operation = None
 
+    # print("inside get_deontic_operator. modality = ", modality)
+
+
     # Deontic operations
     if modality:
         # Permissions
         if any(phrase in modality for phrase in {"permits", "does not restrict", "does not require"}):
             deontic_operation = "permission"
-        elif modality in {"should", "may", "can", "could"}:
+        elif modality in {"can", "may", "could", "might"}:
             deontic_operation = "permission"
 
         # Obligations
         if any(phrase in modality for phrase in {"is required to", "may not", "is prohibited to", "is subject to"}):
             deontic_operation = "obligation"
-        elif modality in {"must", "shall"}:
+        elif modality in {"should", "must", "shall"}:
             deontic_operation = "obligation"
 
         # Privileges
         if any(phrase in modality for phrase in {"may elect not to", "is not required to", "requirements do not apply", "is permitted to", "at the election of", "is not subject to"}):
             deontic_operation = "privilege"
-        elif modality in {"may"}:
-            deontic_operation = "privilege"
+        elif modality in {"cannot", "may not", "could not", "might not"}:
+            deontic_operation = "dispensation"
 
         # No right
-        if "does not have a right to" in modality:
-            deontic_operation = "no right"
+        if any(phrase in modality for phrase in {"should not", "must not", "shall not"}):
+            deontic_operation = "prohibition"
 
         # Powers
         if any(phrase in modality for phrase in {"authorize termination of", "must obtain an authorization", "may revoke", "may terminate"}):
             deontic_operation = "power"
+
+    # print("result = ", deontic_operation)
+
     return deontic_operation
 
 
@@ -284,10 +301,15 @@ def extract_modality_with_meta_model(sentence):
     deontic_operator = None
 
     for token in sentence:
+        print("-----------------> ", token)
+
+
         if token.dep_ == "nsubj":
             subject = token
         elif token.dep_ in {"aux", "auxpass"}:
             modality = token.text.lower()
+            print("FOUND IT! ", modality)
+
             if modality:
                 deontic_operator = get_deontic_operator(modality)
         elif token.pos_ == "VERB" and token.dep_ != "aux":
@@ -310,12 +332,250 @@ def extract_modality_with_meta_model(sentence):
     return None
 
 
+def getMetaModel(deontic_operator, sentence):
+    sent = sentence
+    subject = None
+    modality = None
+    action_verb = None
+    obj = None
+    target = None
+    instrument = None
+    purpose = None
+
+    for token in sentence:
+        if token.dep_ == "nsubj":
+            subject = token
+        elif token.dep_ in {"aux", "auxpass"}:
+            modality = token.text.lower()
+            if deontic_operator is None:
+                if modality:
+                    # print("inside getMetaModel for loop:  modality = ", modality)
+                    deontic_operator = get_deontic_operator(modality)
+        elif token.pos_ == "VERB" and token.dep_ != "aux":
+            action_verb = token
+        elif token.dep_ == "dobj":
+            obj = token
+        elif token.dep_ == "attr":
+            target = token
+        elif token.dep_ == "prep":
+            if token.text.lower() in {"by", "with", "using"}:
+                # instrument = token.children.__next__()
+                instrument = token.children
+            elif token.text.lower() in {"for", "to", "in order to"}:
+                # purpose = token.children.__next__()
+                purpose = token.children
+
+    return sent, subject, modality, action_verb, obj, target, instrument, purpose, deontic_operator
+
+
+def extract_phrase_modality_with_meta_model(nlp, sentence):
+    sent = sentence
+    subject = None
+    modality = None
+    action_verb = None
+    obj = None
+    target = None
+    instrument = None
+    purpose = None
+    deontic_operator = None
+
+    matcher = PhraseMatcher(nlp.vocab)
+    phrases = [
+        "is required to",
+        "may not",
+        "could not",
+        "might not",
+        "cannot",
+        "should not",
+        "must not",
+        "shall not",
+        "is prohibited to",
+        "is subject to",
+        "may elect not to",
+        "is not required to",
+        "requirements do not apply",
+        "is permitted to",
+        "at the election of",
+        "is not subject to",
+        "authorize termination of",
+        "must obtain an authorization",
+        "may revoke",
+        "may terminate",
+    ]
+
+    patterns = [nlp.make_doc(phrase) for phrase in phrases]
+    matcher.add("MODALITY_PHRASES", patterns)
+
+    matches = matcher(sentence)
+    matched_phrases = [sentence[start:end].text.lower() for match_id, start, end in matches]
+    if matched_phrases:
+        matched_phrase = matched_phrases[0]
+        # print("---------->  ", matched_phrase)
+        modality = matched_phrase
+        deontic_operator = get_deontic_operator(modality)
+        phrase_result = getMetaModel(deontic_operator, sentence)
+    else:
+        phrase_result = getMetaModel(deontic_operator, sentence)
+
+    return phrase_result
+
+
+def extract_phrase_modality_with_meta_model3(nlp, sentence):
+    sent = sentence
+    subject = None
+    modality = None
+    action_verb = None
+    obj = None
+    target = None
+    instrument = None
+    purpose = None
+    deontic_operator = None
+
+    matcher = PhraseMatcher(nlp.vocab)
+    phrases = [
+        "is required to",
+        "may not",
+        "could not",
+        "might not",
+        "cannot",
+        "should not",
+        "must not",
+        "shall not",
+        "is prohibited to",
+        "is subject to",
+        "may elect not to",
+        "is not required to",
+        "requirements do not apply",
+        "is permitted to",
+        "at the election of",
+        "is not subject to",
+        "authorize termination of",
+        "must obtain an authorization",
+        "may revoke",
+        "may terminate",
+    ]
+
+    patterns = [nlp.make_doc(phrase) for phrase in phrases]
+    matcher.add("MODALITY_PHRASES", patterns)
+
+    matches = matcher(sentence)
+    for match_id, start, end in matches:
+        matched_phrase = sentence[start:end].text.lower()
+        print("---------->  ", matched_phrase)
+
+        if get_deontic_operator(matched_phrase) is not None:
+            modality = matched_phrase
+
+            deontic_operator = get_deontic_operator(modality)
+            # print("deontic operator ---------->  ", deontic_operator)
+            # print("sentence ---------->  ", sentence)
+            phrase_result = getMetaModel(deontic_operator, sentence)
+            break
+
+    if not modality:
+        my_result = getMetaModel(deontic_operator, sentence)
+        # print(my_result)
+        return my_result
+
+    return phrase_result
+
+
+def extract_phrase_modality_with_meta_model2(nlp, sentence):
+    sent = sentence
+    subject = None
+    modality = None
+    action_verb = None
+    obj = None
+    target = None
+    instrument = None
+    purpose = None
+    deontic_operator = None
+
+    matcher = PhraseMatcher(nlp.vocab)
+    phrases = [
+        "is required to",
+        "may",
+        "could",
+        "might",
+        "should",
+        "must",
+        "shall",
+        "may not",
+        "could not",
+        "might not",
+        "should not",
+        "must not",
+        "cannot",
+        "shall not",
+        "is prohibited to",
+        "is subject to",
+        "may elect not to",
+        "is not required to",
+        "requirements do not apply",
+        "is permitted to",
+        "at the election of",
+        "is not subject to",
+        "authorize termination of",
+        "must obtain an authorization",
+        "may revoke",
+        "may terminate",
+    ]
+
+    patterns = [nlp.make_doc(phrase) for phrase in phrases]
+    matcher.add("MODALITY_PHRASES", patterns)
+
+    matches = matcher(sentence)
+    for match_id, start, end in matches:
+        matched_phrase = sentence[start:end].text.lower()
+        print("---------->  ", matched_phrase)
+
+        if get_deontic_operator(matched_phrase) is not None:
+            modality = matched_phrase
+            deontic_operator = get_deontic_operator(modality)
+            print("deontic operator ---------->  ", deontic_operator)
+            # print("sentence ---------->  ", sentence)
+            break
+
+    if not modality:
+        for token in sentence:
+            print("NOT Modality ------!!!", token)
+
+
+            if token.dep_ == "nsubj":
+                subject = token
+            elif token.dep_ in {"aux", "auxpass"}:
+                modality = token.text.lower()
+                print("FOUND IT! ", modality)
+
+                if modality:
+                    deontic_operator = get_deontic_operator(modality)
+            elif token.pos_ == "VERB" and token.dep_ != "aux":
+                action_verb = token
+            elif token.dep_ == "dobj":
+                obj = token
+            elif token.dep_ == "attr":
+                target = token
+            elif token.dep_ == "prep":
+                if token.text.lower() in {"by", "with", "using"}:
+                    # instrument = token.children.__next__()
+                    instrument = token.children
+                elif token.text.lower() in {"for", "to", "in order to"}:
+                    # purpose = token.children.__next__()
+                    purpose = token.children
+
+    if is_legal_norm(modality):
+        return sent, subject, modality, action_verb, obj, target, instrument, purpose, deontic_operator
+
+    return None
+
+
 def main():
     getTimeNow()
     nlp = spacy.load("en_core_web_lg")
+    # nlp.tokenizer.rules["cannot"] = cannot_exception
 
     # read the csv file into a "dataframe"
-    df_of_regulations = pd.read_csv(csv_file_path)
+    df_of_regulations = pd.read_csv(csv_file_path4)
 
     list_of_results = []
     result_df = pd.DataFrame(columns=["Original_sentence", "Subject", "Modality", "Action_verb", "Object",
@@ -331,7 +591,14 @@ def main():
                     doc = nlp(paragraph)
                     # print(f"\t{col_name}: {row[col_name]}")
                     for sent in doc.sents:
-                        components = extract_modality_with_meta_model(sent)
+                        # print("::---> ", sent)
+                        # components = extract_modality_with_meta_model(nlp, sent)
+                        components = extract_phrase_modality_with_meta_model(nlp, sent)
+
+                        # print(components[0])
+                        # print(components[8])
+                        # print("")
+
                         if components:
                             new_row = {
                                 "Original_sentence": sent,
@@ -366,7 +633,7 @@ def main():
     '''
     for row in list_of_results:
         print(row)
-        time.sleep(5)
+        
         # print(list_of_results)
     '''
     getTimeNow()

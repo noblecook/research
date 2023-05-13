@@ -25,6 +25,8 @@ eCFR_48_DATASET_VOL_07 = CFR_48_HOME_BASE + CFR_48_VOLUME_07
 eCFR_48_ALL = [eCFR_48_DATASET_VOL_01, eCFR_48_DATASET_VOL_02, eCFR_48_DATASET_VOL_03, eCFR_48_DATASET_VOL_04,
                eCFR_48_DATASET_VOL_05, eCFR_48_DATASET_VOL_06, eCFR_48_DATASET_VOL_07]
 
+eCFR_48_VOL_01 = [eCFR_48_DATASET_VOL_01]
+
 CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
 CFR_16_VOLUME_01 = "CFR-2022-title16-vol1.xml"
 CFR_16_VOLUME_02 = "CFR-2022-title16-vol2.xml"
@@ -189,13 +191,13 @@ def getTimeNow():
 def main():
     getTimeNow()
     df_all_regulations = pd.DataFrame()
-    for regulation in eCFR_48_ALL:
+    for regulation in eCFR_48_VOL_01:
         metadata = getCFRMetaData(regulation)
         df_regulation = print_list_of_provisions(metadata)
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
 
     # print(df_all_regulations)
-    cfr_extracted_csv_file = createCSV(df_all_regulations, "eCFR_48_ALL_")
+    cfr_extracted_csv_file = createCSV(df_all_regulations, "eCFR_48_VOL_01_")
     print(cfr_extracted_csv_file)
     getTimeNow()
 
