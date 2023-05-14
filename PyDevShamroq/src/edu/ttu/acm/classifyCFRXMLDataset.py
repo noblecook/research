@@ -20,6 +20,7 @@ csv_file_path2 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_TEMP
 csv_file_path3 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
 csv_file_path4 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_VOL_01
 
+
 # I've used this concept more than once, time to break out
 # Then use a json or xml file to create the column names dynamically
 # also can set options dynamically through the file as well.
@@ -578,12 +579,14 @@ def main():
     df_of_regulations = pd.read_csv(csv_file_path4)
 
     list_of_results = []
-    result_df = pd.DataFrame(columns=["Original_sentence", "Subject", "Modality", "Action_verb", "Object",
+    result_df = pd.DataFrame(columns=["SecNo", "CFRSubject", "Original_sentence", "Subject", "Modality", "Action_verb", "Object",
                                       "Target", "Instrument", "Purpose", "Hohfeldian_Incident"])
 
     # Iterate through each row of the DataFrame
     for index, row in df_of_regulations.iterrows():
         # print(f"Processing row {index}:")
+        section_no = row["SECTNO"]
+        cfr_subj = row["SUBJECT"]
         for col_name in df_of_regulations.columns:
             if col_name == "TEXT":
                 paragraph = row[col_name]
@@ -601,6 +604,8 @@ def main():
 
                         if components:
                             new_row = {
+                                "SecNo": section_no,
+                                "CFRSubject": cfr_subj,
                                 "Original_sentence": sent,
                                 "Subject": components[1],
                                 "Modality": components[2],
