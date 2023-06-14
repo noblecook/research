@@ -1,0 +1,4 @@
+{"label":"modality_subject_01","pattern":[{"POS": {"IN": ["NOUN", "PROP", "PRON"]}},{",LOWER": {"IN": ["may", "might", "can", "could", "shall", "should", "must"]}}, {"LOWER": "not", "OP": "?"}]}
+{"label":"modality_subject_02","pattern":[{"DEP": {"IN": ["nsubj", "nsubjpass"]}},{"LOWER": {"IN": ["may", "might", "can", "could", "shall", "should", "must"]}}, {"LOWER": "not", "OP": "?"}]}
+
+

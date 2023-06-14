@@ -3,27 +3,39 @@ import spacy
 import pandas as pd
 import srsly
 from datetime import datetime
+nlp = spacy.load("en_core_web_lg")
+
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
 TITLE_48_SHAMROQ_FILE = "SHAMROQ_TEST.csv"
-TITLE_48_VOLUME_01 = "eCFR_48_VOL_01_2023-05-13_12-17-55.csv"
+TITLE_48_INPUT_TEST = "eCFR_48_TEST.csv"
+TITLE_48_VOLUME_01_OLD = "eCFR_48_VOL_01_2023-05-13_12-17-55.csv"
+TITLE_48_VOLUME_01 = "eCFR_48_VOL_01.csv"
+TITLE_48_ALL = "eCFR_48_ALL_2023-06-01_00-37-22.csv"
 csv_shamroq_test = CFR_48_HOME_BASE + TITLE_48_SHAMROQ_FILE
-csv_cfr_test = CFR_48_HOME_BASE + TITLE_48_VOLUME_01
+csv_cfr_vol_01 = CFR_48_HOME_BASE + TITLE_48_VOLUME_01
+csv_cfr_input_test = CFR_48_HOME_BASE + TITLE_48_INPUT_TEST
+csv_cfr_input_all = CFR_48_HOME_BASE + TITLE_48_ALL
+
 
 linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 df = pd.DataFrame(columns=linguisticFeatures)
-nlp = spacy.load("en_core_web_lg")
+
+pattern_modal_verbs = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/modal_verbs_rules.jsonl"
 patternCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns.jsonl"
 patternMMCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-meta-model.jsonl"
 patternPrepPhrCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-prep-phrases.jsonl"
+pattern_Joshi_Rules = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/patterns-johsi-rules.jsonl"
+shamroqCfg = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/config/shamroq-patterns-rules.jsonl"
+
+
 '''
 Adding items to the nlp pipeline
 https://spacy.io/usage/processing-pipelines
 '''
-patterns = srsly.read_jsonl(patternPrepPhrCfg)
+patterns = srsly.read_jsonl(shamroqCfg)
 ruler = nlp.add_pipe("span_ruler")
 ruler.add_patterns(patterns)
-
 
 
 def getTimeNow():
@@ -33,6 +45,7 @@ def getTimeNow():
     return t
 
 
+# https://demos.explosion.ai/matcher
 def classifySpan(text):
     doc = nlp(text)
     predication = None
@@ -46,7 +59,13 @@ def main():
     getTimeNow()
 
     # read the csv file into a "dataframe"
-    df_of_regulations = pd.read_csv(csv_cfr_test)
+
+    # Joshi's four sentence
+    # df_of_regulations = pd.read_csv(csv_cfr_vol_01)
+    df_of_regulations = pd.read_csv(csv_cfr_input_all)
+
+
+    # df_of_regulations = pd.read_csv(csv_cfr_input_test)
 
     list_of_results = []
     result_df = pd.DataFrame(
@@ -62,10 +81,15 @@ def main():
                 paragraph = row[col_name]
                 if isinstance(paragraph, str):
                     doc = nlp(paragraph)
-                    # print(f"\t{col_name}: {row[col_name]}")
                     for sent in doc.sents:
+                        # print("Original Sentence: ", sent.text)
+                        # time.sleep(0)
                         components = classifySpan(sent.text)
                         if components:
+                            # print("")
+                            # print("FOUND MATCH - sentence ", sent.text)
+                            # print("Printing Components", components)
+                            # print("")
                             new_row = {
                                 "SECTNO": section_no,
                                 "CFRSubject": cfr_subj,
@@ -84,12 +108,15 @@ def main():
                 pass
                 # print(f"\t{col_name}: {row[col_name]}")
     MATCHED_PREFIX = "MATCHED"
-    eCFR_48 = "_eCFR_48_RESULTS_"
+    # eCFR_48 = "_eCFR_48_VOL_01_"
+    eCFR_48 = "_eCFR_48_ALL_"
+    # eCFR_48 = "_eCFR_48_RESULTS_"
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
     result_csv_file = CFR_48_HOME_BASE + MATCHED_PREFIX + eCFR_48 + now + fileExt
     result_df.to_csv(result_csv_file, index=False)
     print(result_csv_file)
+
     getTimeNow()
 
 

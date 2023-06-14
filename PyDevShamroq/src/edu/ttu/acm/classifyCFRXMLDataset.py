@@ -15,10 +15,20 @@ TITLE_48_CSV_FILE_BEFORE = "eCFR_48_ALL_2023-05-06_21-39-14_BACKUP.csv"
 TITLE_48_CSV_FILE_TEMP = "eCFR_48_ALL_2023-05-06_21-39-14.csv"
 TITLE_48_CSV_FILE = "eCFR_48_ALL_2023.csv"
 TITLE_48_CSV_FILE_VOL_01 = "eCFR_48_VOL_01_2023-05-13_12-17-55.csv"
+TITLE_48_CSV_SIMPLE = "MATCHED_eCFR_48_RESULTS_2023-05-21_20-56-33.csv"
+TITLE_48_CSV_MATCHED = "MATCHED_eCFR_48_VOL_01_2023-05-26_23-19-38.csv"
+CVS_ALL = "eCFR_48_ALL_2023-06-01_00-37-22.csv"
+
 csv_file_path1 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_BEFORE
 csv_file_path2 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_TEMP
 csv_file_path3 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
 csv_file_path4 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_VOL_01
+csv_file_path5 = CFR_48_HOME_BASE + TITLE_48_CSV_SIMPLE
+csv_file_matched = CFR_48_HOME_BASE + TITLE_48_CSV_MATCHED
+csv_file_all = CFR_48_HOME_BASE + CVS_ALL
+
+
+
 
 
 # I've used this concept more than once, time to break out
@@ -302,14 +312,14 @@ def extract_modality_with_meta_model(sentence):
     deontic_operator = None
 
     for token in sentence:
-        print("-----------------> ", token)
+        # print("-----------------> ", token)
 
 
         if token.dep_ == "nsubj":
             subject = token
         elif token.dep_ in {"aux", "auxpass"}:
             modality = token.text.lower()
-            print("FOUND IT! ", modality)
+            # print("FOUND IT! ", modality)
 
             if modality:
                 deontic_operator = get_deontic_operator(modality)
@@ -333,53 +343,32 @@ def extract_modality_with_meta_model(sentence):
     return None
 
 
-def getMetaModel(deontic_operator, sentence):
-    sent = sentence
+def getMetaModel(sentence):
     subject = None
-    modality = None
     action_verb = None
     obj = None
     target = None
-    instrument = None
-    purpose = None
 
     for token in sentence:
-        if token.dep_ == "nsubj":
+        if token.dep_ == "nsubj" or token.dep_ == "nsubjpass":
             subject = token
-        elif token.dep_ in {"aux", "auxpass"}:
-            modality = token.text.lower()
-            if deontic_operator is None:
-                if modality:
-                    # print("inside getMetaModel for loop:  modality = ", modality)
-                    deontic_operator = get_deontic_operator(modality)
-        elif token.pos_ == "VERB" and token.dep_ != "aux":
-            action_verb = token
+        elif token.dep_ == "ROOT":
+            if token.tag_ == "VB" or token.tag_ == "VBP" or token.tag_ == "VBZ":
+                action_verb = token
+            elif token.tag_ == "VBN":
+                action_verb = token.lemma_
         elif token.dep_ == "dobj":
             obj = token
-        elif token.dep_ == "attr":
+        elif token.dep_ == "pobj":
             target = token
-        elif token.dep_ == "prep":
-            if token.text.lower() in {"by", "with", "using"}:
-                # instrument = token.children.__next__()
-                instrument = token.children
-            elif token.text.lower() in {"for", "to", "in order to"}:
-                # purpose = token.children.__next__()
-                purpose = token.children
+        else:
+            pass
 
-    return sent, subject, modality, action_verb, obj, target, instrument, purpose, deontic_operator
+    return subject, action_verb, obj, target
 
 
 def extract_phrase_modality_with_meta_model(nlp, sentence):
-    sent = sentence
-    subject = None
-    modality = None
-    action_verb = None
-    obj = None
-    target = None
-    instrument = None
-    purpose = None
     deontic_operator = None
-
     matcher = PhraseMatcher(nlp.vocab)
     phrases = [
         "is required to",
@@ -403,15 +392,17 @@ def extract_phrase_modality_with_meta_model(nlp, sentence):
         "may revoke",
         "may terminate",
     ]
-
+    print("extract_phrase_modality_with_meta_model(): sentence", sentence)
     patterns = [nlp.make_doc(phrase) for phrase in phrases]
     matcher.add("MODALITY_PHRASES", patterns)
 
     matches = matcher(sentence)
     matched_phrases = [sentence[start:end].text.lower() for match_id, start, end in matches]
+    print("matched phrases", matched_phrases)
+
     if matched_phrases:
         matched_phrase = matched_phrases[0]
-        # print("---------->  ", matched_phrase)
+        print("---------->  ", matched_phrase)
         modality = matched_phrase
         deontic_operator = get_deontic_operator(modality)
         phrase_result = getMetaModel(deontic_operator, sentence)
@@ -462,7 +453,7 @@ def extract_phrase_modality_with_meta_model3(nlp, sentence):
     matches = matcher(sentence)
     for match_id, start, end in matches:
         matched_phrase = sentence[start:end].text.lower()
-        print("---------->  ", matched_phrase)
+        # print("---------->  ", matched_phrase)
 
         if get_deontic_operator(matched_phrase) is not None:
             modality = matched_phrase
@@ -528,25 +519,25 @@ def extract_phrase_modality_with_meta_model2(nlp, sentence):
     matches = matcher(sentence)
     for match_id, start, end in matches:
         matched_phrase = sentence[start:end].text.lower()
-        print("---------->  ", matched_phrase)
+        # print("---------->  ", matched_phrase)
 
         if get_deontic_operator(matched_phrase) is not None:
             modality = matched_phrase
             deontic_operator = get_deontic_operator(modality)
-            print("deontic operator ---------->  ", deontic_operator)
+            # print("deontic operator ---------->  ", deontic_operator)
             # print("sentence ---------->  ", sentence)
             break
 
     if not modality:
         for token in sentence:
-            print("NOT Modality ------!!!", token)
+            # print("NOT Modality ------!!!", token)
 
 
             if token.dep_ == "nsubj":
                 subject = token
             elif token.dep_ in {"aux", "auxpass"}:
                 modality = token.text.lower()
-                print("FOUND IT! ", modality)
+                # print("FOUND IT! ", modality)
 
                 if modality:
                     deontic_operator = get_deontic_operator(modality)
@@ -570,13 +561,13 @@ def extract_phrase_modality_with_meta_model2(nlp, sentence):
     return None
 
 
-def main():
+def main2():
     getTimeNow()
     nlp = spacy.load("en_core_web_lg")
     # nlp.tokenizer.rules["cannot"] = cannot_exception
 
     # read the csv file into a "dataframe"
-    df_of_regulations = pd.read_csv(csv_file_path4)
+    df_of_regulations = pd.read_csv(csv_file_all)
 
     list_of_results = []
     result_df = pd.DataFrame(columns=["SecNo", "CFRSubject", "Original_sentence", "Subject", "Modality", "Action_verb", "Object",
@@ -588,25 +579,39 @@ def main():
         section_no = row["SECTNO"]
         cfr_subj = row["SUBJECT"]
         for col_name in df_of_regulations.columns:
-            if col_name == "TEXT":
+            if col_name == "Original_sentence":
                 paragraph = row[col_name]
                 if isinstance(paragraph, str):
                     doc = nlp(paragraph)
                     # print(f"\t{col_name}: {row[col_name]}")
+                    # time.sleep(10)
                     for sent in doc.sents:
                         # print("::---> ", sent)
                         # components = extract_modality_with_meta_model(nlp, sent)
-                        components = extract_phrase_modality_with_meta_model(nlp, sent)
+                        # components = extract_phrase_modality_with_meta_model(nlp, sent)
+                        # for each sentence
+                        # -- (1) get modality, the Hohfeldian classifications
+                        # -- (2) get metamodel, the parts dep and parts of speech tags
+                        modality = getModality(sent)
+                        meta_model = getMetaModel(sent)
 
-                        # print(components[0])
-                        # print(components[8])
-                        # print("")
+                        '''
+                        print("<><><><><>")
+                        print(components[1])
+                        print(components[2])
+                        print(components[3])
+                        print(components[8])
+                        print("<><><><><>")
+                        time.sleep(60)
+                        '''
+                        # sent (0), subject (1), modality(2), action_verb (3), obj (4),
+                        # target (5), instrument (6), purpose (7), deontic_operator (8)
 
                         if components:
                             new_row = {
                                 "SecNo": section_no,
                                 "CFRSubject": cfr_subj,
-                                "Original_sentence": sent,
+                                "Original_sentence": components[0],
                                 "Subject": components[1],
                                 "Modality": components[2],
                                 "Action_verb": components[3],
@@ -627,7 +632,7 @@ def main():
                 pass
                 # print(f"\t{col_name}: {row[col_name]}")
     SHAMROQ_PREFIX = "SHAMROQ"
-    eCFR_48 = "_eCFR_48_RESULTS_"
+    eCFR_48 = "_eCFR_48_VOL_ALL_"
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     fileExt = ".csv"
     result_csv_file = CFR_48_HOME_BASE + SHAMROQ_PREFIX + eCFR_48 + now + fileExt
@@ -641,6 +646,95 @@ def main():
         
         # print(list_of_results)
     '''
+    getTimeNow()
+
+
+def getModality(sentence):
+    modality = None
+    legal_statement = sentence.text.lower()
+
+    # Deontic operators
+    if legal_statement:
+        # Permission/Right
+        if any(phrase in legal_statement for phrase in {"is required to"}):
+            modality = "permission"
+        elif any(phrase in legal_statement for phrase in {"can", "may", "could", "might"}):
+            modality = "permission"
+
+        # Obligation
+        if any(phrase in legal_statement for phrase in {"is required to", "may not", "is prohibited to", "is subject to"}):
+            modality = "obligation"
+        elif any(phrase in legal_statement for phrase in {"should", "must", "shall"}):
+            modality = "obligation"
+
+        # Privilege
+        if any(phrase in legal_statement for phrase in {"may not", "could not", "might not"}):
+            modality = "dispensation"
+        elif any(phrase in legal_statement for phrase in {"cannot"}):
+            modality = "dispensation"
+
+        # Prohibition/No-Right
+        if any(phrase in legal_statement for phrase in {"does not have a right to", "must not", "shall not"}):
+            modality = "dispensation"
+        elif any(phrase in legal_statement for phrase in {"should not"}):
+            modality = "dispensation"
+
+    return modality
+
+
+def main():
+    getTimeNow()
+    nlp = spacy.load("en_core_web_lg")
+
+    # read the csv file into a "dataframe"
+    df_of_regulations = pd.read_csv(csv_file_all)
+
+    list_of_results = []
+    result_df = pd.DataFrame(
+        columns=["secno", "cfr_subject", "statement", "subject", "modality", "action_verb", "object", "target"])
+
+    # Iterate through each row of the DataFrame
+    for index, row in df_of_regulations.iterrows():
+        # print(f"Processing row {index}:")
+        section_no = row["SECTNO"]
+        cfr_subj = row["SUBJECT"]
+        for col_name in df_of_regulations.columns:
+            if col_name == "TEXT":
+                paragraph = row[col_name]
+                if isinstance(paragraph, str):
+                    doc = nlp(paragraph)
+                    for sent in doc.sents:
+                        modality = getModality(sent)
+                        meta_model = getMetaModel(sent)
+                        # subject, action_verb, obj, target
+                        if meta_model:
+                            new_row = {
+                                "secno": section_no,
+                                "cfr_subject": cfr_subj,
+                                "statement": sent,
+                                "subject": meta_model[0],
+                                "modality": modality,
+                                "action_verb": meta_model[1],
+                                "object": meta_model[2],
+                                "target": meta_model[3]
+                            }
+                            new_row_df = pd.DataFrame([new_row], columns=result_df.columns)
+                            result_df = pd.concat([result_df, new_row_df], ignore_index=True)
+                            list_of_results.append(result_df)
+                else:
+                    pass
+                    # print(f"\t{col_name}: Invalid value (not a string)")
+            else:
+                pass
+                # print(f"\t{col_name}: {row[col_name]}")
+
+    SHAMROQ_PREFIX = "SHAMROQ"
+    eCFR_48 = "_eCFR_48_VOL_01_"
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    fileExt = ".csv"
+    result_csv_file = CFR_48_HOME_BASE + SHAMROQ_PREFIX + eCFR_48 + now + fileExt
+    result_df.to_csv(result_csv_file, index=False)
+    print(result_csv_file)
     getTimeNow()
 
 

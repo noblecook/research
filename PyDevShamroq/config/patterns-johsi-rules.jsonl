@@ -1,0 +1,18 @@
+{"label":"permissions","pattern":[{"POS": {"IN": ["NOUN", "PROP", "PRON"]}}, {"LOWER": {"IN": ["can", "may", "could", "might"]}}, {"POS": "VERB"}]}
+
+{"label":"obligations_01","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["should", "must", "shall"]}}, {"POS": "ADV"},{"POS": "VERB"}]}
+{"label":"obligations_02","pattern": [{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"DEP": "aux", "LEMMA": {"IN": ["should", "must", "shall"]}}, {"POS": "VERB"}]}
+
+{"label":"prohibitions_01","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["should not", "must not", "shall not"]}}, {"LOWER": "not", "OP": "?"}, {"POS": "VERB"}]}
+{"label":"prohibitions_02","pattern":[{"DEP": {"IN": ["nsubj","nsubjpass"]}}, {"LOWER": {"IN": ["should", "must", "shall"]}}, {"DEP": "neg", "OP": "?"}, {"POS": "ADV", "OP": "?"}, {"DEP": "ccomp"}, {"DEP": "acomp"}]}
+
+{"label":"dispensations_01","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["can", "may", "could", "might"]}}, {"LOWER": "not", "OP": "?"}, {"POS": "ADV"},{"POS": "VERB"}]}
+{"label":"dispensations_02","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["cannot", "may not", "could not", "might not"]}}, {"POS": "ADV"},{"POS": "VERB"}]}
+{"label":"dispensations_03","pattern":[{"DEP": {"IN": ["nsubj","nsubjpass"]}}, {"LOWER": {"IN": ["cannot", "may not", "could not", "might not"]}}, {"POS": "ADV"},{"POS": "VERB"}]}
+{"label":"dispensations_04","pattern":[{"DEP": {"IN": ["nsubj","nsubjpass"]}}, {"DEP": "aux", "LEMMA":"can"}, {"DEP": "neg", "OP":  "?"}, {"DEP": "aux", "LEMMA": "not"}]}
+{"label":"dispensations_05","pattern":[{"DEP": {"IN": ["nsubj","nsubjpass"]}}, {"DEP": "aux", "LEMMA":"can"}, {"DEP": "neg", "OP":  "?"}, {"POS": "ADV", "OP": "?"}, {"DEP": "auxpass"}, {"DEP": "relcl"}]}
+
+
+
+
+

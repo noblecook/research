@@ -1,0 +1,40 @@
+The following grammar rules were used to classify text into the deontic expression:
+Permissions: < Noun/Pronoun ><deontic ><verb >
+Obligations: < Noun/Pronoun ><deontic ><adverb ><verb >
+Prohibitions: < Noun/Pronoun ><deontic ><negation ><verb >
+Dispensation: < Noun/Pronoun ><deontic ><negation ><adverb ><verb >
+
+
+Permission works - https://demos.explosion.ai/matcher?text=The%20contracting%20officer%20may%20request%20from%20CCC%20and%20any%20other%20sources%20whatever%20additional%20information%20is%20necessary%20to%20make%20the%20responsibility%20determination.&model=en_core_web_sm&pattern=%5B%7B%22id%22%3A0%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22NOUN%22%7D%5D%7D%2C%7B%22id%22%3A3%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22aux%22%7D%5D%7D%2C%7B%22id%22%3A2%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22VERB%22%7D%5D%7D%5D
+
+pattern = [{'POS': 'NOUN'},
+           {'DEP': 'aux'},
+           {'POS': 'VERB'}]
+
+
+
+
+Dispensation works (SUSPECT) -  https://demos.explosion.ai/matcher?text=Matters%20related%20to%20legal%20sufficiency%20reviews%20that%20cannot%20be%20resolved%20between%20the%20respective%20CO%20and%20SOL%20Attorney-Advisor%20must%20be%20submitted%20for%20resolution%20to%20the%20HCA%20and%20the%20Assistant%20Solicitor%20for%20Acquisitions%20and%20Intellectual%20Property%2C%20Washington%2C%20DC.&model=en_core_web_sm&pattern=%5B%7B%22id%22%3A0%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22PRON%22%7D%5D%7D%2C%7B%22id%22%3A1%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22aux%22%7D%2C%7B%22name%22%3A%22LEMMA%22%2C%22value%22%3A%22can%22%7D%5D%7D%2C%7B%22id%22%3A2%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22neg%22%7D%5D%7D%2C%7B%22id%22%3A3%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22ADV%22%7D%2C%7B%22name%22%3A%22OP%22%2C%22value%22%3A%22%3F%22%7D%5D%7D%2C%7B%22id%22%3A4%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22VERB%22%7D%2C%7B%22name%22%3A%22OP%22%2C%22value%22%3A%22%3F%22%7D%5D%7D%5D
+
+pattern = [{'POS': 'PRON'},
+           {'DEP': 'aux', 'LEMMA': 'can'},
+           {'DEP': 'neg'},
+           {'POS': 'ADV', 'OP': '?'},
+           {'POS': 'VERB', 'OP': '?'}]
+
+
+Obligation works (SUSPECT) - https://demos.explosion.ai/matcher?text=The%20military%20departments%20and%20defense%20agencies%20shall%20provide%20a%20rolling%20annual%20forecast%20of%20acquisitions%20at%20the%20end%20of%20each%20quarter%20(i.e.%2C%20March%2031%3B%20June%2030%3B%20September%2030%3B%20December%2031)%2C%20to%20the%20Deputy%20Director%2C%20Defense%20Procurement%20and%20Acquisition%20Policy%20(Contract%20Policy%20and%20International%20Contracting).&model=en_core_web_sm&pattern=%5B%7B%22id%22%3A0%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22NOUN%22%7D%5D%7D%2C%7B%22id%22%3A1%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22aux%22%7D%5D%7D%2C%7B%22id%22%3A2%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22ADV%22%7D%2C%7B%22name%22%3A%22OP%22%2C%22value%22%3A%22%3F%22%7D%5D%7D%2C%7B%22id%22%3A3%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22VERB%22%7D%5D%7D%5D
+
+pattern = [{'POS': 'NOUN'},
+           {'DEP': 'aux'},
+           {'POS': 'ADV', 'OP': '?'},
+           {'POS': 'VERB'}]
+
+
+Prohibtion works (SUSPECT) - https://demos.explosion.ai/matcher?text=The%20Secretary%20of%20Defense%20determines%20in%20writing%20that%20it%20should%20not%20be%20practicable%20to%20carry%20out%20the%20acquisition%20without%20continuing%20to%20use%20a%20contractor%20to%20perform%20lead%20system%20integrator%20functions%20and%20that%20doing%20so%20is%20in%20the%20best%20interest%20of%20DoD%20%5BDepartment%20of%20Defense%5D.%20The%20authority%20to%20make%20this%20determination%20may%20not%20be%20delegated%20below%20the%20level%20of%20the%20Under%20Secretary%20of%20Defense%20for%20Acquisition%2C%20Technology%2C%20and%20Logistics.&model=en_core_web_sm&pattern=%5B%7B%22id%22%3A0%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22NOUN%22%7D%5D%7D%2C%7B%22id%22%3A1%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22aux%22%7D%2C%7B%22name%22%3A%22LEMMA%22%2C%22value%22%3A%22may%22%7D%5D%7D%2C%7B%22id%22%3A2%2C%22attrs%22%3A%5B%7B%22name%22%3A%22DEP%22%2C%22value%22%3A%22neg%22%7D%5D%7D%2C%7B%22id%22%3A3%2C%22attrs%22%3A%5B%7B%22name%22%3A%22POS%22%2C%22value%22%3A%22VERB%22%7D%2C%7B%22name%22%3A%22OP%22%2C%22value%22%3A%22%3F%22%7D%5D%7D%5D
+
+pattern = [{'POS': 'NOUN'},
+           {'DEP': 'aux', 'LEMMA': 'may'},
+           {'DEP': 'neg'},
+           {'POS': 'VERB', 'OP': '?'}]
+

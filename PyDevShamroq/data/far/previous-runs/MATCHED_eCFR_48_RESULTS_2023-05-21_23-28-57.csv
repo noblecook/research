@@ -1,0 +1,6 @@
+SECTNO,CFRSubject,Original_sentence,Matched_Label,Matched_Text
+1,Scope of part.,The contracting officer may request from CCC and any other sources whatever additional information,modality_subject_02,officer may
+1.101,Purpose.,"Matters related to legal sufficiency reviews that cannot be resolved between the respective CO and SOL Attorney-Advisor must be submitted for resolution to the HCA and the Assistant Solicitor for Acquisitions and Intellectual Property, Washington, DC.",modality_subject_02,Advisor must
+1.102-1,0,The Secretary of Defense determines in writing that it should not be practicable to carry out the acquisition without continuing to use a contractor to perform lead system integrator functions and that doing so is in the best interest of DoD [Department of Defense].,modality_subject_02,it should not
+1.102-1,0,"The authority to make this determination may not be delegated below the level of the Under Secretary of Defense for Acquisition, Technology, and Logistics..",modality_subject_02,determination may not
+,,The client must obtain an authorization before performing operation,modality_subject_02,client must

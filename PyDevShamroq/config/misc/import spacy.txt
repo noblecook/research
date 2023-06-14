@@ -1,0 +1,23 @@
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+
+def match_pattern(doc):
+    for token in doc:
+        if token.pos_ in ["NOUN", "PROPN"]:
+            for child in token.children:
+                if child.dep_ == "aux" and child.lemma_.lower() in ["may", "might", "can", "could", "shall", "should", "must"]:
+                    for grandchild in child.children:
+                        if grandchild.pos_ == "VERB":
+                            return True
+    return False
+
+# Example sentence
+sentence = "She may go."
+
+doc = nlp(sentence)
+
+if match_pattern(doc):
+    print("Pattern matched!")
+else:
+    print("Pattern not found.")

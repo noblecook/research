@@ -1,0 +1,8 @@
+{"label":"permissions","pattern":[{"POS": {"IN": ["NOUN", "PROP", "PRON"]}}, {"LOWER": {"IN": ["can", "may", "could", "might"]}, "TAG": {"IN": ["MD"]}}, {"POS": "VERB"}]}
+{"label":"obligations","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["should", "must", "shall"]},"TAG": {"IN": ["MD"]}}, {"POS": "ADV", "OP": "?"},{"POS": "VERB"}]}
+{"label":"prohibitions","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["should", "must", "shall"]},"TAG": {"IN": ["MD"]}}, {"DEP": "neg"}, {"POS": "VERB"}]}
+{"label":"dispensations","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["can", "may", "could", "might"]},"TAG": {"IN": ["MD"]}}, {"DEP": "neg"}, {"POS": "ADV", "OP": "?"}, {"POS": "VERB"}]}
+
+
+
+
