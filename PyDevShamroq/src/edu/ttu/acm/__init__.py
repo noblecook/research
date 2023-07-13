@@ -38,6 +38,9 @@ xml_16_312_011 = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-sec312-11.xml'
 xml_16_312_ALL = FILE_PREFIX_COPPA + 'CFR-2020-title16-vol1-part312.xml'
 xml_16_313_009 = FILE_PREFIX_GLBA + 'CFR-2022-title16-vol1-sec313-9.xml'
 xml_16_312_005_22 = FILE_PREFIX_SEKE + '/2023-IJSEKE-manuscript/govinfo.gov.16CFR.xml/CFR-2022-title16-vol1-sec312-5.xml'
+xml_48_VOLUME_01 = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.48CFR.Volumes/CFR-2020-title48-vol7.xml"
+
+
 
 # regList = [xml_16_312_ALL]
 # regList = [xml_45_164_306, xml_45_164_310, xml_45_164_312, xml_45_164_510]
@@ -45,9 +48,7 @@ xml_16_312_005_22 = FILE_PREFIX_SEKE + '/2023-IJSEKE-manuscript/govinfo.gov.16CF
 # regList = [xml_16_312_005, xml_16_313_009, xml_45_164_510]
 regList_DIFFERENT = [xml_16_312_005]
 regList_OLD = [xml_16_312_005]
-regList_NEW = [xml_16_312_005_22]
-
-
+regList_NEW = [xml_48_VOLUME_01]
 
 def getTimeNow():
     t = time.localtime()
@@ -175,6 +176,26 @@ def getCFRMetaData(reg_xml_file_location):
     root = tree.getroot()
 
     cfrMetaData = {
+        'CFRTITLE': root.find('FDSYS/CFRTITLE'),
+        'CFRTITLETEXT': root.find('FDSYS/CFRTITLETEXT'),
+        'VOL': root.find('FDSYS/VOL'),
+        'DATE': root.find('FDSYS/DATE'),
+        'ORIGINALDATE': root.find('FDSYS/ORIGINALDATE'),
+        'COVERONLY': root.find('FDSYS/COVERONLY'),
+        'TITLE': root.find('FDSYS/TITLE'),
+        'GRANULENUM': root.find('FDSYS/GRANULENUM'),
+        'HEADING': root.find('FDSYS/HEADING')
+    }
+    return cfrMetaData
+
+
+def getCFRMetaData_PREVIOUS(reg_xml_file_location):
+    # use XSLT to get only two important elements
+    # store the results and return
+    tree = eTree.parse(reg_xml_file_location)
+    root = tree.getroot()
+
+    cfrMetaData = {
         'CFRTITLE': root.find('FDSYS/CFRTITLE').text,
         'CFRTITLETEXT': root.find('FDSYS/CFRTITLETEXT').text,
         'VOL': root.find('FDSYS/VOL').text,
@@ -186,7 +207,6 @@ def getCFRMetaData(reg_xml_file_location):
         'HEADING': root.find('FDSYS/HEADING').text
     }
     return cfrMetaData
-
 
 def queryGovInfoApi():
     data = None
@@ -331,7 +351,7 @@ def print_df_for_validation(my_dff):
 # print(f'{colKey}: {colValue}')
 
 def main():
-    print("Number of regulations -->", len(regList_NEW))
+    print("Number of regulations -->", len(regList_OLD))
     print("/------------------------------------------/")
     print("... starting main()")
     print("/------------------------------------------/")
@@ -348,7 +368,7 @@ def main():
         gpoStatus = govInfoCollections.init(metadata["CFRTITLETEXT"], metadata["TITLE"], metadata["DATE"])
         print_df_for_validation(gpoStatus)
         print("-------------------------------\n")
-        time.sleep(0)
+        time.sleep(1000)
         evaluate(metadata, regulation, gpoStatus)
         shamroq()
 

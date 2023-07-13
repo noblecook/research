@@ -651,3 +651,7 @@ def init(inputDict):
     outputDF.to_csv(file_name, index=False)
 
     return outputDF
+
+
+if __name__ == '__main__':
+    init()

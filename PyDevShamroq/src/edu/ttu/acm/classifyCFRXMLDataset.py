@@ -1,3 +1,4 @@
+import logging
 import time
 import pandas as pd
 import spacy
@@ -26,9 +27,6 @@ csv_file_path4 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_VOL_01
 csv_file_path5 = CFR_48_HOME_BASE + TITLE_48_CSV_SIMPLE
 csv_file_matched = CFR_48_HOME_BASE + TITLE_48_CSV_MATCHED
 csv_file_all = CFR_48_HOME_BASE + CVS_ALL
-
-
-
 
 
 # I've used this concept more than once, time to break out
@@ -684,6 +682,9 @@ def getModality(sentence):
 
 def main():
     getTimeNow()
+    # Configure logging
+    logging.basicConfig(level=logging.DEBUG, filename='LF_classifyCFRXML.log', filemode='w',
+                        format='%(asctime)s - %(levelname)s - %(message)s')
     nlp = spacy.load("en_core_web_lg")
 
     # read the csv file into a "dataframe"

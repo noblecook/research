@@ -1,0 +1,5 @@
+{"label":"obligations","pattern":[{"POS": {"IN": ["NOUN","PROP", "PRON"]}}, {"LOWER": {"IN": ["should", "must", "shall"]},"TAG": {"IN": ["MD"]}}, {"POS": "ADV"},{"POS": "VERB"}]}
+
+
+
+

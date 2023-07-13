@@ -1,0 +1,19 @@
+________________________________________________________________________________________________________
+ALGORITHM 1: Entity Extraction
+________________________________________________________________________________________________________
+Let Topics be the hashmap where keys of the hashmap store the location of the paragraph and the values of
+hashmap store array of topics extracted from Latent Dirichlet Allocation Topic Modeling.
+Let Min represents minimum perplexity
+Let N be a Hashmap where key-value pairs are perplexity values and corresponding topic models.
+1. input Preprocessed raw text
+2. For Chapter number in each Chapter within Title:
+3. For Part number in each Part within Chapter:
+4. For Subpart number in each Subpart within Part:
+5. For Section number in each Section within Subpart:
+6. For Subsection number in Subsection within section:
+7. For each_topic in set of topic models:
+8. Min = minimum value of perplexity of each topic
+9. Topics [Subsection number] = Min
+Output: Hashmap Topics will store topics with lower perplexity as value for each subsection. This results in
+fetching relevant topics from each subsection.
+________________________________________________________________________________________________________

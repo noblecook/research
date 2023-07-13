@@ -1,3 +1,4 @@
+import logging
 import time
 from datetime import datetime
 import pandas as pd
@@ -6,26 +7,27 @@ import spacy
 from spacy.matcher import Matcher
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/"
-CFR_48_VOLUME_01 = "CFR-2020-title48-vol1.xml"
-CFR_48_VOLUME_02 = "CFR-2020-title48-vol2.xml"
-CFR_48_VOLUME_03 = "CFR-2020-title48-vol3.xml"
-CFR_48_VOLUME_04 = "CFR-2020-title48-vol4.xml"
-CFR_48_VOLUME_05 = "CFR-2020-title48-vol5.xml"
-CFR_48_VOLUME_06 = "CFR-2020-title48-vol6.xml"
-CFR_48_VOLUME_07 = "CFR-2020-title48-vol7.xml"
+CFR_48_VOLUME_01_2020 = "CFR-2020-title48-vol1.xml"
+CFR_48_VOLUME_02_2020 = "CFR-2020-title48-vol2.xml"
+CFR_48_VOLUME_03_2020 = "CFR-2020-title48-vol3.xml"
+CFR_48_VOLUME_04_2020 = "CFR-2020-title48-vol4.xml"
+CFR_48_VOLUME_05_2020 = "CFR-2020-title48-vol5.xml"
+CFR_48_VOLUME_06_2020 = "CFR-2020-title48-vol6.xml"
+CFR_48_VOLUME_07_2020 = "CFR-2020-title48-vol7.xml"
 
-eCFR_48_DATASET_VOL_01 = CFR_48_HOME_BASE + CFR_48_VOLUME_01
-eCFR_48_DATASET_VOL_02 = CFR_48_HOME_BASE + CFR_48_VOLUME_02
-eCFR_48_DATASET_VOL_03 = CFR_48_HOME_BASE + CFR_48_VOLUME_03
-eCFR_48_DATASET_VOL_04 = CFR_48_HOME_BASE + CFR_48_VOLUME_04
-eCFR_48_DATASET_VOL_05 = CFR_48_HOME_BASE + CFR_48_VOLUME_05
-eCFR_48_DATASET_VOL_06 = CFR_48_HOME_BASE + CFR_48_VOLUME_06
-eCFR_48_DATASET_VOL_07 = CFR_48_HOME_BASE + CFR_48_VOLUME_07
+eCFR_48_DATASET_VOL_01_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_01_2020
+eCFR_48_DATASET_VOL_02_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_02_2020
+eCFR_48_DATASET_VOL_03_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_03_2020
+eCFR_48_DATASET_VOL_04_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_04_2020
+eCFR_48_DATASET_VOL_05_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_05_2020
+eCFR_48_DATASET_VOL_06_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_06_2020
+eCFR_48_DATASET_VOL_07_2020 = CFR_48_HOME_BASE + CFR_48_VOLUME_07_2020
 
-eCFR_48_ALL = [eCFR_48_DATASET_VOL_01, eCFR_48_DATASET_VOL_02, eCFR_48_DATASET_VOL_03, eCFR_48_DATASET_VOL_04,
-               eCFR_48_DATASET_VOL_05, eCFR_48_DATASET_VOL_06, eCFR_48_DATASET_VOL_07]
+eCFR_48_ALL_2020 = [eCFR_48_DATASET_VOL_01_2020, eCFR_48_DATASET_VOL_02_2020, eCFR_48_DATASET_VOL_03_2020,
+                    eCFR_48_DATASET_VOL_04_2020, eCFR_48_DATASET_VOL_05_2020, eCFR_48_DATASET_VOL_06_2020,
+                    eCFR_48_DATASET_VOL_07_2020]
 
-gpo_dataset_list = [eCFR_48_DATASET_VOL_01]
+gpo_dataset_list = [eCFR_48_DATASET_VOL_01_2020]
 
 CFR_16_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/seke-conference/IJSEKE - Submission Guidelines/2023-IJSEKE-manuscript/govinfo.gov.16CFR.Volumes/"
 CFR_16_VOLUME_01 = "CFR-2022-title16-vol1.xml"
@@ -132,6 +134,13 @@ def print_list_of_provisions_BACKUP(cfr_metadata_list):
 
 
 def getCFRMetaData(reg_xml_file_location):
+    # Configure logging
+    logging.basicConfig(level=logging.DEBUG, filename='LF_getCFRfromXML.log', filemode='w',
+                        format='%(asctime)s - %(levelname)s - %(message)s')
+
+    # Log method start
+    logging.info("getCFRMetaData method called.")
+
     # use XSLT to get only two important elements
     # store the results and return
     tree = eTree.parse(reg_xml_file_location)
@@ -165,6 +174,11 @@ def getCFRMetaData(reg_xml_file_location):
             subpart_meta_data['TEXT'] = text
 
         cfrMetaDataList.append(subpart_meta_data)
+        # Log the completion of processing for each subpart element
+        logging.debug("Processing subpart element completed.")
+
+    # Log method end
+    logging.info("getCFRMetaData method completed.")
 
     return cfrMetaDataList
 
@@ -188,13 +202,10 @@ def getTimeNow():
     return t
 
 
-def main():
+def main(regList, regName):
     getTimeNow()
-    # regName = "cfr_to_csv_vol_01_"
-    regName = "eCFR_48_ALL_"
-
     df_all_regulations = pd.DataFrame()
-    for regulation in eCFR_48_ALL:
+    for regulation in regList:
         metadata = getCFRMetaData(regulation)
         df_regulation = print_list_of_provisions(metadata)
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
@@ -206,5 +217,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    list_of_files = gpo_dataset_list
+    regName = "cfr_to_csv_vol_01_"
+    # regName = "eCFR_48_ALL_"
+    main(list_of_files, regName)
 
