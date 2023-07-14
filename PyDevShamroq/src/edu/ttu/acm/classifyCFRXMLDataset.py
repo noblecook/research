@@ -20,13 +20,17 @@ TITLE_48_CSV_SIMPLE = "MATCHED_eCFR_48_RESULTS_2023-05-21_20-56-33.csv"
 TITLE_48_CSV_MATCHED = "MATCHED_eCFR_48_VOL_01_2023-05-26_23-19-38.csv"
 CVS_ALL = "eCFR_48_ALL_2023-06-01_00-37-22.csv"
 
+CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2021/"
+CVS_ALL = "output/CFR_48_20212023-07-12_23-53-43.csv"
+csv_file_all = CFR_48_HOME_BASE + CVS_ALL
+
 csv_file_path1 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_BEFORE
 csv_file_path2 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_TEMP
 csv_file_path3 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE
 csv_file_path4 = CFR_48_HOME_BASE + TITLE_48_CSV_FILE_VOL_01
 csv_file_path5 = CFR_48_HOME_BASE + TITLE_48_CSV_SIMPLE
 csv_file_matched = CFR_48_HOME_BASE + TITLE_48_CSV_MATCHED
-csv_file_all = CFR_48_HOME_BASE + CVS_ALL
+#csv_file_all = CFR_48_HOME_BASE + CVS_ALL
 
 
 # I've used this concept more than once, time to break out
