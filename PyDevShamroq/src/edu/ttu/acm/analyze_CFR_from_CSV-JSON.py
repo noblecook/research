@@ -8,8 +8,9 @@ from datetime import datetime
 nlp = spacy.load("en_core_web_lg")
 
 
-CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2021/"
-TITLE_48_ALL = "output/CFR_48_20212023-07-12_23-53-43.csv"
+CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/"
+# TITLE_48_ALL = "output/CFR_48_20212023-07-12_23-53-43.csv"
+TITLE_48_ALL = "output/CFR_48_20192023-07-13_20-46-11.csv"
 csv_cfr_input_all = CFR_48_HOME_BASE + TITLE_48_ALL
 
 
@@ -108,11 +109,19 @@ def process_sentences(doc, section_no, cfr_subj, result_df):
 
 def generate_csv_file(result_df):
     try:
-        CLASSIFIED_PREFIX = "results/CLASSIFIED"
-        eCFR_48 = "_eCFR_48_ALL_"
         now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         fileExt = ".csv"
-        result_csv_file = CFR_48_HOME_BASE + CLASSIFIED_PREFIX + eCFR_48 + now + fileExt
+        results = "results/"
+        CLASSIFIED_PREFIX = "CLASSIFIED"
+        eCFR_48 = "_eCFR_48_ALL_"
+
+        # Define the file name and path
+        result_csv_file = CFR_48_HOME_BASE + results + CLASSIFIED_PREFIX + eCFR_48 + now + fileExt
+
+        # Create the output directory if it doesn't exist
+        output_dir = os.path.dirname(result_csv_file)
+        os.makedirs(output_dir, exist_ok=True)
+
         result_df.to_csv(result_csv_file, index=False)
         return result_csv_file
     except Exception as e:
@@ -122,7 +131,6 @@ def generate_csv_file(result_df):
 
 def read_csv_file(csv_file):
     try:
-
         absolute_path = os.path.abspath(csv_file)
         # Extract filename and size
         filename = os.path.basename(absolute_path)

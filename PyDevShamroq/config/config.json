@@ -1,6 +1,6 @@
 {
   "CFR_48_2021": {
-    "regName": "CFR_48_2021",
+    "REG_NAME": "CFR_48_2021",
     "HOME_BASE": "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2021/",
     "VOLUMES": [
       "CFR-2021-title48-vol1.xml",
@@ -13,7 +13,7 @@
     ]
   },
   "CFR_48_2020": {
-    "regName": "CFR_48_2020",
+    "REG_NAME": "CFR_48_2020",
     "HOME_BASE": "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2020/",
     "VOLUMES": [
       "CFR-2020-title48-vol1.xml",
@@ -23,6 +23,19 @@
       "CFR-2020-title48-vol5.xml",
       "CFR-2020-title48-vol6.xml",
       "CFR-2020-title48-vol7.xml"
+    ]
+  },
+    "CFR_48_2019": {
+    "REG_NAME": "CFR_48_2019",
+    "HOME_BASE": "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/",
+    "VOLUMES": [
+      "CFR-2019-title48-vol1.xml",
+      "CFR-2019-title48-vol2.xml",
+      "CFR-2019-title48-vol3.xml",
+      "CFR-2019-title48-vol4.xml",
+      "CFR-2019-title48-vol5.xml",
+      "CFR-2019-title48-vol6.xml",
+      "CFR-2019-title48-vol7.xml"
     ]
   }
 }

@@ -188,7 +188,7 @@ def extract_cfr_data(regList):
     return df_all_regulations
 
 
-def init():
+def init(cfr_with_year):
     # Configure logging
     logging.basicConfig(filename='app.shamroq.log', level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s')
@@ -210,12 +210,13 @@ def init():
         logging.error("An error occurred while loading configuration: %s", e)
 
     # extract REG_NAME, BASE URL, & CFR 48 volumes 2021 from config file
-    CFR_48_2021_REG_NAME = config['CFR_48_2021']['regName']
-    CFR_48_2021_HOME_BASE = config['CFR_48_2021']['HOME_BASE']
-    CFR_48_2021_VOLUMES = config['CFR_48_2021']['VOLUMES']
-    CFR_48_2021_DATASET = [CFR_48_2021_HOME_BASE + volume for volume in CFR_48_2021_VOLUMES]
-    logging.info("Final dataset: %s", CFR_48_2021_DATASET)
-    return CFR_48_2021_DATASET, CFR_48_2021_REG_NAME, CFR_48_2021_HOME_BASE
+    CFR_HOME_BASE = config[cfr_with_year]['HOME_BASE']
+    CFR_VOLUMES = config[cfr_with_year]['VOLUMES']
+    CFR_REG_NAME = config[cfr_with_year]['REG_NAME']
+
+    CFR_DATASET = [CFR_HOME_BASE + volume for volume in CFR_VOLUMES]
+    logging.info("Final dataset: %s", CFR_DATASET)
+    return CFR_DATASET, CFR_REG_NAME, CFR_HOME_BASE
 
 
 def getTimeNow():
@@ -227,7 +228,8 @@ def getTimeNow():
 
 def main():
     getTimeNow()
-    dataSet, regName, homeBase = init()
+    CFR_WITH_YEAR = "CFR_48_2019"
+    dataSet, regName, homeBase = init(CFR_WITH_YEAR)
     df_regs = extract_cfr_data(dataSet)
     logging.info("List of regulations: %s", df_regs)
     cfr_extracted_csv_file = createCSV(df_regs, regName, homeBase)
