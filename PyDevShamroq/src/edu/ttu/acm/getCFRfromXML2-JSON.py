@@ -104,7 +104,7 @@ def print_list_of_provisions_BACKUP(cfr_metadata_list):
     return df
 
 
-def getCFRMetaData(reg_xml_file_location):
+def getCFRData(reg_xml_file_location):
 
     try:
         # use XSLT to get only two important elements
@@ -181,7 +181,7 @@ def extract_cfr_data(regList):
 
     # Loop through the list of CFR.xml files
     for regulation in regList:
-        metadata = getCFRMetaData(regulation)
+        metadata = getCFRData(regulation)
         df_regulation = print_list_of_provisions(metadata)
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
 
@@ -236,6 +236,15 @@ def main():
     print(cfr_extracted_csv_file)
     getTimeNow()
 
+
+# -------------------------------------
+# @Author Patrick Cook
+# @Date: circa 2021 initial release
+# getCFRfromXML.py
+# Uses the getCFRData function to extract the SECTNO, SUBJECT,
+# and concatenated TEXT elements within each SECTION element from all seven
+# volumes of Title 48 contained in XML files.
+# -------------------------------------
 
 if __name__ == '__main__':
     main()

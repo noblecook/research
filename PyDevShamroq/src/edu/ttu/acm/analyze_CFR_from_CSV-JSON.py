@@ -9,10 +9,12 @@ nlp = spacy.load("en_core_web_lg")
 
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/"
-# TITLE_48_ALL = "output/CFR_48_20212023-07-12_23-53-43.csv"
 TITLE_48_ALL = "output/CFR_48_20192023-07-13_20-46-11.csv"
 csv_cfr_input_all = CFR_48_HOME_BASE + TITLE_48_ALL
 
+CFR_48_HOME_BASE_TEST = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/"
+TITLE_48_TEST = "Josh-Saha-Test-File/eCFR_48_TEST.csv"
+csv_cfr_input_test = CFR_48_HOME_BASE_TEST + TITLE_48_TEST
 
 linguisticFeatures = ['TEXT', 'PATTERN', 'SPAN', 'SUBJ', 'VERB', 'OBJECT']
 df = pd.DataFrame(columns=linguisticFeatures)
@@ -148,11 +150,11 @@ def read_csv_file(csv_file):
         raise
 
 
-def main():
+def main(input_csv):
     getTimeNow()
     logging.basicConfig(filename='app.shamroq.log', level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s')
-    df_of_regulations = read_csv_file(csv_cfr_input_all)
+    df_of_regulations = read_csv_file(input_csv)
     result_df = process_regulations(df_of_regulations)
     result_csv_file = generate_csv_file(result_df)
     # Log filename and size
@@ -162,5 +164,13 @@ def main():
     getTimeNow()
 
 
+# -------------------------------------
+# @Author Patrick Cook
+# @Date: circa 2021 initial release
+# analyze_CFR_from_CSV.py
+# The module read the CSV file (i.e., the output from the first module)
+# into a data frame.  The main function iterates through each row and
+# processes the "TEXT" column by invoking the “classifySpan” function.
+# -------------------------------------
 if __name__ == '__main__':
-    main()
+    main(csv_cfr_input_test)

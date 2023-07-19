@@ -1,0 +1,1 @@
+that is, doc refers to the spacy object which represent the processed text containing tokenization and linguistic annotations; the spans is an attribute on the doc object that provide access to the collection of spans allocated in the doc object; the ["ruler"]

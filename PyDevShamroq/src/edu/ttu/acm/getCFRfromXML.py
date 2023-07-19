@@ -91,10 +91,10 @@ def initializeDataFrame():
     return iDF
 
 
-def print_list_of_provisions(cfr_metadata_list):
+def print_list_of_provisions(cfr_data_list):
     df = initializeDataFrame()
     my_provision_list = []
-    for subpart in cfr_metadata_list:
+    for subpart in cfr_data_list:
         row_data = {}
         for key, value in subpart.items():
             row_data[key] = value
@@ -103,11 +103,11 @@ def print_list_of_provisions(cfr_metadata_list):
     return df
 
 
-def print_list_of_provisions_BACKUP(cfr_metadata_list):
+def print_list_of_provisions_BACKUP(cfr_data_list):
     df = initializeDataFrame()
     my_provision_list = []
 
-    for subpart in cfr_metadata_list:
+    for subpart in cfr_data_list:
         row_data = {}
         for key, value in subpart.items():
             if key == "TEXT":
@@ -133,22 +133,22 @@ def print_list_of_provisions_BACKUP(cfr_metadata_list):
     return df
 
 
-def getCFRMetaData(reg_xml_file_location):
+def getCFRData(reg_xml_file_location):
     # Configure logging
     logging.basicConfig(level=logging.DEBUG, filename='LF_getCFRfromXML.log', filemode='w',
                         format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Log method start
-    logging.info("getCFRMetaData method called.")
+    logging.info("getCFRData method called.")
 
     # use XSLT to get only two important elements
     # store the results and return
     tree = eTree.parse(reg_xml_file_location)
     root = tree.getroot()
-    cfrMetaDataList = []
+    cfrDataList = []
 
     for subpart_element in root.findall('.//SECTION'):
-        subpart_meta_data = {
+        subpart_data = {
             'SECTNO': '',
             'SUBJECT': '',
             'TEXT': ''
@@ -156,12 +156,12 @@ def getCFRMetaData(reg_xml_file_location):
 
         sectno_elements = subpart_element.findall('.//SECTNO')
         if len(sectno_elements) > 0:
-            subpart_meta_data['SECTNO'] = ", ".join(
+            subpart_data['SECTNO'] = ", ".join(
                 [element.text for element in sectno_elements if element.text is not None])
 
         subject_elements = subpart_element.findall('.//SUBJECT')
         if len(subject_elements) > 0:
-            subpart_meta_data['SUBJECT'] = ", ".join(
+            subpart_data['SUBJECT'] = ", ".join(
                 [element.text for element in subject_elements if element.text is not None])
 
         text_elements = subpart_element.findall('.//P')
@@ -171,16 +171,16 @@ def getCFRMetaData(reg_xml_file_location):
                 text_fragments = [text_fragment.strip() for text_fragment in element.itertext()]
                 text += " ".join(text_fragments) + " "
             text = " ".join(text.split())  # remove extra whitespace
-            subpart_meta_data['TEXT'] = text
+            subpart_data['TEXT'] = text
 
-        cfrMetaDataList.append(subpart_meta_data)
+        cfrDataList.append(subpart_data)
         # Log the completion of processing for each subpart element
         logging.debug("Processing subpart element completed.")
 
     # Log method end
-    logging.info("getCFRMetaData method completed.")
+    logging.info("getCFRData method completed.")
 
-    return cfrMetaDataList
+    return cfrDataList
 
 
 def createCSV(dff, dataSetName):
@@ -206,8 +206,8 @@ def main(regList, regName):
     getTimeNow()
     df_all_regulations = pd.DataFrame()
     for regulation in regList:
-        metadata = getCFRMetaData(regulation)
-        df_regulation = print_list_of_provisions(metadata)
+        cfrData = getCFRData(regulation)
+        df_regulation = print_list_of_provisions(cfrData)
         df_all_regulations = pd.concat([df_all_regulations, df_regulation], ignore_index=True)
 
     # print(df_all_regulations)

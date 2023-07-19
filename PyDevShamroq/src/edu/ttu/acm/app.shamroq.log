@@ -165,3 +165,6 @@
 2023-07-13 21:04:43,564 - ERROR - An error occurred during CSV file generation: Cannot save file into a non-existent directory: 'C:\Users\patri\PycharmProjects\research\PyDevShamroq\data\far\vol_01_to_07_ALL\2019\results'
 2023-07-13 21:25:03,935 - INFO - Reading CSV file: CFR_48_20192023-07-13_20-46-11.csv (Size: 15075829 bytes)
 2023-07-13 21:38:09,178 - INFO - resulting file: C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/results/CLASSIFIED_eCFR_48_ALL_2023-07-13_21-38-08.csv
+2023-07-18 22:32:00,337 - ERROR - CSV file not found: [WinError 3] The system cannot find the path specified: 'C:\\Users\\patri\\PycharmProjects\\research\\PyDevShamroq\\data\\far\\vol_01_to_07_ALL\\2019\\Josh-Saha-Test-File\\eCFR_48_TEST.csv'
+2023-07-18 22:32:35,164 - INFO - Reading CSV file: eCFR_48_TEST.csv (Size: 1291 bytes)
+2023-07-18 22:32:35,296 - INFO - resulting file: C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/results/CLASSIFIED_eCFR_48_ALL_2023-07-18_22-32-35.csv
