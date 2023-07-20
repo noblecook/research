@@ -7,6 +7,7 @@ import srsly
 from datetime import datetime
 nlp = spacy.load("en_core_web_lg")
 
+#Todo put this code in a json config file.
 
 CFR_48_HOME_BASE = "C:/Users/patri/PycharmProjects/research/PyDevShamroq/data/far/vol_01_to_07_ALL/2019/"
 TITLE_48_ALL = "output/CFR_48_20192023-07-13_20-46-11.csv"
