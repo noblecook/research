@@ -488,8 +488,8 @@ def initializeModel():
 # https://help.openai.com/en/articles/6897213-openai-library-error-types-guidance
 def getOpenAIResponse(oaim, text):
     _openApi = initializeModel()
-    context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
-    openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
+    context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation. "
+    openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense. "
     supplementalInfo = "Each if/then statement shall address each action separately."
     inputTag = "Regulation: "
     regPrompt = context + openaigoal + supplementalInfo + inputTag + text
