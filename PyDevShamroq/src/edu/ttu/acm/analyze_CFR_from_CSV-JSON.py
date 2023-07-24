@@ -151,10 +151,14 @@ def read_csv_file(csv_file):
         raise
 
 
-def main(input_csv):
-    getTimeNow()
+def init():
     logging.basicConfig(filename='app.shamroq.log', level=logging.INFO,
                         format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+def main(input_csv):
+    getTimeNow()
+    init()
     df_of_regulations = read_csv_file(input_csv)
     result_df = process_regulations(df_of_regulations)
     result_csv_file = generate_csv_file(result_df)
@@ -168,10 +172,11 @@ def main(input_csv):
 # -------------------------------------
 # @Author Patrick Cook
 # @Date: circa 2021 initial release
-# analyze_CFR_from_CSV.py
-# The module read the CSV file (i.e., the output from the first module)
+# ANALYZE:  analyze_CFR_from_CSV.py
+# The module read the CSV file (i.e., the output from the PREPROCESSING module)
 # into a data frame.  The main function iterates through each row and
-# processes the "TEXT" column by invoking the “classifySpan” function.
+# processes the "TEXT" column by invoking the “classifySpan” function. The output
+# is a .csv file that contains each statement and associated deontic expression
 # -------------------------------------
 if __name__ == '__main__':
     main(csv_cfr_input_test)

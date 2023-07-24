@@ -240,7 +240,7 @@ def main():
 # -------------------------------------
 # @Author Patrick Cook
 # @Date: circa 2021 initial release
-# getCFRfromXML.py
+# PREPROCESSING:  getCFRfromXML.py
 # Uses the getCFRData function to extract the SECTNO, SUBJECT,
 # and concatenated TEXT elements within each SECTION element from all seven
 # volumes of Title 48 contained in XML files.

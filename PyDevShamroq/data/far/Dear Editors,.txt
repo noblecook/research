@@ -1,0 +1,6 @@
+Dear Editors,
+
+Thank you for considering our manuscript titled "SHAMROQ: A SOFTWARE ENGINEERING METHODOLOGY TO EXTRACT DEONTIC EXPRESSIONS FROM THE CODE OF FEDERAL REGULATIONS – A SINGLE-CASE, EMBEDDED CASE STUDY, " for publication in International Journal of Software Engineering and Knowledge Engineering (IJSEKE). We would like to draw your attention to a related conference paper, "SHAMROQ: Towards semantic models of regulations," which was presented at the 32nd International Conference on Software Engineering and Knowledge Engineering (SEKE 2020).  The current submission significantly extends the findings presented in the conference paper. 
+
+While the SEKE 2020 paper focused on developing a novel approach for knowledge representation in dynamic environments, the present manuscript explores the practical implementation and scalability of this approach in real-world scenarios. Specifically, we have conducted extensive experiments and case studies, which were not included in the conference version, to validate the effectiveness and efficiency of our proposed method.
+
