@@ -1,8 +1,14 @@
 import logging
 import os
+import time
+
 import openai
+import pandas as pd
 import spacy
 nlp = spacy.load("en_core_web_sm")
+ATLAS_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/20 ATLAS/data/"
+CSV_TEST_FILE = "eCFR_48_TEST.csv"
+ATLAS_INPUT_TEST = ATLAS_HOME_BASE + CSV_TEST_FILE
 
 
 def init():
@@ -10,17 +16,58 @@ def init():
                         format='%(asctime)s - %(levelname)s - %(message)s')
 
 
+def read_csv_file(csv_file):
+    try:
+        absolute_path = os.path.abspath(csv_file)
+        # Extract filename and size
+        filename = os.path.basename(absolute_path)
+        file_size = os.path.getsize(absolute_path)
+
+        # Log filename and size
+        logging.info("Reading CSV file: %s (Size: %d bytes)", filename, file_size)
+        df_of_regulations = pd.read_csv(csv_file)
+        return df_of_regulations
+    except FileNotFoundError as e:
+        logging.error("CSV file not found: %s", str(e))
+        raise
+    except pd.errors.ParserError as e:
+        logging.error("Error parsing CSV file: %s", str(e))
+        raise
+
+
+def process_regulations(df_of_regulations):
+    result_df = pd.DataFrame(
+        columns=["SECTNO", "SUBJECT", "ORIGINAL", "CONDITIONAL"])
+
+    for index, row in df_of_regulations.iterrows():
+        section_no = row["SECTNO"]
+        cfr_subj = row["SUBJECT"]
+        for col_name in df_of_regulations.columns:
+            if col_name == "TEXT":
+                paragraph = row[col_name]
+                if isinstance(paragraph, str):
+                    try:
+                        logging.info("getOpenAIResponse(text): %s", paragraph)
+                        getOpenAIResponse(paragraph)
+                    except Exception as e:
+                        # Handle the exception here (e.g., log the error)
+                        logging.error("Error processing sentences: %s", str(e))
+                else:
+                    pass
+            else:
+                pass
+    return result_df
+
+
 # https://help.openai.com/en/articles/6897213-openai-library-error-types-guidance
 def getOpenAIResponse(text):
     _openApi = initializeModel()
-    regPrompt2 = "You are a Attorney with a JD in constitutional law. You have Ph.D. in linguist and Ph.D in Logic. I will give you a section of a regulation.    You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense so that each action can be addressed separately"
     context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
     openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
     supplementalInfo = "Each if/then statement must address each action separately."
     inputTag = "Regulation: "
     regPrompt = context + openaigoal + supplementalInfo + inputTag + text
     gptModel1 = "text-davinci-003"
-    gptModel2 = "gpt-3.5-turbo"
     logging.info("getOpenAIResponse(text): %s", regPrompt)
 
     response = None
@@ -75,7 +122,11 @@ def getOpenAIResponse(text):
 
     # Extract the generated text from the response
     responseText = response["choices"][0]["text"]
+    print(responseText)
+    time.sleep(10)
     lines = responseText.strip().split("\n")
+    print(lines)
+    time.sleep(10)
     logging.info("Successfully generated response: %s", lines)
     print(f"OpenAI API response: {lines}")
 
@@ -98,10 +149,9 @@ def initializeModel():
 
 def main():
     init()
-    provision = "An operator is required to obtain verifiable parental consent before any collection, use, or disclosure " \
-           "of personal information from children, including consent to any material change in the collection, use, or " \
-           "disclosure practices to which the parent has previously consented."
-    getOpenAIResponse(provision)
+    df_of_regulations = read_csv_file(ATLAS_INPUT_TEST)
+    results = process_regulations(df_of_regulations)
+    print(results)
 
 
 # -------------------------------------
