@@ -5,10 +5,12 @@ import time
 import openai
 import pandas as pd
 import spacy
-nlp = spacy.load("en_core_web_sm")
+
+nlp = spacy.load("en_core_web_lg")
 ATLAS_HOME_BASE = "C:/Users/patri/OneDrive/Documents/20 PhD/20 ATLAS/data/"
 CSV_TEST_FILE = "eCFR_48_TEST.csv"
-ATLAS_INPUT_TEST = ATLAS_HOME_BASE + CSV_TEST_FILE
+CSV_TEST_FILE_2 = "eCFR_48_VOL_01.csv"
+ATLAS_INPUT_TEST = ATLAS_HOME_BASE + CSV_TEST_FILE_2
 
 
 def init():
@@ -62,18 +64,21 @@ def process_regulations(df_of_regulations):
 # https://help.openai.com/en/articles/6897213-openai-library-error-types-guidance
 def getOpenAIResponse(text):
     _openApi = initializeModel()
-    context = "You are a Attorney with a Ph.D. in linguist. You specializes in federal law. I will give you a section of a regulation."
-    openaigoal = "You will spit and rephrase the regulation into multiple shorter if/then statements expressed in the simple present tense."
-    supplementalInfo = "Each if/then statement must address each action separately."
-    inputTag = "Regulation: "
-    regPrompt = context + openaigoal + supplementalInfo + inputTag + text
+    context_expertise = "You are an Attorney with a deep understanding of federal laws and regulations. "
+    context_specialization = "You have three Ph.D.s in linguistics, mathematics, and logic. "
+    context_inquiry = "I will give you a section of a regulation. "
+    context_response = "You will spit and rephrase the regulation into shorter if/then statements. "
+    openaigoal = "You must express the if/then statements in the simple present tense. "
+    supplementalInfo = "Each if/then statement must address each action separately. "
+    inputTag = "Here is the regulation: "
+    regPrompt = context_expertise + context_specialization + context_inquiry + context_response + openaigoal \
+                + supplementalInfo + inputTag + text
+    # regPrompt = context + openaigoal + supplementalInfo + inputTag + text
     gptModel1 = "text-davinci-003"
     logging.info("getOpenAIResponse(text): %s", regPrompt)
 
     response = None
     try:
-        # Attempt to connect
-        # response = oaim.Completion.create(
 
         response = _openApi.Completion.create(
             model=gptModel1,
@@ -120,15 +125,18 @@ def getOpenAIResponse(text):
         print(f"OpenAI API request exceeded rate limit: {e}")
         pass
 
-    # Extract the generated text from the response
     responseText = response["choices"][0]["text"]
-    print(responseText)
-    time.sleep(10)
+    logging.info("Original Text: %s", text)
+    logging.info("The Open AI Response - i.e. responseText: %s", responseText)
+    print("Original Text:", text)
+    print("The Open AI Response - i.e. responseText:", responseText)
+    print("\n")
+    time.sleep(1)
+
     lines = responseText.strip().split("\n")
-    print(lines)
-    time.sleep(10)
-    logging.info("Successfully generated response: %s", lines)
-    print(f"OpenAI API response: {lines}")
+    logging.info("The response after strip() and split(\n): %s", lines)
+    # print("This is lines after strip() and split(\n):  ", lines)
+    # time.sleep(25)
 
     return lines
 
